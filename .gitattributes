@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary
+*.otf binary
+existing/** -diff linguist-vendored
+docs/new-design/*.html -diff linguist-generated
+docs/new-design/extracted/slides/*.html -diff linguist-generated
