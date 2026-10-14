@@ -1,0 +1,11 @@
+order: 1
+group: team
+name: "Giuseppe Dal Prá"
+role: "Founder and CEO"
+photo:
+  src: "../../assets/media/team/giuseppe-dal-pra-f17b3d.png"
+  alt: "Giuseppe Dal Prá"
+bio: "Giuseppe is a transdisciplinary thinker, with [writing on strategies for whole-society transitions](https://medium.com/@seppdalpra/apollo-springs-eternal-37d827f817de) towards a more resilient and flourishing civilisation. He completed a degree in History & Politics at Balliol College, University of Oxford, and is a Fellow of the Royal Society of Arts.\n\nHis research has covered how best to prepare against wicked problems and systemic risks, for example runaway climate change, using best practice in deliberation and other associated antifragile reforms. Strengthening democratic institutions to better handle conditions of crisis is one of his key focuses, as well as enhancing institutions’ scientific basis for addressing technical and long term risks.\n\nHe co-authored the ComplexCity semi-finalist entry (in the last 40 of 2700 entrants), developing an epistemic democratic platform proposal for citizen-led policy experiments, for the Global Challenges Foundation's New Shape Prize."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

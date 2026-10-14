@@ -1,0 +1,10 @@
+order: 15
+group: advisor
+name: "Kristian Rönn"
+photo:
+  src: "../../assets/media/team/kristian-ronn-26396b.png"
+  alt: "Kristian Rönn"
+bio: "Kristian is an entrepreneur, author of the bestseller The Darwinian Trap, and an advocate focused on governing global catastrophic risks from AI and climate change.\n\nIn the climate sector, he contributed to global standards for corporate carbon accounting and disclosure used worldwide. He founded Normative, the pioneering carbon accounting SaaS platform, building it into one of Europe's fastest-growing tech companies.\n\nIn AI governance, Kristian worked at the Future of Humanity Institute (2013-2014) and has contributed to the EU's AI Code of Conduct and the UN's Global Digital Compact. He has demonstrated AI risks to policymakers and authored the influential AI Assurance Tech Report, highlighting a €270 billion investment opportunity in AI safety.\n\nCurrently, he is the co-founder and CEO of Lucid Computing, a company developing privacy-preserving software and hardware to monitor the location and usage of AI accelerator chips. In this role, he collaborates with governments to define standards for enhanced AI export controls and global governance of AI diffusion."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

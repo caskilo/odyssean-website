@@ -1,0 +1,21 @@
+order: 10
+title: "A Master Equation for Power Laws"
+type: research-report
+summary: "Our [first peer-reviewed publication](https://royalsocietypublishing.org/doi/10.1098/rsos.220531), accepted by the Royal Society Open Science, on a Master Equation for Power Laws, with applications for conflict dynamics and system dynamical thresholds, such as the emergence of solar flares."
+authors:
+  request: CR-007
+  note: "Authors are not stated on the live page or the document."
+date:
+  request: CR-007
+  note: "Publication date is not stated on the live page or the document."
+url: https://royalsocietypublishing.org/doi/10.1098/rsos.220531
+thumbnail:
+  src: "../../assets/media/publications/master-equation-for-power-laws-5a68fc.jpg"
+  alt: "A Master Equation for Power Laws"
+programmes: []
+verification:
+  status: unverified
+  note: "External journal link (Royal Society Open Science); not checked offline. Authors and date not stated on the live page."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"

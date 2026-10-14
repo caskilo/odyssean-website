@@ -1,0 +1,14 @@
+rank: 2
+title: "State Capacity Deficits"
+categories: ["Government & Politics"]
+horizon:
+  request: CR-006
+  note: "Time horizon for this signal. The Horizon Scan paper does not state one per issue."
+summary: "State capacity is the government's ability to meet their objectives (Vaccaro A., 2023), typically by providing public goods and services, such as transport, education, health and security. This is funded by taxation and other government income."
+sources:
+  - kind: pdf
+    ref: "cad45f_0ddb2ff8abe74792af7dc19e63fd81d2"
+    note: "Title and categories from Table 1 (final rank 2); summary is the first two sentences of the issue's section."
+  - kind: decision
+    ref: "build-plan B.4"
+    note: "Top 5 by final rank (agreed default)."

@@ -1,0 +1,10 @@
+order: 13
+group: advisor
+name: "Professor Peter Turchin"
+photo:
+  src: "../../assets/media/team/professor-peter-turchin-c3cbad.png"
+  alt: "Professor Peter Turchin"
+bio: "Peter Turchin is a complexity scientist who works in the field of historical social science that he and his colleagues call [Cliodynamics](https://peterturchin.com/cliodynamics/). His research interests lie at the intersection of social and cultural evolution, historical macrosociology, economic history and cliometrics, mathematical modelling of long-term social processes, and the construction and analysis of historical databases. Currently he investigates a set of broad and interrelated questions: How do human societies evolve? In particular, what processes explain the evolution of ultrasociality—our capacity to cooperate in huge anonymous societies of millions? What processes are responsible for the resilience of complex societies to external and internal shocks? What causes political communities to cohere and what causes them to fall apart? Currently his main research effort is directing [the Seshat Databank project](http://seshatdatabank.info/) (and its offshoot, [CrisisDB](https://seshatdatabank.info/seshat-projects/crisis-and-recovery-database/)) which builds and analyses a massive historical database that enables us to empirically test predictions from theories attempting to explain why and how complex human societies evolved, and why they periodically experience political breakdown.\n\nTurchin has published >200 articles in peer-reviewed journals that include Nature, Science, and PNAS. His publications are frequently cited and in 2004 he was designated as “Highly cited researcher” by ISIHighlyCited.com. In 2021 he was elected Fellow of the American Association for the Advancement of Science (AAAS). Turchin has authored ten books. His most recent books are [End Times: Elites, Counter-Elites, and the Path of Political Disintegration](https://peterturchin.com/books/end-times/) (2023) and The Great Holocene Transformation (forthcoming)."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

@@ -1,0 +1,21 @@
+order: 4
+title: "Policy Robustness & Uncertainty in Model-based Decision Support for the Energy Transition"
+type: research-report
+summary: "Burton et al present a methodology for uncertainty analysis in climate policy modelling using emulators. The authors find that reducing lead times and phasing out fossil fuels are critical for faster, more robust power sector transitions globally and in India."
+authors: "Ian J. Burton, Femke J.M.M. Nijsse, James M. Salter"
+date:
+  request: CR-007
+  note: "Publication date is not stated on the live page or the document."
+file: /files/policy-robustness-uncertainty-energy-transition.pdf
+thumbnail:
+  src: "../../assets/media/publications/policy-robustness-uncertainty-energy-transition-800f95.png"
+  alt: "Policy Robustness & Uncertainty in Model-based Decision Support for the Energy Transition"
+programmes: [process]
+verification:
+  status: corrected
+  note: "Live title links to cad45f_72bc… (GRAIN Overview Report). Thumbnail and Read All point to the correct PDF."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"
+  - kind: pdf
+    ref: "e5ae06_1026479b2b3f4b55895adb8d877c0776"

@@ -1,0 +1,21 @@
+order: 3
+title: "Bridging local and technocratic epistemologies for better non-economic loss & damage financing modalities in the Pacific"
+type: research-report
+summary: "Balzer and Michael propose a novel analytical framework to bridge the gap between local epistemologies and technocratic financing for non-economic loss and damage (NELD) in the Pacific. Focusing on Vanuatu, the paper integrates policy translation and anticipatory governance to better inform financing modalities, fostering long-term systemic change in complex socio-political contexts."
+authors: "James Balzer and Sivendra Michael"
+date:
+  request: CR-007
+  note: "Publication date is not stated on the live page or the document."
+file: /files/bridging-local-technocratic-epistemologies-neld-pacific-preprint.pdf
+thumbnail:
+  src: "../../assets/media/publications/bridging-local-technocratic-epistemologies-bf80ea.png"
+  alt: "Bridging local and technocratic epistemologies for better non-economic loss & damage financing modalities in the Pacific"
+programmes: [grain]
+verification:
+  status: corrected
+  note: "Live title links to cad45f_72bc… (GRAIN Overview Report). Thumbnail and Read All point to the correct pre-print."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"
+  - kind: pdf
+    ref: "e5ae06_1802664e01d343b982189da0012251dc"

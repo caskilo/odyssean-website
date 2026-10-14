@@ -1,0 +1,19 @@
+order: 1
+title: "Bridging the Intangible: A Foresight-to-Policy Framework for Localising Non-Economic Loss & Damage (NELD) Financing in Samoa"
+type: research-report
+summary: "The Pacific Islands, including Samoa, face escalating climate risks and disproportionate loss and damage from climate change. adaptation, including irreversible harms.\n\nNon-economic loss and damage remains poorly reflected in global climate mechanisms.\n\nThis article summarises and analyses a workshop from 1 December 2025, interrogating concerns regarding global funding arrangements, particularly questions around governance, transparency, and whether they adequately address local concerns."
+authors: "James Balzer"
+date: "December 2025"
+file: /files/bridging-the-intangible-neld-samoa.pdf
+thumbnail:
+  src: "../../assets/media/publications/bridging-the-intangible-neld-samoa-8c9eb6.png"
+  alt: "Bridging the Intangible: A Foresight-to-Policy Framework for Localising Non-Economic Loss & Damage (NELD) Financing in Samoa"
+programmes: [grain]
+verification:
+  status: verified
+  note: "Title, thumbnail and Read All all point to the same PDF; matches its first page."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"
+  - kind: pdf
+    ref: "cad45f_fd6a6fe4045245db97bb5cac284a3196"

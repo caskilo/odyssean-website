@@ -1,0 +1,10 @@
+order: 18
+group: trustee
+name: "Dr. Daniel Hoyer"
+photo:
+  src: "../../assets/media/team/dr-daniel-hoyer-c28aa2.jpg"
+  alt: "Dr. Daniel Hoyer"
+bio: "Dr. Daniel Hoyer is a computational historian and complexity scientist. He currently serves as Senior Research Associate & Managing Director for [Seshat: Global History Databank](http://seshatdatabank.info/), Research Scientist with the [SocialAI Research Group](https://social-ai.ca/), and Part Time Professor, George Brown College.\n\nHe holds a PhD from New York University, where he studied economic and social development in the high Roman Empire. Since 2014 he has been working alongside Prof. Peter Turchin as part of the Seshat Databank project, a multidisciplinary project examining long-run social dynamics by combining qualitative and empirical information about the past with advanced quantitative analysis and computer modelling.\n\nHis research seeks to understand the root causes of and limiting factors to societal development and resilience. In particular, he is interested in understanding societal responses to shifting ecological, social, and economic contexts that determine well-being outcomes in the past, as well as how this understanding may shed light on critical social pressures today.\n\nHe has written or edited several books, most recently the [Seshat History of the Axial Age](https://berestabooks.com/seshat-history-of-the-axial-age/) with Jenny Reddish and [Figuring Out the Past](https://profilebooks.com/work/figuring-out-the-past/) with Peter Turchin. He has co-authored numerous articles, including pieces published in PNAS, Science Advances, and Nature: Scientific Reports. His work has been featured in several podcasts, radio shows, and news articles, such as the History Hits podcast and interviews in Nature, The Guardian, and New Scientist."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

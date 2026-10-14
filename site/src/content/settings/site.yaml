@@ -1,0 +1,61 @@
+name: 'Odyssean Institute'
+charityNumber: '1204794'
+charityLine: 'The Odyssean Institute is a Registered Charitable Incorporated Organisation'
+email: 'contact@odysseaninstitute.org'
+phone: '+44 7926 592930'
+mainNav:
+  - { label: 'Projects', href: '/projects' }
+  - { label: 'Publications', href: '/publications' }
+  - { label: 'About', href: '/about' }
+donate: { label: 'Donate', href: '/donate' }
+footer:
+  - links:
+      - { label: 'Projects', href: '/projects' }
+      - { label: 'Publications', href: '/publications' }
+      - { label: 'Blog', href: '/blog' }
+      - { label: 'Curriculum', href: '/curriculum' }
+      - { label: 'Focus', href: '/focus' }
+  - links:
+      - { label: 'GRAIN', href: '/grain' }
+      - { label: 'Horizon Scans', href: '/horizon-scans' }
+      - { label: 'The Odyssean Process', href: '/odyssean-process' }
+  - links:
+      - { label: 'About', href: '/about' }
+      - { label: 'FAQ', href: '/faq' }
+      - { label: 'Contact', href: '/contact' }
+      - { label: 'Donate', href: '/donate' }
+microsites:
+  grain:
+    name: 'GRAIN'
+    subnav:
+      - { label: 'About GRAIN', href: '/grain' }
+      - { label: 'Methodology', href: '/grain/methodology' }
+      - { label: 'Reports', href: '/grain/reports' }
+      - { label: 'Governance Under Fallout', href: '/grain/governance-under-fallout' }
+      - { label: 'Contact', href: '/grain/contact' }
+    cta: { label: 'Collaborate', href: '/grain/collaborate' }
+  scans:
+    name: 'Horizon Scans'
+    subnav:
+      - { label: 'Overview', href: '/horizon-scans' }
+      - { label: 'Reports', href: '/horizon-scans/reports' }
+      - { label: 'Contact', href: '/contact' }
+  process:
+    name: 'The Odyssean Process'
+    subnav:
+      - { label: 'Overview', href: '/odyssean-process' }
+      - { label: 'Expert Elicitation', href: '/odyssean-process/expert-elicitation' }
+      - { label: 'Modelling', href: '/odyssean-process/modelling' }
+      - { label: 'Deliberation', href: '/odyssean-process/deliberation' }
+flags:
+  teamSection: team # switch to experts-citizens when the Assembly content exists (~2027)
+sources:
+  - kind: live
+    ref: 'https://www.odysseaninstitute.org/'
+    note: 'organisation details from the live footer and contact block; existing page names as link labels'
+  - kind: concept
+    ref: '01'
+    note: 'GRAIN sub-nav and CTA'
+  - kind: decision
+    ref: 'build-plan B.3'
+    note: 'main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'

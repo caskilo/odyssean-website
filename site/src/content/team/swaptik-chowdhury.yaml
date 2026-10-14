@@ -1,0 +1,11 @@
+order: 7
+group: team
+name: "Swaptik Chowdhury"
+role: "DMDU Lead"
+photo:
+  src: "../../assets/media/team/swaptik-chowdhury-714447.webp"
+  alt: "Swaptik Chowdhury"
+bio: "Swaptik is an Assistant Policy Researcher at RAND Corporation and a PhD Fellow at the Pardee RAND Graduate School. As a transdisciplinary researcher, he explores the impacts of emergent technology across social and technical dimensions, focusing on AI safety, fairness, and the supply chain of critical AI infrastructure.\n\nHis work also addresses energy and climate change adaptation under conditions of deep uncertainty. Drawing on expertise in complex systems analysis and social computational science, Swaptik previously developed decision support tools as a Fellow at IIASA and investigated inequality in inter-generational networks at the Complexity Science Hub Vienna. He holds an M.S. in Structural Engineering from Arizona State University. In his free time, he enjoys exploring independent coffee shops and training MMA."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

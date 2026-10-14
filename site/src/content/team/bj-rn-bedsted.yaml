@@ -1,0 +1,10 @@
+order: 10
+group: advisor
+name: "Bjørn Bedsted"
+photo:
+  src: "../../assets/media/team/bj-rn-bedsted-e6e57d.png"
+  alt: "Bjørn Bedsted"
+bio: "Bjørn Bedsted is the International Director at Democracy x (formerly the Danish Board of Technology) where he works for the advancement of deliberative democracy; the implementation of public engagement in research and innovation; improvement of the Science for Policy infrastructure; and the democratization of the use of knowledge in decision making.\n\nBjørn has led participatory Technology Assessments of new technologies and their potential to contribute to address societal challenges. He has designed and implemented citizen participation methods from the local to the global level, e.g. as the Global Coordinator of the World Wide Views projects and as part of the team behind the Conference on the Future of Europe and the EC Citizens Panels"
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

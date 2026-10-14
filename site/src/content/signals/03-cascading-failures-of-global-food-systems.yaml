@@ -1,0 +1,14 @@
+rank: 3
+title: "Cascading failures of global food systems leading to famines"
+categories: ["Food Security", "Climate Environment & Ecology", "Systemic Risks"]
+horizon:
+  request: CR-006
+  note: "Time horizon for this signal. The Horizon Scan paper does not state one per issue."
+summary: "The complexity of the global food system is necessary for feeding the world’s growing population. It entails production, processing, distribution, and trade of multiple commodities at global scale."
+sources:
+  - kind: pdf
+    ref: "cad45f_0ddb2ff8abe74792af7dc19e63fd81d2"
+    note: "Title and categories from Table 1 (final rank 3); summary is the first two sentences of the issue's section."
+  - kind: decision
+    ref: "build-plan B.4"
+    note: "Top 5 by final rank (agreed default)."

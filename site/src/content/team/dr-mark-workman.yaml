@@ -1,0 +1,10 @@
+order: 14
+group: advisor
+name: "Dr. Mark Workman"
+photo:
+  src: "../../assets/media/team/dr-mark-workman-2c37a0.png"
+  alt: "Dr. Mark Workman"
+bio: "Mark Workman is a specialist in Strategic Foresight. He uses mixed methods to develop insights about risks and opportunities in different possible futures with [a specific application to the net zero transition](https://co2re.org/people/dr-mark-workman/).\n\nHe is a Coastal Engineer (University of Southampton), Military (Queens Gurkha Engineers) and Business Leader (Medical and Security Consultancy), Environmental Economist, Academic ([Imperial College London](https://www.imperial.ac.uk/people/mark.workman07) and Oxford University) and Strategist by training. He has undertaken military tours, led extreme and high-risk expeditions all over the world and run multi-million-dollar business units. He has two military awards for leadership."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

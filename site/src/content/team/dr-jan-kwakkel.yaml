@@ -1,0 +1,10 @@
+order: 19
+group: trustee
+name: "Dr. Jan Kwakkel"
+photo:
+  src: "../../assets/media/team/dr-jan-kwakkel-a7e2ee.jpg"
+  alt: "Dr. Jan Kwakkel"
+bio: "Dr. Jan Kwakkel is a full professor of Decision Making under Deep Uncertainty at Delft University of Technology in the public policy analysis group at the faculty of Technology, Policy and Management.\n\nHis research focusses on the development and testing of model-based methods for enabling public deliberation and decision making under uncertainty. He is a founding member and current president of the society for decision making under deep uncertainty.\n\nHe has received several grants from the Dutch national science foundation and has applied his research in various domains including flood risk management, the net zero transition, health, and safety, and security."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

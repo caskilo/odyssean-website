@@ -1,0 +1,21 @@
+order: 9
+title: "Odyssean Process Policy Brief"
+type: policy-brief
+summary: "A concise edition of our White Paper for the time-pressed reader."
+authors:
+  request: CR-007
+  note: "Authors are not stated on the live page or the document."
+date: "February 2024"
+file: /files/odyssean-process-policy-brief-2024.pdf
+thumbnail:
+  src: "../../assets/media/publications/odyssean-process-policy-brief-cb1797.jpg"
+  alt: "Odyssean Process Policy Brief"
+programmes: [process]
+verification:
+  status: verified
+  note: "All links point to the same PDF; matches its first page (\"POLICY BRIEF February 2024\")."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"
+  - kind: pdf
+    ref: "cad45f_5876f7d7692242179673c8ea6fd6a195"

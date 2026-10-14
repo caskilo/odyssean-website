@@ -1,0 +1,11 @@
+order: 4
+group: team
+name: "Ian Burton"
+role: "Research Assistant"
+photo:
+  src: "../../assets/media/team/ian-burton-32da88.png"
+  alt: "Ian Burton"
+bio: "Ian is a PhD student at the University of Exeter as part of the UKRI [Environmental Intelligence CDT](https://www.exeter.ac.uk/research/eicdt/). His transdisciplinary research focuses on energy-economy modelling, with a specific interest in power system transitions, uncertainty quantification in climate policy modelling and the politics of knowledge production in transitions research. He works with the [E3ME-FTT](https://www.e3me.com/) energy-economy-environment model family, especially [FTT: Power](https://github.com/cpmodel/FTT_StandAlone), developed by the University of Exeter and [Cambridge Econometrics](https://www.camecon.com/). He seeks to understand the different forms and sources of uncertainty in the science-policy interface, how these are subject to technical as well as sociopolitical dynamics and use these insights to contribute towards more responsible modelling practices. Associate of [Exeter Climate Policy](https://exeterclimatepolicy.com/) and the Centre for Responsible Innovation."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

@@ -1,0 +1,11 @@
+order: 2
+group: team
+name: "Richard Hames"
+role: "Research Associate"
+photo:
+  src: "../../assets/media/team/richard-hames-9da25f.png"
+  alt: "Richard Hames"
+bio: "Richard Hames is a political theorist and journalist. He is the co-author of Post-Internet Far Right (Dog Section, 2021) and The Rise of Ecofascism: Climate Change and the Far Right (Polity Press, 2022) and an editor of Crude Futures (New Models, 2023). He is a host of Novara FM and its Series Producer. He is currently working on a book project on collapse with Beau-Caprice Vetch."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

@@ -1,0 +1,11 @@
+order: 3
+group: team
+name: "Timur Burkhanov"
+role: "Research Assistant"
+photo:
+  src: "../../assets/media/team/timur-burkhanov-f4b921.png"
+  alt: "Timur Burkhanov"
+bio: "Timur developed a strong interest in analysis of complex civilisational problems and understanding the nature of conflicts through his travels and teaching experiences from conflict-prone and developing regions, with a focus on the regions of MENA and Eurasia.\n\nHe holds a MSc. in cybersecurity from Ufa State Aviation Technical University and developed an interest in the application of machine learning and data science techniques for positive societal change, Timur has previously contributed to two Omdena projects, an AI tool for linguistic psychometric assessment of soft skills from meeting recordings, and building a chatbot for interview preparation using NLP."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

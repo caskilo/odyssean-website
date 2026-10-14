@@ -1,0 +1,10 @@
+order: 12
+group: advisor
+name: "Dr. Mark Fabian"
+photo:
+  src: "../../assets/media/team/dr-mark-fabian-3c4fca.png"
+  alt: "Dr. Mark Fabian"
+bio: "Mark Fabian is assistant professor of public policy at the University of Warwick, and an affiliate fellow at the [Bennett Institute for Public Policy in the University of Cambridge](https://www.bennettinstitute.cam.ac.uk/about-us/person/mark-fabian/). He was previously a Fulbright postdoctoral scholar at the Brookings Institution in Washington DC. His studies wellbeing from an interdisciplinary perspective, with a focus on policy applications.\n\nHis most recent book, A Theory of Subjective Wellbeing, was published by Oxford University Press in 2022 as part of their philosophy, politics, and economics series. His journal articles have appeared in top journals across multiple fields, including Perspectives on Psychological Science, European Journal for the Philosophy of Science, and the Journal of European Public Policy."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

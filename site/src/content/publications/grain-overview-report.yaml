@@ -1,0 +1,19 @@
+order: 5
+title: "GRAIN Report Overview"
+type: research-report
+summary: "GRAIN investigates how nodes in our global trade system can build up stockpiles, anticipate failsafes, and invest to enable long-term resilience.\n\nAs a toolkit of futures methods and resilience, GRAIN outlines how commercial policy can be synergic, with key commodities as exemplars. The report presents mission-oriented solutions to complexity, bolstering ‘nodes of persisting recovery’."
+authors: "Giuseppe Dal Prá, James Balzer, Roman Coussement, Christopher Yan-Chak Chan"
+date: "June 2025"
+file: /files/grain-overview-report.pdf
+thumbnail:
+  src: "../../assets/media/publications/grain-overview-report-933fa0.png"
+  alt: "GRAIN Report Overview"
+programmes: [grain]
+verification:
+  status: verified
+  note: "All links point to the same PDF; matches its first page (\"Overview Report, 17 June, 2025\")."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/publications"
+  - kind: pdf
+    ref: "cad45f_72bc5701e1de4685b9781276810ecb1f"

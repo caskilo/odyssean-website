@@ -1,0 +1,11 @@
+order: 5
+group: team
+name: "James Balzer"
+role: "Foresight Lead"
+photo:
+  src: "../../assets/media/team/james-balzer-5e952b.jpg"
+  alt: "James Balzer"
+bio: "James is an Australian sustainable development practitioner, focused on the governance dimension of sustainable development, and how this can promote long-term, transformative changes in business, civil society and public sector organisations. He is a Next Generation Foresight Practitioner (NGFP) Fellow with the School of International Futures, where he is exploring improvements to anticipatory extreme heat governance practices in Singapore, Sydney, Jakarta and Manila. He is also leading the 'Cities and States Working Group' at the School of International Futures Pledge Network, which is embedding evaluation capacities for intergenerational fairness at city-level policy design and implementation. James is also leading the development of the World Economic Forum Future 100 Fellowship, and is a Visiting Lecturer at the Lee Kuan Yew School of Public Policy. James is also the Vice-President of the Power For Change Institute and a Researcher at the Disruptive Futures Institute. He has a Master of Sustainable Development and a Master of Public Policy."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

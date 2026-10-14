@@ -1,0 +1,10 @@
+order: 8
+group: advisor
+name: "Dr. Luke Kemp"
+photo:
+  src: "../../assets/media/team/dr-luke-kemp-d20d24.png"
+  alt: "Dr. Luke Kemp"
+bio: "Luke is a Senior Research Associate at the Notre Dame Institute of Advanced Study, and a Research Affiliate at the Centre for the Study of Existential Risk (CSER) and Darwin College at the University of Cambridge. His research focuses on understanding the long run history and future of extreme global risks. Luke has advised the WHO and multiple international institutions, and his work has been covered by media outlets such as the BBC, New York Times, and the New Yorker.\n\nHe holds both a Doctorate in International Relations and a Bachelor of Interdisciplinary Studies with first class honours from the Australian National University (ANU). His first book on the deep history and future of societal collapse (Goliath’s Curse) was published with Penguin in 2025."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

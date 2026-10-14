@@ -1,0 +1,11 @@
+order: 6
+group: team
+name: "Jacob Haimes"
+role: "AI Safety Lead"
+photo:
+  src: "../../assets/media/team/jacob-haimes-fed788.png"
+  alt: "Jacob Haimes"
+bio: "Jacob is a researcher with experience in machine learning, soft robotics, computational modeling, and healthcare information systems. He specializes in the effective dissemination of research, as well as promoting high quality and accessible science. At the Odyssean Institute, Jacob leads the AI Foresight Assembly project.\n\nJacob hosts two podcasts which focus on \"AI\" - [Into AI Safety](https://kairos.fm/intoaisafety/), and [muckrAIkers](https://kairos.fm/muckraikers/). Both shows are produced by [Kairos.fm](https://kairos.fm), a podcast and media network he founded and runs in his free  time. He works with Apart Research as a research project manager,  and leads one group per cohort through BlueDot Impact's AI Alignment course. He received a BS in Mechanical Engineering and an MS in Computational Modeling from the University of Colorado at Boulder."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

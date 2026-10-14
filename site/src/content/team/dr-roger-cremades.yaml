@@ -1,0 +1,10 @@
+order: 16
+group: advisor
+name: "Dr. Roger Cremades"
+photo:
+  src: "../../assets/media/team/dr-roger-cremades-f6fd36.png"
+  alt: "Dr. Roger Cremades"
+bio: "Asst. Prof. Dr. Roger Cremades is a social-ecological complexity economist. Roger has more than 10 years of experience in the complex socio-economic interactions of climate change in China, India, the Americas, and several European regions. He coordinated European research and co-production projects on climate change adaptation (e.g. CLISWELN).\n\nHis work on the intersection of complex systems, global change, and economics appeared in top journal like PNAS, Ecological Economics, Nature Climate Change, Nature Food, and Nature Geoscience, i.a.. Roger has been twice elected member of the Council of the Complex Systems Society (2022-2025, and 2019-2022), elected Executive Board Member of CoMSES.net (2024-2026), and also co-chaired the Development Team of the Finance and Economics Knowledge-Action Network of Future Earth (2020-2022).\n\nRoger is known for applying complex systems methods such as networks, cellular automata, AI, or adaptive cycles, thus producing innovative work about socio-economic tipping points, the social feasibility of large-scale floating settlements, the dynamics of social norms, the sustainability frontiers of cities, the economics of the water-energy-land nexus, machine learning predictions in the use of natural resources, catastrophic risk, climate-risk insurances, and green investments, to mention a few. Roger likes good coffee, good food, spices, and multiple fermentation processes. A few times every winter, Roger either breaks the ice in a frozen lake and jumps into the water, or does things of the sort on freezing torrents and seas."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

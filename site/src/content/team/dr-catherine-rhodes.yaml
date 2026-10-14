@@ -1,0 +1,10 @@
+order: 20
+group: trustee
+name: "Dr. Catherine Rhodes"
+photo:
+  src: "../../assets/media/team/dr-catherine-rhodes-b93585.jpg"
+  alt: "Dr. Catherine Rhodes"
+bio: "Catherine is Head of Operations and Engagement for SPRITE+ (the Security, Privacy, Identity and Trust Engagement NetworkPlus) at the University of Manchester. She was previously Executive Director of the Centre for the Study of Existential Risk, and retains a research affiliation there. In the context of addressing global risk, Catherine’s work broadly focuses on understanding the intersection and combination of risk stemming from technologies and risk stemming from governance (or lack of it).\n\nShe has particular expertise in the international governance of biotechnology, biosecurity and broader biological risk management – as well as the lessons that can be drawn from these areas for the wider governance of global catastrophic risks. Catherine has an academic background in international relations but has engaged in extensive interdisciplinary work. Her PhD was funded as part of the Project on Strengthening the Biological Weapons Convention at the Bradford Disarmament Research Centre, and Catherine retains a strong interest in international actions to prevent misuse of science. Catherine has participated in several horizon scanning exercises relating to bioengineering, synthetic biology, global health, and dual-use research of concern."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"

@@ -1,0 +1,17 @@
+order: 2
+role: citizen
+roleLabel: 'THE CITIZEN'
+quote:
+  request: CR-009
+  note: 'Experts & Citizens (concept 08): quote, name and affiliation for each of the 4 cards. Not needed for launch (section ships switched off).'
+name:
+  request: CR-009
+  note: 'see quote'
+affiliation:
+  request: CR-009
+  note: 'see quote'
+portrait: portrait-citizen-a
+sources:
+  - kind: concept
+    ref: '08'
+    note: 'card 2 of 4; concept text is all placeholder'

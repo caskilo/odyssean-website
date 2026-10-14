@@ -1,0 +1,10 @@
+order: 11
+group: advisor
+name: "Herb Simmens"
+photo:
+  src: "../../assets/media/team/herb-simmens-d34e8a.png"
+  alt: "Herb Simmens"
+bio: "Herb Simmens is a long time Climate leader who co led the effort that resulted in Montgomery County, Maryland declaring the first climate emergency in the United States in 2017. He is the author of “A Climate Vocabulary of the Future”, which has been called a ‘science poem, an inspiration and a prophecy’ by the noted author Kim Stanley Robinson. He is a cofounder of the Healthy Planet Action Coalition, an international group committed to restoring a safe and healthy climate. Additionally he serves as the host of the Climate Emergency Forum YouTube channel.\n\nDuring his career in state and local government he was Executive Director of the New Jersey State Planning Commission for a decade, County Administrator of Atlantic County, New Jersey, and on the faculty of two higher education institutions. He has a Bachelor's degree in Economics from the Wharton School of the University of Pennsylvania and a Masters degree in public affairs and urban planning from the School of Public And International Affairs at Princeton University."
+sources:
+  - kind: live
+    ref: "https://www.odysseaninstitute.org/team"
