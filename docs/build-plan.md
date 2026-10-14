@@ -275,7 +275,7 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 |----|------|:------:|---------|-----------|
 | 0.1 | Will creates an **empty private repo `caskilo/odyssean-website`** (no README) | 👤 | — | Repo URL exists |
 | 0.2 | `git init` at the project root; `.gitignore`; first commit of `docs/` + `existing/`; push using the existing Git Credential Manager login | 🤖 | 0.1 | `main` on GitHub |
-| 0.3 | Scaffold Astro (pinned) in `site/`. Prettier, ESLint, `astro check` | 🤖 | 0.2 | Builds clean locally |
+| 0.3 | Scaffold Astro (pinned) in `site/`. Prettier, `astro check` (ESLint deferred: no client JS yet; add with the P3 enhancements) | 🤖 | 0.2 | Builds clean locally |
 | 0.4 | CI: build + checks on every push and PR. Deploy workflow written but **disabled** until P9 | 🤖 | 0.3 | CI green |
 
 #### P1: Content
@@ -286,7 +286,7 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 | 1.2 | Crawl the live pages in B.2 → Markdown/YAML in `src/content/`, keeping heading structure | 🤖 | 0.3 | Files validate |
 | 1.3 | Blog: 9 posts, checked side by side against the live posts | 🤖 + 👤 | 1.2 | Footnotes, tables and captions intact; slugs identical |
 | 1.4 | Concept copy → content files, including the interactive-state strings | 🤖 | 1.1 | Copy-parity list = content files |
-| 1.5 | **Publications**: every live entry; **check each title against its PDF** (the live page links some titles, thumbnails and buttons to different PDFs) | 🤖 | 1.2 | Each entry has one verified PDF; mismatches logged |
+| 1.5 | **Publications**: every live entry; **check each title against its PDF** (the live page links some titles, thumbnails and buttons to different PDFs) | 🤖 | 1.2 | Each entry has one verified PDF; mismatches logged. *PDF identification uses a dev-only Python helper (`tools/extract/identify_pdfs.py`, PyMuPDF); not part of CI* |
 | 1.6 | GRAIN merge: `/resilient-supply-chains` + `/neld` + GRAIN, NELD and GUF publications → the 5 GRAIN sub-pages | 🤖 | 1.2, 1.5 | Mapping recorded; leftovers listed |
 | 1.7 | Horizon Scans: top 5 signals + summaries from the paper (B.4) | 🤖 | — | `signals/` collection filled |
 | 1.8 | Odyssean Process: EEJ, DMDU and Deliberation text lifted verbatim from the White Paper (§04.2–04.3) | 🤖 | — | Sources cited per section |
@@ -449,7 +449,7 @@ gantt
 
 | Gate | Exit criteria | Decider |
 |------|---------------|---------|
-| **G1** Content ready | Content map complete: every element sourced or requested · schemas valid · copy-parity list loaded | Will |
+| **G1** Content ready | Content map complete: every element sourced or requested · schemas valid · copy-parity list loaded | Will · ✅ **criteria met 2026-10-14** (awaiting Will's review): `npm run check` + `npm run verify:content` pass; [content-map.md](content-map.md) generated |
 | **G2** Local build complete | Every route in Part B built · E.3 met on every page · P8 checks pass · placeholder report reviewed by Will | Will |
 | **G3** Staging live | Deployed via CI to Mythic Beasts · redirects and form proven on Apache | Will |
 | **G4** Sign-off | Review afternoon held · Giuseppe signs off · launch-blockers fixed · rest on the backlog | Giuseppe |
