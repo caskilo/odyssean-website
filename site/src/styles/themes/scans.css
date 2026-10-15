@@ -1,0 +1,15 @@
+[data-theme='scans'] {
+  --bg: var(--navy);
+  --fg: var(--paper);
+  --accent: var(--sand);
+  --eyebrow: var(--gold);
+  --surface: var(--paper);
+  --surface-fg: var(--navy);
+  --rule: var(--blue);
+  --rule-soft: var(--blue);
+  --link: var(--sand);
+  --link-hover: var(--gold);
+  --btn-bg: var(--blue);
+  --btn-fg: var(--paper);
+  --focus: var(--gold);
+}

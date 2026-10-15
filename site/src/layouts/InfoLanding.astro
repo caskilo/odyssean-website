@@ -1,0 +1,17 @@
+---
+import Base from './Base.astro';
+import type { Copy } from '../lib/copy';
+
+interface Props {
+  title: Copy;
+  fullTitle?: boolean;
+  description?: Copy;
+  noindex?: boolean;
+  headerVariant?: 'overlay' | 'plain';
+}
+const props = Astro.props;
+---
+
+<Base {...props} strand="info">
+  <slot />
+</Base>

@@ -1,0 +1,18 @@
+---
+import { isRequest, text, type Copy } from '../../lib/copy';
+import { getSettings } from '../../lib/site';
+
+interface Props {
+  value: Copy | undefined;
+}
+const { value } = Astro.props;
+const label = isRequest(value) ? text((await getSettings()).ui.requested) : undefined;
+---
+
+{isRequest(value) ? (
+  <span class="request" data-request={value.request} title={value.note}>
+    {label} {value.request}
+  </span>
+) : (
+  value
+)}

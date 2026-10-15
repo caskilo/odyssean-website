@@ -1,0 +1,322 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/core/Header.astro';
+import Logo from '../../components/core/Logo.astro';
+import Mark from '../../components/core/Mark.astro';
+import Eyebrow from '../../components/core/Eyebrow.astro';
+import Headline from '../../components/core/Headline.astro';
+import Button from '../../components/core/Button.astro';
+import Card from '../../components/core/Card.astro';
+import RegisterRow from '../../components/core/RegisterRow.astro';
+import PageTitle from '../../components/core/PageTitle.astro';
+import RomanSection from '../../components/core/RomanSection.astro';
+import Pill from '../../components/core/Pill.astro';
+import { art } from '../../lib/art';
+import { getSettings } from '../../lib/site';
+
+const s = await getSettings();
+const ui = { home: String(s.ui.home), menu: String(s.ui.menu), nav: String(s.ui.mainNav) };
+const swatches = [
+  ['--navy', '#011130'],
+  ['--blue', '#1d4387'],
+  ['--gold', '#e2b540'],
+  ['--sand', '#ebd3a2'],
+  ['--paper', '#ebe5d9'],
+  ['--paper-light', '#f4efe6'],
+];
+const themes = [
+  { key: 'info', dark: false },
+  { key: 'grain', dark: false },
+  { key: 'scans', dark: true },
+  { key: 'process', dark: false },
+];
+---
+
+<Base title="Component gallery" strand="info" headerVariant="bar" noindex>
+  <div class="container container--narrow gallery">
+    <Headline text="Component gallery" size="l" />
+    <p>
+      Internal preview (noindex). Every shared component, the four themes and the art registry. Demo
+      text only.
+    </p>
+
+    <section>
+      <h2>Tokens</h2>
+      <div class="swatches">
+        {swatches.map(([name, hex]) => (
+          <div class="swatch">
+            <span class="swatch__chip" style={`background:${hex}`} />
+            <code>{name}</code>
+            <code>{hex}</code>
+          </div>
+        ))}
+      </div>
+      <p class="mono">Mono label: DM Mono 400</p>
+      <p style="font-family:var(--font-display);font-size:var(--step-m)">
+        Display: Arrus BT, <em>italic accent</em>
+      </p>
+      <p>Body: Instrument Sans. The quick brown fox jumps over the lazy dog.</p>
+    </section>
+
+    <section>
+      <h2>Logo and mark</h2>
+      <div class="row">
+        <div class="tile" style="background:var(--paper)">
+          <Logo tone="blue" height={52} alt="blue" />
+        </div>
+        <div class="tile" style="background:var(--navy)">
+          <Logo tone="paper" height={52} alt="paper" />
+        </div>
+        <div class="tile" style="background:var(--navy)">
+          <Logo tone="gold" height={52} alt="gold" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="tile" style="background:var(--navy)">
+          <Mark size={22} tone="paper" /> favicon
+        </div>
+        <div class="tile" style="background:var(--navy)">
+          <Mark size={40} tone="gold" spin /> loader
+        </div>
+        <div class="tile" style="background:var(--paper)">
+          <Mark size={56} tone="blue" /> section marker
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Eyebrow, headline, buttons, pills</h2>
+      <Eyebrow>Caps eyebrow</Eyebrow>
+      <Eyebrow variant="register">Register eyebrow</Eyebrow>
+      <Headline text="Headline with" accent="an italic accent." size="l" tag="h3" />
+      <div class="row">
+        <Button href="#">Primary</Button>
+        <Button href="#" style="secondary">
+          Secondary
+        </Button>
+        <Button href="#" style="accent">
+          Accent
+        </Button>
+        <span class="tile" style="background:var(--navy)">
+          <Button href="#" style="donate">
+            Donate
+          </Button>
+        </span>
+        <Button href={{ request: 'CR-000', note: 'Pending target' }}>Pending</Button>
+        <Button href="#" size="small">
+          Small
+        </Button>
+      </div>
+      <div class="row">
+        <Pill href="#" current>
+          Current
+        </Pill>
+        <Pill href="#">Other</Pill>
+        <Pill href="#">Other</Pill>
+      </div>
+    </section>
+
+    <section>
+      <h2>Cards, rows, sections</h2>
+      <div class="row">
+        <Card
+          href="#"
+          rule="blue"
+          label="Label"
+          title="Card title in the display face."
+          note="Note line"
+        />
+        <Card
+          href="#"
+          rule="gold"
+          label="Label"
+          title="Card title in the display face."
+          note="Note line"
+        />
+        <Card
+          href="#"
+          rule="navy"
+          label="Label"
+          title="Card title in the display face."
+          note="Note line"
+        />
+      </div>
+      <PageTitle eyebrow="Research & analysis" title="Page title" />
+      <RegisterRow
+        type="Research report"
+        title="Register row title"
+        href="#"
+        meta={['Authors', 'Month Year']}
+      />
+      <RegisterRow type="Policy brief" title="Row without meta" href="#" />
+      <RomanSection
+        numeral="I"
+        title="Roman section"
+        body="Body text of a numbered section, as used for Why we are Odyssean."
+      />
+      <RomanSection numeral="II" title="Second section" body="Another body paragraph." />
+    </section>
+
+    <section>
+      <h2>Themes</h2>
+      <div class="themes">
+        {themes.map((t) => (
+          <div class="theme-sample" data-theme={t.key}>
+            <Eyebrow>{t.key} theme</Eyebrow>
+            <Headline text="Headline" accent="accent." size="m" tag="h3" />
+            <p>
+              Body text and <a href="#">a link</a>.
+            </p>
+            <div class="row">
+              <Button href="#">Primary</Button>
+              <Button href="#" style="secondary">
+                Secondary
+              </Button>
+            </div>
+          </div>
+        ))}
+        <div class="theme-sample" data-theme="process" data-variant="dark">
+          <Eyebrow>process dark</Eyebrow>
+          <Headline text="Headline" accent="accent." size="m" tag="h3" />
+          <p>
+            Body text and <a href="#">a link</a>.
+          </p>
+          <div class="row">
+            <Button href="#">Primary</Button>
+            <Button href="#" style="secondary">
+              Secondary
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Headers</h2>
+      <div class="stage" style="background:var(--navy);position:relative;min-height:9rem">
+        <Header
+          variant="overlay"
+          current="/"
+          links={s.mainNav}
+          donate={s.donate}
+          logoTone="gold"
+          {ui}
+        />
+      </div>
+      <div class="stage" data-theme="grain" style="background:var(--bg)">
+        <Header
+          variant="plain"
+          current="/grain"
+          links={s.microsites.grain.subnav}
+          cta={s.microsites.grain.cta}
+          logoTone="blue"
+          ui={{ ...ui, nav: String(s.ui.subNav) }}
+        />
+      </div>
+      <div class="stage" data-theme="scans" style="background:var(--bg)">
+        <Header
+          variant="plain"
+          current="/horizon-scans"
+          links={s.microsites.scans.subnav}
+          logoTone="paper"
+          ui={{ ...ui, nav: String(s.ui.subNav) }}
+        />
+      </div>
+    </section>
+
+    <section>
+      <h2>Art registry</h2>
+      <div class="art-grid">
+        {Object.entries(art).map(([key, { Component, meta }]) => (
+          <figure>
+            <div class="art-box">
+              <Component />
+            </div>
+            <figcaption>
+              <code>{key}</code> · <strong>{meta.status}</strong> · mobile: {meta.mobile ?? 'n/a'}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .gallery {
+    padding-top: var(--space-7);
+  }
+  figure {
+    margin: 0;
+  }
+  .gallery section {
+    margin-block: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--rule);
+  }
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+    margin-block: var(--space-4);
+  }
+  .tile {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    color: var(--paper);
+  }
+  .tile[style*='--paper)'] {
+    color: var(--navy);
+  }
+  .swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+  .swatch {
+    display: grid;
+    gap: 0.25rem;
+    font-size: var(--step-mono);
+  }
+  .swatch__chip {
+    width: 7rem;
+    height: 3.5rem;
+    border: 1px solid var(--rule);
+  }
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .themes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--space-4);
+  }
+  .theme-sample {
+    padding: var(--space-5);
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid var(--rule);
+  }
+  .stage {
+    margin-block: var(--space-4);
+    color: var(--fg);
+  }
+  .art-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: var(--space-5);
+  }
+  .art-box {
+    position: relative;
+    height: 12rem;
+    overflow: hidden;
+    background: var(--navy);
+  }
+  figcaption {
+    margin-top: var(--space-2);
+    font-size: var(--step-mono);
+  }
+</style>

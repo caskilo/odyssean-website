@@ -1,0 +1,45 @@
+---
+import type { Copy } from '../../lib/copy';
+import CopyText from './Copy.astro';
+
+interface Props {
+  text: Copy;
+  accent?: Copy;
+  tag?: 'h1' | 'h2' | 'h3';
+  size?: 'hero' | 'xl' | 'l' | 'm';
+  breakBefore?: boolean;
+}
+const { text, accent, tag: Tag = 'h1', size = 'l', breakBefore = false } = Astro.props;
+---
+
+<Tag class={`headline headline--${size}`}>
+  <CopyText value={text} /> {accent && (breakBefore ? <br /> : null)}
+  {accent && (
+    <em>
+      <CopyText value={accent} />
+    </em>
+  )}
+</Tag>
+
+<style>
+  .headline {
+    margin: 0;
+  }
+  .headline--hero {
+    font-size: var(--step-hero);
+    line-height: 1.05;
+  }
+  .headline--xl {
+    font-size: var(--step-xl);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+  }
+  .headline--l {
+    font-size: var(--step-l);
+    line-height: 1.04;
+  }
+  .headline--m {
+    font-size: var(--step-m);
+    line-height: 1.08;
+  }
+</style>

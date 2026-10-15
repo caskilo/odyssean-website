@@ -1,0 +1,30 @@
+---
+import type { Copy } from '../../lib/copy';
+import Eyebrow from './Eyebrow.astro';
+import Headline from './Headline.astro';
+import CopyText from './Copy.astro';
+
+interface Props {
+  title: Copy;
+  eyebrow?: Copy;
+}
+const { title, eyebrow } = Astro.props;
+---
+
+<div class="page-title">
+  {eyebrow && (
+    <Eyebrow variant="register">
+      <CopyText value={eyebrow} />
+    </Eyebrow>
+  )}
+  <Headline text={title} size="l" />
+</div>
+
+<style>
+  .page-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-bottom: var(--space-7);
+  }
+</style>

@@ -30,3 +30,4 @@ jobs:
       - run: npm run check
       - run: npm run build
       - run: npm run verify:content
+      - run: npm run report:placeholders

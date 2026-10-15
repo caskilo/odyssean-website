@@ -1,0 +1,121 @@
+---
+import type { Copy } from '../../lib/copy';
+import CopyText from './Copy.astro';
+import Logo from './Logo.astro';
+
+interface Props {
+  name: string;
+  charityLine: Copy;
+  charityNumber: string;
+  charityNumberLabel: Copy;
+  email: string;
+  copyright: string;
+  columns: { heading?: Copy; links: { label: Copy; href: string }[] }[];
+  ui: { footerNav: string };
+}
+const { name, charityLine, charityNumber, charityNumberLabel, email, copyright, columns, ui } =
+  Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container container--narrow">
+    <div class="site-footer__top">
+      <a class="site-footer__logo" href="/">
+        <Logo tone="paper" height={36} alt={name} />
+      </a>
+      <nav class="site-footer__cols" aria-label={ui.footerNav}>
+        {columns.map((c) => (
+          <div class="site-footer__col">
+            {c.heading && (
+              <h2 class="site-footer__heading">
+                <CopyText value={c.heading} />
+              </h2>
+            )}
+            <ul>
+              {c.links.map((l) => (
+                <li>
+                  <a href={l.href}>
+                    <CopyText value={l.label} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </div>
+    <div class="site-footer__legal">
+      <p>
+        <CopyText value={charityLine} />
+      </p>
+      <p>
+        <CopyText value={charityNumberLabel} />: {charityNumber}
+      </p>
+      <p>
+        <a href={`mailto:${email}`}>{email}</a>
+      </p>
+      <p>{copyright.replace('{year}', String(year))}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: var(--space-8);
+    padding-block: var(--space-7) var(--space-6);
+    background: var(--navy);
+    color: var(--paper);
+    font-size: var(--step-small);
+  }
+  .site-footer a {
+    color: var(--sand);
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    color: var(--gold);
+  }
+  .site-footer__top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid color-mix(in srgb, var(--paper) 20%, transparent);
+  }
+  .site-footer__logo {
+    line-height: 0;
+  }
+  .site-footer__cols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6) var(--space-7);
+  }
+  .site-footer__heading {
+    margin: 0 0 var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    padding-block: 0.25rem;
+  }
+  .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) var(--space-6);
+    padding-top: var(--space-5);
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+  }
+  .site-footer__legal p {
+    margin: 0;
+  }
+</style>

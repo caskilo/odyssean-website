@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Arrus BT';
+  src: url('../assets/fonts/ArrusBT-400.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Arrus BT';
+  src: url('../assets/fonts/ArrusBT-400i.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Arrus BT';
+  src: url('../assets/fonts/ArrusBT-700.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Arrus BT';
+  src: url('../assets/fonts/ArrusBT-700i.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+/* The concept embeds only the 600 cut; it renders every Instrument Sans weight, so the build does too. */
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../assets/fonts/InstrumentSans-600.woff2') format('woff2');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Mono';
+  src: url('../assets/fonts/DMMono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

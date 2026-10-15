@@ -1,0 +1,30 @@
+[data-theme='process'] {
+  --bg: var(--paper);
+  --fg: var(--navy);
+  --accent: var(--blue);
+  --eyebrow: var(--navy);
+  --surface: var(--paper-light);
+  --rule: var(--navy);
+  --rule-soft: var(--sand);
+  --link: var(--blue);
+  --link-hover: var(--navy);
+  --btn-bg: var(--navy);
+  --btn-fg: var(--gold);
+  --focus: var(--blue);
+}
+
+/* Modelling page (concept 09) */
+[data-theme='process'][data-variant='dark'] {
+  --bg: var(--navy);
+  --fg: var(--paper);
+  --accent: var(--sand);
+  --eyebrow: var(--gold);
+  --surface: var(--paper);
+  --surface-fg: var(--navy);
+  --rule: var(--blue);
+  --link: var(--sand);
+  --link-hover: var(--gold);
+  --btn-bg: var(--gold);
+  --btn-fg: var(--navy);
+  --focus: var(--gold);
+}

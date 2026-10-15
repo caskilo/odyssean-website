@@ -1,0 +1,164 @@
+---
+import type { Copy } from '../../lib/copy';
+import { isCurrent } from '../../lib/site';
+import CopyText from './Copy.astro';
+import Logo from './Logo.astro';
+import Menu from './Menu.astro';
+
+interface Link {
+  label: Copy;
+  href: string;
+}
+interface Props {
+  variant: 'overlay' | 'bar' | 'plain';
+  current: string;
+  links: Link[];
+  /** donate-style outlined button (info strand) */
+  donate?: Link;
+  /** filled call to action (microsites) */
+  cta?: Link;
+  logoTone: 'blue' | 'paper' | 'gold';
+  ui: { home: string; menu: string; nav: string };
+}
+const { variant, current, links, donate, cta, logoTone, ui } = Astro.props;
+const menuLinks = [...links, ...(donate ? [donate] : []), ...(cta ? [cta] : [])];
+---
+
+<header class={`site-header site-header--${variant}`}>
+  <div class:list={['container', { 'container--narrow': variant === 'bar' }]}>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="/" aria-label={ui.home}>
+        <Logo tone={logoTone} height={variant === 'bar' ? 46 : 52} />
+      </a>
+      <nav class="site-header__nav" aria-label={ui.nav}>
+        {links.map((l) => (
+          <a href={l.href} aria-current={isCurrent(l.href, current) ? 'page' : undefined}>
+            <CopyText value={l.label} />
+          </a>
+        ))}
+        {donate && (
+          <a class="site-header__donate" href={donate.href}>
+            <CopyText value={donate.label} />
+          </a>
+        )}
+        {cta && (
+          <a class="site-header__cta" href={cta.href}>
+            <CopyText value={cta.label} />
+          </a>
+        )}
+      </nav>
+      <Menu label={ui.menu} navLabel={ui.nav} links={menuLinks} {current} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    --h-bg: var(--bg);
+    --h-fg: var(--fg);
+    color: var(--h-fg);
+  }
+  .site-header--overlay,
+  .site-header--bar {
+    --h-bg: var(--navy);
+    --h-fg: var(--paper);
+  }
+  .site-header--bar {
+    background: var(--navy);
+  }
+  .site-header--overlay {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    z-index: 5;
+    --nav-link: var(--sand);
+  }
+  .site-header--plain {
+    --nav-link: var(--fg);
+  }
+  .site-header--bar {
+    --nav-link: var(--paper);
+  }
+  .site-header__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.75rem;
+  }
+  .site-header--bar .site-header__inner {
+    padding-block: 1.125rem;
+  }
+  .site-header__logo {
+    display: inline-block;
+    line-height: 0;
+  }
+  .site-header__nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.75rem;
+    font-size: var(--step-small);
+    font-weight: 600;
+  }
+  .site-header--bar .site-header__nav {
+    font-size: 0.875rem;
+    gap: 0.75rem 1.625rem;
+  }
+  .site-header__nav a {
+    color: var(--nav-link);
+    text-decoration: none;
+  }
+  .site-header__nav a:not(.site-header__donate, .site-header__cta) {
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
+  }
+  .site-header__nav a:hover {
+    color: var(--gold);
+  }
+  .site-header--plain .site-header__nav a:hover {
+    color: var(--accent);
+  }
+  .site-header__nav a[aria-current='page'] {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .site-header--plain .site-header__nav a[aria-current='page'] {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .site-header .site-header__donate {
+    padding: 0.6875rem 1.25rem;
+    border: 1.5px solid var(--gold);
+    border-radius: var(--radius);
+    color: var(--gold);
+  }
+  .site-header--plain .site-header__donate {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .site-header .site-header__donate:hover {
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .site-header .site-header__cta {
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius);
+    background: var(--gold);
+    color: var(--navy);
+  }
+  .site-header .site-header__cta:hover {
+    color: var(--navy);
+    filter: brightness(1.08);
+  }
+  @media (max-width: 48rem) {
+    .site-header__nav {
+      display: none;
+    }
+    .site-header__inner {
+      flex-wrap: nowrap;
+      padding-block: 1.125rem;
+    }
+  }
+</style>

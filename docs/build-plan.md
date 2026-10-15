@@ -164,7 +164,7 @@ Each signal's "two-sentence summary" is the **first two sentences of that issue'
 | AD3 | Interactivity | **Vanilla TS**, progressive enhancement: hero carousel (2), signal selector (3), horizon slider (9), publications filter (6), menu. **All content renders without JS** | The slides' own logic is 1–2 KB; no React runtime |
 | AD4 | Hosting & deploy | GitHub Actions builds → `rsync` over SSH → **Mythic Beasts**. Apache `.htaccess` handles redirects, headers and caching | The host only serves files |
 | AD5 | Content model | **All copy in `src/content/`**, validated by Zod schemas. **No copy in components.** Shared lists (team, publications, signals, projects, people-quotes) are data collections | Enables the future LLM editor; bad edits fail the build |
-| AD6 | Art registry | `src/art/<key>/` holds `Art.astro` (SVG, responsive via `viewBox`) + `meta.ts` (`status: placeholder \| final`, `source`, `notes`). Optional `Art.mobile.astro` later. The build prints a **placeholder report** | Swap = replace one folder |
+| AD6 | Art registry | `src/art/<key>/` holds `Art.astro` (SVG, responsive via `viewBox`) + `meta.json` (`status: placeholder \| final`, `source`, `mobile`, `notes`). Optional `Art.mobile.astro` later. The build prints a **placeholder report** | Swap = replace one folder |
 | AD7 | Fonts | Self-host DM Mono and Instrument Sans (OFL) and **Arrus BT (licence assumed; Will is confirming)**. All three subset to WOFF2. Accessed through `--font-display`, so they can be swapped in one place | |
 | AD8 | Future LLM editor | Not built now. Prepared for by AD5, a `CONTENT.md` schema guide (doubles as LLM context), git as source of truth, and edits arriving as PRs with CI validation | Can later be a small separate service that commits to GitHub |
 | AD9 | Staged variants | One content flag per variant, e.g. `about.teamSection: 'team' \| 'experts-citizens'`. The inactive variant is still built, but only at a **`noindex` preview route** (`/preview/about-experts-citizens`), excluded from the sitemap | Slide 8 goes live in ~2027 with a one-line change |
@@ -183,7 +183,7 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 │  ├─ public/                     favicon set · .htaccess · robots.txt · files/*.pdf
 │  ├─ src/
 │  │  ├─ styles/                  tokens.css · themes/{info,grain,scans,process}.css · base.css
-│  │  ├─ art/<key>/               Art.astro · meta.ts
+│  │  ├─ art/<key>/               Art.astro · meta.json
 │  │  ├─ components/              core/ (Logo, Button, Eyebrow, Headline, Card, RegisterRow, Footer, Menu…)
 │  │  │                           grain/ · scans/ · process/ (microsite-specific components)
 │  │  ├─ layouts/                 InfoLanding · Institutional · Reading · Grain · Scans · Process
@@ -302,6 +302,8 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 | 2.3 | Layouts: InfoLanding, Institutional, Reading, Grain, Scans, Process | 🤖 | 2.2 | Each renders sample content |
 | 2.4 | Art registry + placeholder report (AD6) | 🤖 | 2.1 | `npm run report:placeholders` |
 | 2.5 | Content schemas + `CONTENT.md` (AD5/AD8) + variant flags (AD9) | 🤖 | 1.1 | Invalid content fails the build |
+
+> **P2 status: done 2026-10-15.** Gallery at `/preview/components` (noindex, excluded from the sitemap). Deviations: (1) the mobile menu is a CSS-only `<details>` disclosure, so it works without JS; (2) accessibility labels and the copyright line live in `settings/site.yaml` (`ui`, `copyright`), keeping components copy-free; (3) the three hero art entries (`hero-horizon` final, `hero-mountains` and `hero-sea` placeholders) were pulled forward from 3.1 to exercise the registry; (4) logo colourways and the six fonts were extracted from the concept slides, not redrawn; (5) the loader mark is built but unused until a page needs it.
 
 #### P3: Info strand
 

@@ -1,0 +1,37 @@
+---
+interface Props {
+  variant?: 'caps' | 'register';
+}
+const { variant = 'caps' } = Astro.props;
+---
+
+<div class:list={['eyebrow', `eyebrow--${variant}`]}>
+  {variant === 'register' && <span class="eyebrow__rule" aria-hidden="true" />}
+  <slot />
+</div>
+
+<style>
+  .eyebrow {
+    font-family: var(--font-mono);
+    color: var(--eyebrow);
+  }
+  .eyebrow--caps {
+    font-size: var(--step-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .eyebrow--register {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.9375rem;
+    color: var(--accent);
+  }
+  .eyebrow__rule {
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+  }
+</style>

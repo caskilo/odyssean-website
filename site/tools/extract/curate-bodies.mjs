@@ -128,9 +128,6 @@ const between = (md, start, end) => {
   return md.slice(i, j < 0 ? undefined : j);
 };
 
-/** Raise heading levels by one (### → ##), never above h2. */
-const raiseHeadings = (md) => md.replace(/^(#{3,6}) /gm, (_, h) => `${h.slice(1)} `);
-
 const JOBS = {
   curriculum: async () => curriculum(await src('curriculum')),
   // old /grain: heading + logo replaced by concept 01; keep the full prose

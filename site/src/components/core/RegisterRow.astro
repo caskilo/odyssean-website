@@ -1,0 +1,76 @@
+---
+import type { Copy } from '../../lib/copy';
+import CopyText from './Copy.astro';
+
+interface Props {
+  type: Copy;
+  title: Copy;
+  href: string;
+  meta?: Copy[];
+}
+const { type, title, href, meta = [] } = Astro.props;
+const external = /^https?:\/\//.test(href);
+---
+
+<article class="row">
+  <div class="row__type">
+    <CopyText value={type} />
+  </div>
+  <div class="row__main">
+    <h3 class="row__title">
+      <a {href} {...(external ? { rel: 'noopener' } : {})}>
+        <CopyText value={title} />
+      </a>
+    </h3>
+    {meta.length > 0 && (
+      <p class="row__meta">
+        {meta.map((m, i) => (
+          <>
+            {i > 0 && ' · '}
+            <CopyText value={m} />
+          </>
+        ))}
+      </p>
+    )}
+  </div>
+</article>
+
+<style>
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .row__type {
+    flex: 0 0 8.75rem;
+    font-family: var(--font-mono);
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
+  .row__main {
+    flex: 1 1 20rem;
+    min-width: 0;
+  }
+  .row__title {
+    margin: 0 0 0.5rem;
+    font-size: var(--step-s);
+  }
+  .row__title a {
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .row__title a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 0.2em;
+  }
+  .row__meta {
+    margin: 0;
+    font-size: var(--step-small);
+    line-height: 1.6;
+  }
+</style>

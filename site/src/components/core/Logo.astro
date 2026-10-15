@@ -1,0 +1,23 @@
+---
+import blue from '../../assets/brand/logo-blue.svg';
+import paper from '../../assets/brand/logo-paper.svg';
+import gold from '../../assets/brand/logo-gold.svg';
+
+interface Props {
+  tone?: 'blue' | 'paper' | 'gold';
+  height?: number;
+  alt?: string;
+}
+const { tone = 'blue', height = 52, alt = '' } = Astro.props;
+const src = { blue, paper, gold }[tone].src;
+const width = Math.round(height * (584.32 / 152.49));
+---
+
+<img {src} {alt} {width} {height} class="logo" style={`height:${height}px;width:auto`} />
+
+<style>
+  .logo {
+    display: block;
+    max-width: none;
+  }
+</style>

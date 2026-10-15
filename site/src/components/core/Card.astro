@@ -1,0 +1,65 @@
+---
+import type { Copy } from '../../lib/copy';
+import CopyText from './Copy.astro';
+
+interface Props {
+  href: string;
+  rule?: 'blue' | 'gold' | 'navy';
+  label: Copy;
+  title: Copy;
+  note?: Copy;
+}
+const { href, rule = 'blue', label, title, note } = Astro.props;
+---
+
+<a class={`card card--${rule}`} {href}>
+  <span class="card__label">
+    <CopyText value={label} />
+  </span>
+  <span class="card__title">
+    <CopyText value={title} />
+  </span>
+  {note && (
+    <span class="card__note">
+      <CopyText value={note} />
+    </span>
+  )}
+</a>
+
+<style>
+  .card {
+    flex: 1 1 18.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    padding: 2rem;
+    background: var(--paper-light);
+    color: var(--navy);
+    text-decoration: none;
+    border-top: 3px solid var(--blue);
+  }
+  .card:hover {
+    color: var(--navy);
+    background: #fbf8f2;
+  }
+  .card--gold {
+    border-top-color: var(--gold);
+  }
+  .card--navy {
+    border-top-color: var(--navy);
+  }
+  .card__label {
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--blue);
+  }
+  .card__title {
+    font-family: var(--font-display);
+    font-size: var(--step-s);
+    line-height: 1.3;
+  }
+  .card__note {
+    font-size: 0.875rem;
+    color: var(--blue);
+  }
+</style>

@@ -1,0 +1,27 @@
+---
+import Logo from './Logo.astro';
+
+interface Props {
+  size?: number;
+  tone?: 'blue' | 'paper' | 'gold';
+  spin?: boolean;
+}
+const { size = 40, tone = 'blue', spin = false } = Astro.props;
+---
+
+<span class:list={['mark', { 'mark--spin': spin }]} style={`--size:${size}px`} aria-hidden="true">
+  <Logo {tone} height={size} />
+</span>
+
+<style>
+  .mark {
+    display: block;
+    width: var(--size);
+    height: var(--size);
+    overflow: hidden;
+    line-height: 0;
+  }
+  .mark--spin {
+    animation: oi-spin 2.4s linear infinite;
+  }
+</style>

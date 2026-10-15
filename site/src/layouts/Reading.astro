@@ -1,0 +1,24 @@
+---
+import Base from './Base.astro';
+import type { Copy } from '../lib/copy';
+
+interface Props {
+  title: Copy;
+  fullTitle?: boolean;
+  description?: Copy;
+  noindex?: boolean;
+}
+const props = Astro.props;
+---
+
+<Base {...props} strand="info" headerVariant="bar" lightGround>
+  <div class="container container--narrow page">
+    <slot />
+  </div>
+</Base>
+
+<style>
+  .page {
+    padding-block: var(--space-7) var(--space-8);
+  }
+</style>

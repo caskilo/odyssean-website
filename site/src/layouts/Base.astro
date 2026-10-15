@@ -1,0 +1,106 @@
+---
+import '../styles/fonts.css';
+import '../styles/tokens.css';
+import '../styles/themes/info.css';
+import '../styles/themes/grain.css';
+import '../styles/themes/scans.css';
+import '../styles/themes/process.css';
+import '../styles/base.css';
+import Header from '../components/core/Header.astro';
+import Footer from '../components/core/Footer.astro';
+import { text, type Copy } from '../lib/copy';
+import { getSettings, isMicrosite, logoTone, type Strand } from '../lib/site';
+
+interface Props {
+  title: Copy;
+  /** use the title as-is (home); otherwise "<title> | <site name>" */
+  fullTitle?: boolean;
+  description?: Copy;
+  strand: Strand;
+  headerVariant?: 'overlay' | 'bar' | 'plain';
+  /** dark variant of the strand theme (Modelling) */
+  dark?: boolean;
+  /** lighter page ground (Reading family) */
+  lightGround?: boolean;
+  noindex?: boolean;
+}
+const {
+  title,
+  fullTitle = false,
+  description,
+  strand,
+  headerVariant = 'plain',
+  dark = false,
+  lightGround = false,
+  noindex = false,
+} = Astro.props;
+
+const s = await getSettings();
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const micro = isMicrosite(strand) ? s.microsites[strand] : undefined;
+const links = micro ? micro.subnav : s.mainNav;
+const pageTitle = text(title) ?? s.name;
+const documentTitle = fullTitle ? pageTitle : `${pageTitle} | ${s.name}`;
+const desc = text(description);
+const tone =
+  headerVariant === 'plain'
+    ? logoTone(strand, dark)
+    : headerVariant === 'overlay'
+      ? 'gold'
+      : 'paper';
+const ui = {
+  home: String(s.ui.home),
+  menu: String(s.ui.menu),
+  nav: String(micro ? s.ui.subNav : s.ui.mainNav),
+};
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+---
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{documentTitle}</title>
+    {desc && <meta name="description" content={desc} />}
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:site_name" content={s.name} />
+    <meta property="og:title" content={documentTitle} />
+    {desc && <meta property="og:description" content={desc} />}
+    <meta property="og:url" content={canonical} />
+    <meta name="theme-color" content="#011130" />
+  </head>
+  <body
+    data-theme={strand}
+    data-variant={dark ? 'dark' : undefined}
+    style={lightGround ? '--bg: var(--paper-light)' : undefined}
+  >
+    <a class="skip-link" href="#main">
+      {String(s.ui.skip)}
+    </a>
+    <Header
+      variant={headerVariant}
+      {current}
+      {links}
+      donate={micro ? undefined : s.donate}
+      cta={micro?.cta}
+      logoTone={tone}
+      {ui}
+    />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer
+      name={s.name}
+      charityLine={s.charityLine}
+      charityNumber={s.charityNumber}
+      charityNumberLabel={s.charityNumberLabel}
+      email={s.email}
+      copyright={s.copyright}
+      columns={s.footer}
+      ui={{ footerNav: String(s.ui.footerNav) }}
+    />
+  </body>
+</html>

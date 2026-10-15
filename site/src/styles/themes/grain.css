@@ -1,0 +1,15 @@
+[data-theme='grain'] {
+  --bg: var(--paper);
+  --fg: var(--navy);
+  --accent: var(--blue);
+  --eyebrow: var(--navy);
+  --surface: var(--navy);
+  --surface-fg: var(--paper);
+  --rule: var(--navy);
+  --rule-soft: var(--sand);
+  --link: var(--blue);
+  --link-hover: var(--navy);
+  --btn-bg: var(--navy);
+  --btn-fg: var(--paper);
+  --focus: var(--blue);
+}

@@ -1,0 +1,14 @@
+[data-theme='info'] {
+  --bg: var(--paper);
+  --fg: var(--navy);
+  --accent: var(--blue);
+  --eyebrow: var(--blue);
+  --surface: var(--paper-light);
+  --rule: var(--navy);
+  --rule-soft: var(--sand);
+  --link: var(--blue);
+  --link-hover: var(--navy);
+  --btn-bg: var(--navy);
+  --btn-fg: var(--paper);
+  --focus: var(--blue);
+}

@@ -1,8 +1,18 @@
 name: 'Odyssean Institute'
 charityNumber: '1204794'
+charityNumberLabel: 'Charity number'
 charityLine: 'The Odyssean Institute is a Registered Charitable Incorporated Organisation'
 email: 'contact@odysseaninstitute.org'
 phone: '+44 7926 592930'
+copyright: '©{year} by Odyssean Institute'
+ui:
+  skip: 'Skip to content'
+  home: 'Odyssean Institute home'
+  menu: 'Menu'
+  mainNav: 'Main'
+  subNav: 'Section'
+  footerNav: 'Footer'
+  requested: 'Content requested'
 mainNav:
   - { label: 'Projects', href: '/projects' }
   - { label: 'Publications', href: '/publications' }
@@ -58,4 +68,4 @@ sources:
     note: 'GRAIN sub-nav and CTA'
   - kind: decision
     ref: 'build-plan B.3'
-    note: 'main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'
+    note: 'ui labels are accessibility text, not page copy; copyright line follows the live footer "©2026 by Odyssean Institute". Main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'

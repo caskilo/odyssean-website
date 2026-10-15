@@ -1,0 +1,115 @@
+---
+import type { Copy } from '../../lib/copy';
+import { isCurrent } from '../../lib/site';
+import CopyText from './Copy.astro';
+
+interface Props {
+  label: string;
+  navLabel: string;
+  links: { label: Copy; href: string }[];
+  current: string;
+}
+const { label, navLabel, links, current } = Astro.props;
+---
+
+<details class="menu">
+  <summary aria-label={label}>
+    <span class="menu__bars" aria-hidden="true"></span>
+  </summary>
+  <nav class="menu__panel" aria-label={navLabel}>
+    <ul>
+      {links.map((l) => (
+        <li>
+          <a href={l.href} aria-current={isCurrent(l.href, current) ? 'page' : undefined}>
+            <CopyText value={l.label} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</details>
+
+<style>
+  .menu {
+    display: none;
+    position: relative;
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    margin-right: -0.5rem;
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  .menu__bars,
+  .menu__bars::before,
+  .menu__bars::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: currentColor;
+    content: '';
+  }
+  .menu__bars {
+    position: relative;
+  }
+  .menu__bars::before {
+    position: absolute;
+    top: -7px;
+  }
+  .menu__bars::after {
+    position: absolute;
+    top: 7px;
+  }
+  .menu[open] .menu__bars {
+    background: transparent;
+  }
+  .menu[open] .menu__bars::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+  .menu[open] .menu__bars::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  .menu__panel {
+    position: absolute;
+    right: calc(var(--gutter) * -1);
+    top: calc(100% + 0.875rem);
+    z-index: 20;
+    width: min(20rem, 100vw);
+    padding: 0.5rem var(--gutter) 1.25rem;
+    background: var(--h-bg);
+    color: var(--h-fg);
+    box-shadow: 0 1.5rem 2rem -1rem rgb(1 17 48 / 0.4);
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  li + li {
+    border-top: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+  }
+  a {
+    display: block;
+    padding: 0.875rem 0;
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  a[aria-current] {
+    color: var(--gold);
+  }
+  @media (max-width: 48rem) {
+    .menu {
+      display: block;
+    }
+  }
+</style>
