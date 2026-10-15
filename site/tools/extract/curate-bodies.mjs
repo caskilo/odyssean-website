@@ -137,10 +137,6 @@ const JOBS = {
   'grain/index': async () => between(await src('grain'), 'The GRAIN Initiative is'),
   // old /resilient-supply-chains, verbatim (its own "##" heading becomes a section heading)
   'grain/methodology': async () => await src('resilient-supply-chains'),
-  // old /neld article: title is the page title; byline lines (h5 on Wix) become paragraphs
-  'grain/reports/bridging-the-intangible': async () =>
-    raiseHeadings((await src('neld')).replace(/^## .*\n+/, '').replace(/^##### /gm, '')),
-  // email/phone are rendered from settings; the heading is frontmatter; the success text is form copy
   contact: async () => between(await src('contact'), 'Please reach out', 'Thanks for submitting!'),
   // the intro + buttons are frontmatter (lede, actions); body = closing paragraph and photos
   donate: async () => between(await src('donate'), 'Please [contact us]'),

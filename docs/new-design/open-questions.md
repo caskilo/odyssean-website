@@ -13,7 +13,7 @@ Grouped by when they're needed. Under the content rule, we only move existing co
 |----|------|---------------|------------------------|
 | **CR-001** | `/about` | **Splash text introducing the institute** (was open question C5). The current site has none; the old `/services-1` draft holds placeholder copy. | Visible placeholder above "Why we are Odyssean" and the Team |
 | **CR-002** | `/donation-thank-you-page` | **A short static thank-you message.** The live page uses Wix donation placeholders ("Thank you, Donor Name … £0 … #1000") that a static site can't fill. | Placeholder; the page stays `noindex` |
-| **CR-003** | Blog posts, Donate, GRAIN report | **Alt text for 16 images** that have none on the live site, mostly event photos in the 2024 and 2025 reviews and the Odyssey Launched post. Run `npm run verify:content -- --list-alt` for the list. | Treated as decorative (empty alt) |
+| **CR-003** | Blog posts, Donate | **Alt text for 15 images** that have none on the live site, mostly event photos in the 2024 and 2025 reviews and the Odyssey Launched post. Run `npm run verify:content -- --list-alt` for the list. | Treated as decorative (empty alt) |
 | **CR-004** | `/grain` | The concept's **"Policy brief, Feb 2026"** button. That document isn't on the current site. Please send the PDF, or confirm we drop the button. | Button shown as pending, no link |
 | **CR-005** | `/grain/collaborate` | **Content for the GRAIN "Collaborate" page** (the concept's call to action). No current page matches it. | Page with heading and placeholder |
 | **CR-006** | `/horizon-scans` | **A time horizon for each of the 5 signals.** The Horizon Scan paper doesn't give one per issue. | The "· [time horizon]" slot is hidden |

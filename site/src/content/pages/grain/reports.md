@@ -13,5 +13,5 @@ sources:
     note: 'sub-nav item "Reports"'
   - kind: live
     ref: 'https://www.odysseaninstitute.org/publications'
-    note: 'lists every publication tagged grain; the NELD Samoa paper also has a full web version at /grain/reports/bridging-the-intangible'
+    note: 'lists every publication tagged grain'
 ---

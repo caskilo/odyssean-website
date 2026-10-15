@@ -9,7 +9,6 @@ form:
     - { name: name, label: 'Name', type: text, required: true }
     - { name: email, label: 'Email', type: email, required: true }
     - { name: phone, label: 'Phone', type: tel }
-    - { name: address, label: 'Address', type: text }
     - { name: subject, label: 'Subject', type: text }
     - { name: message, label: 'Message', type: textarea, required: true }
   submit: 'Submit'

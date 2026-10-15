@@ -35,7 +35,7 @@ export const ROUTES = {
   '/team': '/about#team',
   '/projects': '/projects',
   '/resilient-supply-chains': '/grain/methodology',
-  '/neld': '/grain/reports/bridging-the-intangible',
+  '/neld': '/grain/reports',
 };
 
 export function rewriteHref(href) {

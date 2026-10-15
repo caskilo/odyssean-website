@@ -31,7 +31,6 @@
 | `/grain/governance-under-fallout` | prose | 🎨 slide 01<br>🌐 /publications | — | CR-008 (description) |
 | `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6 | 613 words | CR-008 (description) |
 | `/grain/reports` | prose | 🎨 slide 01<br>🌐 /publications | — | CR-008 (description) |
-| `/grain/reports/bridging-the-intangible` | prose | 🌐 /neld<br>📄 cad45f_fd6a6fe4045245db97bb5cac284a3196 | 3094 words | — |
 
 ### Horizon Scans microsite
 
