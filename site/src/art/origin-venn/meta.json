@@ -4,11 +4,7 @@
   "mobile": "scales",
   "notes": "Labels and description come from content (about.origin.figure).",
   "demo": {
-    "labels": [
-      "Left",
-      "Right",
-      "Centre"
-    ],
+    "labels": ["Left", "Right", "Centre"],
     "description": "Demo"
   }
 }
