@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Home from '../views/Home.astro';
+import Projects from '../views/Projects.astro';
+import Publications from '../views/Publications.astro';
+import About from '../views/About.astro';
+import Focus from '../views/Focus.astro';
+import Faq from '../views/Faq.astro';
+import Blog from '../views/Blog.astro';
+import ProsePage from '../views/ProsePage.astro';
+
+export async function getStaticPaths() {
+  const pages = await getCollection('pages');
+  return pages.map((entry) => ({
+    params: { slug: entry.id === 'index' ? undefined : entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const template = entry.data.template;
+---
+
+{template === 'home' && <Home entry={entry as never} />}
+{template === 'projects' && <Projects entry={entry as never} />}
+{template === 'publications' && <Publications entry={entry as never} />}
+{template === 'about' && <About entry={entry as never} />}
+{template === 'focus' && <Focus entry={entry as never} />}
+{template === 'faq' && <Faq entry={entry as never} />}
+{template === 'blog' && <Blog entry={entry as never} />}
+{template === 'prose' && <ProsePage entry={entry as never} />}

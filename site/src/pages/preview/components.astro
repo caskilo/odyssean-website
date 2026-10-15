@@ -230,7 +230,7 @@ const themes = [
         {Object.entries(art).map(([key, { Component, meta }]) => (
           <figure>
             <div class="art-box">
-              <Component />
+              <Component {...(meta.demo ?? {})} />
             </div>
             <figcaption>
               <code>{key}</code> · <strong>{meta.status}</strong> · mobile: {meta.mobile ?? 'n/a'}

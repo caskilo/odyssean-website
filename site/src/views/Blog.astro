@@ -1,0 +1,35 @@
+---
+import Reading from '../layouts/Reading.astro';
+import PageTitle from '../components/core/PageTitle.astro';
+import RegisterRow from '../components/core/RegisterRow.astro';
+import { getPosts, monthYear, type PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'blog'>;
+}
+const { data } = Astro.props.entry;
+const posts = await getPosts();
+---
+
+<Reading title={data.title} description={data.description}>
+  <PageTitle title={data.heading} />
+  <div class="list">
+    {posts.map((p) => (
+      <RegisterRow
+        type={monthYear(p.data.published)}
+        title={p.data.title}
+        href={`/post/${p.id}`}
+        meta={[p.data.author, ...(p.data.readTime ? [p.data.readTime] : [])]}
+      >
+        {p.data.description && <p>{p.data.description}</p>}
+      </RegisterRow>
+    ))}
+  </div>
+</Reading>
+
+<style>
+  .list {
+    max-width: 52rem;
+    border-top: 1.5px solid var(--navy);
+  }
+</style>

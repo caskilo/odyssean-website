@@ -1,0 +1,111 @@
+---
+import Institutional from '../layouts/Institutional.astro';
+import Headline from '../components/core/Headline.astro';
+import Pill from '../components/core/Pill.astro';
+import CopyText from '../components/core/Copy.astro';
+import { md, sections } from '../lib/markdown';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'focus'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const parts = sections(entry.body ?? '');
+const intro = await md(parts.intro);
+const details = Object.fromEntries(
+  await Promise.all(parts.sections.map(async (s) => [s.heading, await md(s.body)] as const)),
+);
+---
+
+<Institutional title={data.title} description={data.description}>
+  <Headline text={data.heading} size="l" />
+  <div class="intro prose-block" set:html={intro} />
+
+  <nav class="pills" aria-label={String(data.heading)}>
+    {data.areas.map((a) => (
+      <Pill href={`#${a.anchor}`}>
+        <CopyText value={a.name} />
+      </Pill>
+    ))}
+  </nav>
+
+  {data.areas.map((a) => (
+    <section class="area" id={a.anchor}>
+      <h2 class="area__name">
+        <CopyText value={a.name} />
+      </h2>
+      <p class="area__body">
+        <CopyText value={a.body} />
+      </p>
+      <blockquote class="area__quote">
+        <CopyText value={a.quote} />
+        <span class="area__who">
+          <CopyText value={a.attribution} />
+        </span>
+      </blockquote>
+      {a.detailHeading && details[String(a.detailHeading)] && (
+        <div class="area__detail">
+          <h3>
+            <CopyText value={a.detailHeading} />
+          </h3>
+          <div class="prose-block" set:html={details[String(a.detailHeading)]} />
+        </div>
+      )}
+    </section>
+  ))}
+</Institutional>
+
+<style>
+  .intro {
+    max-width: 46rem;
+    margin-top: 1.75rem;
+    font-size: 1.1875rem;
+  }
+  .prose-block :global(p) {
+    margin: 0 0 1em;
+    line-height: 1.7;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-block: 2.5rem 1rem;
+  }
+  .area {
+    padding-top: 2.5rem;
+    margin-top: 2.5rem;
+    border-top: 1.5px solid var(--navy);
+    scroll-margin-top: 1rem;
+  }
+  .area__name {
+    font-size: 2.375rem;
+  }
+  .area__body {
+    max-width: 46rem;
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+  .area__quote {
+    max-width: 46rem;
+    margin: 1.5rem 0;
+    padding: 1.125rem 1.375rem;
+    background: var(--paper-light);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.45;
+  }
+  .area__who {
+    display: block;
+    margin-top: 0.625rem;
+    font-family: var(--font-body);
+    font-style: normal;
+    font-size: 0.875rem;
+    color: var(--blue);
+  }
+  .area__detail {
+    max-width: 46rem;
+    margin-top: 2.5rem;
+  }
+</style>

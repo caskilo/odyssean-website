@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+import Institutional from '../layouts/Institutional.astro';
+import Reading from '../layouts/Reading.astro';
+import Grain from '../layouts/Grain.astro';
+import Scans from '../layouts/Scans.astro';
+import Process from '../layouts/Process.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import Headline from '../components/core/Headline.astro';
+import Button from '../components/core/Button.astro';
+import Prose from '../components/core/Prose.astro';
+import RegisterRow from '../components/core/RegisterRow.astro';
+import CopyText from '../components/core/Copy.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getPage, getPublications, type PageOf } from '../lib/content';
+import { isRequest, text } from '../lib/copy';
+import { getSettings } from '../lib/site';
+import { md } from '../lib/markdown';
+
+interface Props {
+  entry: PageOf<'prose'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const Layout = {
+  info: data.family === 'reading' ? Reading : Institutional,
+  grain: Grain,
+  scans: Scans,
+  process: Process,
+}[data.strand];
+
+// a page may borrow another page's body and form (e.g. a microsite Contact page)
+const source = data.contentFrom ? await getEntry('pages', data.contentFrom) : entry;
+if (!source) throw new Error(`contentFrom "${data.contentFrom}" not found`);
+const sourceData = source.data as PageOf<'prose'>['data'];
+const { Content } = await render(source);
+const form = sourceData.form ?? data.form;
+const showContact = Boolean(form);
+const settings = showContact ? await getSettings() : undefined;
+
+const all = await getPublications();
+const listed = data.publications
+  ? data.publications
+      .map((id) => all.find((p) => p.id === id))
+      .filter((p): p is (typeof all)[number] => !!p)
+  : data.publicationsFor
+    ? all.filter((p) => p.data.programmes.includes(data.publicationsFor!))
+    : [];
+const typeLabels = listed.length
+  ? (await getPage('publications', 'publications')).data.typeLabels
+  : undefined;
+const metaOf = (p: (typeof all)[number]) =>
+  [p.data.authors, p.data.date].filter((v) => v && !isRequest(v)) as string[];
+const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
+---
+
+<Layout title={data.title} description={data.description} noindex={data.noindex}>
+  <div class:list={['prose-page', { 'container container--narrow': data.strand !== 'info' }]}>
+    {data.eyebrow && (
+      <Eyebrow>
+        <CopyText value={data.eyebrow} />
+      </Eyebrow>
+    )}
+    {data.heading && <Headline text={data.heading} size="l" />}
+    {data.lede && (
+      <p class="lede">
+        <CopyText value={data.lede} />
+      </p>
+    )}
+    {data.actions.length > 0 && (
+      <div class="actions">
+        {data.actions.map((a) => (
+          <Button href={a.href} style={a.style}>
+            <CopyText value={a.label} />
+          </Button>
+        ))}
+      </div>
+    )}
+    {data.hero && (
+      <Image class="hero" src={data.hero.src} alt={text(data.hero.alt) ?? ''} width={1180} />
+    )}
+
+    {showContact && settings && (
+      <p class="contact-details">
+        <a href={`mailto:${settings.email}`}>{settings.email}</a>
+        <span>{settings.phone}</span>
+      </p>
+    )}
+
+    <Prose narrow={false}>
+      <Content />
+    </Prose>
+
+    {listed.length > 0 && typeLabels && (
+      <div class="listing">
+        {listed.map((p, i) => (
+          <RegisterRow
+            type={typeLabels[p.data.type]}
+            title={p.data.title}
+            href={(p.data.file ?? p.data.url)!}
+            meta={metaOf(p)}
+          >
+            <Fragment set:html={summaries[i]} />
+          </RegisterRow>
+        ))}
+      </div>
+    )}
+
+    {form && <ContactForm {form} />}
+  </div>
+</Layout>
+
+<style>
+  .prose-page.container {
+    padding-block: var(--space-7) var(--space-8);
+  }
+  .lede {
+    max-width: 46rem;
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+    margin-block: 1.5rem 2.5rem;
+  }
+  :global(.hero) {
+    margin-block: 2rem;
+  }
+  .contact-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin-top: 1.5rem;
+    font-family: var(--font-display);
+    font-size: var(--step-s);
+  }
+  .listing {
+    margin-top: 2rem;
+    border-top: 1.5px solid var(--rule);
+  }
+  .prose-page :global(.prose) {
+    margin-top: 2rem;
+  }
+</style>

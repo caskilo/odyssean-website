@@ -4,13 +4,12 @@ author: "Giuseppe Dal Prá"
 published: 2025-12-30T22:28:44.324Z
 updated: 2026-01-02T00:34:37.780Z
 readTime: "8 min read"
-cover:
-  src: "../../assets/media/posts/our-2025-in-review/image-1-dc7bff.jpg"
-  alt: "Our 2025 in Review"
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/our-2025-in-review"
 ---
+
+!
 
 Dear Readers,
 
@@ -34,7 +33,7 @@ Some of our highlights, in the year the OI turned 3, include:
 
 In a busy year indeed, we continued our streak of world firsts in 2025. 2024 saw our delivery of the first Global Catastrophic Risk horizon scan (which is now core reading for the University of Cambridge’s MPhil in Global Risk & Resilience - appropriately enough after it covered several classes of tipping points, and the FT found 2025 to be the [year of the tipping point](https://giftarticle.ft.com/giftarticle/actions/redeem/88c519d3-ee72-4cca-a498-69f8d84c3924)) 2025 saw us deliver the first ever horizon summit. This saw the combination of causal layered analysis, stakeholder mapping, backcasting, and other stress testing futures techniques into a condensed form of foresight. We trained this on 2nd order effects of a nuclear exchange for Longview Philanthropy, culminating in the report [Governance Under Fallout: Anticipating and Navigating the 2nd Order Impacts of a Nuclear Strike](https://82a3361b-35a6-46b7-bc9c-135e206d488d.filesusr.com/ugd/e5ae06_0c45281acce84b9198497299d9319fde.pdf).
 
-![](../../assets/media/posts/our-2025-in-review/image-2-27abbe.jpg)
+!
 
 Building on this test, we also deployed a [trial Horizon Summit](https://www.linkedin.com/posts/sustainablelivinglab_aiimpactfestival-governance-ai-activity-7396860855985856512-7X5J?utm_source=share&utm_medium=member_desktop&rcm=ACoAABlWPD0BK6iYyM0GnJ6t9JW75W_RK_jnA9w) on AI governance, and subsequently conducted it again for a mixed industry group in India with [Sustainable Living Lab (SL2)](https://www.sustainablelivinglab.org/). The intention was to demonstrate the utility of condensed futures techniques for those working in the field to develop and deploy AI to think through negative and positive future scenarios, and keep concerns around equity, resilience, and subject matter areas of concern within AI ethics and safety. This served as a useful exercise to repeat the Summit format, prepare it for different sectors, and buttress our learning ready for the larger Odyssean Process in 2026.
 

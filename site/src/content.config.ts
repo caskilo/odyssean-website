@@ -136,7 +136,12 @@ const pageSchema = ({ image }: SchemaContext) =>
         eyebrow: copy,
         headline,
         items: z.array(numbered).length(3),
-        figure: z.object({ art: artKey, labels: z.array(copy), caption: copy }),
+        figure: z.object({
+          art: artKey,
+          labels: z.array(copy).length(3),
+          description: copy,
+          caption: copy,
+        }),
         cta: z.object({ text: copy, action: link }),
       }),
       team: z.object({ heading: copy, advisorsHeading: copy, trusteesHeading: copy }),
@@ -224,6 +229,7 @@ const pageSchema = ({ image }: SchemaContext) =>
     z.object({
       ...base,
       template: z.literal('prose'), // contact, donate, curriculum, microsite sub-pages, reports…
+      family: z.enum(['institutional', 'reading']).default('institutional'),
       eyebrow: copy.optional(),
       heading: copy.optional(),
       lede: copy.optional(),
@@ -363,6 +369,7 @@ const settings = defineCollection({
       subNav: copy,
       footerNav: copy,
       requested: copy,
+      slide: z.string().includes('{n}'),
     }),
     mainNav: z.array(navItem),
     donate: navItem,

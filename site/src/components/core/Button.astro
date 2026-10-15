@@ -5,8 +5,10 @@ interface Props {
   href: string | ContentRequest;
   style?: 'primary' | 'secondary' | 'accent' | 'donate';
   size?: 'default' | 'small';
+  /** gold label on the primary button (concept 10) */
+  goldText?: boolean;
 }
-const { href, style = 'primary', size = 'default' } = Astro.props;
+const { href, style = 'primary', size = 'default', goldText = false } = Astro.props;
 const pending = isRequest(href);
 const external = !pending && /^https?:\/\//.test(href);
 ---
@@ -21,7 +23,7 @@ const external = !pending && /^https?:\/\//.test(href);
   </span>
 ) : (
   <a
-    class:list={['btn', `btn--${style}`, `btn--${size}`]}
+    class:list={['btn', `btn--${style}`, `btn--${size}`, { 'btn--gold-text': goldText }]}
     href={href}
     {...(external ? { rel: 'noopener' } : {})}
   >
@@ -52,6 +54,10 @@ const external = !pending && /^https?:\/\//.test(href);
   .btn--primary:hover {
     color: var(--btn-fg);
     filter: brightness(1.25);
+  }
+  .btn--primary.btn--gold-text,
+  .btn--primary.btn--gold-text:hover {
+    color: var(--gold);
   }
   .btn--secondary {
     border-color: var(--link);

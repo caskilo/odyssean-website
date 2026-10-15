@@ -1,0 +1,14 @@
+{
+  "status": "final",
+  "source": "concept slide 10",
+  "mobile": "scales",
+  "notes": "Labels and description come from content (about.origin.figure).",
+  "demo": {
+    "labels": [
+      "Left",
+      "Right",
+      "Centre"
+    ],
+    "description": "Demo"
+  }
+}

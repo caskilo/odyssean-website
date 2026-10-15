@@ -68,6 +68,13 @@ const external = /^https?:\/\//.test(href);
     text-decoration-color: var(--gold);
     text-underline-offset: 0.2em;
   }
+  .row__body :global(p) {
+    margin: 0.75rem 0 0;
+    font-size: var(--step-small);
+  }
+  .row__body:empty {
+    display: none;
+  }
   .row__meta {
     margin: 0;
     font-size: var(--step-small);

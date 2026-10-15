@@ -4,13 +4,12 @@ author: "Giuseppe Dal Prá"
 published: 2026-09-03T18:00:07.000Z
 updated: 2026-09-22T14:33:10.511Z
 readTime: "7 min read"
-cover:
-  src: "../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-1-511397.jpg"
-  alt: "A murmuration of fens - James Wainscot"
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/an-odyssey-launched-update-on-the-first-odyssean-process"
 ---
+
+!
 
 After four years of developing innovations for deliberation on existential and catastrophic risks, 2026 is proving a thrilling, if daunting, moment to deliver the inaugural [Odyssean Process](/files/odyssean-process-white-paper-2024.pdf), our flagship method for turning deliberations into robust policy signals. With developments in AI continuing to catch commentators, decision-makers, and citizens with a mixture of surprise and trepidation, time has arguably never appeared more of the essence.
 
@@ -52,7 +51,7 @@ These materials enable 8 online sessions of deliberation and learning, starting 
 
 All online deliberations serve to prepare the 100 demographically representative British citizens to deploy collective intelligence and their skin in the game on these enormous challenges in an in-person 3 day deliberation at the [People’s History Museum](https://phm.org.uk/) in Manchester on 27-29th November 2026.
 
-![](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-2-41f208.jpg)
+!
 
 This concludes the Odyssean Process, with the essential final deliberations developing principles and policy recommendations for strategic resilience to emerging AI risks by the public, for the public.
 
@@ -96,7 +95,7 @@ This ensures that any funding, sharing, and coalitional support lent to the OI w
 
 Our donation page is [here](/donate), and if you would like to reach out regarding working with us on projects of this calibre and uniqueness, please reach out to [contact@odysseaninstitute.org](mailto:contact@odysseaninstitute.org)
 
-![](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-3-a63a36.jpg)
+!
 
 ### **Grateful Reflections**
 
@@ -112,4 +111,4 @@ The simultaneity of academic and operational work, however, also made this a Her
 
 I also wish to extend our deepest thanks to Kristian Rönn, Greg Colbourn, the Survival and Flourishing Fund, and King’s College, Cambridge for their donations making this possible.
 
-![](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-4-962499.jpg)
+!

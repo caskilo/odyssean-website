@@ -5,6 +5,8 @@ export type ArtMeta = {
   source: string;
   notes?: string;
   mobile?: 'scales' | 'interim' | 'final';
+  /** props the gallery passes when previewing this art on its own */
+  demo?: Record<string, unknown>;
 };
 
 const components = import.meta.glob<{ default: AstroComponentFactory }>('../art/*/Art.astro', {

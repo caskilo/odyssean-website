@@ -1,0 +1,237 @@
+---
+import { Image } from 'astro:assets';
+import Institutional from '../layouts/Institutional.astro';
+import Headline from '../components/core/Headline.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import RomanSection from '../components/core/RomanSection.astro';
+import Button from '../components/core/Button.astro';
+import CopyText from '../components/core/Copy.astro';
+import ExpertsCitizens from '../components/ExpertsCitizens.astro';
+import { getArt } from '../lib/art';
+import { getTeam, type PageOf } from '../lib/content';
+import { text } from '../lib/copy';
+import { getSettings } from '../lib/site';
+import { md } from '../lib/markdown';
+
+interface Props {
+  entry: PageOf<'about'>;
+  /** override the site flag (used by the noindex preview of the future section) */
+  teamSection?: 'team' | 'experts-citizens';
+  noindex?: boolean;
+}
+const { entry, noindex = false } = Astro.props;
+const { data } = entry;
+const settings = await getSettings();
+const teamSection = Astro.props.teamSection ?? settings.flags.teamSection;
+const people = await getTeam();
+const groups = [
+  { key: 'team', heading: data.team.heading, level: 2 },
+  { key: 'advisor', heading: data.team.advisorsHeading, level: 3 },
+  { key: 'trustee', heading: data.team.trusteesHeading, level: 3 },
+] as const;
+const teamGroups = await Promise.all(
+  groups.map(async (g) => ({
+    ...g,
+    members: await Promise.all(
+      people
+        .filter((p) => p.data.group === g.key)
+        .map(async (p) => ({ ...p.data, bio: await md(p.data.bio) })),
+    ),
+  })),
+);
+const Venn = getArt(data.origin.figure.art).Component;
+const caption = await md(text(data.origin.figure.caption) ?? '');
+const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, string, string];
+---
+
+<Institutional title={data.title} description={data.description} {noindex}>
+  <section class="splash">
+    <Headline text={data.title} size="l" />
+    <div class="splash__body">
+      <CopyText value={data.splash.body} />
+    </div>
+  </section>
+
+  <section class="origin" id="why">
+    <figure class="origin__figure">
+      <Venn {labels} description={text(data.origin.figure.description) ?? ''} />
+      <figcaption set:html={caption} />
+    </figure>
+    <div class="origin__text">
+      <div>
+        <Eyebrow>
+          <CopyText value={data.origin.eyebrow} />
+        </Eyebrow>
+        <Headline
+          text={data.origin.headline.text}
+          accent={data.origin.headline.accent}
+          tag="h2"
+          size="l"
+        />
+      </div>
+      {data.origin.items.map((item) => (
+        <RomanSection {...item} />
+      ))}
+      <div class="origin__cta">
+        <p>
+          <CopyText value={data.origin.cta.text} />
+        </p>
+        <Button href={data.origin.cta.action.href} goldText>
+          <CopyText value={data.origin.cta.action.label} />
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  {teamSection === 'team' ? (
+    <section class="team" id="team">
+      {teamGroups.map(({ heading, level, members }) => {
+        const Tag = `h${level}` as 'h2' | 'h3';
+        return (
+          <div class="team__group">
+            <Tag class="team__heading">
+              <CopyText value={heading} />
+            </Tag>
+            <ul class="team__list">
+              {members.map((p) => (
+                <li class="person">
+                  <Image
+                    class="person__photo"
+                    src={p.photo.src}
+                    alt={text(p.photo.alt) ?? ''}
+                    width={288}
+                    densities={[1, 2]}
+                    loading="lazy"
+                  />
+                  <div class="person__text">
+                    <h4 class="person__name">{p.name}</h4>
+                    {p.role && <div class="person__role">{p.role}</div>}
+                    <div class="person__bio" set:html={p.bio} />
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </section>
+  ) : (
+    <ExpertsCitizens data={data.expertsCitizens} />
+  )}
+</Institutional>
+
+<style>
+  .splash {
+    max-width: 52rem;
+    margin-bottom: 4.5rem;
+  }
+  .splash__body {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
+  }
+  .origin {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2.5rem;
+    scroll-margin-top: 1rem;
+  }
+  .origin__figure {
+    flex: 1 1 28.75rem;
+    min-width: 0;
+    margin: 0;
+    padding: 1.75rem;
+    background: var(--navy);
+  }
+  .origin__figure figcaption {
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: var(--sand);
+  }
+  .origin__figure figcaption :global(p) {
+    margin: 0;
+  }
+  .origin__text {
+    flex: 1 1 28.75rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  @media (min-width: 75rem) {
+    .origin__text :global(h2.headline) {
+      text-wrap: nowrap;
+    }
+  }
+  .origin__cta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.625rem 1.75rem;
+    background: var(--sand);
+  }
+  .origin__cta p {
+    flex: 1 1 16rem;
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    line-height: 1.3;
+  }
+  .team {
+    margin-top: 6rem;
+    scroll-margin-top: 1rem;
+  }
+  .team__group + .team__group {
+    margin-top: 4rem;
+  }
+  .team__heading {
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--navy);
+  }
+  .team__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+    gap: 2.5rem 3rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .person {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .person :global(.person__photo) {
+    flex: 0 0 8.5rem;
+    width: 8.5rem;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    background: var(--sand);
+  }
+  .person__text {
+    min-width: 0;
+  }
+  .person__name {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .person__role {
+    margin: 0.25rem 0 0.75rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--blue);
+  }
+  .person__bio {
+    font-size: var(--step-small);
+    line-height: 1.65;
+  }
+  .person__bio :global(p) {
+    margin: 0 0 0.75rem;
+  }
+</style>

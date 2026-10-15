@@ -1,16 +1,15 @@
 ---
-title: "3 Précis: Our Tripartite Research &amp; Advocacy Agenda"
+title: "3 Précis: Our Tripartite Research & Advocacy Agenda"
 author: "Giuseppe Dal Prá"
 published: 2025-07-14T16:11:56.633Z
 updated: 2026-01-21T15:30:52.396Z
 readTime: "13 min read"
-cover:
-  src: "../../assets/media/posts/3-precis-our-tripartite-research-advocacy-agenda/image-1-d99c4c.jpg"
-  alt: "3 Précis: Our Tripartite Research & Advocacy Agenda"
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/3-pr%C3%A9cis-our-tripartite-research-advocacy-agenda"
 ---
+
+!
 
 ## 3 Years On: Our Journey
 

@@ -25,6 +25,7 @@ origin:
   figure:
     art: origin-venn
     labels: ['Natural sciences', 'Social sciences', 'Odyssean']
+    description: 'Engraving-style diagram: a circle for the natural sciences, drawn as atomic orbits, overlaps a circle for the social sciences, drawn as a network of people. Their overlap, shaded gold, is labelled Odyssean.'
     caption: 'Where the sciences meet. After Murray Gell-Mann, *The Quark and the Jaguar*.'
   cta:
     text: 'Read where the Process, and the name, begin.'

@@ -1,0 +1,207 @@
+---
+import InfoLanding from '../layouts/InfoLanding.astro';
+import Headline from '../components/core/Headline.astro';
+import Card from '../components/core/Card.astro';
+import CopyText from '../components/core/Copy.astro';
+import { getArt } from '../lib/art';
+import { getSettings } from '../lib/site';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'home'>;
+}
+const { data } = Astro.props.entry;
+const s = await getSettings();
+const total = data.hero.slides.length;
+const pad = (n: number) => String(n).padStart(2, '0');
+const slideLabel = (n: number) =>
+  String(s.ui.slide).replace('{n}', String(n)).replace('{total}', String(total));
+const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as const;
+---
+
+<InfoLanding title={data.title} fullTitle description={data.description} headerVariant="overlay">
+  <section class="hero" data-carousel>
+    <div class="hero__art" aria-hidden="true">
+      {data.hero.slides.map((slide, i) => {
+        const { Component } = getArt(slide.art);
+        return (
+          <div class:list={['hero__slide', { 'is-active': i === 0 }]} data-slide>
+            <Component />
+          </div>
+        );
+      })}
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__count">
+        <span data-current>{pad(1)}</span> / {pad(total)}
+      </div>
+      <Headline
+        text={data.hero.headline.text}
+        accent={data.hero.headline.accent}
+        size="hero"
+        breakBefore
+      />
+      <p class="hero__lede">
+        <CopyText value={data.hero.lede} />
+      </p>
+      <div class="hero__dots">
+        {data.hero.slides.map((_, i) => (
+          <button
+            type="button"
+            class="hero__dot"
+            data-dot
+            data-label={slideLabel(i + 1)}
+            aria-label={slideLabel(i + 1)}
+            aria-current={i === 0}
+          />
+        ))}
+      </div>
+      <span class="sr-only" aria-live="polite" data-status></span>
+    </div>
+  </section>
+
+  <div class="bands" aria-hidden="true">
+    <span class="bands__blue"></span>
+    <span class="bands__gold"></span>
+    <span class="bands__sand"></span>
+  </div>
+
+  <section class="container focus">
+    <div class="focus__head">
+      <h2>
+        <CopyText value={data.focus.heading} />
+      </h2>
+      <a href={data.focus.more.href}>
+        <CopyText value={data.focus.more.label} />
+      </a>
+    </div>
+    <div class="focus__cards">
+      {data.focus.cards.map((c) => (
+        <Card href={c.href} rule={rules[c.area]} label={c.label} title={c.title} note={c.note} />
+      ))}
+    </div>
+  </section>
+</InfoLanding>
+
+<script>
+  import '../scripts/carousel';
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 40rem;
+    padding-top: 13.375rem;
+    background: var(--navy);
+    color: var(--paper);
+  }
+  .hero__art,
+  .hero__slide {
+    position: absolute;
+    inset: 0;
+  }
+  .hero__slide {
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .hero__slide.is-active {
+    opacity: 1;
+  }
+  .hero__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+    max-width: 62.5rem;
+    padding-bottom: 6rem;
+    text-align: center;
+  }
+  .hero :global(.headline) {
+    color: var(--paper);
+  }
+  .hero :global(.headline em) {
+    color: var(--sand);
+  }
+  .hero__count {
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero__lede {
+    max-width: 37.5rem;
+    margin: 0;
+    font-size: 1.1875rem;
+    line-height: 1.6;
+  }
+  .hero__dots {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+  .hero__dot {
+    position: relative;
+    width: 0.625rem;
+    height: 3px;
+    padding: 0;
+    border: 0;
+    background: var(--sand);
+    opacity: 0.5;
+    cursor: pointer;
+    transition: width 0.3s ease;
+  }
+  .hero__dot::after {
+    content: '';
+    position: absolute;
+    inset: -0.875rem -0.25rem;
+  }
+  .hero__dot[aria-current='true'] {
+    width: 1.75rem;
+    background: var(--gold);
+    opacity: 1;
+  }
+  .bands {
+    display: flex;
+    flex-direction: column;
+  }
+  .bands__blue {
+    height: 18px;
+    background: var(--blue);
+  }
+  .bands__gold {
+    height: 12px;
+    background: var(--gold);
+  }
+  .bands__sand {
+    height: 10px;
+    background: var(--sand);
+  }
+  .focus {
+    padding-block: 4rem 4.5rem;
+  }
+  .focus__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+  .focus__head h2 {
+    margin: 0;
+    line-height: normal;
+    font-size: var(--step-m);
+  }
+  .focus__head a {
+    font-size: var(--step-small);
+    font-weight: 600;
+  }
+  .focus__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+</style>

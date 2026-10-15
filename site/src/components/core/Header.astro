@@ -18,14 +18,15 @@ interface Props {
   /** filled call to action (microsites) */
   cta?: Link;
   logoTone: 'blue' | 'paper' | 'gold';
+  narrow?: boolean;
   ui: { home: string; menu: string; nav: string };
 }
-const { variant, current, links, donate, cta, logoTone, ui } = Astro.props;
+const { variant, current, links, donate, cta, logoTone, narrow = false, ui } = Astro.props;
 const menuLinks = [...links, ...(donate ? [donate] : []), ...(cta ? [cta] : [])];
 ---
 
 <header class={`site-header site-header--${variant}`}>
-  <div class:list={['container', { 'container--narrow': variant === 'bar' }]}>
+  <div class:list={['container', { 'container--narrow': variant === 'bar' || narrow }]}>
     <div class="site-header__inner">
       <a class="site-header__logo" href="/" aria-label={ui.home}>
         <Logo tone={logoTone} height={variant === 'bar' ? 46 : 52} />

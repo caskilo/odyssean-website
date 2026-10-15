@@ -1,6 +1,7 @@
 ---
 template: prose
 strand: info
+family: reading
 title: 'Curriculum'
 description: 'Currated reading list for understanding democratic deliberation, and other fundamental building block of the Odyssean Process.'
 heading: 'Curriculum'

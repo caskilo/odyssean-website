@@ -23,6 +23,8 @@ interface Props {
   /** lighter page ground (Reading family) */
   lightGround?: boolean;
   noindex?: boolean;
+  /** use the narrower content grid in the header (inner pages) */
+  narrow?: boolean;
 }
 const {
   title,
@@ -33,6 +35,7 @@ const {
   dark = false,
   lightGround = false,
   noindex = false,
+  narrow = false,
 } = Astro.props;
 
 const s = await getSettings();
@@ -87,6 +90,7 @@ const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.si
       donate={micro ? undefined : s.donate}
       cta={micro?.cta}
       logoTone={tone}
+      {narrow}
       {ui}
     />
     <main id="main">

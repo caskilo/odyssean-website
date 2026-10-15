@@ -4,13 +4,12 @@ author: "Odyssean Institute Team"
 published: 2024-05-07T12:35:27.392Z
 updated: 2024-11-05T01:01:03.013Z
 readTime: "5 min read"
-cover:
-  src: "../../assets/media/posts/pathways-to-resilience-learning-from-the-small-island-states/image-1-eeadea.jpg"
-  alt: ""
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/pathways-to-resilience-learning-from-the-small-island-states-resilience-initiative"
 ---
+
+!
 
 SISRI Banner / [GFDRR](https://www.gfdrr.org/en/sisri)
 

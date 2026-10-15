@@ -1,0 +1,149 @@
+---
+import InfoLanding from '../layouts/InfoLanding.astro';
+import CopyText from '../components/core/Copy.astro';
+import { getArt } from '../lib/art';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'projects'>;
+}
+const { data } = Astro.props.entry;
+---
+
+<InfoLanding title={data.title} description={data.description} narrow>
+  <div class="container container--narrow projects">
+    <h1 class="projects__title">
+      <CopyText value={data.heading} />
+    </h1>
+    <div class="projects__panels">
+      {data.panels.map((p) => {
+        const { Component } = getArt(p.art);
+        return (
+          <a class={`panel panel--${p.theme}`} href={p.href}>
+            <span class="panel__top">
+              <span class="panel__num" aria-hidden="true">
+                {p.number}
+              </span>
+              <span class="panel__mark">
+                <Component />
+              </span>
+            </span>
+            <span class="panel__body">
+              <span class="panel__meta">
+                <span>
+                  <CopyText value={p.label} />
+                </span>
+                <span>
+                  <CopyText value={p.status} />
+                </span>
+              </span>
+              <h2 class="panel__heading">
+                <CopyText value={p.heading} />
+              </h2>
+              <span class="panel__summary">
+                <CopyText value={p.summary} />
+              </span>
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</InfoLanding>
+
+<style>
+  .projects {
+    padding-block: 3rem 4rem;
+  }
+  .projects__title {
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 3px solid var(--navy);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: clamp(3.5rem, 9vw, 5.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.04em;
+  }
+  .projects__panels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .panel {
+    flex: 1 1 17.5rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--paper-light);
+    color: var(--navy);
+    text-decoration: none;
+  }
+  .panel:hover {
+    color: var(--navy);
+  }
+  .panel:hover .panel__heading {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 0.18em;
+  }
+  .panel__top {
+    position: relative;
+    display: block;
+    height: 18.75rem;
+    overflow: hidden;
+    background: var(--navy);
+  }
+  .panel--scans .panel__top {
+    background: var(--blue);
+  }
+  .panel--process .panel__top {
+    background: var(--sand);
+  }
+  .panel__num {
+    position: absolute;
+    left: 1.25rem;
+    bottom: -1.75rem;
+    font-weight: 600;
+    font-size: 13.75rem;
+    line-height: 1;
+    letter-spacing: -0.06em;
+    color: var(--gold);
+  }
+  .panel--scans .panel__num {
+    color: var(--paper);
+  }
+  .panel--process .panel__num {
+    color: var(--blue);
+  }
+  .panel__mark {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    line-height: 0;
+  }
+  .panel__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+  .panel__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: normal;
+    color: var(--blue);
+  }
+  .panel__heading {
+    margin: 0;
+    font-size: 1.875rem;
+    line-height: normal;
+  }
+  .panel__summary {
+    font-size: var(--step-small);
+    line-height: 1.55;
+  }
+</style>

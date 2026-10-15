@@ -1,0 +1,8 @@
+---
+import About from '../../views/About.astro';
+import { getPage } from '../../lib/content';
+
+const entry = await getPage('about', 'about');
+---
+
+<About {entry} teamSection="experts-citizens" noindex />

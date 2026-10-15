@@ -195,7 +195,9 @@ function extractPost($) {
   const issues = preparePostBody($, body);
   return {
     issues,
-    headline: ld.headline || $('[data-hook="post-title"]').first().text().trim(),
+    headline:
+      cheerio.load(`<p>${ld.headline ?? ''}</p>`).text() ||
+      $('[data-hook="post-title"]').first().text().trim(),
     author: ld.author?.name || $('[data-hook="user-name"]').first().text().trim(),
     datePublished: ld.datePublished || null,
     dateModified: ld.dateModified || null,

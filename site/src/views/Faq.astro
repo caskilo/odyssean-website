@@ -1,0 +1,86 @@
+---
+import Institutional from '../layouts/Institutional.astro';
+import Headline from '../components/core/Headline.astro';
+import { md, sections } from '../lib/markdown';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'faq'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const items = await Promise.all(
+  sections(entry.body ?? '').sections.map(async (s, i) => ({
+    n: String(i + 1).padStart(2, '0'),
+    question: s.heading,
+    answer: await md(s.body),
+  })),
+);
+---
+
+<Institutional title={data.title} description={data.description}>
+  <Headline text={data.heading} size="l" />
+  <div class="faq">
+    {items.map((item) => (
+      <details class="faq__item">
+        <summary>
+          <span class="faq__n">{item.n}</span>
+          <h2 class="faq__q">{item.question}</h2>
+        </summary>
+        <div class="faq__a" set:html={item.answer} />
+      </details>
+    ))}
+  </div>
+</Institutional>
+
+<style>
+  .faq {
+    max-width: 52rem;
+    margin-top: 2.5rem;
+    border-top: 1.5px solid var(--navy);
+  }
+  .faq__item {
+    border-bottom: 1px solid var(--sand);
+  }
+  summary {
+    display: flex;
+    gap: 1.25rem;
+    align-items: baseline;
+    padding: 1.25rem 0;
+    list-style: none;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary::after {
+    content: '+';
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--blue);
+  }
+  details[open] > summary::after {
+    content: '−';
+  }
+  .faq__n {
+    flex: 0 0 2rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--blue);
+  }
+  .faq__q {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+  .faq__a {
+    padding: 0 0 1.5rem 3.25rem;
+    line-height: 1.7;
+  }
+  .faq__a :global(h3) {
+    margin-top: 1.25em;
+    font-size: 1.125rem;
+  }
+</style>

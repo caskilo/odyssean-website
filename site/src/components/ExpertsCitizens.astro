@@ -1,0 +1,164 @@
+---
+import Eyebrow from './core/Eyebrow.astro';
+import Headline from './core/Headline.astro';
+import Button from './core/Button.astro';
+import CopyText from './core/Copy.astro';
+import { getArt } from '../lib/art';
+import { getQuotes } from '../lib/content';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  data: PageOf<'about'>['data']['expertsCitizens'];
+}
+const { data } = Astro.props;
+const quotes = await getQuotes();
+const ground = {
+  'portrait-expert-a': 'blue',
+  'portrait-citizen-a': 'navy',
+  'portrait-citizen-b': 'blue',
+  'portrait-expert-b': 'sand',
+} as const;
+---
+
+<section class="ec" id="experts">
+  <div class="container container--narrow">
+    <header class="ec__head">
+      <Eyebrow>
+        <CopyText value={data.eyebrow} />
+      </Eyebrow>
+      <Headline text={data.headline.text} accent={data.headline.accent} tag="h2" size="l" />
+    </header>
+    <div class="ec__grid">
+      {quotes.map((q, i) => {
+        const { Component } = getArt(q.data.portrait);
+        return (
+          <figure
+            class:list={['ec__card', `ec__card--${q.data.role}`, { 'ec__card--dark': i >= 2 }]}
+          >
+            <div
+              class={`ec__portrait ec__portrait--${ground[q.data.portrait as keyof typeof ground] ?? 'blue'}`}
+            >
+              <Component />
+            </div>
+            <div class="ec__text">
+              <div class="ec__role">
+                <CopyText value={q.data.roleLabel} />
+              </div>
+              <blockquote class="ec__quote">
+                “<CopyText value={q.data.quote} />”
+              </blockquote>
+              <figcaption class="ec__who">
+                <CopyText value={q.data.name} />, <CopyText value={q.data.affiliation} />
+              </figcaption>
+            </div>
+          </figure>
+        );
+      })}
+    </div>
+    <div class="ec__cta">
+      <Button href={data.cta.href} goldText={false}>
+        <CopyText value={data.cta.label} />
+      </Button>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ec {
+    margin-inline: calc(50% - 50vw);
+    padding-block: 5rem;
+    background: var(--sand);
+    color: var(--navy);
+  }
+  .ec__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .ec__head :global(.headline) {
+    font-size: var(--step-l);
+  }
+  .ec__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem 0;
+  }
+  @media (min-width: 52rem) {
+    .ec__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .ec__card {
+    display: flex;
+    gap: 2.25rem;
+    align-items: flex-start;
+    margin: 0;
+    padding: 2.25rem;
+    background: var(--paper);
+  }
+  @media (min-width: 52rem) {
+    .ec__card:nth-child(even) {
+      border-left: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+    }
+  }
+  .ec__card--dark {
+    background: var(--navy);
+    color: var(--paper);
+  }
+  .ec__portrait {
+    flex: 0 0 7.5rem;
+    height: 9.375rem;
+    background: var(--blue);
+    overflow: hidden;
+  }
+  .ec__portrait--navy {
+    background: var(--navy);
+  }
+  .ec__portrait--sand {
+    background: var(--sand);
+  }
+  .ec__text {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .ec__role {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    line-height: normal;
+    color: var(--blue);
+  }
+  .ec__card--dark .ec__role {
+    color: var(--gold);
+  }
+  .ec__quote {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  .ec__card--expert .ec__quote {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+  }
+  .ec__card--citizen .ec__quote {
+    font-weight: 600;
+  }
+  .ec__who {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--blue);
+  }
+  .ec__card--dark .ec__who {
+    color: var(--sand);
+  }
+  .ec__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+</style>

@@ -11,6 +11,7 @@ html {
 
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
@@ -73,12 +74,15 @@ a:hover {
 
 .container {
   width: 100%;
-  max-width: var(--container);
+  max-width: calc(var(--container) + 2 * var(--gutter));
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
+.container--tight {
+  max-width: var(--container);
+}
 .container--narrow {
-  max-width: var(--container-narrow);
+  max-width: calc(var(--container-narrow) + 2 * var(--gutter));
 }
 
 .sr-only {

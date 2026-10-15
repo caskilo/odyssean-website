@@ -1,0 +1,110 @@
+---
+interface Props {
+  narrow?: boolean;
+}
+const { narrow = true } = Astro.props;
+---
+
+<div class:list={['prose', { 'prose--narrow': narrow }]}>
+  <slot />
+</div>
+
+<style>
+  .prose {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  .prose--narrow {
+    max-width: 46rem;
+  }
+  .prose :global(> :first-child) {
+    margin-top: 0;
+  }
+  .prose :global(h2) {
+    margin-top: 2.25em;
+    font-size: var(--step-m);
+  }
+  .prose :global(h3) {
+    margin-top: 1.9em;
+    font-size: var(--step-s);
+  }
+  .prose :global(h4) {
+    margin-top: 1.6em;
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
+  }
+  .prose :global(ul),
+  .prose :global(ol) {
+    padding-left: 1.4em;
+    margin: 0 0 1em;
+  }
+  .prose :global(li) {
+    margin-bottom: 0.4em;
+  }
+  .prose :global(li > p) {
+    margin: 0;
+  }
+  .prose :global(blockquote) {
+    margin: 1.5em 0;
+    padding: 0.25em 0 0.25em 1.25em;
+    border-left: 3px solid var(--gold);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+  .prose :global(blockquote p) {
+    margin: 0 0 0.75em;
+  }
+  .prose :global(img) {
+    display: block;
+    margin: 1.75em 0;
+    height: auto;
+  }
+  .prose :global(table) {
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+    margin: 1.75em 0;
+    border-collapse: collapse;
+    font-size: var(--step-small);
+    line-height: 1.5;
+  }
+  .prose :global(th),
+  .prose :global(td) {
+    padding: 0.625rem 0.875rem;
+    border: 1px solid var(--rule-soft);
+    text-align: left;
+    vertical-align: top;
+  }
+  .prose :global(th) {
+    background: var(--surface);
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+  .prose :global(sup) {
+    line-height: 0;
+  }
+  .prose :global(hr) {
+    margin: 2.5em 0;
+    border: 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .prose :global([id]) {
+    scroll-margin-top: 1.5rem;
+  }
+  .prose :global(:target) {
+    background: color-mix(in srgb, var(--gold) 25%, transparent);
+  }
+  .prose :global(pre),
+  .prose :global(code) {
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+  }
+</style>
