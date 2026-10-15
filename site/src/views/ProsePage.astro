@@ -78,7 +78,7 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
       </div>
     )}
     {data.hero && (
-      <Image class="hero" src={data.hero.src} alt={text(data.hero.alt) ?? ''} width={1180} />
+      <Image class="hero-image" src={data.hero.src} alt={text(data.hero.alt) ?? ''} width={1180} />
     )}
 
     {showContact && settings && (
@@ -127,7 +127,7 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
     gap: 0.875rem;
     margin-block: 1.5rem 2.5rem;
   }
-  :global(.hero) {
+  .prose-page :global(.hero-image) {
     margin-block: 2rem;
   }
   .contact-details {
