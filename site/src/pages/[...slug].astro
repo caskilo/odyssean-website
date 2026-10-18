@@ -8,6 +8,7 @@ import Focus from '../views/Focus.astro';
 import Faq from '../views/Faq.astro';
 import Blog from '../views/Blog.astro';
 import ProsePage from '../views/ProsePage.astro';
+import GrainLanding from '../views/GrainLanding.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
@@ -29,3 +30,4 @@ const template = entry.data.template;
 {template === 'faq' && <Faq entry={entry as never} />}
 {template === 'blog' && <Blog entry={entry as never} />}
 {template === 'prose' && <ProsePage entry={entry as never} />}
+{template === 'grain-landing' && <GrainLanding entry={entry as never} />}

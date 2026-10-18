@@ -1,0 +1,166 @@
+---
+import { render } from 'astro:content';
+import Grain from '../layouts/Grain.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import Headline from '../components/core/Headline.astro';
+import Button from '../components/core/Button.astro';
+import Prose from '../components/core/Prose.astro';
+import CopyText from '../components/core/Copy.astro';
+import { getArt } from '../lib/art';
+import { text } from '../lib/copy';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'grain-landing'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const { figure } = data;
+const Network = getArt(figure.art).Component;
+const labels = Object.fromEntries(
+  Object.entries(figure.labels).map(([k, v]) => [k, text(v) ?? '']),
+);
+---
+
+<Grain title={data.title} description={data.description}>
+  <div class="container container--narrow grain">
+    <div class="hero">
+      <div class="hero__text">
+        <Eyebrow>
+          <CopyText value={data.eyebrow} />
+        </Eyebrow>
+        <Headline text={data.headline.text} accent={data.headline.accent} size="xl" />
+        <p class="hero__lede">
+          <CopyText value={data.lede} />
+        </p>
+        <div class="hero__actions">
+          {data.actions.map((a) => (
+            <Button href={a.href} style={a.style}>
+              <CopyText value={a.label} />
+            </Button>
+          ))}
+        </div>
+      </div>
+      <figure class="figure">
+        <div class="figure__panel">
+          <Network {labels} />
+        </div>
+        <figcaption>
+          <CopyText value={figure.caption} />
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="pillars">
+      {data.pillars.map((p) => (
+        <div class="pillar">
+          <div class="pillar__kicker">
+            <CopyText value={p.kicker} />
+          </div>
+          <h2 class="pillar__title">
+            <CopyText value={p.title} />
+          </h2>
+          <p>
+            <CopyText value={p.body} />
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+</Grain>
+
+<style>
+  .grain {
+    padding-bottom: var(--space-8);
+  }
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3.5rem;
+    padding-block: 3.5rem 4.5rem;
+  }
+  .hero__text {
+    flex: 1 1 32.5rem;
+    min-width: 0;
+  }
+  .hero__text :global(h1) {
+    text-wrap: wrap;
+  }
+  .hero__text :global(.eyebrow) {
+    margin-bottom: 1.5rem;
+  }
+  .hero__lede {
+    max-width: 33.75rem;
+    margin: 1.75rem 0 2.5rem;
+    font-size: 1.25rem;
+    line-height: 1.55;
+  }
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+  .figure {
+    flex: 1 1 27.5rem;
+    min-width: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .figure__panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 0.9;
+    padding-inline: 7%;
+    background: var(--surface);
+    border-radius: var(--radius);
+  }
+  figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    line-height: 1.6;
+    color: var(--accent);
+  }
+  .pillars {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-8);
+    border-top: 1.5px solid var(--rule);
+  }
+  .pillar {
+    flex: 1 1 17.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.75rem 2rem 2.25rem;
+    border-left: 1px solid var(--rule-soft);
+  }
+  .pillar:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .pillar:last-child {
+    padding-right: 0;
+  }
+  .pillar__kicker {
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--accent);
+  }
+  .pillar__title {
+    margin: 0;
+    font-size: 1.625rem;
+  }
+  .pillar p {
+    margin: 0;
+    line-height: 1.55;
+  }
+</style>

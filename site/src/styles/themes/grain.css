@@ -13,3 +13,7 @@
   --btn-fg: var(--paper);
   --focus: var(--blue);
 }
+
+body[data-theme='grain'] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='42'%3E%3Cg fill='none' stroke='%23EBD3A2' stroke-opacity='.55' stroke-width='1.2'%3E%3Cpath d='M0 0H48M0 0L24 42 48 0M0 42H48'/%3E%3C/g%3E%3Cg fill='%23EBD3A2' fill-opacity='.55'%3E%3Ccircle r='1.8'/%3E%3Ccircle cx='24' cy='42' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
+}

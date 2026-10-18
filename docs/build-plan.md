@@ -327,6 +327,8 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 | 4.2 | **GRAIN landing** | 1 | Visual diff vs `01-grain.png` |
 | 4.3 | 5 sub-pages from the 1.6 mapping, extended from slide 1's components | 1 ext. | Each section sourced or requested |
 
+> **P4 status: done 2026-10-18.** The five sub-pages were already built in P3 by the `prose` template on the Grain layout (content from P1), so P4 added the landing (`views/GrainLanding.astro`), `art/grain-network` and the paper mesh texture in `themes/grain.css`. Deviations: (1) the "nodes of persisting recovery" label is right-aligned so it is no longer clipped as in the concept; (2) the landing's below-fold body is the full live GRAIN text, rendered after the three pillars; (3) the headline wraps naturally (`text-wrap: wrap`) to match the concept's line break.
+
 #### P5: Horizon Scans microsite
 
 | ID | Task | Concept | Done when |

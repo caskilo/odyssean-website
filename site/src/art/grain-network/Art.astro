@@ -1,0 +1,109 @@
+---
+interface Props {
+  labels: { origin: string; destination: string; chokepoint: string; nodes: string };
+}
+const { labels } = Astro.props;
+---
+
+<svg viewBox="0 0 400 360" class="art" aria-hidden="true">
+  <g stroke="#1D4387" stroke-width="2" fill="none">
+    <path d="M60 80 L160 60 L260 90 L350 70"></path>
+    <path d="M60 80 L100 180 M160 60 L100 180 M160 60 L200 170 M260 90 L300 190 M350 70 L300 190"></path>
+    <path d="M100 180 L200 170 L300 190"></path>
+    <path d="M100 180 L60 290 M100 180 L170 280 M200 170 L170 280 M200 170 L270 300 M300 190 L270 300 M300 190 L350 260"></path>
+    <path d="M60 290 L170 280 L270 300 L350 260"></path>
+  </g>
+  <path
+    d="M200 170 L222 139 M238 121 L260 90"
+    stroke="#EBD3A2"
+    stroke-width="2"
+    stroke-dasharray="3 5"
+    fill="none"
+    opacity="0.6"
+  ></path>
+  <path
+    d="M223 123 L237 137 M237 123 L223 137"
+    stroke="#E2B540"
+    stroke-width="3"
+    stroke-linecap="round"
+  ></path>
+  <path
+    class="flow"
+    d="M60 290 L100 180 L200 170 L300 190 L350 70"
+    stroke="#E2B540"
+    stroke-width="3"
+    fill="none"
+    stroke-linejoin="round"
+  ></path>
+  <circle class="pulse" cx="200" cy="170" r="16" fill="#E2B540"></circle>
+  <circle class="pulse pulse--late" cx="300" cy="190" r="16" fill="#E2B540"></circle>
+  <g fill="#EBD3A2">
+    <circle cx="60" cy="80" r="4"></circle>
+    <circle cx="160" cy="60" r="4"></circle>
+    <circle cx="260" cy="90" r="4"></circle>
+    <circle cx="100" cy="180" r="4"></circle>
+    <circle cx="170" cy="280" r="4"></circle>
+    <circle cx="270" cy="300" r="4"></circle>
+    <circle cx="350" cy="260" r="4"></circle>
+  </g>
+  <circle cx="200" cy="170" r="7" fill="#011130" stroke="#E2B540" stroke-width="3"></circle>
+  <circle cx="300" cy="190" r="7" fill="#011130" stroke="#E2B540" stroke-width="3"></circle>
+  <circle cx="60" cy="290" r="6" fill="#E2B540"></circle>
+  <circle cx="350" cy="70" r="6" fill="#E2B540"></circle>
+  <g font-family="'DM Mono', monospace" font-size="11" fill="#EBD3A2">
+    <text x="246" y="134">
+      {labels.chokepoint}
+    </text>
+    <text x="392" y="226" text-anchor="end">
+      {labels.nodes}
+    </text>
+    <text x="40" y="318">
+      {labels.origin}
+    </text>
+    <text x="312" y="50">
+      {labels.destination}
+    </text>
+  </g>
+</svg>
+
+<style>
+  .art {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .flow {
+    stroke-dasharray: 8 12;
+    animation: flow 1.6s linear infinite;
+  }
+  .pulse {
+    transform-box: fill-box;
+    transform-origin: 50% 50%;
+    animation: pulse 3.2s ease-in-out infinite;
+  }
+  .pulse--late {
+    animation-delay: 1.6s;
+  }
+  @keyframes flow {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.35);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .flow,
+    .pulse {
+      animation: none;
+    }
+  }
+</style>

@@ -53,7 +53,7 @@ try {
       visible.join(),
     );
     await page.click('[data-filter-link="all"]');
-    await page.waitForFunction(() => location.hash === '#all');
+    await page.waitForSelector('[data-filter-link="all"][aria-current]');
     const all = await page.$$eval('[data-type]', (els) => els.filter((e) => !e.hidden).length);
     const total = await page.$$eval('[data-type]', (els) => els.length);
     check('filter: all restores every row', all === total, `${all}/${total}`);
