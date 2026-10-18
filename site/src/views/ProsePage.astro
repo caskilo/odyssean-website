@@ -115,6 +115,9 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
   .prose-page.container {
     padding-block: var(--space-7) var(--space-8);
   }
+  .prose-page :global(.eyebrow) {
+    margin-bottom: 1rem;
+  }
   .lede {
     max-width: 46rem;
     margin-top: 1.5rem;

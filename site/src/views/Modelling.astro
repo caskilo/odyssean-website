@@ -1,0 +1,188 @@
+---
+import { render } from 'astro:content';
+import Process from '../layouts/Process.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import Headline from '../components/core/Headline.astro';
+import Prose from '../components/core/Prose.astro';
+import CopyText from '../components/core/Copy.astro';
+import FanChart from '../components/process/FanChart.astro';
+import { text } from '../lib/copy';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'modelling'>;
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const { slider, readings } = data;
+const initial = readings.find((r) => slider.default < r.below) ?? readings.at(-1)!;
+const title = `${text(data.headline.text)} ${text(data.headline.accent)}`;
+---
+
+<Process title={data.title} description={data.description} dark>
+  <div class="container container--narrow modelling" data-fan>
+    <div class="intro">
+      <div>
+        <Eyebrow>
+          <CopyText value={data.eyebrow} />
+        </Eyebrow>
+        <Headline text={data.headline.text} accent={data.headline.accent} size="l" />
+      </div>
+      <p class="intro__aside">
+        <CopyText value={data.aside} />
+      </p>
+    </div>
+
+    <FanChart
+      {title}
+      better={text(data.axis.better) ?? ''}
+      worse={text(data.axis.worse) ?? ''}
+      baseYear={slider.baseYear}
+      horizon={slider.default}
+      min={slider.min}
+      max={slider.max}
+    />
+
+    <div class="controls">
+      <div class="slider">
+        <label for="horizon">
+          <CopyText value={slider.label} />
+          <span data-fan-value>{slider.default}</span>
+          <CopyText value={slider.unit} />
+        </label>
+        <input
+          id="horizon"
+          class="range"
+          type="range"
+          min={slider.min}
+          max={slider.max}
+          step="1"
+          value={slider.default}
+          data-fan-input
+          data-min={slider.min}
+          data-max={slider.max}
+          data-base={slider.baseYear}
+        />
+      </div>
+      <div class="reading" aria-live="polite">
+        <span class="reading__label">
+          <CopyText value={data.readingLabel} />
+        </span>
+        {readings.map((r) => (
+          <span class="reading__text" data-below={r.below} hidden={r !== initial}>
+            <CopyText value={r.text} />
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <Prose>
+      <Content />
+    </Prose>
+  </div>
+</Process>
+
+<script>
+  import '../scripts/fan';
+</script>
+
+<style>
+  .modelling {
+    padding-block: 3.5rem 4rem;
+  }
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 1.75rem;
+  }
+  .intro :global(.eyebrow) {
+    margin-bottom: 1rem;
+  }
+  .intro :global(h1) {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    text-wrap: wrap;
+  }
+  .intro__aside {
+    max-width: 25rem;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--accent);
+  }
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2.5rem;
+    margin-block: 1.75rem 4rem;
+  }
+  .slider {
+    flex: 2 1 26rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+  label {
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--accent);
+  }
+  .range {
+    appearance: none;
+    width: 100%;
+    height: 2.75rem;
+    background: transparent;
+    cursor: pointer;
+  }
+  .range::-webkit-slider-runnable-track {
+    height: 2px;
+    background: var(--sand);
+  }
+  .range::-moz-range-track {
+    height: 2px;
+    background: var(--sand);
+  }
+  .range::-webkit-slider-thumb {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    margin-top: -10px;
+    border-radius: 50%;
+    border: 3px solid var(--navy);
+    background: var(--gold);
+  }
+  .range::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid var(--navy);
+    background: var(--gold);
+  }
+  .reading {
+    flex: 1 1 17.5rem;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    color: var(--surface-fg);
+  }
+  .reading__label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--blue);
+  }
+  .reading__text {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+  .reading__text[hidden] {
+    display: none;
+  }
+</style>

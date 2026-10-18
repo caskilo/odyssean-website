@@ -1,0 +1,102 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+const ports = [
+  { n: 'I', x: 150, y: 300 },
+  { n: 'II', x: 560, y: 226 },
+  { n: 'III', x: 1010, y: 140 },
+];
+---
+
+<svg viewBox="0 0 1160 420" class="art" role="img" aria-label={title}>
+  <g stroke="#1D4387" stroke-width="0.6" stroke-opacity="0.35">
+    <path d="M0 70 H1160 M0 140 H1160 M0 210 H1160 M0 280 H1160 M0 350 H1160"></path>
+    <path d="M145 0 V420 M290 0 V420 M435 0 V420 M580 0 V420 M725 0 V420 M870 0 V420 M1015 0 V420"></path>
+  </g>
+  <g fill="#EBD3A2" stroke="#1D4387" stroke-width="1">
+    <path d="M0 330 C80 300 120 360 210 350 C260 345 280 390 330 420 H0 Z"></path>
+    <path d="M1160 40 C1080 60 1060 20 980 30 C940 35 930 0 900 0 H1160 Z"></path>
+  </g>
+  <g font-family="DM Mono, monospace" font-size="11" fill="#1D4387" fill-opacity="0.7">
+    <text x="380" y="90">
+      42
+    </text>
+    <text x="520" y="310">
+      37
+    </text>
+    <text x="660" y="120">
+      55
+    </text>
+    <text x="820" y="360">
+      48
+    </text>
+    <text x="250" y="200">
+      29
+    </text>
+    <text x="1010" y="250">
+      61
+    </text>
+    <text x="120" y="110">
+      18
+    </text>
+  </g>
+  <path
+    d="M150 300 C260 240 300 140 420 150 C560 160 560 300 700 290 C820 282 860 150 1010 140"
+    fill="none"
+    stroke="#E2B540"
+    stroke-width="3"
+    stroke-dasharray="10 8"
+  ></path>
+  {ports.map((p) => (
+    <>
+      <circle cx={p.x} cy={p.y} r="22" fill="#011130" />
+      <text
+        x={p.x}
+        y={p.y + 6}
+        text-anchor="middle"
+        fill="#E2B540"
+        font-family="Arrus BT, Georgia, serif"
+        font-size="18"
+      >
+        {p.n}
+      </text>
+    </>
+  ))}
+  <g transform="translate(1060 330)">
+    <circle r="46" fill="none" stroke="#011130" stroke-width="1"></circle>
+    <circle r="34" fill="none" stroke="#1D4387" stroke-width="0.6"></circle>
+    <path d="M0 -58 L8 0 L0 58 L-8 0 Z" fill="#011130"></path>
+    <path d="M-58 0 L0 -8 L58 0 L0 8 Z" fill="#1D4387"></path>
+    <path d="M0 -58 L8 0 L-8 0 Z" fill="#E2B540"></path>
+    <text
+      y="-64"
+      text-anchor="middle"
+      font-family="Arrus BT, Georgia, serif"
+      font-size="14"
+      fill="#011130"
+    >
+      N
+    </text>
+  </g>
+  <text
+    x="24"
+    y="36"
+    font-family="DM Mono, monospace"
+    font-size="12"
+    fill="#011130"
+    letter-spacing="2"
+    style="text-transform: uppercase"
+  >
+    {title}
+  </text>
+</svg>
+
+<style>
+  .art {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

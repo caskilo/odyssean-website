@@ -1,0 +1,74 @@
+---
+import { fan } from '../../lib/fan';
+
+interface Props {
+  title: string;
+  better: string;
+  worse: string;
+  baseYear: number;
+  horizon: number;
+  min: number;
+  max: number;
+}
+const { title, better, worse, baseYear, horizon, min, max } = Astro.props;
+const { lines, band } = fan(horizon, min, max);
+const look = [0.35, 0.45, 0.55, 0.7, 0.85, 1, 0.85, 0.7, 0.55, 0.45, 0.35];
+---
+
+<div class="chart">
+  <svg viewBox="0 0 1000 520" role="img" aria-label={title}>
+    <path
+      d="M120 100 H960 M120 180 H960 M120 260 H960 M120 340 H960 M120 420 H960"
+      stroke="#1D4387"
+      stroke-width="0.6"
+      stroke-opacity="0.5"
+    ></path>
+    <path data-fan-band d={band} fill="#1D4387" fill-opacity="0.35"></path>
+    {lines.map((d, i) => (
+      <path
+        data-fan-line={i}
+        d={d}
+        fill="none"
+        stroke={i === 5 ? '#E2B540' : '#EBD3A2'}
+        stroke-width={i === 5 ? 3 : i > 2 && i < 8 ? 1.2 : 1}
+        stroke-opacity={i === 5 ? undefined : look[i]}
+      />
+    ))}
+    <path d="M120 60 V470" stroke="#EBE5D9" stroke-width="1" stroke-dasharray="3 5"></path>
+    <circle cx="120" cy="260" r="7" fill="#E2B540"></circle>
+    <g font-family="DM Mono, monospace" font-size="13">
+      <text x="120" y="494" text-anchor="middle" fill="#EBD3A2">
+        {baseYear}
+      </text>
+      <text data-fan-year x="960" y="494" text-anchor="end" fill="#E2B540">
+        {baseYear + horizon}
+      </text>
+    </g>
+    <g
+      font-family="DM Mono, monospace"
+      font-size="11"
+      fill="#EBD3A2"
+      fill-opacity="0.8"
+      style="text-transform: uppercase"
+    >
+      <text x="40" y="104">
+        {better}
+      </text>
+      <text x="40" y="424">
+        {worse}
+      </text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .chart {
+    padding: 0.5rem 0.5rem 0;
+    border: 1px solid var(--blue);
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

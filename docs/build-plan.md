@@ -337,6 +337,8 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 | 5.2 | **Horizon Scans landing**: selector (keyboard, ARIA `aria-pressed`, works without JS as a list) | 3 | Visual diff vs `03-horizon-scan.png` (placeholder text excepted) |
 | 5.3 | Reports page | 3 ext. | Lists Horizon Scan outputs from `publications` |
 
+> **P5 status: done 2026-10-18.** Landing is `views/ScansLanding.astro` with `art/signal-tracks`. Without JS every signal card is listed and the selector is hidden; JS shows the selector (`aria-pressed` buttons) and one card at a time. Signal titles and summaries come from the `signals` collection (so the concept's placeholder text is replaced); time horizons remain content request CR-006. Reports page was already built in P3 (`publicationsFor: scans`).
+
 #### P6: Odyssean Process microsite
 
 | ID | Task | Concept | Done when |
@@ -345,6 +347,8 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 | 6.2 | **OP landing**: chart + ports I–III linking to the sub-pages | 4 | Visual diff vs `04-odyssean-process.png` |
 | 6.3 | **Modelling**: fan of futures + slider (range input, live reading, works without JS showing the default state) + White Paper DMDU text | 9 | Visual diff vs `09-fan-of-futures.png`; all 3 readings |
 | 6.4 | **Expert Elicitation** + **Deliberation**, extended from slide 4's components | 4 ext. | Sourced from the White Paper |
+
+> **P6 status: done 2026-10-18.** `views/ProcessLanding.astro` + `art/voyage-chart`; `views/Modelling.astro` + `components/process/FanChart.astro`, with the fan geometry in `lib/fan.ts` shared by the server render and `scripts/fan.ts` so the no-JS state is the default slider position. Expert Elicitation and Deliberation were already built in P3 as `prose` pages. Also fixed: microsite sub-nav no longer marks "Overview" current on sub-pages (`currentHref` picks the longest matching link).
 
 #### P7: Responsive
 

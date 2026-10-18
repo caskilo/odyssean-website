@@ -15,5 +15,9 @@ export const isMicrosite = (s: Strand): s is Microsite => s !== 'info';
 export const logoTone = (strand: Strand, dark = false) =>
   strand === 'scans' || dark ? ('paper' as const) : ('blue' as const);
 
-export const isCurrent = (href: string, current: string) =>
-  href === '/' ? current === '/' : current === href || current.startsWith(href + '/');
+/** The nav link for the current page: the longest href that is the page or one of its parents. */
+export const currentHref = (links: { href: string }[], current: string) =>
+  links
+    .map((l) => l.href)
+    .filter((h) => (h === '/' ? current === '/' : current === h || current.startsWith(h + '/')))
+    .sort((a, b) => b.length - a.length)[0];

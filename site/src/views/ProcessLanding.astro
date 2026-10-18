@@ -1,0 +1,127 @@
+---
+import Process from '../layouts/Process.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import Headline from '../components/core/Headline.astro';
+import CopyText from '../components/core/Copy.astro';
+import { getArt } from '../lib/art';
+import { text } from '../lib/copy';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'process-landing'>;
+}
+const { data } = Astro.props.entry;
+const Chart = getArt('voyage-chart').Component;
+---
+
+<Process title={data.title} description={data.description}>
+  <div class="container container--narrow process">
+    <div class="intro">
+      <div>
+        <Eyebrow>
+          <CopyText value={data.eyebrow} />
+        </Eyebrow>
+        <Headline text={data.headline.text} accent={data.headline.accent} size="l" />
+      </div>
+      <p class="intro__aside">
+        <CopyText value={data.aside} />
+      </p>
+    </div>
+
+    <div class="frame">
+      <div class="frame__inner">
+        <Chart title={text(data.chartTitle) ?? ''} />
+      </div>
+    </div>
+
+    <div class="ports">
+      {data.ports.map((p) => (
+        <a class="port" href={p.href}>
+          <span class="port__label">
+            <CopyText value={p.label} />
+          </span>
+          <h2 class="port__title">
+            <CopyText value={p.title} />
+          </h2>
+          <span class="port__body">
+            <CopyText value={p.body} />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Process>
+
+<style>
+  .process {
+    padding-block: 3.5rem 4rem;
+  }
+  .intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .intro :global(.eyebrow) {
+    margin-bottom: 1rem;
+  }
+  .intro :global(h1) {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    text-wrap: wrap;
+  }
+  .intro__aside {
+    max-width: 25rem;
+    margin: 0;
+    line-height: 1.6;
+  }
+  .frame {
+    padding: 0.625rem;
+    background: var(--surface);
+    border: 1.5px solid var(--rule);
+  }
+  .frame__inner {
+    border: 1px solid var(--blue);
+  }
+  .ports {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    border-top: 1.5px solid var(--rule);
+  }
+  .port {
+    flex: 1 1 18.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding: 1.625rem 1.75rem 0;
+    border-left: 1px solid var(--rule-soft);
+    color: inherit;
+    text-decoration: none;
+  }
+  .port:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .port:last-child {
+    padding-right: 0;
+  }
+  .port__label {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    color: var(--accent);
+  }
+  .port__title {
+    margin: 0;
+    font-size: 1.75rem;
+  }
+  .port__body {
+    line-height: 1.6;
+  }
+  .port:hover .port__title {
+    text-decoration: underline;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 0.18em;
+  }
+</style>

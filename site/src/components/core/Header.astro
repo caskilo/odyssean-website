@@ -1,6 +1,6 @@
 ---
 import type { Copy } from '../../lib/copy';
-import { isCurrent } from '../../lib/site';
+import { currentHref } from '../../lib/site';
 import CopyText from './Copy.astro';
 import Logo from './Logo.astro';
 import Menu from './Menu.astro';
@@ -23,6 +23,7 @@ interface Props {
 }
 const { variant, current, links, donate, cta, logoTone, narrow = false, ui } = Astro.props;
 const menuLinks = [...links, ...(donate ? [donate] : []), ...(cta ? [cta] : [])];
+const active = currentHref(links, current);
 ---
 
 <header class={`site-header site-header--${variant}`}>
@@ -33,7 +34,7 @@ const menuLinks = [...links, ...(donate ? [donate] : []), ...(cta ? [cta] : [])]
       </a>
       <nav class="site-header__nav" aria-label={ui.nav}>
         {links.map((l) => (
-          <a href={l.href} aria-current={isCurrent(l.href, current) ? 'page' : undefined}>
+          <a href={l.href} aria-current={l.href === active ? 'page' : undefined}>
             <CopyText value={l.label} />
           </a>
         ))}

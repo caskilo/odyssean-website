@@ -80,6 +80,62 @@ try {
     await close();
   }
   {
+    const { page, close } = await open('/horizon-scans');
+    const shown = await page.$$eval('[data-panel]', (p) => p.filter((e) => !e.hidden).length);
+    check('signals: one card shown', shown === 1);
+    await page.locator('[data-pick]').nth(2).click();
+    check(
+      'signals: pick 3 pressed, track lit',
+      (await page.$$eval('[data-pick]', (b) => b[2].getAttribute('aria-pressed'))) === 'true' &&
+        (await page.$eval('path[data-track="2"]', (t) => t.classList.contains('is-active'))),
+    );
+    await close();
+  }
+  {
+    const { page, close } = await open('/horizon-scans', { js: false });
+    const shown = await page.$$eval('[data-panel]', (p) => p.filter((e) => !e.hidden).length);
+    check(
+      'signals without JS: all cards listed, selector hidden',
+      shown === 5 && !(await page.isVisible('[data-picker]')),
+    );
+    await close();
+  }
+  {
+    const { page, close } = await open('/odyssean-process/modelling');
+    const reading = () =>
+      page.$$eval('[data-below]', (r) =>
+        r.filter((e) => !e.hidden).map((e) => e.textContent.trim()),
+      );
+    const set = (v) =>
+      page.$eval(
+        '[data-fan-input]',
+        (i, v) => {
+          i.value = v;
+          i.dispatchEvent(new Event('input', { bubbles: true }));
+        },
+        v,
+      );
+    const seen = [];
+    for (const v of [4, 24, 50]) {
+      await set(v);
+      const r = await reading();
+      seen.push(r.length === 1 ? r[0].split(':')[0] : '?');
+    }
+    check(
+      'modelling: slider shows all 3 readings',
+      seen.join() === 'Near term,Medium term,Long term',
+      seen.join(),
+    );
+    check('modelling: year follows slider', (await page.textContent('[data-fan-year]')) === '2076');
+    await close();
+  }
+  {
+    const { page, close } = await open('/odyssean-process/modelling', { js: false });
+    const shown = await page.$$eval('[data-below]', (r) => r.filter((e) => !e.hidden).length);
+    check('modelling without JS: default reading only', shown === 1);
+    await close();
+  }
+  {
     const { page, close } = await open('/faq');
     await page.click('.faq details:first-of-type summary');
     check('faq: item opens', await page.$eval('.faq details:first-of-type', (d) => d.open));

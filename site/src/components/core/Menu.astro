@@ -1,6 +1,6 @@
 ---
 import type { Copy } from '../../lib/copy';
-import { isCurrent } from '../../lib/site';
+import { currentHref } from '../../lib/site';
 import CopyText from './Copy.astro';
 
 interface Props {
@@ -10,6 +10,7 @@ interface Props {
   current: string;
 }
 const { label, navLabel, links, current } = Astro.props;
+const active = currentHref(links, current);
 ---
 
 <details class="menu">
@@ -20,7 +21,7 @@ const { label, navLabel, links, current } = Astro.props;
     <ul>
       {links.map((l) => (
         <li>
-          <a href={l.href} aria-current={isCurrent(l.href, current) ? 'page' : undefined}>
+          <a href={l.href} aria-current={l.href === active ? 'page' : undefined}>
             <CopyText value={l.label} />
           </a>
         </li>
