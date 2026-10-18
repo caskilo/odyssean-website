@@ -47,8 +47,7 @@ const title = `${text(data.headline.text)} ${text(data.headline.accent)}`;
     <div class="controls">
       <div class="slider">
         <label for="horizon">
-          <CopyText value={slider.label} />
-          <span data-fan-value>{slider.default}</span>
+          <CopyText value={slider.label} /> <span data-fan-value>{slider.default}</span>{' '}
           <CopyText value={slider.unit} />
         </label>
         <input

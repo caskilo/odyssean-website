@@ -1,7 +1,7 @@
 {
   "status": "final",
   "source": "concept slide 03",
-  "mobile": "scales",
+  "mobile": "interim",
   "notes": "Five tracks as drawn in the concept; labels come from the signals collection. JS marks the selected track with .is-active.",
   "demo": {
     "numbers": ["01", "02", "03", "04", "05"],

@@ -20,6 +20,9 @@ const { narrow = true } = Astro.props;
   .prose :global(> :first-child) {
     margin-top: 0;
   }
+  .prose :global(a) {
+    overflow-wrap: anywhere;
+  }
   .prose :global(h2) {
     margin-top: 2.25em;
     font-size: var(--step-m);

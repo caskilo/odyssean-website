@@ -22,18 +22,21 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const template = entry.data.template;
+const views = {
+  home: Home,
+  projects: Projects,
+  publications: Publications,
+  about: About,
+  focus: Focus,
+  faq: Faq,
+  blog: Blog,
+  prose: ProsePage,
+  'grain-landing': GrainLanding,
+  'scans-landing': ScansLanding,
+  'process-landing': ProcessLanding,
+  modelling: Modelling,
+};
+const View = views[entry.data.template];
 ---
 
-{template === 'home' && <Home entry={entry as never} />}
-{template === 'projects' && <Projects entry={entry as never} />}
-{template === 'publications' && <Publications entry={entry as never} />}
-{template === 'about' && <About entry={entry as never} />}
-{template === 'focus' && <Focus entry={entry as never} />}
-{template === 'faq' && <Faq entry={entry as never} />}
-{template === 'blog' && <Blog entry={entry as never} />}
-{template === 'prose' && <ProsePage entry={entry as never} />}
-{template === 'grain-landing' && <GrainLanding entry={entry as never} />}
-{template === 'scans-landing' && <ScansLanding entry={entry as never} />}
-{template === 'process-landing' && <ProcessLanding entry={entry as never} />}
-{template === 'modelling' && <Modelling entry={entry as never} />}
+<View entry={entry as never} />

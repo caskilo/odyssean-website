@@ -134,3 +134,12 @@ a:hover {
     scroll-behavior: auto !important;
   }
 }
+
+/* tap-target padding for stand-alone text links on narrow screens (build-plan 7.1) */
+@media (max-width: 48rem) {
+  .tap {
+    display: inline-block;
+    padding-block: 0.625rem;
+    margin-block: -0.625rem;
+  }
+}

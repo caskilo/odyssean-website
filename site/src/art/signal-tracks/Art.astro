@@ -64,6 +64,7 @@ if (numbers.length !== tracks.length)
     fill="#EBD3A2"
     font-family="DM Mono, monospace"
     font-size="12"
+    class="origin"
     text-anchor="middle"
     style="text-transform: uppercase"
   >
@@ -96,6 +97,13 @@ if (numbers.length !== tracks.length)
   }
   .num {
     fill-opacity: 0.35;
+  }
+  /* phone width: keep the labels legible (mobile: interim) */
+  @media (max-width: 40rem) {
+    .num,
+    .origin {
+      font-size: 26px;
+    }
   }
   .track.is-active {
     stroke-width: 3.5;

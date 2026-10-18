@@ -35,3 +35,9 @@
   --step-small: 0.9375rem;
   --step-mono: 0.8125rem;
 }
+
+@media (max-width: 48rem) {
+  :root {
+    --step-small: 1rem;
+  }
+}

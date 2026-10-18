@@ -163,4 +163,19 @@ const labels = Object.fromEntries(
     margin: 0;
     line-height: 1.55;
   }
+  @media (max-width: 64rem) {
+    .pillars {
+      flex-direction: column;
+    }
+    .pillar,
+    .pillar:first-child,
+    .pillar:last-child {
+      flex: none;
+      padding: 1.5rem 0;
+      border-left: 0;
+    }
+    .pillar + .pillar {
+      border-top: 1px solid var(--rule-soft);
+    }
+  }
 </style>

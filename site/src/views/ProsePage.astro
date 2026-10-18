@@ -83,7 +83,9 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
 
     {showContact && settings && (
       <p class="contact-details">
-        <a href={`mailto:${settings.email}`}>{settings.email}</a>
+        <a class="tap" href={`mailto:${settings.email}`}>
+          {settings.email}
+        </a>
         <span>{settings.phone}</span>
       </p>
     )}

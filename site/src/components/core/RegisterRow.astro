@@ -18,7 +18,7 @@ const external = /^https?:\/\//.test(href);
   </div>
   <div class="row__main">
     <h3 class="row__title">
-      <a {href} {...(external ? { rel: 'noopener' } : {})}>
+      <a class="tap" {href} {...(external ? { rel: 'noopener' } : {})}>
         <CopyText value={title} />
       </a>
     </h3>

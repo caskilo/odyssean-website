@@ -71,7 +71,7 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
       <h2>
         <CopyText value={data.focus.heading} />
       </h2>
-      <a href={data.focus.more.href}>
+      <a class="tap" href={data.focus.more.href}>
         <CopyText value={data.focus.more.label} />
       </a>
     </div>
@@ -162,6 +162,34 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
     width: 1.75rem;
     background: var(--gold);
     opacity: 1;
+  }
+  @media (max-width: 48rem) {
+    .hero__dots {
+      gap: 0;
+    }
+    .hero__dot,
+    .hero__dot[aria-current='true'] {
+      width: 2.75rem;
+      height: 2.75rem;
+      background: none;
+      opacity: 1;
+    }
+    .hero__dot::after {
+      inset: auto;
+      left: 50%;
+      top: 50%;
+      width: 0.625rem;
+      height: 3px;
+      translate: -50% -50%;
+      background: var(--sand);
+      opacity: 0.5;
+      transition: width 0.3s ease;
+    }
+    .hero__dot[aria-current='true']::after {
+      width: 1.75rem;
+      background: var(--gold);
+      opacity: 1;
+    }
   }
   .bands {
     display: flex;

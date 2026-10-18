@@ -357,6 +357,8 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 | 7.1 | Responsive pass on every layout and component at 360 / 768 / 1024 / 1440 px, following each theme. Graphics scale via `viewBox`; where an SVG becomes unreadable at phone width, simplify it (e.g. hide minor labels) and log it in the placeholder report as `mobile: interim` | No horizontal scroll; tap targets ≥44 px; type ≥16 px body |
 | 7.2 | Layout questions that need judgement → Will, batched | Resolved or escalated |
 
+> **P7 status: done 2026-10-18** (7.2 open: see the questions in [code-review-guide.md](code-review-guide.md) §6). `npm run verify:responsive` audits every built route at 360/768/1024/1440 and passes: no horizontal scroll; at ≤768px stand-alone tap targets ≥44px and non-mono body text ≥16px (inline links and mono labels exempt). Changes: `--step-small` is 1rem at ≤768px; `.tap` utility, 44px minimum on buttons, logos, filter links and hero dots; long URLs wrap in prose; GRAIN pillars, Process ports and team rows stack on narrow screens; microsite charts enlarge or drop labels on phones and are logged `mobile: interim` (`signal-tracks`, `voyage-chart`; the fan chart is a component, not registry art).
+
 #### P8: QA & SEO → Gate G2
 
 | ID | Task | Done when |

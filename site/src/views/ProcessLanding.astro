@@ -124,4 +124,20 @@ const Chart = getArt('voyage-chart').Component;
     text-decoration-color: var(--gold);
     text-underline-offset: 0.18em;
   }
+  @media (max-width: 64rem) {
+    .ports {
+      flex-direction: column;
+    }
+    .port,
+    .port:first-child,
+    .port:last-child {
+      flex: none;
+      padding: 1.5rem 0 0;
+      border-left: 0;
+    }
+    .port + .port {
+      margin-top: 1.5rem;
+      border-top: 1px solid var(--rule-soft);
+    }
+  }
 </style>

@@ -214,6 +214,14 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
     object-fit: cover;
     background: var(--sand);
   }
+  @media (max-width: 40rem) {
+    .person {
+      flex-direction: column;
+    }
+  }
+  .origin__text :global(.eyebrow) {
+    margin-bottom: 1rem;
+  }
   .person__text {
     min-width: 0;
   }
