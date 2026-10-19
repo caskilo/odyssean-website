@@ -11,7 +11,7 @@
 |---|---|---|---|---|
 | `/` | home | 🎨 slide 02<br>🌐 /<br>⚖️ build-plan B.2 | — | — |
 | `/404` | prose | ⚖️ not-found text drafted by Devin; pending review by Will (build-plan 8.5: Apache ErrorDocument) | — | — |
-| `/about` | about | 🎨 slide 10<br>🎨 slide 08<br>🌐 /team | — | CR-001 (splash.body) |
+| `/about` | about | 🎨 slide 10<br>🎨 slide 08<br>🌐 /team<br>⚖️ splash text supplied by Will (2026-10-19) | — | — |
 | `/blog` | blog | 🌐 /blog<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 | `/contact` | prose | 🌐 /contact<br>🌐 /<br>⚖️ build-plan AD10 | 34 words | — |
 | `/curriculum` | prose | 🌐 /curriculum | 1253 words | — |
@@ -26,8 +26,7 @@
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/grain` | grain-landing | 🎨 slide 01<br>🌐 /grain | 1047 words | CR-004 (actions.1.href) |
-| `/grain/collaborate` | prose | 🎨 slide 01<br>⚖️ meta description drafted by Devin; pending review by Will | — | CR-005 (lede) |
+| `/grain` | grain-landing | 🎨 slide 01<br>🌐 /grain | 1047 words | — |
 | `/grain/contact` | prose | 🎨 slide 01<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 | `/grain/governance-under-fallout` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 | `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | 613 words | — |
@@ -54,10 +53,10 @@
 | Collection | Entries | Sources | Open requests |
 |---|---:|---|---|
 | posts | 9 | live | — |
-| publications | 10 | live, pdf | CR-007 |
+| publications | 10 | decision, live, pdf | — |
 | quotes | 4 | concept | CR-009 |
 | settings | 1 | live, concept, decision | — |
-| signals | 5 | pdf, decision | CR-006 |
+| signals | 5 | pdf, decision | — |
 | team | 20 | live | — |
 
 ## Publications: verification (task 1.5)
@@ -67,21 +66,16 @@
 | 1 | Bridging the Intangible: A Foresight-to-Policy Framework for Localising Non-Economic Loss & Damage (NELD) Financing in Samoa | `/files/bridging-the-intangible-neld-samoa.pdf` | verified | Title, thumbnail and Read All all point to the same PDF; matches its first page. |
 | 2 | Governance Under Fallout: Anticipating and Navigating the 2nd Order Impacts of a Nuclear Strike | `/files/governance-under-fallout.pdf` | corrected | Live "Read All" button points to e5ae06_1802… (Bridging local and technocratic epistemologies). Title and thumbnail point to the correct PDF. |
 | 3 | Bridging local and technocratic epistemologies for better non-economic loss & damage financing modalities in the Pacific | `/files/bridging-local-technocratic-epistemologies-neld-pacific-preprint.pdf` | corrected | Live title links to cad45f_72bc… (GRAIN Overview Report). Thumbnail and Read All point to the correct pre-print. |
-| 4 | Policy Robustness & Uncertainty in Model-based Decision Support for the Energy Transition | `/files/policy-robustness-uncertainty-energy-transition.pdf` | corrected | Live title links to cad45f_72bc… (GRAIN Overview Report). Thumbnail and Read All point to the correct PDF. |
+| 4 | Policy Robustness & Uncertainty in Model-based Decision Support for the Energy Transition | `/files/policy-robustness-uncertainty-energy-transition.pdf` | corrected | Live title linked to the GRAIN Overview Report. The PDF is now the 2026 journal edition (Environ. Res.: Energy 3 035002). |
 | 5 | GRAIN Report Overview | `/files/grain-overview-report.pdf` | verified | All links point to the same PDF; matches its first page ("Overview Report, 17 June, 2025"). |
 | 6 | A Horizon Scan of Global Catastrophic Risks | `/files/horizon-scan-global-catastrophic-risks-preprint.pdf` | corrected | Title, thumbnail and Read All are correct. Links inside the live summary text point to the White Paper (e56281_eec…); removed. Date "2024" from concept slide 5 ("Published 2024"). |
 | 7 | Resilience Reconsidered | `https://link.springer.com/article/10.1007/s13753-025-00657-y` | corrected | Title, thumbnail and Read All go to the published article (Springer). Links inside the live summary text point to the White Paper (e56281_eec…); removed. Authors from the pre-print (cad45f_b15a…). |
 | 8 | The Odyssean Process | `/files/odyssean-process-white-paper-2024.pdf` | corrected | Live title links to the 2024 edition (e56281_f0a7…); thumbnail and Read All link to an older, different 2023 edition (cad45f_63b8…). The 2024 edition is used; the 2023 file stays available at its old URL. Year "2024" as cited on the live Curriculum page. |
 | 9 | Odyssean Process Policy Brief | `/files/odyssean-process-policy-brief-2024.pdf` | verified | All links point to the same PDF; matches its first page ("POLICY BRIEF February 2024"). |
-| 10 | A Master Equation for Power Laws | `https://royalsocietypublishing.org/doi/10.1098/rsos.220531` | unverified | External journal link (Royal Society Open Science); not checked offline. Authors and date not stated on the live page. |
+| 10 | A Master Equation for Power Laws | `https://royalsocietypublishing.org/doi/10.1098/rsos.220531` | unverified | External journal link (Royal Society Open Science); not checked offline. Authors and date confirmed against the paper. |
 
 ## Content requests in use
 
 | ID | Where | Field | Note |
 |---|---|---|---|
-| CR-001 | `pages/about.md` | splash.body | Splash text introducing the institute (open question C5). The current site has no such text. |
-| CR-004 | `pages/grain/index.md` | actions.1.href | The GRAIN policy brief (Feb 2026) linked from the concept is not on the current site. Please supply the PDF, or confirm the button should be dropped. |
-| CR-005 | `pages/grain/collaborate.md` | lede | Content for the GRAIN "Collaborate" page (concept 01 CTA). There is no matching page on the current site. |
-| CR-006 | `signals/01-integration-of-ai-in-nuclear-weapons-systems.yaml`<br>`signals/02-state-capacity-deficits.yaml`<br>`signals/03-cascading-failures-of-global-food-systems.yaml`<br>`signals/04-climate-change-induced-displacement.yaml`<br>`signals/05-unclear-future-of-the-ocean-carbon-sink.yaml` | horizon | Time horizon for this signal. The Horizon Scan paper does not state one per issue. |
-| CR-007 | `publications/bridging-local-technocratic-epistemologies.yaml`<br>`publications/governance-under-fallout.yaml`<br>`publications/master-equation-for-power-laws.yaml`<br>`publications/odyssean-process-policy-brief.yaml`<br>`publications/policy-robustness-uncertainty-energy-transition.yaml` | date, authors | Publication date is not stated on the live page or the document. |
 | CR-009 | `quotes/01-expert.yaml`<br>`quotes/02-citizen.yaml`<br>`quotes/03-citizen.yaml`<br>`quotes/04-expert.yaml` | quote, name, affiliation | Experts & Citizens (concept 08): quote, name and affiliation for each of the 4 cards. Not needed for launch (section ships switched off). |

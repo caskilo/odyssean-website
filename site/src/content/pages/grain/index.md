@@ -11,9 +11,7 @@ lede: 'If one chokepoint fails, through error, conflict or capture, the whole gl
 actions:
   - { label: 'Read the 2025 GRAIN report', href: '/files/grain-overview-report.pdf', style: primary }
   - label: 'Policy brief, Feb 2026'
-    href:
-      request: CR-004
-      note: 'The GRAIN policy brief (Feb 2026) linked from the concept is not on the current site. Please supply the PDF, or confirm the button should be dropped.'
+    href: '/files/odyssean-process-policy-brief-2024.pdf'
     style: secondary
 figure:
   art: grain-network

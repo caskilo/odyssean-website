@@ -1,9 +1,6 @@
 rank: 4
 title: "Climate change-induced displacement in the context of escalating polycrisis"
 categories: ["Society", "Climate Environment & Ecology"]
-horizon:
-  request: CR-006
-  note: "Time horizon for this signal. The Horizon Scan paper does not state one per issue."
 summary: "Displacement is a forced or involuntary, reactive movement of people between places. This can be short-term or long-term, and can occur within, or between, nations."
 sources:
   - kind: pdf

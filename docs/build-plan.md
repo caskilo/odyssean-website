@@ -57,7 +57,6 @@ flowchart TD
         G2["/grain/reports"]
         G3["/grain/governance-under-fallout"]
         G4["/grain/contact"]
-        G5["/grain/collaborate"]
     end
     subgraph S["Horizon Scans microsite (3)"]
         S0["/horizon-scans"]
@@ -100,7 +99,7 @@ flowchart TD
 | Route | Concept | Content | Notes |
 |-------|:-------:|---------|-------|
 | `/grain` | 1 | Concept (1); live old `/grain` fills gaps | Same path as the old page. Sub-nav from the concept |
-| `/grain/methodology` · `/reports` · `/governance-under-fallout` · `/contact` · `/collaborate` | 1 (extended) | Old **`/resilient-supply-chains`** and **`/neld`** merged in, plus the GRAIN, NELD and Governance Under Fallout PDFs and Publications entries | Separate pages (D5). Gaps → content requests |
+| `/grain/methodology` · `/reports` · `/governance-under-fallout` · `/contact` | 1 (extended) | Old **`/resilient-supply-chains`** and **`/neld`** merged in, plus the GRAIN, NELD and Governance Under Fallout PDFs and Publications entries | Separate pages (D5). Gaps → content requests |
 | `/horizon-scans` | 3 | Concept (3) + **top 5 issues by final rank** from the Horizon Scan paper (B.4) | Its own strand; **not** under the OP |
 | `/horizon-scans/reports` | 3 (extended) | Horizon Scan PDF + related Publications entries | Default sub-page |
 | `/odyssean-process` | 4 | Concept (4) | Ports I–III link to the three sub-pages |
@@ -126,14 +125,14 @@ flowchart TD
 | Context | Header | Getting around |
 |---------|--------|----------------|
 | Info strand | Logo · **Projects · Publications · About · Donate** (Donate in gold outline). Home uses the transparent header over the hero (2); other info pages use the navy bar (6) | Footer links to Contact, FAQ, Blog, Curriculum, Focus and **all three microsites** |
-| Microsite | Logo (→ `/`) · **microsite sub-nav**, whose first item is always the microsite landing page ("About GRAIN" / "Overview") · optional CTA (GRAIN: gold "Collaborate") | Same footer as the info strand, so every strand is reachable from every page |
+| Microsite | Logo (→ `/`) · **microsite sub-nav**, whose first item is always the microsite landing page ("About GRAIN" / "Overview") · optional CTA (GRAIN: gold "Collaborate", which opens `/grain/contact`) | Same footer as the info strand, so every strand is reachable from every page |
 | Phone width | Header collapses into a single disclosure menu, styled per microsite | Sub-nav and main nav share one menu component |
 
 **Sub-nav items** (defaults, to be refined as we build):
 
 | Microsite | Items |
 |-----------|-------|
-| GRAIN | About GRAIN · Methodology · Reports · Governance Under Fallout · Contact · **Collaborate** *(from the concept)* |
+| GRAIN | About GRAIN · Methodology · Reports · Governance Under Fallout · Contact · **Collaborate** button → Contact *(from the concept)* |
 | Horizon Scans | Overview · Reports · Contact (→ `/contact`) |
 | Odyssean Process | Overview · Expert Elicitation · Modelling · Deliberation |
 
@@ -257,7 +256,7 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 | P1 Content | Every element has a source or a request; content files validate | **G1** |
 | P2 Foundations | Tokens, 4 themes, core components, layouts, art registry, schemas, gallery | — |
 | P3 Info strand | 11 routes (+ 9 posts) | — |
-| P4 GRAIN | 6 pages | — |
+| P4 GRAIN | 5 pages | — |
 | P5 Horizon Scans | 2 pages | — |
 | P6 Odyssean Process | 4 pages | — |
 | P7 Responsive | Every page at 360 / 768 / 1024 / 1440 | — |
@@ -287,7 +286,7 @@ odyssean-website/                 git root → github.com/caskilo/odyssean-websi
 | 1.3 | Blog: 9 posts, checked side by side against the live posts | 🤖 + 👤 | 1.2 | Footnotes, tables and captions intact; slugs identical |
 | 1.4 | Concept copy → content files, including the interactive-state strings | 🤖 | 1.1 | Copy-parity list = content files |
 | 1.5 | **Publications**: every live entry; **check each title against its PDF** (the live page links some titles, thumbnails and buttons to different PDFs) | 🤖 | 1.2 | Each entry has one verified PDF; mismatches logged. *PDF identification uses a dev-only Python helper (`tools/extract/identify_pdfs.py`, PyMuPDF); not part of CI* |
-| 1.6 | GRAIN merge: `/resilient-supply-chains` + `/neld` + GRAIN, NELD and GUF publications → the 5 GRAIN sub-pages | 🤖 | 1.2, 1.5 | Mapping recorded; leftovers listed |
+| 1.6 | GRAIN merge: `/resilient-supply-chains` + `/neld` + GRAIN, NELD and GUF publications → the GRAIN sub-pages | 🤖 | 1.2, 1.5 | Mapping recorded; leftovers listed |
 | 1.7 | Horizon Scans: top 5 signals + summaries from the paper (B.4) | 🤖 | — | `signals/` collection filled |
 | 1.8 | Odyssean Process: EEJ, DMDU and Deliberation text lifted verbatim from the White Paper (§04.2–04.3) | 🤖 | — | Sources cited per section |
 | 1.9 | Assets: every discovered PDF with a readable name, images normalised, alt text | 🤖 | 1.2, 1.5 | Asset manifest; redirect source list |
@@ -325,7 +324,7 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 |----|------|:-------:|-----------|
 | 4.1 | Grain theme + sub-nav; network graphic as `art/grain-network` (final art, from the concept) | 1 | — |
 | 4.2 | **GRAIN landing** | 1 | Visual diff vs `01-grain.png` |
-| 4.3 | 5 sub-pages from the 1.6 mapping, extended from slide 1's components | 1 ext. | Each section sourced or requested |
+| 4.3 | 4 sub-pages (Collaborate is a button to Contact, decided 2026-10-19) from the 1.6 mapping, extended from slide 1's components | 1 ext. | Each section sourced or requested |
 
 > **P4 status: done 2026-10-18.** The five sub-pages were already built in P3 by the `prose` template on the Grain layout (content from P1), so P4 added the landing (`views/GrainLanding.astro`), `art/grain-network` and the paper mesh texture in `themes/grain.css`. Deviations: (1) the "nodes of persisting recovery" label is right-aligned so it is no longer clipped as in the concept; (2) the landing's below-fold body is the full live GRAIN text, rendered after the three pillars; (3) the headline wraps naturally (`text-wrap: wrap`) to match the concept's line break.
 

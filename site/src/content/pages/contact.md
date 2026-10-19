@@ -16,7 +16,7 @@ form:
 sources:
   - kind: live
     ref: 'https://www.odysseaninstitute.org/contact'
-    note: 'heading "CONTACT US" set in sentence case (presentational); email and phone come from settings'
+    note: 'heading "CONTACT US" set in sentence case (presentational); email comes from settings'
   - kind: live
     ref: 'https://www.odysseaninstitute.org/'
     note: 'form fields, button and success message as on the live contact form'

@@ -62,6 +62,7 @@ for (const { route, $, text, noindex } of pages) {
   if (!noindex && !$('meta[name=description]').attr('content'))
     fail(route, 'missing meta description');
   if (!$('meta[property="og:title"]').attr('content')) fail(route, 'missing og:title');
+  if (!$('meta[property="og:image"]').attr('content')) fail(route, 'missing og:image');
   const canonical = $('link[rel=canonical]').attr('href');
   if (canonical !== ORIGIN + (route === '/' ? '/' : encodeURI(route)))
     fail(route, `canonical is ${canonical}`);

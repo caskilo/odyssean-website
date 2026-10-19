@@ -1,9 +1,6 @@
 rank: 5
 title: "Unclear future of the ocean carbon sink"
 categories: ["Climate Environment & Ecology"]
-horizon:
-  request: CR-006
-  note: "Time horizon for this signal. The Horizon Scan paper does not state one per issue."
 summary: "The ocean regulates Earth's atmosphere and climate by not only generating much of Earth's oxygen, but also absorbing and storing vast amounts of carbon dioxide (CO2), and taking up excess heat from anthropogenic emissions. From the 1960s to the late 2010s, the ocean has absorbed 25 ± 2% of anthropogenic CO2 emissions and 90% of excess heat (Gruber et al., 2023)."
 sources:
   - kind: pdf

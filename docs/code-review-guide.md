@@ -190,6 +190,6 @@ How the open findings in 7.3 and the known gaps in 3.4 stand now. Results of the
 | `verify:content` checks only the source | Done. `verify:built` repeats copy parity and the design-note blocklist on the rendered HTML |
 | Footer year changes only on rebuild | Open, acceptable |
 | Focus details looked up by heading text | Open, still covered by `verify:content` |
-| Gaps in 3.4: copy parity, axe/Lighthouse, feed, canonicals, robots, redirects | Done. Per-page Open Graph images are open (needs a picture, open-questions Q-03) |
+| Gaps in 3.4: copy parity, axe/Lighthouse, feed, canonicals, robots, redirects | Done. Open Graph images done (gold logo on dark blue; posts use their cover) |
 
 CI now also runs `verify:built`, `verify:redirects` and `verify:links` (none needs a browser). The browser checks stay local.

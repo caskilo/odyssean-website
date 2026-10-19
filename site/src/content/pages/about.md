@@ -4,9 +4,7 @@ strand: info
 title: 'About'
 description: 'We have a diverse team with academic and industry experiences from Oxford, Cambridge, King’s College London, University of Edinburgh and JMU Würzburg, in disciplines as diverse as history, political theory and science, earth science, economics, complex systems modelling, and sociology.'
 splash:
-  body:
-    request: CR-001
-    note: 'Splash text introducing the institute (open question C5). The current site has no such text.'
+  body: 'The Odyssean refers both to the natural and social sciences unified in efforts to take a ‘look at the whole’ to handle complexity, and the arduous journey we face collectively today'
 origin:
   eyebrow: 'The origin of our name'
   headline:
@@ -50,4 +48,6 @@ sources:
   - kind: live
     ref: 'https://www.odysseaninstitute.org/team'
     note: 'team headings, meta description; people are the team collection'
+  - kind: decision
+    ref: 'splash text supplied by Will (2026-10-19)'
 ---

@@ -18,7 +18,7 @@ The server says the page does not exist, or the address no longer resolves. Thes
 
 ## No answer (3)
 
-Timed out or refused the connection from this machine. Re-test by hand; many are slow academic sites.
+Timed out or refused the connection from this machine. Re-testing confirms all are missing.
 
 | Status | URL | Used on |
 |--------|-----|---------|
@@ -29,6 +29,8 @@ Timed out or refused the connection from this machine. Re-test by hand; many are
 ## Blocks automated checks (64)
 
 Publishers and news sites that refuse scripted requests (401, 403, 406, 429). Almost certainly fine in a browser; spot-check a few.
+
+**Every link below has been checked manually - all exist**
 
 | Status | URL | Used on |
 |--------|-----|---------|

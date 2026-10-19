@@ -93,8 +93,11 @@ const canonical = new URL(current, Astro.site);
     {article && (
       <meta property="article:published_time" content={article.published.toISOString()} />
     )}
-    {article?.image && <meta property="og:image" content={article.image} />}
-    <meta name="twitter:card" content={article?.image ? 'summary_large_image' : 'summary'} />
+    <meta
+      property="og:image"
+      content={article?.image ?? new URL('/og-default.png', Astro.site).href}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" type="application/rss+xml" title={s.name} href="/blog-feed.xml" />
     <meta name="theme-color" content="#011130" />
   </head>

@@ -3,9 +3,7 @@ title: "Governance Under Fallout: Anticipating and Navigating the 2nd Order Impa
 type: research-report
 summary: "This report introduces a new method of futures exercise, the Horizon Summit. This approach produced structured foresight with key tools such as Causal Layered Analysis, Backcasting, and Stakeholder Mapping. These then generated scenarios to assess a joint horizon and solution scan on the underlying issues and mitigation strategies for the 2nd order effects of a nuclear strike. This was conducted especially efficiently, contributing to our aims to enhance the efficacy and delivery of prioritisation work."
 authors: "Giuseppe Dal Prá, James Balzer et al."
-date:
-  request: CR-007
-  note: "Publication date is not stated on the live page or the document."
+date: "2025"
 file: /files/governance-under-fallout.pdf
 thumbnail:
   src: "../../assets/media/publications/governance-under-fallout-6114fc.png"
@@ -15,6 +13,8 @@ verification:
   status: corrected
   note: "Live \"Read All\" button points to e5ae06_1802… (Bridging local and technocratic epistemologies). Title and thumbnail point to the correct PDF."
 sources:
+  - kind: decision
+    ref: "date supplied by Will (2026-10-19)"
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"
   - kind: pdf

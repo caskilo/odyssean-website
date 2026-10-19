@@ -2,9 +2,7 @@ order: 9
 title: "Odyssean Process Policy Brief"
 type: policy-brief
 summary: "A concise edition of our White Paper for the time-pressed reader."
-authors:
-  request: CR-007
-  note: "Authors are not stated on the live page or the document."
+authors: "Giuseppe Dal Prá & Bilal Asghar"
 date: "February 2024"
 file: /files/odyssean-process-policy-brief-2024.pdf
 thumbnail:
@@ -15,6 +13,8 @@ verification:
   status: verified
   note: "All links point to the same PDF; matches its first page (\"POLICY BRIEF February 2024\")."
 sources:
+  - kind: decision
+    ref: "authors supplied by Will (2026-10-19)"
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"
   - kind: pdf

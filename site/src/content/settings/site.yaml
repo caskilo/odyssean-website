@@ -3,7 +3,6 @@ charityNumber: '1204794'
 charityNumberLabel: 'Charity number'
 charityLine: 'The Odyssean Institute is a Registered Charitable Incorporated Organisation'
 email: 'contact@odysseaninstitute.org'
-phone: '+44 7926 592930'
 copyright: '©{year} by Odyssean Institute'
 ui:
   skip: 'Skip to content'
@@ -44,7 +43,7 @@ microsites:
       - { label: 'Reports', href: '/grain/reports' }
       - { label: 'Governance Under Fallout', href: '/grain/governance-under-fallout' }
       - { label: 'Contact', href: '/grain/contact' }
-    cta: { label: 'Collaborate', href: '/grain/collaborate' }
+    cta: { label: 'Collaborate', href: '/grain/contact' }
   scans:
     name: 'Horizon Scans'
     subnav:

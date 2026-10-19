@@ -8,7 +8,7 @@
 |------|-------|--------|
 | 8.1 | Visual diff of concept pages at 1440px | Every difference explained below |
 | 8.2 | Copy parity and design-note blocklist, on the source files **and** on the built HTML | Pass: 151 approved strings found, no design note rendered |
-| 8.3 | axe-core (WCAG 2.0 A/AA, 2.1 A/AA, 2.2 AA, including colour contrast) on all 34 pages at 360 and 1440px | Pass: 0 violations |
+| 8.3 | axe-core (WCAG 2.0 A/AA, 2.1 A/AA, 2.2 AA, including colour contrast) on all 33 pages at 360 and 1440px | Pass: 0 violations |
 | 8.3 | Keyboard: skip link first, visible focus on every stop, no trap, slider/selector/menu operable | Pass |
 | 8.3 | Lighthouse, mobile profile, 12 representative pages | Pass: accessibility, best practices and SEO are 100 everywhere; performance 96 to 99 |
 | 8.4 | Titles, descriptions, canonicals, Open Graph, heading order, image alt text, sitemap, noindex | Pass, see below |
@@ -51,7 +51,7 @@ The percentage is the share of pixels that differ from the slide image. Small sh
 
 Every page has a title, language, canonical address, Open Graph title, exactly one h1 and no skipped heading levels. Every page that search engines may show has a description. Posts without one use the first paragraph of the post, cut at a sentence. Posts add the article type, publication date and cover image. The previews, the 404 page and the thank-you page are `noindex` and left out of the sitemap. A link to the feed is in every page's head.
 
-Not done, and why: a default sharing image (needs a picture from the institute, question Q-03).
+Every page also has a link-preview image: the gold logo on dark blue (`public/og-default.png`, made by `tools/brand/og-image.mjs`), or the cover picture on blog posts.
 
 ## Still to do on the real server (P9)
 

@@ -52,8 +52,7 @@ const Tracks = getArt('signal-tracks').Component;
         {signals.map((s) => (
           <article class="card" data-panel>
             <div class="card__meta">
-              <CopyText value={data.signalLabel} /> {num(s.data.rank)} ·{' '}
-              <CopyText value={s.data.horizon} />
+              <CopyText value={data.signalLabel} /> {num(s.data.rank)}
             </div>
             <h2 class="card__title">{s.data.title}</h2>
             <p>

@@ -1,9 +1,6 @@
 rank: 1
 title: "Integration of artificial intelligence in Nuclear Weapons Systems"
 categories: ["Nuclear Weapons", "AI", "War & Security"]
-horizon:
-  request: CR-006
-  note: "Time horizon for this signal. The Horizon Scan paper does not state one per issue."
 summary: "Nuclear risks have existed for most of a century, but the integration of artificial intelligence (AI) into nuclear weapons systems introduces new complexities. Such systems could strengthen nuclear arsenals, optimise decision-making processes, and improve command and control systems (Cox & Williams, 2021)."
 sources:
   - kind: pdf

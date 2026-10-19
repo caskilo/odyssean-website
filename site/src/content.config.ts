@@ -330,7 +330,6 @@ const signals = defineCollection({
     rank: z.number().int().min(1),
     title: z.string(),
     categories: z.array(z.string()).min(1),
-    horizon: copy,
     summary: copy,
     sources,
   }),
@@ -359,7 +358,6 @@ const settings = defineCollection({
     charityNumberLabel: copy,
     charityLine: copy,
     email: z.email(),
-    phone: z.string(),
     copyright: z.string().includes('{year}'),
     ui: z.object({
       skip: copy,
