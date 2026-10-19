@@ -8,10 +8,7 @@ hero:
     text: 'Look further.'
     accent: 'Decide together.'
   lede: 'We chart a democratic course to resilience and flourishing, blending foresight, expert insight and citizen deliberation.'
-  slides:
-    - art: hero-horizon
-    - art: hero-mountains
-    - art: hero-sea
+  art: hero-horizon
 focus:
   heading: 'What we focus on'
   more: { label: 'All focus areas →', href: '/focus' }

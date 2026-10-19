@@ -84,7 +84,7 @@ flowchart TD
 
 | Route | Concept | Family | Content (approved concept first, then live site) | Notes |
 |-------|:-------:|--------|---------------------------------------------------|-------|
-| `/` | 2 | Info landing | Concept (2); gaps from live `/` | Hero carousel ×3: **horizon (final art) / mountains / sea (placeholders)**. Default: **the same hero text in all three states**. Focus cards (2) → `/focus` |
+| `/` | 2 | Info landing | Concept (2); gaps from live `/` | Single still hero: the concept's text and horizon schematic (final art). **No carousel** (decided 2026-10-19: no text or backgrounds exist for states 2 and 3). Focus cards (2) → `/focus` |
 | `/projects` | 5 | Info landing | Concept (5) | Panels → `/grain` · `/horizon-scans` · `/odyssean-process`. "Room 1 · 3 panels · Archive" are design notes, **not built** |
 | `/publications` | 6 | Reading (register) | **Every entry on live `/publications`**, each verified against its PDF (D.2 task 1.5) | Filters: Policy briefs · White papers · Research reports · **Blog** · Curriculum. Blog and Curriculum are **link-outs**. "Blog & commentary" is renamed **"Blog"** |
 | `/about` | 10 (+ 8 staged) | Institutional | Splash: **content request (OQ C5)** · Why we are Odyssean: concept (10) · Team: live `/team` | Order: splash → Why Odyssean → Team. **Experts & Citizens (8)** is built now as an alternative Team section, switched off; planned swap ~2027 (C.1 AD9) |
@@ -160,7 +160,7 @@ Each signal's "two-sentence summary" is the **first two sentences of that issue'
 |---|----------|--------|-----------|
 | AD1 | Generator | **Astro 7.3.x**, `output: 'static'`. Pin a release ≥7 days old at scaffold time (currently 7.3.6) | Components map 1:1 to the slide HTML. No JS by default. Content schemas |
 | AD2 | Styling | **Plain CSS**: core tokens + **theme layers** (C.3) as custom properties; scoped component CSS; `clamp()` for fluid sizing | The slides use inline styles, so lifting them into scoped CSS is mechanical |
-| AD3 | Interactivity | **Vanilla TS**, progressive enhancement: hero carousel (2), signal selector (3), horizon slider (9), publications filter (6), menu. **All content renders without JS** | The slides' own logic is 1–2 KB; no React runtime |
+| AD3 | Interactivity | **Vanilla TS**, progressive enhancement: signal selector (3), horizon slider (9), publications filter (6), menu. **All content renders without JS** | The slides' own logic is 1–2 KB; no React runtime |
 | AD4 | Hosting & deploy | GitHub Actions builds → `rsync` over SSH → **Mythic Beasts**. Apache `.htaccess` handles redirects, headers and caching | The host only serves files |
 | AD5 | Content model | **All copy in `src/content/`**, validated by Zod schemas. **No copy in components.** Shared lists (team, publications, signals, projects, people-quotes) are data collections | Enables the future LLM editor; bad edits fail the build |
 | AD6 | Art registry | `src/art/<key>/` holds `Art.astro` (SVG, responsive via `viewBox`) + `meta.json` (`status: placeholder \| final`, `source`, `mobile`, `notes`). Optional `Art.mobile.astro` later. The build prints a **placeholder report** | Swap = replace one folder |
@@ -310,7 +310,7 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 
 | ID | Task | Concept | Done when |
 |----|------|:-------:|-----------|
-| 3.1 | **Home**: hero carousel (3 art states; reduced-motion respected; dots as in the concept) + focus cards | 2 | Visual diff vs `02-home.png`; works without JS |
+| 3.1 | **Home**: still hero (text + horizon schematic; the carousel was dropped, 2026-10-19) + focus cards | 2 | Visual diff vs `02-home.png`; works without JS |
 | 3.2 | **Projects**: 3 panels → microsites | 5 | Visual diff vs `05-projects.png` |
 | 3.3 | **Publications**: register + filters (link-outs for Blog and Curriculum) | 6 | Visual diff vs `06-publications.png`; without JS the full list shows |
 | 3.4 | **About**: splash (placeholder until C5) · Why we are Odyssean · Team; Experts & Citizens built behind the flag, with its preview route | 10, 8 | Visual diff vs `10-…png` for that section; preview of `08-…png` |

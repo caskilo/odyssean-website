@@ -25,7 +25,7 @@
 | Heading order jumped (h1 to h3) on the publication lists, the blog index, the team list and one blog post | `RegisterRow` takes a heading level; team names follow their group heading; the post's `###` headings became `##` |
 | Two GRAIN pages had no description | Drafted, pending approval ([open-questions.md](new-design/open-questions.md) section 2) |
 | The pending-content label failed colour contrast | Removed its transparency |
-| Home page carousel dots were smaller than the 24px WCAG 2.2 minimum | 24px hit areas (44px on phones), layout unchanged |
+| Home page carousel dots were smaller than the 24px WCAG 2.2 minimum | Superseded: the carousel was removed on 2026-10-19 |
 | Pages with no `noindex` support except one template | `noindex` is now part of the `prose` template only |
 | The contact form posts to a handler that does not exist yet | Form switched off (`flags.contactForm`); the page shows the email address and phone number |
 | Slow first paint and layout shift on the Modelling page (performance 84) | The four fonts used on first paint are preloaded (now 99) |

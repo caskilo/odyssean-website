@@ -21,28 +21,6 @@ async function open(path, { width = 1440, js = true } = {}) {
 
 try {
   {
-    const { page, close } = await open('/');
-    const active = () =>
-      page.$$eval('[data-slide]', (s) => s.map((x) => x.classList.contains('is-active')));
-    check('carousel: first slide active', (await active()).join() === 'true,false,false');
-    await page.click('[data-dot]:nth-child(2)');
-    check('carousel: dot 2 shows slide 2', (await active()).join() === 'false,true,false');
-    check('carousel: counter updates', (await page.textContent('[data-current]')) === '02');
-    check(
-      'carousel: aria-current moves',
-      (await page.getAttribute('[data-dot]:nth-child(2)', 'aria-current')) === 'true',
-    );
-    await close();
-  }
-  {
-    const { page, close } = await open('/', { js: false });
-    const active = await page.$$eval('[data-slide]', (s) =>
-      s.map((x) => x.classList.contains('is-active')),
-    );
-    check('carousel without JS: first slide visible', active.join() === 'true,false,false');
-    await close();
-  }
-  {
     const { page, close } = await open('/publications#policy-brief');
     const visible = await page.$$eval('[data-type]', (els) =>
       els.filter((e) => !e.hidden).map((e) => e.dataset.type),

@@ -52,7 +52,7 @@ sources:
 
 | `template`                                                          | Used by                                   | Notes                                                                                           |
 | ------------------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `home`                                                              | `/`                                       | Hero (three art slides, one text) + focus cards                                                 |
+| `home`                                                              | `/`                                       | Hero (one art, one text) + focus cards                                                          |
 | `projects`                                                          | `/projects`                               | Exactly three panels                                                                            |
 | `publications`                                                      | `/publications`                           | Filters, type labels, featured block. The list itself is the `publications` collection          |
 | `about`                                                             | `/about`                                  | Splash, Why we are Odyssean, Team headings, Experts & Citizens (flagged)                        |

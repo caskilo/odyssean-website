@@ -9,7 +9,7 @@ A static [Astro](https://astro.build) site. Every word lives in `src/content/` (
 ## Principles
 
 1. **No copy in code.** Templates, components and scripts hold no sentences. Missing text is a typed _content request_ (`{ request: CR-###, note }`) that renders as a visible placeholder and is tracked in [`open-questions.md`](../docs/new-design/open-questions.md).
-2. **Every page works without JavaScript.** Scripts only add behaviour on top (carousel, publications filter, signal selector, time-horizon slider).
+2. **Every page works without JavaScript.** Scripts only add behaviour on top (publications filter, signal selector, time-horizon slider).
 3. **The slides are ground truth.** Concept pages are checked against the design images. Where the concept is silent, the closest slide component is extended.
 4. **Static and boring.** No server code, no runtime dependencies beyond Astro, no cookies, no analytics.
 

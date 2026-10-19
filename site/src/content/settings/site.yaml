@@ -12,7 +12,6 @@ ui:
   subNav: 'Section'
   footerNav: 'Footer'
   requested: 'Content requested'
-  slide: 'Slide {n} of {total}'
 mainNav:
   - { label: 'Projects', href: '/projects' }
   - { label: 'Publications', href: '/publications' }
@@ -69,4 +68,4 @@ sources:
     note: 'GRAIN sub-nav and CTA'
   - kind: decision
     ref: 'build-plan B.3'
-    note: 'ui labels (incl. carousel "Slide {n} of {total}", from the concept aria-label "Tagline 1 of 3") are accessibility text, not page copy; copyright line follows the live footer "©2026 by Odyssean Institute". Main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'
+    note: 'ui labels are accessibility text, not page copy; copyright line follows the live footer "©2026 by Odyssean Institute". Main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'

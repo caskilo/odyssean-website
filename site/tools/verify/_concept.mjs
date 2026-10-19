@@ -41,6 +41,7 @@ const SUPERSEDED = {
   Team: 'main nav: About (H1)',
   'Blog & commentary': 'renamed "Blog" (C2)',
   Commentary: 'blog posts are not listed in the register',
+  'Policy brief, Feb 2026': 'date corrected to Feb 2024 to match the document (2026-10-19)',
   'Odyssean Institute · Registered charity 1204794':
     'composed from settings (name · charity number)',
 };

@@ -65,7 +65,7 @@ const pageSchema = ({ image }: SchemaContext) =>
       hero: z.object({
         headline,
         lede: copy,
-        slides: z.array(z.object({ art: artKey })).length(3), // same hero text on every slide (agreed default)
+        art: artKey,
       }),
       focus: z.object({
         heading: copy,
@@ -367,7 +367,6 @@ const settings = defineCollection({
       subNav: copy,
       footerNav: copy,
       requested: copy,
-      slide: z.string().includes('{n}'),
     }),
     mainNav: z.array(navItem),
     donate: navItem,

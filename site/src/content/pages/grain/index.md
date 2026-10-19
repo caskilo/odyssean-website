@@ -10,7 +10,7 @@ headline:
 lede: 'If one chokepoint fails, through error, conflict or capture, the whole global economy feels it. GRAIN maps the nodes that keep critical goods flowing under extreme stress, and finds where resilience and economic incentives already point the same way.'
 actions:
   - { label: 'Read the 2025 GRAIN report', href: '/files/grain-overview-report.pdf', style: primary }
-  - label: 'Policy brief, Feb 2026'
+  - label: 'Policy brief, Feb 2024'
     href: '/files/odyssean-process-policy-brief-2024.pdf'
     style: secondary
 figure:

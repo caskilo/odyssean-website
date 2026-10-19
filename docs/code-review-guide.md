@@ -191,5 +191,6 @@ How the open findings in 7.3 and the known gaps in 3.4 stand now. Results of the
 | Footer year changes only on rebuild | Open, acceptable |
 | Focus details looked up by heading text | Open, still covered by `verify:content` |
 | Gaps in 3.4: copy parity, axe/Lighthouse, feed, canonicals, robots, redirects | Done. Open Graph images done (gold logo on dark blue; posts use their cover) |
+| Carousel findings (7.2, 7.3) | Closed. The home page carousel was removed on 2026-10-19: one still hero, no dots or counter, `scripts/carousel.ts` and the two stand-in hero graphics are gone |
 
 CI now also runs `verify:built`, `verify:redirects` and `verify:links` (none needs a browser). The browser checks stay local.

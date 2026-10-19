@@ -64,7 +64,7 @@ site/
 │  ├─ components/     shared building blocks
 │  ├─ art/            swappable graphics, one folder each
 │  ├─ styles/         design tokens and the four themes
-│  ├─ scripts/        small enhancements (carousel, filter, signal selector, slider)
+│  ├─ scripts/        small enhancements (filter, signal selector, slider)
 │  ├─ lib/            helpers
 │  └─ assets/         images and fonts
 ├─ public/            files copied as they are: PDFs, favicon, robots.txt

@@ -14,7 +14,6 @@
 </thead>
 <tbody>
 <tr><td><strong>Q-01</strong></td><td>All pages</td><td><strong>Outside web pages we link to that no longer exist.</strong> Seven links, carried over from the current website, point to pages that have been removed. For most there may be no replacement. For each, please say whether to replace it with a new address, or remove the link. Will is looking into them. The list is in <a href="../link-report.md">link-report.md</a> under "Probably gone". They appear on the Focus page, the Curriculum page and some blog posts.</td><td>The links stay as they are and lead to an error page.</td></tr>
-<tr><td><strong>Q-08</strong></td><td>GRAIN home page</td><td><strong>The date on the policy brief button.</strong> The design's button reads "Policy brief, Feb 2026". It now opens the Odyssean Process Policy Brief, which is dated February 2024. Should the button say "Feb 2024", or is a newer brief on the way?</td><td>The button reads "Policy brief, Feb 2026", as designed, and opens the 2024 brief.</td></tr>
 </tbody>
 </table>
 
@@ -72,7 +71,6 @@ These do not affect the content, but the next stage (putting a private test vers
 <tbody>
 <tr><td><strong>Q-04</strong></td><td>Hosting</td><td><strong>Login access to the Mythic Beasts hosting account</strong> (or someone there who can set it up with us), so we can put a private test version online.</td><td>The test site is where the team does its review afternoon before launch.</td></tr>
 <tr><td><strong>Q-05</strong></td><td>Domain name</td><td><strong>Where is odysseaninstitute.org registered, and who can change it?</strong> Also a copy of the current email settings for the domain.</td><td>On launch day the website address moves to the new host. The email must keep working throughout, so we need to copy its settings exactly.</td></tr>
-<tr><td><strong>Q-06</strong></td><td>Home page pictures</td><td><strong>Do you have photographs or illustrations for the second and third pictures on the home page?</strong> The first (the horizon) is final. The other two (mountains and the sea) are simple stand-in drawings that we made.</td><td>The home page rotates through three pictures. The stand-ins are fine for launch if nothing else exists.</td></tr>
 <tr><td><strong>Q-07</strong></td><td>Phone versions of the diagrams</td><td><strong>Do you want phone-sized versions of the three large diagrams designed after launch?</strong> (the Horizon Scans tracks, the Odyssean Process voyage chart and the fan of futures).</td><td>On phones we shrink them and enlarge the labels. They are readable, but a designer could do better.</td></tr>
 </tbody>
 </table>
@@ -85,5 +83,7 @@ These do not affect the content, but the next stage (putting a private test vers
 - **The gold "Collaborate" button on the GRAIN pages now opens the GRAIN contact page.** There is no separate Collaborate page.
 - **The Horizon Scans page no longer shows a timeframe for each issue**, as agreed.
 - **The Policy Robustness and Uncertainty paper now links to the 2026 journal edition.** Authors, dates and the other missing details on the Publications page have been filled in.
+- **The home page now shows a single still picture (the horizon), as in the first design.** The rotating picture idea was dropped, so no extra pictures or taglines are needed.
+- **The GRAIN policy brief button now reads "Policy brief, Feb 2024"**, matching the document it opens.
 - **Old web addresses keep working.** Every old page and PDF address from the current website forwards to its new home, and all nine blog post addresses are unchanged, so existing links and search results are not lost.
 - **About 60 outside links** (publishers, journals and news sites) refuse automated checks, so we could not test them. They almost certainly work in a browser. See "Blocks automated checks" in [link-report.md](../link-report.md).
