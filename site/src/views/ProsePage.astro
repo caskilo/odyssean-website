@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getEntry, render } from 'astro:content';
+import { render } from 'astro:content';
 import Institutional from '../layouts/Institutional.astro';
 import Reading from '../layouts/Reading.astro';
 import Grain from '../layouts/Grain.astro';
@@ -13,8 +13,14 @@ import Prose from '../components/core/Prose.astro';
 import RegisterRow from '../components/core/RegisterRow.astro';
 import CopyText from '../components/core/Copy.astro';
 import ContactForm from '../components/ContactForm.astro';
-import { getPage, getPublications, type PageOf } from '../lib/content';
-import { isRequest, text } from '../lib/copy';
+import {
+  getPage,
+  getPublications,
+  publicationHref,
+  publicationMeta,
+  type PageOf,
+} from '../lib/content';
+import { text } from '../lib/copy';
 import { getSettings } from '../lib/site';
 import { md } from '../lib/markdown';
 
@@ -31,11 +37,9 @@ const Layout = {
 }[data.strand];
 
 // a page may borrow another page's body and form (e.g. a microsite Contact page)
-const source = data.contentFrom ? await getEntry('pages', data.contentFrom) : entry;
-if (!source) throw new Error(`contentFrom "${data.contentFrom}" not found`);
-const sourceData = source.data as PageOf<'prose'>['data'];
+const source = data.contentFrom ? await getPage(data.contentFrom, 'prose') : entry;
 const { Content } = await render(source);
-const form = sourceData.form ?? data.form;
+const form = source.data.form ?? data.form;
 const showContact = Boolean(form);
 const settings = showContact ? await getSettings() : undefined;
 
@@ -50,8 +54,6 @@ const listed = data.publications
 const typeLabels = listed.length
   ? (await getPage('publications', 'publications')).data.typeLabels
   : undefined;
-const metaOf = (p: (typeof all)[number]) =>
-  [p.data.authors, p.data.date].filter((v) => v && !isRequest(v)) as string[];
 const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
 ---
 
@@ -100,8 +102,8 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
           <RegisterRow
             type={typeLabels[p.data.type]}
             title={p.data.title}
-            href={(p.data.file ?? p.data.url)!}
-            meta={metaOf(p)}
+            href={publicationHref(p)}
+            meta={publicationMeta(p)}
           >
             <Fragment set:html={summaries[i]} />
           </RegisterRow>
@@ -117,8 +119,8 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
   .prose-page.container {
     padding-block: var(--space-7) var(--space-8);
   }
-  .prose-page :global(.eyebrow) {
-    margin-bottom: 1rem;
+  .prose-page {
+    --eyebrow-gap: 1rem;
   }
   .lede {
     max-width: 46rem;

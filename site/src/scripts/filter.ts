@@ -4,7 +4,7 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-filter]')) {
   const items = [...root.querySelectorAll<HTMLElement>('[data-type]')];
 
   const apply = () => {
-    const type = decodeURIComponent(location.hash.slice(1)) || 'all';
+    const type = location.hash.slice(1);
     const valid = links.some((l) => l.dataset.filterLink === type) ? type : 'all';
     items.forEach((i) => (i.hidden = valid !== 'all' && i.dataset.type !== valid));
     links.forEach((l) => {

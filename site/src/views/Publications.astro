@@ -4,8 +4,8 @@ import PageTitle from '../components/core/PageTitle.astro';
 import RegisterRow from '../components/core/RegisterRow.astro';
 import Button from '../components/core/Button.astro';
 import CopyText from '../components/core/Copy.astro';
-import { getPublications, type PageOf } from '../lib/content';
-import { isRequest, text } from '../lib/copy';
+import { getPublications, publicationHref, publicationMeta, type PageOf } from '../lib/content';
+import { text } from '../lib/copy';
 import { md } from '../lib/markdown';
 
 interface Props {
@@ -16,9 +16,6 @@ const all = await getPublications();
 const featured = all.find((p) => p.id === data.featured.publication);
 if (!featured) throw new Error(`featured publication "${data.featured.publication}" not found`);
 const rows = all.filter((p) => p !== featured);
-const link = (p: (typeof all)[number]) => (p.data.file ?? p.data.url)!;
-const meta = (p: (typeof all)[number]) =>
-  [p.data.authors, p.data.date].filter((v) => v && !isRequest(v)) as string[];
 const featuredDate = text(featured.data.date);
 ---
 
@@ -62,7 +59,7 @@ const featuredDate = text(featured.data.date);
             <CopyText value={data.featured.summary} />
           </p>
           <div class="featured__actions">
-            <Button href={link(featured)} size="small">
+            <Button href={publicationHref(featured)} size="small">
               <CopyText value={data.featured.cta} />
             </Button>
             <span class="featured__file">
@@ -78,8 +75,8 @@ const featuredDate = text(featured.data.date);
             <RegisterRow
               type={data.typeLabels[p.data.type]}
               title={p.data.title}
-              href={link(p)}
-              meta={meta(p)}
+              href={publicationHref(p)}
+              meta={publicationMeta(p)}
             >
               <Fragment set:html={await md(p.data.summary)} />
             </RegisterRow>

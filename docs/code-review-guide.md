@@ -114,3 +114,61 @@ Request path for a page: `content/pages/x.md` → schema validates → `[...slug
 4. Show, keep silent, or drop signal `categories`?
 5. Are phone-width simplifications of the three charts good enough to show at G2, or should phone art come earlier than planned?
 6. Is the `--step-small` 15 → 16px change on phones acceptable, or should it apply to all widths?
+
+---
+
+## 7. Review outcome (2026-10-19)
+
+Section 1 was run by Will (all checks pass). Sections 2 to 5 were reviewed by Devin against [build-plan.md](build-plan.md) Part E. After the changes below, `format:check`, `check`, `build`, `verify:content`, `verify:behaviour` and `verify:responsive` pass, and `verify:visual` mismatch percentages are unchanged.
+
+### 7.1 Answers to section 6
+
+| # | Question | Answer |
+|---|----------|--------|
+| 1 | Browser checks in CI | No install step for now |
+| 2 | Shared `MicrositeIntro` / numbered-cell row | No. Keep views independent |
+| 3 | Replace `:global` overrides | Done, see 7.2 (custom properties, not props) |
+| 4 | Signal `categories` | Keep, not shown |
+| 5 | Phone-width chart simplifications | Good enough for now |
+| 6 | `--step-small` 16px on phones | Accepted |
+
+### 7.2 Changes made
+
+| Change | Where | Why |
+|--------|-------|-----|
+| `:global` overrides replaced by custom properties: `--eyebrow-gap` (`Eyebrow`), `--heading-wrap` (`h1`-`h4` in `base.css`), new `Headline` size `landing`, `--accent` on the Home hero | Home, About, ProsePage, Modelling, GrainLanding, ScansLanding, ProcessLanding, `ExpertsCitizens`, `Eyebrow`, `Headline`, `base.css` | Views no longer depend on child class names. Two overrides were redundant and were deleted. `Prose` and `RegisterRow` keep `:global` for rendered Markdown |
+| Post cover alt uses `text(alt) ?? ''` | `pages/post/[slug].astro` | `as string` would render `[object Object]` for a pending content request (CR-003) |
+| `/donation-thank-you-page` excluded from the sitemap | `astro.config.mjs` | The page is `noindex` |
+| `contentFrom` resolved with `getPage(id, 'prose')` | `ProsePage` | Validates the template and removes a cast |
+| `publicationHref`, `publicationMeta` helpers | `lib/content.ts`, `Publications`, `ProsePage` | Removed duplication and a `!` assertion |
+| Carousel announces slide changes only on user action | `scripts/carousel.ts` | Auto-rotation spammed the `aria-live` region |
+| Removed `decodeURIComponent` from the filter hash | `scripts/filter.ts` | A malformed hash threw. Filter ids are ASCII slugs |
+
+### 7.3 Open findings (for implementation)
+
+**Before staging or launch**
+
+| Finding | Detail | Suggested action |
+|---------|--------|------------------|
+| Contact form posts to a missing `/contact.php` | `ContactForm.astro` is in the build, so submitting on a static host fails | Hide the form, or show the email address, until P9 |
+| `legacy.json` contains identity mappings | `/blog-feed.xml` maps to itself (redirect loop if emitted) and `/projects` maps to `/projects` | The P8.5 `.htaccess` generator must skip entries where source equals target |
+| No `public/.htaccess` or `robots.txt` | Planned P8 (8.4, 8.5) | Add with security headers: CSP, `X-Content-Type-Options`, `Referrer-Policy`, cache rules |
+| `noindex` is only honoured by `ProsePage` | The base schema allows it on every template | Pass it through in every view, or move it to the `prose` schema |
+
+**Lower priority**
+
+| Finding | Detail |
+|---------|--------|
+| Fonts | Arrus BT ships as four `.otf` files (about 200 KB). AD7 says subset WOFF2, which would save about 40%. No preload |
+| Carousel | Auto-rotates with no pause button (pauses on hover/focus, honours reduced motion). The art is decorative, so likely acceptable, but WCAG 2.2.2 audits may flag it |
+| `verify:content` scope | It checks the design-note blocklist against `src/content` only, not built HTML. The guide's 3.1 and 3.4 say the blocklist is not built, but it is |
+| Footer year | Computed at build time, so it changes only on rebuild |
+| Focus details | Looked up by heading string. Brittle, but covered by `verify:content` |
+| Known gaps from 3.4 | Still apply: axe/Lighthouse, OG images and per-page meta, `/blog-feed.xml`, `.htaccess` redirects, form handler |
+
+### 7.4 Checked and fine
+
+- Security: every `set:html` source is the project's own Markdown or YAML. No scripts, iframes or inline handlers in content. No secrets. No `target="_blank"`. Dependencies are pinned exactly. `npm audit` reports 0 vulnerabilities.
+- The single `entry as never` cast in `[...slug].astro` is acceptable because the schema is the real check.
+- Client scripts are small and do not double-bind (no client-side navigation).
+- SVG ids in `art/origin-venn` are fixed, which is safe because it appears once per page.

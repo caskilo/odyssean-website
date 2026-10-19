@@ -91,6 +91,7 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
   .hero {
     position: relative;
     overflow: hidden;
+    --accent: var(--sand);
     min-height: 40rem;
     padding-top: 13.375rem;
     background: var(--navy);
@@ -118,12 +119,7 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
     padding-bottom: 6rem;
     text-align: center;
   }
-  .hero :global(.headline) {
-    color: var(--paper);
-  }
-  .hero :global(.headline em) {
-    color: var(--sand);
-  }
+
   .hero__count {
     font-family: var(--font-mono);
     font-size: var(--step-mono);

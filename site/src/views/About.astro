@@ -58,7 +58,7 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
       <figcaption set:html={caption} />
     </figure>
     <div class="origin__text">
-      <div>
+      <div class="origin__head">
         <Eyebrow>
           <CopyText value={data.origin.eyebrow} />
         </Eyebrow>
@@ -161,9 +161,12 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
     flex-direction: column;
     gap: 2rem;
   }
+  .origin__head {
+    --eyebrow-gap: 1rem;
+  }
   @media (min-width: 75rem) {
-    .origin__text :global(h2.headline) {
-      text-wrap: nowrap;
+    .origin__head {
+      --heading-wrap: nowrap;
     }
   }
   .origin__cta {
@@ -218,9 +221,6 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
     .person {
       flex-direction: column;
     }
-  }
-  .origin__text :global(.eyebrow) {
-    margin-bottom: 1rem;
   }
   .person__text {
     min-width: 0;

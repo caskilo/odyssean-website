@@ -23,7 +23,7 @@ const Tracks = getArt('signal-tracks').Component;
         <Eyebrow>
           <CopyText value={data.eyebrow} />
         </Eyebrow>
-        <Headline text={data.headline.text} accent={data.headline.accent} size="l" />
+        <Headline text={data.headline.text} accent={data.headline.accent} size="landing" />
       </div>
       <p class="intro__aside">
         <CopyText value={data.aside} />
@@ -87,14 +87,10 @@ const Tracks = getArt('signal-tracks').Component;
   }
   .intro__title {
     max-width: 45rem;
+    --eyebrow-gap: 1.125rem;
+    --heading-wrap: wrap;
   }
-  .intro__title :global(.eyebrow) {
-    margin-bottom: 1.125rem;
-  }
-  .intro__title :global(h1) {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    text-wrap: wrap;
-  }
+
   .intro__aside {
     max-width: 23.75rem;
     margin: 0;

@@ -35,7 +35,7 @@ h4 {
   font-weight: 400;
   line-height: 1.15;
   margin: 0 0 0.5em;
-  text-wrap: balance;
+  text-wrap: var(--heading-wrap, balance);
 }
 h1 {
   font-size: var(--step-l);

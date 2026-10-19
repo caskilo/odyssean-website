@@ -21,6 +21,13 @@ export const getPosts = async () =>
 export const getPublications = async () =>
   (await getCollection('publications')).sort((a, b) => a.data.order - b.data.order);
 
+type PublicationEntry = CollectionEntry<'publications'>;
+/** The document a publication links to (the schema guarantees a file or a url). */
+export const publicationHref = (p: PublicationEntry) => (p.data.file ?? p.data.url)!;
+/** Authors and date, skipping pending content requests. */
+export const publicationMeta = (p: PublicationEntry) =>
+  [p.data.authors, p.data.date].filter((v) => typeof v === 'string') as string[];
+
 export const getTeam = async () =>
   (await getCollection('team')).sort((a, b) => a.data.order - b.data.order);
 

@@ -5,6 +5,7 @@ import Reading from '../../layouts/Reading.astro';
 import Headline from '../../components/core/Headline.astro';
 import Prose from '../../components/core/Prose.astro';
 import { getPosts, monthYear } from '../../lib/content';
+import { text } from '../../lib/copy';
 
 export async function getStaticPaths() {
   return (await getPosts()).map((post) => ({ params: { slug: post.id }, props: { post } }));
@@ -28,7 +29,7 @@ const iso = data.published.toISOString();
     </header>
     {data.cover && (
       <figure class="post__cover">
-        <Image src={data.cover.src} alt={data.cover.alt as string} width={1100} />
+        <Image src={data.cover.src} alt={text(data.cover.alt) ?? ''} width={1100} />
       </figure>
     )}
     <Prose>

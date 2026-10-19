@@ -10,12 +10,12 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-carousel]')) {
   let index = 0;
   let timer: number | undefined;
 
-  const show = (i: number) => {
+  const show = (i: number, announce = false) => {
     index = (i + slides.length) % slides.length;
     slides.forEach((s, n) => s.classList.toggle('is-active', n === index));
     dots.forEach((d, n) => d.setAttribute('aria-current', String(n === index)));
     if (counter) counter.textContent = String(index + 1).padStart(2, '0');
-    if (status) status.textContent = labels[index];
+    if (status) status.textContent = announce ? labels[index] : '';
   };
   const stop = () => window.clearInterval(timer);
   const start = () => {
@@ -25,7 +25,7 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-carousel]')) {
 
   dots.forEach((d, n) =>
     d.addEventListener('click', () => {
-      show(n);
+      show(n, true);
       start();
     }),
   );

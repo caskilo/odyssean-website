@@ -21,7 +21,7 @@ const Chart = getArt('voyage-chart').Component;
         <Eyebrow>
           <CopyText value={data.eyebrow} />
         </Eyebrow>
-        <Headline text={data.headline.text} accent={data.headline.accent} size="l" />
+        <Headline text={data.headline.text} accent={data.headline.accent} size="landing" />
       </div>
       <p class="intro__aside">
         <CopyText value={data.aside} />
@@ -63,13 +63,8 @@ const Chart = getArt('voyage-chart').Component;
     align-items: flex-end;
     gap: 1.5rem;
     margin-bottom: 2rem;
-  }
-  .intro :global(.eyebrow) {
-    margin-bottom: 1rem;
-  }
-  .intro :global(h1) {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    text-wrap: wrap;
+    --eyebrow-gap: 1rem;
+    --heading-wrap: wrap;
   }
   .intro__aside {
     max-width: 25rem;

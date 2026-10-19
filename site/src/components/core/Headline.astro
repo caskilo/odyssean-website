@@ -6,7 +6,7 @@ interface Props {
   text: Copy;
   accent?: Copy;
   tag?: 'h1' | 'h2' | 'h3';
-  size?: 'hero' | 'xl' | 'l' | 'm';
+  size?: 'hero' | 'xl' | 'l' | 'landing' | 'm';
   breakBefore?: boolean;
 }
 const { text, accent, tag: Tag = 'h1', size = 'l', breakBefore = false } = Astro.props;
@@ -36,6 +36,10 @@ const { text, accent, tag: Tag = 'h1', size = 'l', breakBefore = false } = Astro
   }
   .headline--l {
     font-size: var(--step-l);
+    line-height: 1.04;
+  }
+  .headline--landing {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     line-height: 1.04;
   }
   .headline--m {

@@ -27,7 +27,7 @@ const title = `${text(data.headline.text)} ${text(data.headline.accent)}`;
         <Eyebrow>
           <CopyText value={data.eyebrow} />
         </Eyebrow>
-        <Headline text={data.headline.text} accent={data.headline.accent} size="l" />
+        <Headline text={data.headline.text} accent={data.headline.accent} size="landing" />
       </div>
       <p class="intro__aside">
         <CopyText value={data.aside} />
@@ -97,14 +97,10 @@ const title = `${text(data.headline.text)} ${text(data.headline.accent)}`;
     align-items: flex-end;
     gap: 1.5rem;
     margin-bottom: 1.75rem;
+    --eyebrow-gap: 1rem;
+    --heading-wrap: wrap;
   }
-  .intro :global(.eyebrow) {
-    margin-bottom: 1rem;
-  }
-  .intro :global(h1) {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    text-wrap: wrap;
-  }
+
   .intro__aside {
     max-width: 25rem;
     margin: 0;
