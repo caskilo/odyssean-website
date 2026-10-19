@@ -71,13 +71,11 @@ Models, simulations, and predictions have become very important parts of the dec
 
 A simple way of doing this is to extrapolate: extend current trends into the future by assuming they continue.
 
-!
 
 [XKCD / Extrapolating](https://xkcd.com/605/)
 
 More complex versions of such modelling can take into account multiple factors, and provide a range of estimates using a variety of mathematical techniques, but mostly work on similar principles to the extrapolation graph depicted in the comic above.
 
-!
 
 Forecasts of GDP from December 2019 compared with outcomes [Economics Observatory](https://www.economicsobservatory.com/why-can-economic-forecasts-go-wrong)
 
@@ -117,7 +115,6 @@ However, it cannot be denied that this kind of attitude has permeated our discou
 
 This sort of sentiment is also often expressed by politicians and more mainstream sources. Famously, Michael Gove, the UK’s Secretary of State for Justice in the lead up to the referendum on Brexit, stated that [‘people have had enough of experts’](https://www.ft.com/content/3be49734-29cb-11e6-83e4-abc22d5d108c).
 
-!
 
 While the full quote clarifies that he meant something a little more specific than dismissing experts entirely, the quote taken out of context has become something of a meme in British politics. Readers from other countries will undoubtedly have their own examples of politicians and influencers calling out ‘experts’, or questioning their integrity and intentions.
 

@@ -9,7 +9,6 @@ sources:
     ref: "https://www.odysseaninstitute.org/post/pathways-to-resilience-learning-from-the-small-island-states-resilience-initiative"
 ---
 
-!
 
 SISRI Banner / [GFDRR](https://www.gfdrr.org/en/sisri)
 

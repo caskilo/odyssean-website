@@ -9,8 +9,6 @@ sources:
     ref: "https://www.odysseaninstitute.org/post/3-pr%C3%A9cis-our-tripartite-research-advocacy-agenda"
 ---
 
-!
-
 ## 3 Years On: Our Journey
 
 3 years ago today, while interrailing from Switzerland to Germany, I decided to take action on an increasingly desperate state of affairs. After my initial writings in [2017](https://medium.com/@seppdalpra/spring-break-ae9b60becb87) and [2019](https://medium.com/p/37d827f817de) had not fully exercised an urge to exorcise our seemingly accursed institutions, I set out to answer the famous Hamming Questions:

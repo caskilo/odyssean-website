@@ -9,8 +9,6 @@ sources:
     ref: "https://www.odysseaninstitute.org/post/an-odyssey-launched-update-on-the-first-odyssean-process"
 ---
 
-!
-
 After four years of developing innovations for deliberation on existential and catastrophic risks, 2026 is proving a thrilling, if daunting, moment to deliver the inaugural [Odyssean Process](/files/odyssean-process-white-paper-2024.pdf), our flagship method for turning deliberations into robust policy signals. With developments in AI continuing to catch commentators, decision-makers, and citizens with a mixture of surprise and trepidation, time has arguably never appeared more of the essence.
 
 It is thus a pleasure and a privilege to announce our progress with the Odyssean Process for managing catastrophic risks, as it nears its conclusion. This final operational step convenes a National Citizen's Assembly on regulating AI for civilisational resilience in the United Kingdom. Full deliberations began on the 12th July and re-commence today, continuing until the end of November. This is being conducted in partnership with the [House of the People](https://www.houseofthepeople.uk/) (the second sitting of their iterated, permanent institution for citizen deliberation in Britain) and [Involve](https://www.involve.org.uk/?gad_source=1&gad_campaignid=660719174&gbraid=0AAAAADQouTBP8kZnEuoVhECraUZGEwb7l&gclid=CjwKCAjwzNTUBhAjEiwA7zcvWvZ8rQOSsOAGQsv46n0eRdSWfyb5k_cHmy8eVwvPNw4a4aH1yuuLnxoCECEQAvD_BwE) advising.
@@ -51,7 +49,6 @@ These materials enable 8 online sessions of deliberation and learning, starting 
 
 All online deliberations serve to prepare the 100 demographically representative British citizens to deploy collective intelligence and their skin in the game on these enormous challenges in an in-person 3 day deliberation at the [People’s History Museum](https://phm.org.uk/) in Manchester on 27-29th November 2026.
 
-!
 
 This concludes the Odyssean Process, with the essential final deliberations developing principles and policy recommendations for strategic resilience to emerging AI risks by the public, for the public.
 
@@ -95,7 +92,6 @@ This ensures that any funding, sharing, and coalitional support lent to the OI w
 
 Our donation page is [here](/donate), and if you would like to reach out regarding working with us on projects of this calibre and uniqueness, please reach out to [contact@odysseaninstitute.org](mailto:contact@odysseaninstitute.org)
 
-!
 
 ## **Grateful Reflections**
 
@@ -110,5 +106,3 @@ Incidentally, if the ASMR of birdsong and punting poles from King’s College Ca
 The simultaneity of academic and operational work, however, also made this a Herculean effort. It meant my leadership of this project had to be balanced with intense workloads. This was only possible thanks to the patience and poise of all involved, from incredible contributions by the OI’s amazing, international team spread across many continents and time zones. I give the greatest and most heartfelt thanks and appreciation to the urgent, thorough, and efficient work of our team and all of our partners in this grand undertaking.
 
 I also wish to extend our deepest thanks to Kristian Rönn, Greg Colbourn, the Survival and Flourishing Fund, and King’s College, Cambridge for their donations making this possible.
-
-!
