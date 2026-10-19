@@ -1,5 +1,5 @@
 """Lift concept SVG artwork into src/art/<key>/ (build-plan C.4). One-off provenance script.
-Reads the unpacked concept slides in $TEMP/concepts (see docs/new-design/extracted/README.md)."""
+Reads the unpacked concept slides in $TEMP/concepts (see design-docs/new-design/extracted/README.md)."""
 import json, os, re, sys
 
 TEMP = os.environ.get('TEMP', '/tmp')

@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', '..');
+const SITE = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
 export const norm = (s) =>
   s
@@ -64,7 +64,7 @@ const isTrivial = (s) =>
 /** Every approved concept string: slide text, interactive-state appendix, art labels. */
 export async function conceptStrings() {
   const slidesText = (
-    await readFile(join(ROOT, 'docs', 'new-design', 'extracted', 'slides-text.md'), 'utf8')
+    await readFile(join(SITE, 'docs', 'slides-text.md'), 'utf8')
   ).replace(/\r\n/g, '\n');
   const out = [];
   for (const [, num, block] of slidesText.matchAll(

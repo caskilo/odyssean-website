@@ -1,6 +1,6 @@
 # Architecture
 
-How the site is put together, and why. For the plan and page list see [`../docs/build-plan.md`](../docs/build-plan.md); for editing content see [`CONTENT.md`](CONTENT.md).
+How the site is put together, and why. For the plan and page list see `design-docs/build-plan.md` (local only); for editing content see [`CONTENT.md`](CONTENT.md).
 
 ## In one paragraph
 
@@ -8,7 +8,7 @@ A static [Astro](https://astro.build) site. Every word lives in `src/content/` (
 
 ## Principles
 
-1. **No copy in code.** Templates, components and scripts hold no sentences. Missing text is a typed _content request_ (`{ request: CR-###, note }`) that renders as a visible placeholder and is tracked in [`open-questions.md`](../docs/new-design/open-questions.md).
+1. **No copy in code.** Templates, components and scripts hold no sentences. Missing text is a typed _content request_ (`{ request: CR-###, note }`) that renders as a visible placeholder and is tracked in [`open-questions.md`](docs/open-questions.md).
 2. **Every page works without JavaScript.** Scripts only add behaviour on top (publications filter, signal selector, time-horizon slider).
 3. **The slides are ground truth.** Concept pages are checked against the design images. Where the concept is silent, the closest slide component is extended.
 4. **Static and boring.** No server code, no runtime dependencies beyond Astro, no cookies, no analytics.
@@ -91,4 +91,4 @@ Three layers, from cheapest to most thorough:
 - **No analytics** at launch, so no cookie banner.
 - **Contact form.** The form component exists but is switched off; the page shows the email address and phone number until the mail handler is built (build-plan 9.3).
 
-Longer reasoning and the agreed architecture decisions (AD1 to AD12) are in [build-plan Part C](../docs/build-plan.md); a human-review checklist is in [`../docs/code-review-guide.md`](../docs/code-review-guide.md).
+Longer reasoning and the agreed architecture decisions (AD1 to AD12) are in build-plan Part C; a human-review checklist is in `design-docs/code-review-guide.md` (both local only).

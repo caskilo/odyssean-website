@@ -1,12 +1,12 @@
 # dependencies & build output
 node_modules/
-site/dist/
-site/.astro/
+dist/
+.astro/
 
 # QA output
-site/test-results/
-site/playwright-report/
-site/tools/.cache/
+test-results/
+playwright-report/
+tools/.cache/
 
 # env & secrets
 .env
@@ -21,3 +21,6 @@ Thumbs.db
 
 # Wix snapshot (reference only, to be deleted)
 existing/
+
+# dev/design docs live locally only; docs/ holds only the tracked verification inputs
+design-docs/

@@ -7,7 +7,7 @@ import { parse } from 'yaml';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const CONTENT = join(SITE, 'src', 'content');
-const OUT = join(SITE, '..', 'docs', 'content-map.md');
+const OUT = join(SITE, 'docs', 'content-map.md');
 
 async function* walk(dir) {
   for (const e of await readdir(dir, { withFileTypes: true }))
@@ -102,5 +102,5 @@ for (const [id, rs] of Object.entries(byId).sort())
 
 await writeFile(OUT, md);
 console.log(
-  `wrote ${relative(join(SITE, '..'), OUT)}: ${pages.length} pages, ${Object.keys(byId).length} request ids`,
+  `wrote ${relative(SITE, OUT)}: ${pages.length} pages, ${Object.keys(byId).length} request ids`,
 );

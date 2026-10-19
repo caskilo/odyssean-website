@@ -4,10 +4,10 @@ A static rebuild of [odysseaninstitute.org](https://www.odysseaninstitute.org), 
 
 |                  |                                                                                                                           |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Plan**         | [`../docs/build-plan.md`](../docs/build-plan.md): scope, page register, phases and gates                                  |
+| **Plan**         | `design-docs/build-plan.md` (local only): scope, page register, phases and gates                                          |
 | **Editing**      | [`CONTENT.md`](CONTENT.md): how to change words, add posts and publications (also written for an LLM assistant)           |
 | **How it works** | [`ARCHITECTURE.md`](ARCHITECTURE.md)                                                                                      |
-| **Open items**   | [`../docs/new-design/open-questions.md`](../docs/new-design/open-questions.md): what we are waiting on from the institute |
+| **Open items**   | [`docs/open-questions.md`](docs/open-questions.md): what we are waiting on from the institute                             |
 
 ## Quick start
 
@@ -45,16 +45,15 @@ CI runs the same checks plus the built-site checks below on every push and pull 
 | `verify:responsive`         | Every page at 360 / 768 / 1024 / 1440: no sideways scroll, tap targets, text size          | `build`, Chrome/Edge |
 | `verify:a11y`               | axe-core (WCAG 2.2 AA) on every page, plus keyboard checks                                 | `build`, Chrome/Edge |
 | `verify:lighthouse`         | Lighthouse (mobile): every category must score 90 or more                                  | `build`, Chrome/Edge |
-| `verify:visual`, `shots`    | Concept-versus-site comparison images and full-page screenshots, in `test-results/`        | `build`, Chrome/Edge |
+| `shots`                     | Full-page screenshots of routes, in `test-results/`                                        | `build`, Chrome/Edge |
 | `report:placeholders`       | Lists art that is still a stand-in or only an interim phone version                        |                      |
-| `report:content-map`        | Regenerates [`../docs/content-map.md`](../docs/content-map.md)                             |                      |
+| `report:content-map`        | Regenerates [`docs/content-map.md`](docs/content-map.md)                                   |                      |
 
 The browser checks find Chrome or Edge automatically. Set `CHROME_PATH` if yours is somewhere unusual. On Git Bash for Windows, pass routes without a leading slash (`npm run shots -- about`), or the shell rewrites them into file paths.
 
 ## Repository layout
 
 ```text
-site/
 ├─ src/
 │  ├─ content/        every word on the site (Markdown and YAML), checked by schemas
 │  ├─ content.config.ts  the schemas
@@ -69,6 +68,7 @@ site/
 │  └─ assets/         images and fonts
 ├─ public/            files copied as they are: PDFs, favicon, robots.txt
 ├─ tools/             checks, reports, redirects and the one-off Wix extraction scripts
+├─ docs/              verification inputs: slides-text.md, open-questions.md, content-map.md
 └─ dist/              build output (not committed)
 ```
 

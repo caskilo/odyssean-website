@@ -2,7 +2,7 @@
 // this script checks the rules a schema can't:
 //   1. copy parity    – every approved concept string appears verbatim in src/content
 //   2. design notes   – none of the concept's design notes appear in src/content
-//   3. requests       – every CR-### used in content is registered in docs/new-design/open-questions.md
+//   3. requests       – every CR-### used in content is registered in docs/open-questions.md
 //   4. internal links – every internal link resolves to a page, post, file or asset
 //   5. references     – publication ids / contentFrom targets exist
 // Exit code 1 on failure. Run: npm run verify:content
@@ -12,7 +12,6 @@ import { fileURLToPath } from 'node:url';
 import { conceptStrings, norm, DESIGN_NOTE_PHRASES } from './_concept.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
-const ROOT = join(SITE, '..');
 const CONTENT = join(SITE, 'src', 'content');
 const failures = [];
 const fail = (check, msg) => failures.push(`[${check}] ${msg}`);
@@ -43,7 +42,7 @@ for (const n of DESIGN_NOTE_PHRASES)
   if (corpusWithoutNotes.includes(norm(n))) fail('design-note', `"${n}" appears in src/content`);
 
 // ── 3: content requests ───────────────────────────────────────────────────
-const oq = await readFile(join(ROOT, 'docs', 'new-design', 'open-questions.md'), 'utf8');
+const oq = await readFile(join(SITE, 'docs', 'open-questions.md'), 'utf8');
 const registered = new Set([...oq.matchAll(/\bCR-\d{3}\b/g)].map((m) => m[0]));
 const used = new Map();
 for (const f of files)

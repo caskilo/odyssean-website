@@ -33,7 +33,7 @@ Any field typed as _copy_ takes either a string or a content request:
 lede: 'We survey scientists and specialists to surface the emerging trends that matter most.'
 # or, when the text doesn't exist yet:
 lede:
-  request: CR-005 # must also be listed in docs/new-design/open-questions.md
+  request: CR-005 # must also be listed in docs/open-questions.md
   note: 'What is needed, and why'
 ```
 
