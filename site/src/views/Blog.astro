@@ -16,6 +16,7 @@ const posts = await getPosts();
   <div class="list">
     {posts.map((p) => (
       <RegisterRow
+        tag="h2"
         type={monthYear(p.data.published)}
         title={p.data.title}
         href={`/post/${p.id}`}

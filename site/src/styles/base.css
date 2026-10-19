@@ -115,7 +115,6 @@ a:hover {
   font-size: var(--step-mono);
   padding: 0.1em 0.5em;
   border: 1px dashed currentColor;
-  opacity: 0.75;
 }
 
 @keyframes oi-spin {

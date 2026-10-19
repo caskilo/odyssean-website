@@ -1,7 +1,7 @@
 // Shared by the verify tools: serve the built site and launch a system Chrome/Edge.
 import { spawn } from 'node:child_process';
-import { access } from 'node:fs/promises';
-import { join, dirname } from 'node:path';
+import { access, readdir } from 'node:fs/promises';
+import { join, dirname, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 
@@ -19,22 +19,30 @@ const exists = (f) =>
     () => false,
   );
 
-export async function launch() {
+export async function chromePath() {
   const found = (await Promise.all(CHROMES.map(async (c) => ((await exists(c)) ? c : null)))).find(
     Boolean,
   );
   if (!found) throw new Error('No Chrome/Edge found; set CHROME_PATH');
-  return chromium.launch({ executablePath: found });
+  return found;
+}
+
+export async function launch() {
+  return chromium.launch({ executablePath: await chromePath() });
 }
 
 /** Serve ./dist with `astro preview`. Returns { base, stop }. */
 export async function serve(port = 4398) {
-  const server = spawn('npx', ['astro', 'preview', '--force', '--port', String(port)], {
-    cwd: SITE,
-    shell: true,
-    stdio: 'ignore',
-  });
-  const base = `http://localhost:${port}`;
+  const server = spawn(
+    'npx',
+    ['astro', 'preview', '--force', '--port', String(port), '--host', '127.0.0.1'],
+    {
+      cwd: SITE,
+      shell: true,
+      stdio: 'ignore',
+    },
+  );
+  const base = `http://127.0.0.1:${port}`;
   for (let i = 0; i < 60; i++) {
     try {
       if ((await fetch(base)).ok) break;
@@ -46,4 +54,21 @@ export async function serve(port = 4398) {
     spawn('npx', ['astro', 'preview', 'stop'], { cwd: SITE, shell: true, stdio: 'ignore' });
   };
   return { base, stop };
+}
+
+/** Every built page as a public route, e.g. dist/grain/reports.html → /grain/reports. */
+export async function builtRoutes(dir = join(SITE, 'dist')) {
+  const out = [];
+  for (const e of await readdir(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) out.push(...(await builtRoutes(p)));
+    else if (e.name.endsWith('.html') && e.name !== '404.html') {
+      const rel = relative(join(SITE, 'dist'), p)
+        .split(sep)
+        .join('/')
+        .replace(/\.html$/, '');
+      out.push('/' + (rel === 'index' ? '' : rel));
+    }
+  }
+  return out.sort();
 }

@@ -15,7 +15,7 @@ After four years of developing innovations for deliberation on existential and c
 
 It is thus a pleasure and a privilege to announce our progress with the Odyssean Process for managing catastrophic risks, as it nears its conclusion. This final operational step convenes a National Citizen's Assembly on regulating AI for civilisational resilience in the United Kingdom. Full deliberations began on the 12th July and re-commence today, continuing until the end of November. This is being conducted in partnership with the [House of the People](https://www.houseofthepeople.uk/) (the second sitting of their iterated, permanent institution for citizen deliberation in Britain) and [Involve](https://www.involve.org.uk/?gad_source=1&gad_campaignid=660719174&gbraid=0AAAAADQouTBP8kZnEuoVhECraUZGEwb7l&gclid=CjwKCAjwzNTUBhAjEiwA7zcvWvZ8rQOSsOAGQsv46n0eRdSWfyb5k_cHmy8eVwvPNw4a4aH1yuuLnxoCECEQAvD_BwE) advising.
 
-### **Journey So Far: Delivered in 2026** **(Foresight on Risks, Solutions, & Scenarios)**
+## **Journey So Far: Delivered in 2026** **(Foresight on Risks, Solutions, & Scenarios)**
 
 The Odyssean Process officially launched on 2nd February 2026 with invitations to 300+ experts in AI safety, ethics, and governance for an intensive Horizon and Solution Scan on AI. This first phase recruited experts by March, who then made staggered submissions thereafter of emerging, urgent AI risks and interventions to protect against them. Deploying the [IDEA Protocol](https://methodsblog.com/2018/03/27/idea-protocol-2/) as a foresight method for anticipatory analysis ensured rigorous, anonymised scoring of these submissions by May. The closing workshops distilled 18 top ranked risks from 68 initial issues, each with accompanying ranked policy interventions.
 
@@ -25,7 +25,7 @@ Each methodology enriches the analysis and sharpens awareness of how risks and t
 
 The Horizon Summit built from this a basis for exploratory modelling, identifying the variables that will aid citizens' and policymakers' decisions through Decision Making under Deep Uncertainty (DMDU) methods. This modelling is Phase 3, and is ongoing.
 
-### **Landing Ashore: Ongoing 2026 Delivery** **(Causal Modelling & Citizen's Assembly)**
+## **Landing Ashore: Ongoing 2026 Delivery** **(Causal Modelling & Citizen's Assembly)**
 
 As part of this, [CORDA Democracy](https://cordademocracy.org/) Fellows are converting the identified variables into causal loop maps. These maps show how the risks interconnect and where interventions carry their own second-order hazards that need further analysis. They also set up mixed-methods approaches to follow through the autumn, which investigate each risk as a sociotechnical system in which technical capability, human behaviour, and institutional context combine to produce the hazard. The aim is a pipeline for AI risk management, in line with [SaferAI's argument](https://www.safer-ai.org/better-evaluations-are-not-enough-ai-governance-needs-a-better-evaluation-pipeline) that the evidence of risk matters only when it connects to timely action; reinforcing the pragmatic policy aims of the Process at large.
 
@@ -71,7 +71,7 @@ Findings will be published as:
 
 3.  A further cumulative White Paper 2.0 condensing findings and the pilots leading to this point into a practical recipe for reproducing the Odyssean Process.
 
-### **New Horizons: 2027 & Onwards** **(Documentary & Wider Outreach)**
+## **New Horizons: 2027 & Onwards** **(Documentary & Wider Outreach)**
 
 Last but not least, we are planning to film a documentary tracking the mounting polycrisis of first AI development and democratic backsliding, through a brief history of both and an analysis of their intersections. This will be followed by a recording of the progress of the Odyssean Process, demonstrating how its design and delivery address the multiple crises of information ecologies, declining trust in institutions, and the need for technically rigorous epistemic inputs that are robust to numerous possible futures. This media artefact will then present a reproducible recipe for movements, citizens, policymakers, and researchers to adopt.
 
@@ -79,7 +79,7 @@ This helps to dovetail with the necessary inspiration and mobilisation of citize
 
 A cohesive strategy to engage those most exposed and powerless at the moment, with the insights, options, and opportunities to act, can ensure that, amid rapidly emerging change and deep uncertainty, bets are spread across both insider and outsider advocacy. (Humans can play at swarming agency too, after all…)
 
-### **Supporting this Work**
+## **Supporting this Work**
 
 If you would like to support this work, we continue to fundraise to ensure that operational delivery reinforces extant and imminent findings and their policy advocacy.
 
@@ -97,7 +97,7 @@ Our donation page is [here](/donate), and if you would like to reach out regardi
 
 !
 
-### **Grateful Reflections**
+## **Grateful Reflections**
 
 The proof in all this pudding feels especially hard earned, with the chance to fully test the Process coming within only 3 years after publishing our White Paper. Our track record in getting here - from conducting the first [Global Catastrophic Risk Horizon Scan](https://82a3361b-35a6-46b7-bc9c-135e206d488d.filesusr.com/ugd/cad45f_0ddb2ff8abe74792af7dc19e63fd81d2.pdf) focusing on tipping points and their drivers, to the first [Horizon Summit](https://82a3361b-35a6-46b7-bc9c-135e206d488d.filesusr.com/ugd/e5ae06_0c45281acce84b9198497299d9319fde.pdf) condensing several key futures methods on resilience to nuclear risks - has been one of agile completion of ambitious aims with often lean resources.
 

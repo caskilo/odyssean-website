@@ -2,13 +2,13 @@
 template: prose
 strand: scans
 title: 'Reports'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'Read the Horizon Scan of Global Catastrophic Risks and related Odyssean Institute publications.'
 heading: 'Reports'
 publicationsFor: scans
 sources:
   - kind: decision
     ref: 'build-plan B.3'
     note: 'default sub-page; lists every publication tagged scans'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---

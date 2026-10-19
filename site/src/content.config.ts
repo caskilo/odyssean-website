@@ -52,7 +52,6 @@ const base = {
   title: copy, // <title> / page heading where the template has no separate heading
   description: copy.optional(), // meta description
   strand,
-  noindex: z.boolean().default(false),
   sources,
 };
 
@@ -230,6 +229,7 @@ const pageSchema = ({ image }: SchemaContext) =>
       ...base,
       template: z.literal('prose'), // contact, donate, curriculum, microsite sub-pages, reports…
       family: z.enum(['institutional', 'reading']).default('institutional'),
+      noindex: z.boolean().default(false),
       eyebrow: copy.optional(),
       heading: copy.optional(),
       lede: copy.optional(),
@@ -378,7 +378,10 @@ const settings = defineCollection({
       z.enum(['grain', 'scans', 'process']),
       z.object({ name: copy, subnav: z.array(navItem).min(1), cta: navItem.optional() }),
     ),
-    flags: z.object({ teamSection: z.enum(['team', 'experts-citizens']) }),
+    flags: z.object({
+      teamSection: z.enum(['team', 'experts-citizens']),
+      contactForm: z.boolean(),
+    }),
     sources,
   }),
 });

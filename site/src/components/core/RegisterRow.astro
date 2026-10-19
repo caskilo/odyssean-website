@@ -7,8 +7,10 @@ interface Props {
   title: Copy;
   href: string;
   meta?: Copy[];
+  /** heading level of the title: h3 under a section heading, h2 directly under the page h1 */
+  tag?: 'h2' | 'h3';
 }
-const { type, title, href, meta = [] } = Astro.props;
+const { type, title, href, meta = [], tag: Tag = 'h3' } = Astro.props;
 const external = /^https?:\/\//.test(href);
 ---
 
@@ -17,11 +19,11 @@ const external = /^https?:\/\//.test(href);
     <CopyText value={type} />
   </div>
   <div class="row__main">
-    <h3 class="row__title">
+    <Tag class="row__title">
       <a class="tap" {href} {...(external ? { rel: 'noopener' } : {})}>
         <CopyText value={title} />
       </a>
-    </h3>
+    </Tag>
     {meta.length > 0 && (
       <p class="row__meta">
         {meta.map((m, i) => (

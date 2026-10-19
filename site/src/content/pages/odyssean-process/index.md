@@ -2,9 +2,7 @@
 template: process-landing
 strand: process
 title: 'The Odyssean Process'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'How the Odyssean Process takes us from expert knowledge to democratic decisions in three ports of call: sample, map and empower.'
 eyebrow: 'Our method · The Odyssean Process'
 headline:
   text: 'How the voyage'
@@ -27,4 +25,6 @@ ports:
 sources:
   - kind: concept
     ref: '04'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---

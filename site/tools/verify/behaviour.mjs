@@ -151,8 +151,23 @@ try {
     await close();
   }
   {
+    // flags.contactForm is off until the mail handler exists (9.3): the page shows the email address instead
     const { page, close } = await open('/contact?sent=1');
-    check('contact: success message appears after submit', await page.isVisible('.form__success'));
+    const hasForm = (await page.$('form[data-form]')) !== null;
+    check(
+      'contact: form hidden while there is no mail handler, address shown',
+      !hasForm && (await page.isVisible('.contact-details a[href^="mailto:"]')),
+    );
+    await close();
+  }
+  {
+    const { page, close } = await open('/about');
+    check(
+      'nav: current page is marked in the built site',
+      (await page.$eval('.site-header__nav a[aria-current="page"]', (a) =>
+        a.getAttribute('href'),
+      )) === '/about',
+    );
     await close();
   }
 } finally {

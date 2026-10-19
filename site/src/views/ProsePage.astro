@@ -41,7 +41,7 @@ const source = data.contentFrom ? await getPage(data.contentFrom, 'prose') : ent
 const { Content } = await render(source);
 const form = source.data.form ?? data.form;
 const showContact = Boolean(form);
-const settings = showContact ? await getSettings() : undefined;
+const settings = await getSettings();
 
 const all = await getPublications();
 const listed = data.publications
@@ -83,7 +83,7 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
       <Image class="hero-image" src={data.hero.src} alt={text(data.hero.alt) ?? ''} width={1180} />
     )}
 
-    {showContact && settings && (
+    {showContact && (
       <p class="contact-details">
         <a class="tap" href={`mailto:${settings.email}`}>
           {settings.email}
@@ -100,6 +100,7 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
       <div class="listing">
         {listed.map((p, i) => (
           <RegisterRow
+            tag="h2"
             type={typeLabels[p.data.type]}
             title={p.data.title}
             href={publicationHref(p)}
@@ -111,7 +112,7 @@ const summaries = await Promise.all(listed.map((p) => md(p.data.summary)));
       </div>
     )}
 
-    {form && <ContactForm {form} />}
+    {form && settings.flags.contactForm && <ContactForm {form} />}
   </div>
 </Layout>
 

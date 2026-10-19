@@ -30,4 +30,7 @@ jobs:
       - run: npm run check
       - run: npm run build
       - run: npm run verify:content
+      - run: npm run verify:built
+      - run: npm run verify:redirects
+      - run: npm run verify:links
       - run: npm run report:placeholders

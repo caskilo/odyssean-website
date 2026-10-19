@@ -9,6 +9,7 @@
 import { readFile, readdir, access } from 'node:fs/promises';
 import { join, dirname, relative, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { conceptStrings, norm, DESIGN_NOTE_PHRASES } from './_concept.mjs';
 
 const SITE = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const ROOT = join(SITE, '..');
@@ -29,93 +30,16 @@ const exists = (f) =>
 const files = [];
 for await (const f of walk(CONTENT))
   if (/\.(md|ya?ml)$/.test(f)) files.push({ path: f, text: await readFile(f, 'utf8') });
-const norm = (s) =>
-  s
-    .replace(/\\(["'\\])/g, '$1')
-    .replace(/''/g, "'")
-    .replace(/[*_`]/g, '')
-    .replace(/\s+/g, ' ')
-    .toLowerCase()
-    .trim();
 const corpus = norm(files.map((f) => f.text).join('\n'));
 // provenance notes may quote design notes when explaining that they are *not* used
 const corpusWithoutNotes = norm(files.map((f) => f.text.replace(/^\s*note:.*$/gm, '')).join('\n'));
 
 // ── 1 + 2: copy parity & design notes ─────────────────────────────────────
-const slidesText = (
-  await readFile(join(ROOT, 'docs', 'new-design', 'extracted', 'slides-text.md'), 'utf8')
-).replace(/\r\n/g, '\n');
-const ACTIVE = new Set(['01', '02', '03', '04', '05', '06', '07', '08', '09', '10']);
-const DESIGN_NOTES = [
-  'Room 1 — Current work',
-  '3 panels',
-  'Archive →',
-  'Each panel opens a full project page in the same format',
-  'Homepage · Focus areas',
-  'Our mark,',
-  'three ways in.',
-  'The same mark at every scale',
-  'Favicon',
-  'Loader',
-  'Section marker',
-  'Footer lockup',
-  'Explore',
-];
-/** Superseded by agreed decisions (not design notes, but intentionally not used). */
-const SUPERSEDED = {
-  'Our work': 'main nav: dropped (OQ C4)',
-  'Horizon Scan': 'main nav: replaced by Projects',
-  Team: 'main nav: About (H1)',
-  'Blog & commentary': 'renamed "Blog" (C2)',
-  Commentary: 'blog posts are not listed in the register',
-  'Odyssean Institute · Registered charity 1204794':
-    'composed from settings (name · charity number)',
-};
-const isTrivial = (s) =>
-  /^(\d+|[IVX]+|[.→·]|N|\d+ \/ \d+|\{\{.*\}\})$/.test(s) || /\[[^\]]*\]/.test(s);
-let checked = 0;
-for (const [, num, block] of slidesText.matchAll(
-  /^## (\d\d) [^\n]*\n[\s\S]*?```text\n([\s\S]*?)```/gm,
-)) {
-  if (!ACTIVE.has(num)) continue;
-  for (const line of block
-    .split('\n')
-    .map((l) => l.trim())
-    .filter(Boolean)) {
-    if (isTrivial(line) || DESIGN_NOTES.includes(line) || SUPERSEDED[line]) continue;
-    checked++;
-    if (!corpus.includes(norm(line)))
-      fail('copy', `slide ${num}: "${line}" not found in src/content`);
-  }
-}
-// appendix tables (interactive states) and SVG labels
-const appendix = slidesText.slice(slidesText.indexOf('## Appendix'));
-for (const [, row] of appendix.matchAll(/^\| (?!-|Tab|Horizon)(.+) \|$/gm)) {
-  for (const cell of row.split(' | ').slice(1)) {
-    const c = cell.trim();
-    if (!c || /^[<≥\d]/.test(c)) continue;
-    checked++;
-    if (!corpus.includes(norm(c))) fail('copy', `appendix: "${c}" not found in src/content`);
-  }
-}
-const SVG_LABELS = [
-  'chokepoint',
-  'nodes of persisting recovery',
-  'origin',
-  'destination',
-  'Today',
-  'Chart of the Odyssean Process · Sheet 1',
-  'Better',
-  'Worse',
-  'Natural sciences',
-  'Social sciences',
-  'Odyssean',
-];
-for (const l of SVG_LABELS) {
-  checked++;
-  if (!corpus.includes(norm(l))) fail('copy', `art label "${l}" not found`);
-}
-for (const n of DESIGN_NOTES.filter((n) => n.length > 12))
+const concept = await conceptStrings();
+const checked = concept.length;
+for (const { where, text } of concept)
+  if (!corpus.includes(norm(text))) fail('copy', `${where}: "${text}" not found in src/content`);
+for (const n of DESIGN_NOTE_PHRASES)
   if (corpusWithoutNotes.includes(norm(n))) fail('design-note', `"${n}" appears in src/content`);
 
 // ── 3: content requests ───────────────────────────────────────────────────

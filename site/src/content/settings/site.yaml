@@ -59,6 +59,7 @@ microsites:
       - { label: 'Modelling', href: '/odyssean-process/modelling' }
       - { label: 'Deliberation', href: '/odyssean-process/deliberation' }
 flags:
+  contactForm: false # switch on when the mail handler exists on the host (build-plan 9.3)
   teamSection: team # switch to experts-citizens when the Assembly content exists (~2027)
 sources:
   - kind: live

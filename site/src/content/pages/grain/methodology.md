@@ -2,9 +2,7 @@
 template: prose
 strand: grain
 title: 'Methodology'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'The modelling approach and open knowledge gaps behind GRAIN''s work on resilient supply chains after a nuclear war.'
 heading: 'Methodology'
 sources:
   - kind: live
@@ -13,6 +11,8 @@ sources:
   - kind: decision
     ref: 'build-plan task 1.6'
     note: 'Resilient Supply Chains sets out the modelling approach and knowledge gaps, so it maps to GRAIN Methodology'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---
 
 ## Resilient Supply Chains

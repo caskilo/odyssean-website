@@ -370,6 +370,8 @@ All P3–P6 tasks are 🤖 and follow E.3 (definition of done).
 | 8.5 | **Redirects**: `.htaccess` generated from the B.2 retired list + the asset manifest; tested against a local Apache-compatible check | Every old URL → 200 |
 | 8.6 | Link check (internal + external); dead external links **reported, not fixed** | Report filed |
 
+> **P8 status: done 2026-10-19** (G2 still needs Will to review the placeholder report). Results, fixes and the explained visual differences are in [qa-report.md](qa-report.md). New checks: `verify:built`, `verify:redirects`, `verify:links`, `verify:a11y`, `verify:lighthouse`. `dist/.htaccess` is generated at build from `tools/redirects/legacy.json`; the real-server test is 9.4. External link report: [link-report.md](link-report.md).
+
 #### P9: Staging on Mythic Beasts → Gate G3
 
 | ID | Task | Method | Depends | Done when |

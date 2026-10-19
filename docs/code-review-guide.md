@@ -172,3 +172,24 @@ Section 1 was run by Will (all checks pass). Sections 2 to 5 were reviewed by De
 - The single `entry as never` cast in `[...slug].astro` is acceptable because the schema is the real check.
 - Client scripts are small and do not double-bind (no client-side navigation).
 - SVG ids in `art/origin-venn` are fixed, which is safe because it appears once per page.
+
+---
+
+## 8. Follow-up after P8 (2026-10-19)
+
+How the open findings in 7.3 and the known gaps in 3.4 stand now. Results of the P8 checks are in [qa-report.md](qa-report.md).
+
+| Finding | Status |
+|---------|--------|
+| Contact form posts to a missing `/contact.php` | Done. `flags.contactForm` is off; the page shows the email address and phone number. Switch it on in P9 |
+| `legacy.json` identity mappings | Done. The generator skips entries where source equals target (`/projects`, `/blog-feed.xml`) |
+| No `.htaccess` or `robots.txt` | Done. `dist/.htaccess` is generated at build (clean URLs, redirects, security headers incl. a Content-Security-Policy, caching, 404 page); `robots.txt` is in `public/` |
+| `noindex` only honoured by `ProsePage` | Done. The field now exists only on the `prose` template, which is the only one that uses it |
+| Fonts: no preload | Done for the four fonts used on first paint (it also fixed a layout shift on Modelling). Subsetting Arrus BT to WOFF2 is still open |
+| Carousel has no pause button | Open (pauses on hover and focus, honours reduced motion; axe passes) |
+| `verify:content` checks only the source | Done. `verify:built` repeats copy parity and the design-note blocklist on the rendered HTML |
+| Footer year changes only on rebuild | Open, acceptable |
+| Focus details looked up by heading text | Open, still covered by `verify:content` |
+| Gaps in 3.4: copy parity, axe/Lighthouse, feed, canonicals, robots, redirects | Done. Per-page Open Graph images are open (needs a picture, open-questions Q-03) |
+
+CI now also runs `verify:built`, `verify:redirects` and `verify:links` (none needs a browser). The browser checks stay local.

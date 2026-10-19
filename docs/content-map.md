@@ -10,15 +10,16 @@
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
 | `/` | home | 🎨 slide 02<br>🌐 /<br>⚖️ build-plan B.2 | — | — |
+| `/404` | prose | ⚖️ not-found text drafted by Devin; pending review by Will (build-plan 8.5: Apache ErrorDocument) | — | — |
 | `/about` | about | 🎨 slide 10<br>🎨 slide 08<br>🌐 /team | — | CR-001 (splash.body) |
-| `/blog` | blog | 🌐 /blog | — | CR-008 (description) |
+| `/blog` | blog | 🌐 /blog<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 | `/contact` | prose | 🌐 /contact<br>🌐 /<br>⚖️ build-plan AD10 | 34 words | — |
 | `/curriculum` | prose | 🌐 /curriculum | 1253 words | — |
-| `/donate` | prose | 🌐 /donate | 38 words | — |
-| `/donation-thank-you-page` | prose | 🌐 /donation-thank-you-page | — | CR-002 (heading) |
+| `/donate` | prose | 🌐 /donate | 77 words | — |
+| `/donation-thank-you-page` | prose | 🌐 /donation-thank-you-page<br>⚖️ thank-you text drafted by Devin; pending review by Will | 12 words | — |
 | `/faq` | faq | 🌐 /faq | 1505 words | — |
 | `/focus` | focus | 🎨 slide 07<br>🌐 /focus | 764 words | — |
-| `/projects` | projects | 🎨 slide 05 | — | CR-008 (description) |
+| `/projects` | projects | 🎨 slide 05<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 | `/publications` | publications | 🎨 slide 06<br>🌐 /publications<br>⚖️ open-questions C2 (resolved) | — | — |
 
 ### GRAIN microsite
@@ -26,27 +27,27 @@
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
 | `/grain` | grain-landing | 🎨 slide 01<br>🌐 /grain | 1047 words | CR-004 (actions.1.href) |
-| `/grain/collaborate` | prose | 🎨 slide 01 | — | CR-005 (lede) |
-| `/grain/contact` | prose | 🎨 slide 01<br>⚖️ build-plan task 1.6 | — | — |
-| `/grain/governance-under-fallout` | prose | 🎨 slide 01<br>🌐 /publications | — | CR-008 (description) |
-| `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6 | 613 words | CR-008 (description) |
-| `/grain/reports` | prose | 🎨 slide 01<br>🌐 /publications | — | CR-008 (description) |
+| `/grain/collaborate` | prose | 🎨 slide 01<br>⚖️ meta description drafted by Devin; pending review by Will | — | CR-005 (lede) |
+| `/grain/contact` | prose | 🎨 slide 01<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/grain/governance-under-fallout` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | 613 words | — |
+| `/grain/reports` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 
 ### Horizon Scans microsite
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/horizon-scans` | scans-landing | 🎨 slide 03<br>⚖️ open-questions C1–C2 (resolved) | — | CR-008 (description) |
-| `/horizon-scans/reports` | prose | ⚖️ build-plan B.3 | — | CR-008 (description) |
+| `/horizon-scans` | scans-landing | 🎨 slide 03<br>⚖️ open-questions C1–C2 (resolved)<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/horizon-scans/reports` | prose | ⚖️ build-plan B.3<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
 
 ### Odyssean Process microsite
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/odyssean-process` | process-landing | 🎨 slide 04 | — | CR-008 (description) |
-| `/odyssean-process/deliberation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519 | 455 words | CR-008 (description) |
-| `/odyssean-process/expert-elicitation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519 | 505 words | CR-008 (description) |
-| `/odyssean-process/modelling` | modelling | 🎨 slide 09<br>📄 e56281_f0a77ff859354023bf743d07b9cea519 | 354 words | CR-008 (description) |
+| `/odyssean-process` | process-landing | 🎨 slide 04<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/odyssean-process/deliberation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 455 words | — |
+| `/odyssean-process/expert-elicitation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 505 words | — |
+| `/odyssean-process/modelling` | modelling | 🎨 slide 09<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 354 words | — |
 
 ## Collections
 
@@ -79,10 +80,8 @@
 | ID | Where | Field | Note |
 |---|---|---|---|
 | CR-001 | `pages/about.md` | splash.body | Splash text introducing the institute (open question C5). The current site has no such text. |
-| CR-002 | `pages/donation-thank-you-page.md` | heading | Static thank-you text. The live page uses Wix donation placeholders ("Thank you, Donor Name … £0 … #1000") that a static site cannot fill. |
 | CR-004 | `pages/grain/index.md` | actions.1.href | The GRAIN policy brief (Feb 2026) linked from the concept is not on the current site. Please supply the PDF, or confirm the button should be dropped. |
 | CR-005 | `pages/grain/collaborate.md` | lede | Content for the GRAIN "Collaborate" page (concept 01 CTA). There is no matching page on the current site. |
 | CR-006 | `signals/01-integration-of-ai-in-nuclear-weapons-systems.yaml`<br>`signals/02-state-capacity-deficits.yaml`<br>`signals/03-cascading-failures-of-global-food-systems.yaml`<br>`signals/04-climate-change-induced-displacement.yaml`<br>`signals/05-unclear-future-of-the-ocean-carbon-sink.yaml` | horizon | Time horizon for this signal. The Horizon Scan paper does not state one per issue. |
 | CR-007 | `publications/bridging-local-technocratic-epistemologies.yaml`<br>`publications/governance-under-fallout.yaml`<br>`publications/master-equation-for-power-laws.yaml`<br>`publications/odyssean-process-policy-brief.yaml`<br>`publications/policy-robustness-uncertainty-energy-transition.yaml` | date, authors | Publication date is not stated on the live page or the document. |
-| CR-008 | `pages/blog.md`<br>`pages/grain/governance-under-fallout.md`<br>`pages/grain/methodology.md`<br>`pages/grain/reports.md`<br>`pages/horizon-scans/index.md`<br>`pages/horizon-scans/reports.md`<br>`pages/odyssean-process/deliberation.md`<br>`pages/odyssean-process/expert-elicitation.md`<br>`pages/odyssean-process/index.md`<br>`pages/odyssean-process/modelling.md`<br>`pages/projects.md` | description | Meta description (search snippet) for pages new to the site. |
 | CR-009 | `quotes/01-expert.yaml`<br>`quotes/02-citizen.yaml`<br>`quotes/03-citizen.yaml`<br>`quotes/04-expert.yaml` | quote, name, affiliation | Experts & Citizens (concept 08): quote, name and affiliation for each of the 4 cards. Not needed for launch (section ships switched off). |

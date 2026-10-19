@@ -87,6 +87,7 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
     <section class="team" id="team">
       {teamGroups.map(({ heading, level, members }) => {
         const Tag = `h${level}` as 'h2' | 'h3';
+        const Name = `h${level + 1}` as 'h3' | 'h4';
         return (
           <div class="team__group">
             <Tag class="team__heading">
@@ -104,7 +105,7 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
                     loading="lazy"
                   />
                   <div class="person__text">
-                    <h4 class="person__name">{p.name}</h4>
+                    <Name class="person__name">{p.name}</Name>
                     {p.role && <div class="person__role">{p.role}</div>}
                     <div class="person__bio" set:html={p.bio} />
                   </div>

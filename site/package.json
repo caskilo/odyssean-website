@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node tools/redirects/htaccess.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier --write .",
@@ -19,16 +19,25 @@
     "verify:visual": "node tools/verify/visual.mjs",
     "shots": "node tools/verify/shots.mjs",
     "verify:behaviour": "node tools/verify/behaviour.mjs",
-    "verify:responsive": "node tools/verify/responsive.mjs"
+    "verify:responsive": "node tools/verify/responsive.mjs",
+    "verify:built": "node tools/verify/built.mjs",
+    "verify:redirects": "node tools/verify/redirects.mjs",
+    "verify:a11y": "node tools/verify/a11y.mjs",
+    "verify:lighthouse": "node tools/verify/lighthouse.mjs",
+    "verify:links": "node tools/verify/links.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.2",
+    "@astrojs/rss": "4.0.19",
     "@astrojs/sitemap": "3.7.4",
     "astro": "7.3.6"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
+    "axe-core": "4.14.0",
     "cheerio": "1.2.0",
+    "chrome-launcher": "1.2.2",
+    "lighthouse": "13.5.0",
     "pixelmatch": "8.0.0",
     "playwright-core": "1.64.0",
     "pngjs": "7.0.0",

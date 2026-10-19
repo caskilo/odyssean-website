@@ -2,9 +2,7 @@
 template: scans-landing
 strand: scans
 title: 'Horizon Scans'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'Five emerging issues from our pilot Horizon Scan of global catastrophic risks, identified by the experts we surveyed.'
 eyebrow: 'Pilot Horizon Scan · Global Catastrophic Risks'
 headline:
   text: 'Five signals worth'
@@ -20,4 +18,6 @@ sources:
   - kind: decision
     ref: 'open-questions C1–C2 (resolved)'
     note: 'Horizon Scans is its own microsite; plural name'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---

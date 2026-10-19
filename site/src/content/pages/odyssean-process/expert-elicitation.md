@@ -2,9 +2,7 @@
 template: prose
 strand: process
 title: 'Expert Elicitation of Judgement'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'How the Odyssean Process surveys scientists and specialists to surface the emerging trends that matter most.'
 eyebrow: 'Port I · Sample'
 heading: 'Expert Elicitation of Judgement (EEJ)'
 lede: 'We survey scientists and specialists to surface the emerging trends that matter most.'
@@ -17,6 +15,8 @@ sources:
   - kind: pdf
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 15, EEJ row) and §04.3 (p. 17, EEJ paragraphs); footnote markers and "(see below)" cross-references omitted'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---
 
 ## What problem is addressed?

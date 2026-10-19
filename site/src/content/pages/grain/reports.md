@@ -2,9 +2,7 @@
 template: prose
 strand: grain
 title: 'Reports'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'Reports and papers from the GRAIN initiative on resilience, trade and governance in a global catastrophe.'
 heading: 'Reports'
 publicationsFor: grain
 sources:
@@ -14,4 +12,6 @@ sources:
   - kind: live
     ref: 'https://www.odysseaninstitute.org/publications'
     note: 'lists every publication tagged grain'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---

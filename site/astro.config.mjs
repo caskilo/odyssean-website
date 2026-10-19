@@ -6,9 +6,10 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   build: { format: 'file' },
+  vite: { build: { assetsInlineLimit: 0 } },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/preview/') && !page.includes('/donation-thank-you-page'),
+      filter: (page) => !/[/](preview[/]|donation-thank-you-page|404)/.test(page),
     }),
   ],
 });

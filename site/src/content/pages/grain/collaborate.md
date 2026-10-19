@@ -2,6 +2,7 @@
 template: prose
 strand: grain
 title: 'Collaborate'
+description: 'How to collaborate with the GRAIN initiative.'
 heading: 'Collaborate'
 lede:
   request: CR-005
@@ -10,4 +11,6 @@ sources:
   - kind: concept
     ref: '01'
     note: 'sub-nav call to action "Collaborate"'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---

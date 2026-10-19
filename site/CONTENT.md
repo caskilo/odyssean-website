@@ -64,7 +64,7 @@ sources:
 
 ## Common tasks
 
-**Add a blog post:** create `posts/<slug>.md` with `title`, `author`, `published` (ISO date), optional `cover` (`src` + `alt`) and `sources`. Then write the body in Markdown.
+**Add a blog post:** create `posts/<slug>.md` with `title`, `author`, `published` (ISO date), optional `description` (the search-result text; without one, the first paragraph of the post is used), optional `cover` (`src` + `alt`) and `sources`. Then write the body in Markdown.
 
 **Add a publication:** create `publications/<slug>.yaml`. Give it `order`, `title`, `type` (`policy-brief` / `white-paper` / `research-report`), `summary`, a `file` (`/files/…pdf`) or a `url`, `programmes` (which microsite reports pages list it), `verification` and `sources`.
 

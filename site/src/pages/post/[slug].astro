@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import { render } from 'astro:content';
 import Reading from '../../layouts/Reading.astro';
 import Headline from '../../components/core/Headline.astro';
 import Prose from '../../components/core/Prose.astro';
-import { getPosts, monthYear } from '../../lib/content';
+import { excerpt, getPosts, monthYear } from '../../lib/content';
 import { text } from '../../lib/copy';
 
 export async function getStaticPaths() {
@@ -15,9 +15,14 @@ const { post } = Astro.props;
 const { data } = post;
 const { Content } = await render(post);
 const iso = data.published.toISOString();
+const cover = data.cover && (await getImage({ src: data.cover.src, width: 1200 }));
+const article = {
+  published: data.published,
+  image: cover && new URL(cover.src, Astro.site).href,
+};
 ---
 
-<Reading title={data.title} description={data.description}>
+<Reading title={data.title} description={data.description ?? excerpt(post.body)} {article}>
   <article class="post">
     <header class="post__head">
       <p class="post__meta">

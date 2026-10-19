@@ -40,3 +40,27 @@ export const getQuotes = async () =>
 /** "Sep 2026": built from the date, not copy. */
 export const monthYear = (d: Date) =>
   new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' }).format(d);
+
+/** Meta description for a post without one: its first full paragraph, cut at a sentence (or word) boundary. */
+export function excerpt(body = '', max = 160) {
+  const paragraph = body
+    .split(/\n{2,}/)
+    .map((p) =>
+      p
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+        .replace(/[*_`>#]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+    )
+    .find((p) => p.length >= 60);
+  if (!paragraph) return undefined;
+  let out = '';
+  for (const sentence of paragraph.split(/(?<=[.!?])\s+/)) {
+    if ((out + ' ' + sentence).trim().length > max) break;
+    out = (out + ' ' + sentence).trim();
+  }
+  if (out) return out;
+  const cut = paragraph.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:.\s]+$/, '') + '…';
+}

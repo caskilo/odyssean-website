@@ -2,25 +2,9 @@
 //   npm run verify:responsive            (needs a built site)
 // Fails on: horizontal scroll, tap targets under 44px and body text under 16px (both <=768 wide;
 // mono labels and captions are exempt from the text rule).
-import { readdir } from 'node:fs/promises';
-import { join, relative, sep } from 'node:path';
-import { launch, serve, SITE } from './_env.mjs';
+import { launch, serve, builtRoutes } from './_env.mjs';
 
 const WIDTHS = [360, 768, 1024, 1440];
-const dist = join(SITE, 'dist');
-
-async function routes(dir = dist) {
-  const out = [];
-  for (const e of await readdir(dir, { withFileTypes: true })) {
-    const p = join(dir, e.name);
-    if (e.isDirectory()) out.push(...(await routes(p)));
-    else if (e.name.endsWith('.html') && e.name !== '404.html') {
-      const rel = relative(dist, p).split(sep).join('/').slice(0, -'.html'.length);
-      out.push('/' + (rel === 'index' ? '' : rel.replace(/(^|[/])index$/, '')));
-    }
-  }
-  return out.sort();
-}
 
 function audit(width) {
   const visible = (el) => {
@@ -68,7 +52,7 @@ const browser = await launch();
 const problems = [];
 let count = 0;
 try {
-  const list = await routes();
+  const list = await builtRoutes();
   for (const width of WIDTHS) {
     const ctx = await browser.newContext({
       viewport: { width, height: 900 },

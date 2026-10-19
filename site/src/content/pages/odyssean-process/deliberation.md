@@ -2,9 +2,7 @@
 template: prose
 strand: process
 title: 'Deliberation'
-description:
-  request: CR-008
-  note: 'Meta description (search snippet) for pages new to the site.'
+description: 'How citizens'' assemblies, equipped with expert evidence and modelling, deliberate on complex and deeply uncertain questions.'
 eyebrow: 'Port III · Empower'
 heading: 'Deliberation'
 lede: "We equip citizens' assemblies with these tools, so their recommendations rest on the best evidence."
@@ -17,6 +15,8 @@ sources:
   - kind: pdf
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 16, Deliberation row) and §04.3 (p. 18, deliberation paragraphs); footnote markers omitted; bullet order restored from the PDF layout'
+  - kind: decision
+    ref: 'meta description drafted by Devin; pending review by Will'
 ---
 
 ## What problem is addressed?
