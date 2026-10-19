@@ -2,7 +2,9 @@
 
 297 external URLs checked, 74 did not answer normally. Reported, not fixed (build-plan 8.6).
 
-## Probably gone (7)
+**Resolved 2026-10-19:** every link under "Probably gone" and "No answer" below now points to a Wayback Machine snapshot (the snapshot date is in the address). A re-check finds no dead link. The tables are kept as the record of what was replaced.
+
+## Probably gone (7, all replaced)
 
 The server says the page does not exist, or the address no longer resolves. These need a decision.
 
@@ -16,7 +18,7 @@ The server says the page does not exist, or the address no longer resolves. Thes
 | 404 | https://toolkit.climate.gov/content/decision-making-under-deep-uncertainty#:~:text=Deep%20uncertainty%20occurs%20when%20decision,confidence%20in%20these%20future%20scenarios. | /post/applying-a-problem-solving-mindset-to-social-and-political-challenges |
 | 404 | https://www.dreamocracy.eu/democratic-collapse-is-near-heres-how-to-avoid-it/ | /curriculum, /focus |
 
-## No answer (3)
+## No answer (3, all replaced)
 
 Timed out or refused the connection from this machine. Re-testing confirms all are missing.
 

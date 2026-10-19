@@ -174,7 +174,7 @@ If you have trouble accessing any of the materials, for instance because you lac
   (Lempert, Popper and Bankes, 2003). RAND.
 - [The Role of Exploratory Modelling Approaches and Their Integration Into UK Net Zero Policy Design. Workshop Report.](https://drive.google.com/file/d/1OanvnpFdTLhDEB1WjsQ-msc0YsAuWjh1/view)  
   (Rodrigez, Workman and Darch, 2022). Imperial College London.
-- [Methods for Decision Making Under Conditions of Deep Uncertainty (DMDU)](https://toolkit.climate.gov/content/decision-making-under-deep-uncertainty)  
+- [Methods for Decision Making Under Conditions of Deep Uncertainty (DMDU)](https://web.archive.org/web/20231111221308/https://toolkit.climate.gov/content/decision-making-under-deep-uncertainty)  
   (Miro, 2020). WUCA.
 
 ### Complexity and History
@@ -226,5 +226,5 @@ If you have trouble accessing any of the materials, for instance because you lac
 #### Democratic Collapse
 - [The Signs of Deconsolidation](https://journalofdemocracy.org/articles/the-signs-of-deconsolidation/)  
   (Foa and Mounk, 2017). Journal of Democracy vol. 28, no. 1, pp. 5–15.
-- [Democratic Collapse Is Near. Here’s How To Avoid It](https://www.dreamocracy.eu/democratic-collapse-is-near-heres-how-to-avoid-it/)  
+- [Democratic Collapse Is Near. Here’s How To Avoid It](https://web.archive.org/web/20241115002330/https://www.dreamocracy.eu/democratic-collapse-is-near-heres-how-to-avoid-it/)  
   (Boucher). Dreamocracy.

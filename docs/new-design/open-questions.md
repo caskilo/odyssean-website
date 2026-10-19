@@ -8,14 +8,7 @@
 
 ### Needed before launch
 
-<table>
-<thead>
-<tr><th width="11%">Ref</th><th width="17%">Where</th><th width="40%">What we need from you</th><th width="32%">What visitors see until then</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Q-01</strong></td><td>All pages</td><td><strong>Outside web pages we link to that no longer exist.</strong> Seven links, carried over from the current website, point to pages that have been removed. For most there may be no replacement. For each, please say whether to replace it with a new address, or remove the link. Will is looking into them. The list is in <a href="../link-report.md">link-report.md</a> under "Probably gone". They appear on the Focus page, the Curriculum page and some blog posts.</td><td>The links stay as they are and lead to an error page.</td></tr>
-</tbody>
-</table>
+Nothing. Every content request for launch has been answered.
 
 ### Not needed for launch
 
@@ -85,5 +78,6 @@ These do not affect the content, but the next stage (putting a private test vers
 - **The Policy Robustness and Uncertainty paper now links to the 2026 journal edition.** Authors, dates and the other missing details on the Publications page have been filled in.
 - **The home page now shows a single still picture (the horizon), as in the first design.** The rotating picture idea was dropped, so no extra pictures or taglines are needed.
 - **The GRAIN policy brief button now reads "Policy brief, Feb 2024"**, matching the document it opens.
+- **Ten outside links that no longer worked now point to archived copies on the Wayback Machine** (seven were gone, three did not respond). The archived pages open in place of the originals. If the originals ever come back, the links can be switched back.
 - **Old web addresses keep working.** Every old page and PDF address from the current website forwards to its new home, and all nine blog post addresses are unchanged, so existing links and search results are not lost.
 - **About 60 outside links** (publishers, journals and news sites) refuse automated checks, so we could not test them. They almost certainly work in a browser. See "Blocks automated checks" in [link-report.md](../link-report.md).

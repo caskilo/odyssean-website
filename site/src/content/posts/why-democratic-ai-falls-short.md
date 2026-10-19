@@ -127,7 +127,7 @@ While I was the primary author of this blogpost, I would not have been able to w
 
 <span id="ref-1"></span>\[1\] [AI Index Report 2024](https://hai.stanford.edu/ai-index/2024-ai-index-report), Stanford Human-centered AI
 
-<span id="ref-2"></span>\[2\] [Comparing Major Companies' AI Spending in 2024 and the Challenge of Productionizing AI Solutions](https://council.aimresearch.co/comparing-major-companies-ai-spending-in-2024-and-the-challenge-of-productionizing-ai-solutions/), AIM Councils
+<span id="ref-2"></span>\[2\] [Comparing Major Companies' AI Spending in 2024 and the Challenge of Productionizing AI Solutions](https://web.archive.org/web/20260310152522/https://council.aimresearch.co/comparing-major-companies-ai-spending-in-2024-and-the-challenge-of-productionizing-ai-solutions/), AIM Councils
 
 <span id="ref-3"></span>\[3\] [Americans' top feeling about AI: caution](https://today.yougov.com/technology/articles/49099-americans-2024-poll-ai-top-feeling-caution), YouGov
 
@@ -137,7 +137,7 @@ While I was the primary author of this blogpost, I would not have been able to w
 
 <span id="ref-6"></span>\[6\] [BRICS leaders to call for data protections against unauthorized AI use](https://www.reuters.com/world/china/brics-leaders-call-data-protections-against-unauthorized-ai-use-2025-07-06/?utm_source=chatgpt.com), Reuters
 
-<span id="ref-7"></span>\[7\] [Against "Democratizing AI"](https://johanneshimmelreich.net/papers/against-democratizing-AI.pdf), Johannes Himmelreich
+<span id="ref-7"></span>\[7\] [Against "Democratizing AI"](https://web.archive.org/web/20260131102419/https://johanneshimmelreich.net/papers/against-democratizing-AI.pdf), Johannes Himmelreich
 
 <span id="ref-8"></span>\[8\] [Democratic inputs to AI](https://openai.com/index/democratic-inputs-to-ai/), OpenAI
 

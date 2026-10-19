@@ -114,7 +114,7 @@ I would like to thank [Igor Krawczuk](https://krawczuk.eu) for review, and criti
 
 <span id="ref-19"></span>\[19\] S. Bubeck *et al.*, “Sparks of Artificial General Intelligence: Early experiments with GPT-4.” arXiv, Apr. 13, 2023. doi: 10.48550/arXiv.2303.12712.
 
-<span id="ref-20"></span>\[20\] “The Calculi of Emergence: Computation, Dynamics, and Induction.” Available: [https://csc.ucdavis.edu/~cmg/compmech/pubs/CalcEmergTitlePage.htm](https://csc.ucdavis.edu/~cmg/compmech/pubs/CalcEmergTitlePage.htm)
+<span id="ref-20"></span>\[20\] “The Calculi of Emergence: Computation, Dynamics, and Induction.” Available: [https://csc.ucdavis.edu/~cmg/compmech/pubs/CalcEmergTitlePage.htm](https://web.archive.org/web/20260714022319/https://csc.ucdavis.edu/~cmg/compmech/pubs/CalcEmergTitlePage.htm)
 
 <span id="ref-21"></span>\[21\] L. Saitta and M. Sebag, “Phase Transitions in Machine Learning,” in *Encyclopedia of Machine Learning*, C. Sammut and G. I. Webb, Eds., Boston, MA: Springer US, 2010, pp. 767–773. doi: 10.1007/978-0-387-30164-8\_635.
 
