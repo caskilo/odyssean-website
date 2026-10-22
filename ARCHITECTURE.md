@@ -72,6 +72,8 @@ Feature flags in `site.yaml`: `teamSection` (`team` or `experts-citizens`, for t
 - security headers (including a Content-Security-Policy that allows no inline scripts, which is why `vite.build.assetsInlineLimit` is 0 so Astro never inlines one) and caching rules (hashed `_astro/` files are immutable);
 - a branded 404 page (`content/pages/404.md`).
 
+Publishing the private test site (GitHub Actions, rsync over SSH, password-protected) is described in [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
 Other generated files: `sitemap-index.xml` (previews, the thank-you page and 404 are excluded), `blog-feed.xml`, and `robots.txt` from `public/`.
 
 ## Checks

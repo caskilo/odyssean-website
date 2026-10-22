@@ -63,9 +63,10 @@ const isTrivial = (s) =>
 
 /** Every approved concept string: slide text, interactive-state appendix, art labels. */
 export async function conceptStrings() {
-  const slidesText = (
-    await readFile(join(SITE, 'docs', 'slides-text.md'), 'utf8')
-  ).replace(/\r\n/g, '\n');
+  const slidesText = (await readFile(join(SITE, 'docs', 'slides-text.md'), 'utf8')).replace(
+    /\r\n/g,
+    '\n',
+  );
   const out = [];
   for (const [, num, block] of slidesText.matchAll(
     /^## (\d\d) [^\n]*\n[\s\S]*?```text\n([\s\S]*?)```/gm,

@@ -6,3 +6,5 @@ src/content/
 tools/.cache/
 public/
 test-results/
+docs/slides-text.md
+docs/content-map.md

@@ -1,0 +1,77 @@
+name: Deploy staging
+
+# Manual only: Actions tab > "Deploy staging" > Run workflow. Setup: DEPLOYMENT.md.
+# Builds the site, runs the checks that need no browser, then copies dist/ to the private test site
+# on Mythic Beasts over SSH. Credentials live in the "staging" environment (secrets and variables),
+# never in the repository.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: list what would change, upload nothing'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      MB_WEB_DIR: ${{ vars.MB_WEB_DIR }}
+      STAGING_AUTH_FILE: ${{ vars.MB_HTPASSWD_PATH }}
+    steps:
+      - name: Check the target is a single site folder
+        run: |
+          case "$MB_WEB_DIR" in
+            www/log/*|www/cgi/*) echo "MB_WEB_DIR must not be www/log or www/cgi"; exit 1 ;;
+            www/?*/) ;;
+            *) echo "MB_WEB_DIR must look like www/<site folder>/ (with the trailing slash)"; exit 1 ;;
+          esac
+          case "$STAGING_AUTH_FILE" in
+            /*) ;;
+            *) echo "MB_HTPASSWD_PATH must be an absolute path to the .htpasswd file"; exit 1 ;;
+          esac
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build
+      - run: npm run verify:content
+      - run: npm run verify:built
+      - run: npm run verify:redirects
+      - run: npm run verify:links
+
+      - name: Keep search engines out
+        run: |
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+
+      - name: Upload to staging
+        env:
+          MB_SSH_KEY: ${{ secrets.MB_SSH_KEY }}
+          MB_KNOWN_HOSTS: ${{ secrets.MB_KNOWN_HOSTS }}
+          MB_HOST: ${{ secrets.MB_HOST }}
+          MB_USER: ${{ secrets.MB_USER }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$MB_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$MB_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          flags="-rltz --delete --itemize-changes --chmod=D755,F644"
+          if [ "$DRY_RUN" = "true" ]; then flags="$flags --dry-run"; fi
+          rsync $flags \
+            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            dist/ "$MB_USER@$MB_HOST:$MB_WEB_DIR"
+          rm -f ~/.ssh/deploy_key
