@@ -20,11 +20,17 @@ GitHub "Deploy staging" button
 
 ### 1. Mythic Beasts: account details
 
-In the customer control panel, open **My hosting accounts** and note the **hosting username** for the account that will hold the test site. It is separate from your Mythic Beasts login. The server is `margay.mythic-beasts.com`. SFTP does not need shell access ([Uploading files](https://www.mythic-beasts.com/support/hosting/upload)).
+In the customer control panel, open **Hosting & shell accounts** (My hosting accounts) and note the **hosting username** for the account. It is separate from your Mythic Beasts login. The server is `margay.mythic-beasts.com`. On the same page use **Change hosting account password** to set the account's own password. You need it once, in step 3, and type it only into your own terminal.
 
-### 2. Mythic Beasts: the test site's folder
+You do not need to buy a domain, register one with Mythic Beasts, or switch on shell access. The "My domains" page lists only domains registered with or added to Mythic Beasts as domains, so it can be empty. Websites are attached to the hosting account itself (next step). SFTP is documented for hosting accounts without shell access ([Uploading files](https://www.mythic-beasts.com/support/hosting/upload)).
 
-Each website on a hosting account has its own folder under `www/` (see [Web space](https://www.mythic-beasts.com/support/hosting/webspace)). Pick the hostname that will serve the test site, make sure it is set up under **Web settings**, and note its folder name. The value used below is `www/<that folder>/`, with the trailing slash.
+### 2. Mythic Beasts: the test site's folder and address
+
+Each website on a hosting account has its own folder under `www/`, named after the hostname ([Web space](https://www.mythic-beasts.com/support/hosting/webspace)). To create one: **Hosting & shell accounts** → the account → **Add domains or sub-domains**, and add `staging.odysseaninstitute.org`. **Do not change any DNS.** The live site stays on Wix. The folder is then `www/staging.odysseaninstitute.org/`, which is the value of `MB_WEB_DIR` below.
+
+You can view the site before any DNS change at the preview address Mythic Beasts documents for this purpose (see "Transferring in" under [HTTPS and TLS/SSL](https://www.mythic-beasts.com/support/hosting/letsencrypt/transfer-in)): the hostname followed by the server name, here `http://staging.odysseaninstitute.org.margay.mythic-beasts.com/`.
+
+That address is plain `http`, so the staging password would travel unencrypted. Use a throwaway password for your own first tests. **Before inviting reviewers**, give the subdomain real DNS (a `staging` record at Squarespace pointing to `margay.mythic-beasts.com`; it does not touch the main site or email) and switch on https hosting for it in the control panel.
 
 ### 3. Authorise the deploy key
 
@@ -33,15 +39,31 @@ A dedicated key pair was created on Will's computer (nothing else uses it):
 - public key: `~/.ssh/odyssean_mb_deploy.pub` (safe to share; re-print it with `cat ~/.ssh/odyssean_mb_deploy.pub`)
 - private key: `~/.ssh/odyssean_mb_deploy` (never share, never commit)
 
-Add the **public** key to the hosting account in the control panel (the SSH keys section for the hosting account; SFTP supports key-based login).
+Mythic Beasts documents one way to enable key login on an account that currently uses a password: put the public key in a file called `authorized_keys` inside a `.ssh` folder in the account's home directory ([SSH key-based authentication](https://www.mythic-beasts.com/support/topics/ssh-keys), last paragraph of "Generate a key pair"). There is no control-panel form for it. Do it once over SFTP, using the standard terminal (OpenSSH, no PuTTY needed):
 
-Check it works from your computer:
+```bash
+sftp USERNAME@margay.mythic-beasts.com     # asks for the hosting account password; type it here, nowhere else
+```
+
+At the `sftp>` prompt:
+
+```text
+ls -a                                      # is there already a .ssh folder? if yes, do not overwrite an existing authorized_keys
+mkdir .ssh
+chmod 700 .ssh
+lcd ~/.ssh
+put odyssean_mb_deploy.pub .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+exit
+```
+
+Then check the key works (it must log in without asking for a password):
 
 ```bash
 sftp -i ~/.ssh/odyssean_mb_deploy -o IdentitiesOnly=yes USERNAME@margay.mythic-beasts.com
 ```
 
-If it asks for a password, the key is not yet accepted for that account. Type `exit` to leave.
+If it still asks for a password, Mythic Beasts has not enabled key login for this account type. That is the one assumption not confirmed by their documentation. Ask support (`support@mythic-beasts.com`) whether SFTP key login works on the plan; if not, the workflow can use a hosting-account password stored as a GitHub secret instead.
 
 ### 4. Create the staging password
 
@@ -79,7 +101,7 @@ Add these **variables** (not secret):
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `MB_HOST`          | `margay.mythic-beasts.com`                                                                                                                                                                                     |
 | `MB_KNOWN_HOSTS`   | `margay.mythic-beasts.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuvh6/0QrBxvGqMPSsgk0cz62Gt4g3jCaKxXewSs/P6` (the server's public key; its fingerprint is `SHA256:712PzwG5If28+DmRmR84EvEyP20GPA/6FyctX1Wu/Co`) |
-| `MB_WEB_DIR`       | `www/<site folder>/`                                                                                                                                                                                           |
+| `MB_WEB_DIR`       | `www/staging.odysseaninstitute.org/`                                                                                                                                                                           |
 | `MB_HTPASSWD_PATH` | `/home/USERNAME/.htpasswd-staging`                                                                                                                                                                             |
 
 The server key and fingerprint were read from `margay.mythic-beasts.com` on 2026-10-22 over an ordinary connection. Before trusting them, compare the fingerprint with the one Mythic Beasts shows in its control panel or support pages, or run `ssh-keyscan -t ed25519 margay.mythic-beasts.com` from a second network.
