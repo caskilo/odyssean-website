@@ -1,0 +1,57 @@
+name: Deploy preview to GitHub Pages
+
+# Temporary review copy. Pages serves a project site under /<repo>/, but the site uses root-absolute
+# links, so they are prefixed after the build. The production build (deploy.yml) is unaffected.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Prefix root-absolute links with the repo path
+        env:
+          BASE: /${{ github.event.repository.name }}
+        run: |
+          find dist -type f \( -name '*.html' -o -name '*.css' -o -name '*.xml' -o -name '*.txt' \) -print0 |
+            xargs -0 sed -i -E \
+              -e "s#((href|src|action|poster|data-[a-z-]+)=[\"'])/([^/])#\1${BASE}/\3#g" \
+              -e "s#(srcset=[\"'])/([^/])#\1${BASE}/\2#g" \
+              -e "s#(url\([\"']?)/([^/])#\1${BASE}/\2#g" \
+              -e "s#(content=[\"'])/([^/])#\1${BASE}/\2#g"
+          touch dist/.nojekyll
+          rm -f dist/.htaccess
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
