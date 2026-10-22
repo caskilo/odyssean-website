@@ -1,0 +1,68 @@
+name: Deploy to Mythic Beasts
+
+# Manual while the pipeline is being proven (Actions tab > Run workflow). Setup: DEPLOYMENT.md.
+# Builds the site and uploads dist/ over SFTP with a key-only login. Credentials live in the
+# "production" environment, never in the repository.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run: connect and list what would change, upload nothing'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      MB_WEB_DIR: ${{ vars.MB_WEB_DIR }}
+      MB_HOST: ${{ vars.MB_HOST }}
+      MB_KNOWN_HOSTS: ${{ vars.MB_KNOWN_HOSTS }}
+      MB_USER: ${{ secrets.MB_USER }}
+      MB_SSH_KEY: ${{ secrets.MB_SSH_KEY }}
+      DRY_RUN: ${{ inputs.dry_run }}
+    steps:
+      - name: Check the target is a single site folder
+        run: |
+          case "$MB_WEB_DIR" in
+            www/log/*|www/cgi/*) echo "MB_WEB_DIR must not be www/log or www/cgi"; exit 1 ;;
+            www/?*/) ;;
+            *) echo "MB_WEB_DIR must look like www/<folder>/ (with the trailing slash)"; exit 1 ;;
+          esac
+
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Upload over SFTP
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$MB_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$MB_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          dry=""
+          if [ "$DRY_RUN" = "true" ]; then dry="--dry-run"; fi
+          lftp -u "$MB_USER," "sftp://$MB_HOST" <<EOF
+          set sftp:connect-program "ssh -a -x -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o PasswordAuthentication=no -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          set cmd:fail-exit yes
+          set net:max-retries 2
+          mirror --reverse --delete --verbose --parallel=4 $dry dist/ "$MB_WEB_DIR"
+          bye
+          EOF
+          rm -f ~/.ssh/deploy_key

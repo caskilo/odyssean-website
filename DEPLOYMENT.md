@@ -1,54 +1,37 @@
-# Deployment: private test site on Mythic Beasts
+# Deployment: GitHub to Mythic Beasts
 
-How GitHub publishes the site to a **private, password-protected test site** on Mythic Beasts (build-plan P9). Nothing here needs a password, a TOTP key or a private key to be pasted into chat, a commit or a public message. You type or paste them only into the Mythic Beasts and GitHub web pages yourself.
+GitHub Actions builds the site and uploads `dist/` to a Mythic Beasts hosting account over SFTP with a key-only login. The workflow is [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). It runs only when started by hand (Actions tab, Run workflow) while the pipeline is being proven. The first run is a dry run: it connects, lists what would change and uploads nothing.
 
-## How it works
+## What is documented and what the first run proves
 
-```text
-GitHub "Deploy staging" button
-  → builds the site and runs the checks that need no browser
-  → SFTP (lftp), using a dedicated key stored as a GitHub secret
-  → www/<site folder>/ on margay.mythic-beasts.com
-```
+| Question                                            | Status                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Server is `margay.mythic-beasts.com`                | Given by Mythic Beasts for this account. Files are uploaded to the folder `www/<hostname>/` ([Uploading files](https://www.mythic-beasts.com/support/hosting/upload), [Web space](https://www.mythic-beasts.com/support/hosting/webspace)).                                                              |
+| SFTP works on the account without the shell option  | Documented for hosting accounts. **Proved by the first dry run.**                                                                                                                                                                                                                                        |
+| Key login works for SFTP on this account            | Mythic Beasts says key login can be enabled on an account that uses a password by placing the public key in `~/.ssh/authorized_keys` ([SSH key-based authentication](https://www.mythic-beasts.com/support/topics/ssh-keys)). They do not say it applies to every plan. **Proved by the first dry run.** |
+| Which folder the real site will use                 | Not decided here. A folder only serves a website once a hostname is attached to the account in the control panel. The pipeline does not depend on that, so the first runs use a throwaway folder such as `www/upload-test/`.                                                                             |
+| The server's host key (`MB_KNOWN_HOSTS`) is genuine | Read with `ssh-keyscan` on one network, not yet compared with Mythic Beasts. Do the comparison in step 3.                                                                                                                                                                                                |
 
-- The workflow is [`.github/workflows/deploy-staging.yml`](.github/workflows/deploy-staging.yml). It only runs when someone presses **Run workflow** (Actions tab). The first run is a **dry run** that lists what would change and uploads nothing.
-- Everything sensitive lives in a GitHub **environment** called `staging` (Settings → Environments): the SSH key and the hosting username are secrets. The repository holds only the names of the settings.
-- The password prompt comes from an `.htpasswd` file that **you create locally and upload once**. It lives in the account's home directory, outside the web folder, so a deploy can never overwrite or publish it. The build adds the login prompt and a `noindex` header only when `STAGING_AUTH_FILE` is set, so production builds are unaffected.
-- The upload makes the site folder match the build exactly (`mirror --delete`). The workflow refuses any target that is not a single folder like `www/<site folder>/` (and never `www/log/` or `www/cgi/`).
+Nothing else is assumed. In particular there is no staging site, DNS change, domain registration or password protection in this pipeline.
 
 ## One-time setup
 
-### 1. Mythic Beasts: account details
+### 1. Find the hosting username
 
-In the customer control panel, open **Hosting & shell accounts** (My hosting accounts) and note the **hosting username** for the account. It is separate from your Mythic Beasts login. The server is `margay.mythic-beasts.com`. On the same page use **Change hosting account password** to set the account's own password. You need it once, in step 3, and type it only into your own terminal.
+Control panel → **Hosting & shell accounts** → the account. The hosting username is separate from your Mythic Beasts login.
 
-You do not need to buy a domain, register one with Mythic Beasts, or switch on shell access. The "My domains" page lists only domains registered with or added to Mythic Beasts as domains, so it can be empty. Websites are attached to the hosting account itself (next step). SFTP is documented for hosting accounts without shell access ([Uploading files](https://www.mythic-beasts.com/support/hosting/upload)).
+### 2. Put the public key on the account
 
-### 2. Mythic Beasts: the test site's folder and address
-
-Each website on a hosting account has its own folder under `www/`, named after the hostname ([Web space](https://www.mythic-beasts.com/support/hosting/webspace)). To create one: **Hosting & shell accounts** → the account → **Add domains or sub-domains**, and add `staging.odysseaninstitute.org`. **Do not change any DNS.** The live site stays on Wix. The folder is then `www/staging.odysseaninstitute.org/`, which is the value of `MB_WEB_DIR` below.
-
-You can view the site before any DNS change at the preview address Mythic Beasts documents for this purpose (see "Transferring in" under [HTTPS and TLS/SSL](https://www.mythic-beasts.com/support/hosting/letsencrypt/transfer-in)): the hostname followed by the server name, here `http://staging.odysseaninstitute.org.margay.mythic-beasts.com/`.
-
-That address is plain `http`, so the staging password would travel unencrypted. Use a throwaway password for your own first tests. **Before inviting reviewers**, give the subdomain real DNS (a `staging` record at Squarespace pointing to `margay.mythic-beasts.com`; it does not touch the main site or email) and switch on https hosting for it in the control panel.
-
-### 3. Authorise the deploy key
-
-A dedicated key pair was created on Will's computer (nothing else uses it):
-
-- public key: `~/.ssh/odyssean_mb_deploy.pub` (safe to share; re-print it with `cat ~/.ssh/odyssean_mb_deploy.pub`)
-- private key: `~/.ssh/odyssean_mb_deploy` (never share, never commit)
-
-Mythic Beasts documents one way to enable key login on an account that currently uses a password: put the public key in a file called `authorized_keys` inside a `.ssh` folder in the account's home directory ([SSH key-based authentication](https://www.mythic-beasts.com/support/topics/ssh-keys), last paragraph of "Generate a key pair"). There is no control-panel form for it. Do it once over SFTP, using the standard terminal (OpenSSH, no PuTTY needed):
+A key pair for this was created on Will's computer: `~/.ssh/odyssean_mb_deploy` (private, never share) and `~/.ssh/odyssean_mb_deploy.pub` (public). This is the only step that needs the hosting account password, and it is typed into your own terminal only. Mythic Beasts documents no control-panel form for keys, so use their `authorized_keys` method over SFTP:
 
 ```bash
-sftp USERNAME@margay.mythic-beasts.com     # asks for the hosting account password; type it here, nowhere else
+sftp USERNAME@margay.mythic-beasts.com
 ```
 
-At the `sftp>` prompt:
+At the `sftp>` prompt (if `ls -a` shows a `.ssh` folder with an existing `authorized_keys`, do not overwrite it; add the line instead):
 
 ```text
-ls -a                                      # is there already a .ssh folder? if yes, do not overwrite an existing authorized_keys
+ls -a
 mkdir .ssh
 chmod 700 .ssh
 lcd ~/.ssh
@@ -57,72 +40,55 @@ chmod 600 .ssh/authorized_keys
 exit
 ```
 
-Then check the key works (it must log in without asking for a password):
+Check the key works without a password:
 
 ```bash
-sftp -i ~/.ssh/odyssean_mb_deploy -o IdentitiesOnly=yes USERNAME@margay.mythic-beasts.com
+sftp -i ~/.ssh/odyssean_mb_deploy -o IdentitiesOnly=yes -o PasswordAuthentication=no USERNAME@margay.mythic-beasts.com
 ```
 
-If it still asks for a password, Mythic Beasts has not enabled key login for this account type. That is the one assumption not confirmed by their documentation. Ask support (`support@mythic-beasts.com`) whether SFTP key login works on the plan; if not, the workflow can use a hosting-account password stored as a GitHub secret instead.
+If this fails, key login is not enabled for the account. Ask Mythic Beasts support. The workflow will fail the same way, so there is no point continuing until this works.
 
-### 4. Create the staging password
+### 3. Check the server's host key
 
-Create the password file **on your computer**, so the password is never typed into a chat or a repository:
-
-```bash
-printf 'reviewer:%s\n' "$(openssl passwd -apr1)" > htpasswd-staging   # prompts twice; nothing is echoed
-sftp -i ~/.ssh/odyssean_mb_deploy USERNAME@margay.mythic-beasts.com
-```
-
-At the `sftp>` prompt:
+The first `sftp` login above prints the server's fingerprint. Compare it with the one Mythic Beasts shows for the server. What was read from `margay.mythic-beasts.com` on 2026-10-22:
 
 ```text
-put htpasswd-staging .htpasswd-staging
-pwd
-exit
+margay.mythic-beasts.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuvh6/0QrBxvGqMPSsgk0cz62Gt4g3jCaKxXewSs/P6
+SHA256:712PzwG5If28+DmRmR84EvEyP20GPA/6FyctX1Wu/Co
 ```
 
-`pwd` prints the home directory (normally `/home/USERNAME`). Then delete the local copy (`rm htpasswd-staging`). Share the password with reviewers through a password manager, not email or chat.
+### 4. GitHub: the `production` environment
 
-### 5. GitHub: the `staging` environment
+Repository → **Settings → Environments → New environment** named `production`. Optionally add yourself as a required reviewer.
 
-Repository → **Settings → Environments → New environment** named `staging`. Optionally add **Required reviewers** (yourself) so every deploy needs an approval click.
-
-Add these **secrets**:
+Secrets:
 
 | Secret       | Value                                                                                                                                   |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `MB_SSH_KEY` | The private key. In Git Bash run `clip < ~/.ssh/odyssean_mb_deploy`, paste into GitHub, then copy something else to clear the clipboard |
 | `MB_USER`    | The hosting username                                                                                                                    |
 
-Add these **variables** (not secret):
+Variables:
 
-| Variable           | Value                                                                                                                                                                                                          |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `MB_HOST`          | `margay.mythic-beasts.com`                                                                                                                                                                                     |
-| `MB_KNOWN_HOSTS`   | `margay.mythic-beasts.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIuvh6/0QrBxvGqMPSsgk0cz62Gt4g3jCaKxXewSs/P6` (the server's public key; its fingerprint is `SHA256:712PzwG5If28+DmRmR84EvEyP20GPA/6FyctX1Wu/Co`) |
-| `MB_WEB_DIR`       | `www/staging.odysseaninstitute.org/`                                                                                                                                                                           |
-| `MB_HTPASSWD_PATH` | `/home/USERNAME/.htpasswd-staging`                                                                                                                                                                             |
+| Variable         | Value                                                                         |
+| ---------------- | ----------------------------------------------------------------------------- |
+| `MB_HOST`        | `margay.mythic-beasts.com`                                                    |
+| `MB_KNOWN_HOSTS` | The first line from step 3                                                    |
+| `MB_WEB_DIR`     | `www/upload-test/` (a throwaway folder; must start with `www/`, end with `/`) |
 
-The server key and fingerprint were read from `margay.mythic-beasts.com` on 2026-10-22 over an ordinary connection. Before trusting them, compare the fingerprint with the one Mythic Beasts shows in its control panel or support pages, or run `ssh-keyscan -t ed25519 margay.mythic-beasts.com` from a second network.
+### 5. Run it
 
-### 6. First run
+Actions → **Deploy to Mythic Beasts** → **Run workflow**, with **Dry run** ticked. A dry run that lists the files proves login, host key and path. Run again unticked to upload. Look at the folder over SFTP to confirm.
 
-Actions → **Deploy staging** → **Run workflow**. Leave **Dry run** ticked first and read the file list in the log. Then run again with it unticked. Open the test site, enter the password, and check the 404 page, a redirect (`/our-work`) and the old PDF links.
+## Failure guide
 
-## Afterwards
+| Symptom                               | Cause                                                                                       |
+| ------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Login failed` or `Permission denied` | Key not accepted: step 2, or `MB_USER` is the Mythic Beasts login, not the hosting username |
+| `Host key verification failed`        | `MB_KNOWN_HOSTS` does not match `MB_HOST`                                                   |
+| Stops at "Check the target"           | `MB_WEB_DIR` missing or malformed                                                           |
+| Build fails                           | Same as in CI; fix the content or code                                                      |
 
-- **Tidy up:** once the secret is saved you can delete the local private key (`rm ~/.ssh/odyssean_mb_deploy`). The secret is then the only copy; to rotate, generate a new pair, replace the public key on the account and the `MB_SSH_KEY` secret.
-- **Leaked or lost?** Remove the public key from the hosting account and delete the secret. Nothing else depends on it.
-- **Contact form:** switch on `flags.contactForm` in `src/content/settings/site.yaml` only after the mail handler (build-plan 9.3) exists on the host.
-- **Launch (P11):** use a separate `production` environment and a separate key, with its own folder and without the password block.
+## Before this deploys the real site
 
-## Troubleshooting
-
-| Symptom                              | Likely cause                                                                                                   |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `Login failed` / `Permission denied` | The public key is not on the account, or `MB_USER` is the Mythic Beasts login rather than the hosting username |
-| `Host key verification failed`       | `MB_KNOWN_HOSTS` does not match `MB_HOST`                                                                      |
-| Workflow stops at "Check the target" | `MB_WEB_DIR` or `MB_HTPASSWD_PATH` is missing or malformed                                                     |
-| 500 error on the test site           | The `AuthUserFile` path is wrong. It must be the absolute home path from `pwd`, plus `/.htpasswd-staging`      |
-| `mirror: Access failed` on a folder  | `MB_WEB_DIR` does not exist on the account yet. Create the site under **Web settings** first                   |
+Decisions still open and not part of proving the pipeline: which hostname the site will serve on and how it is attached to the account, how the old site is cut over, and whether pushes to `main` should deploy automatically after CI (see the plan in README). The generated `dist/.htaccess` already contains the redirects, security headers and caching.

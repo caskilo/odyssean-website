@@ -53,16 +53,16 @@ The rule is that we never write the institute's words, so we have only written t
 </tbody>
 </table>
 
-## 3. Decisions and access we need before the test site
+## 3. Decisions and access we need before launch
 
-These do not affect the content, but the next stage (putting a private test version of the site online) cannot start without them.
+These do not affect the content, but launch cannot happen without them.
 
 <table>
 <thead>
 <tr><th width="11%">Ref</th><th width="17%">Topic</th><th width="40%">What we need</th><th width="32%">Why</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Q-05</strong></td><td>Domain name</td><td><strong>Squarespace is the registrar, thank you.</strong> Before launch we still need a copy of the domain's current DNS records from Squarespace (especially the email records: MX, SPF, DKIM and DMARC), or access to view them.</td><td>On launch day the website address moves to the new host. The email must keep working throughout, so we copy its settings exactly. Not needed until the test site has been reviewed.</td></tr>
+<tr><td><strong>Q-05</strong></td><td>Domain name</td><td><strong>Squarespace is the registrar, thank you.</strong> Before launch we still need a copy of the domain's current DNS records from Squarespace (especially the email records: MX, SPF, DKIM and DMARC), or access to view them.</td><td>On launch day the website address moves to the new host. The email must keep working throughout, so we copy its settings exactly.</td></tr>
 <tr><td><strong>Q-07</strong></td><td>Phone versions of the diagrams</td><td><strong>Phone-sized versions of the three large diagrams: revisit after testing.</strong> (the Horizon Scans tracks, the Odyssean Process voyage chart and the fan of futures).</td><td>On phones we shrink them and enlarge the labels. They are readable, but a designer could do better.</td></tr>
 </tbody>
 </table>
@@ -78,6 +78,5 @@ These do not affect the content, but the next stage (putting a private test vers
 - **The home page now shows a single still picture (the horizon), as in the first design.** The rotating picture idea was dropped, so no extra pictures or taglines are needed.
 - **The GRAIN policy brief button now reads "Policy brief, Feb 2024"**, matching the document it opens.
 - **Ten outside links that no longer worked now point to archived copies on the Wayback Machine** (seven were gone, three did not respond). The archived pages open in place of the originals. If the originals ever come back, the links can be switched back.
-- **The private test site will be on a Mythic Beasts address, protected by a password**, and kept out of search engines. Setup steps are in [DEPLOYMENT.md](../DEPLOYMENT.md).
 - **Old web addresses keep working.** Every old page and PDF address from the current website forwards to its new home, and all nine blog post addresses are unchanged, so existing links and search results are not lost.
 - **About 60 outside links** (publishers, journals and news sites) refuse automated checks, so we could not test them. They almost certainly work in a browser. See "Blocks automated checks" in [link-report.md](../link-report.md).
