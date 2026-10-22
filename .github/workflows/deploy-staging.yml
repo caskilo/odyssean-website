@@ -2,7 +2,7 @@ name: Deploy staging
 
 # Manual only: Actions tab > "Deploy staging" > Run workflow. Setup: DEPLOYMENT.md.
 # Builds the site, runs the checks that need no browser, then copies dist/ to the private test site
-# on Mythic Beasts over SSH. Credentials live in the "staging" environment (secrets and variables),
+# on Mythic Beasts over SFTP. Credentials live in the "staging" environment (secrets and variables),
 # never in the repository.
 
 on:
@@ -57,21 +57,28 @@ jobs:
         run: |
           printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
 
-      - name: Upload to staging
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Upload to staging (SFTP)
         env:
           MB_SSH_KEY: ${{ secrets.MB_SSH_KEY }}
-          MB_KNOWN_HOSTS: ${{ secrets.MB_KNOWN_HOSTS }}
-          MB_HOST: ${{ secrets.MB_HOST }}
           MB_USER: ${{ secrets.MB_USER }}
+          MB_HOST: ${{ vars.MB_HOST }}
+          MB_KNOWN_HOSTS: ${{ vars.MB_KNOWN_HOSTS }}
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
           install -m 700 -d ~/.ssh
           printf '%s\n' "$MB_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
           printf '%s\n' "$MB_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          flags="-rltz --delete --itemize-changes --chmod=D755,F644"
-          if [ "$DRY_RUN" = "true" ]; then flags="$flags --dry-run"; fi
-          rsync $flags \
-            -e "ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
-            dist/ "$MB_USER@$MB_HOST:$MB_WEB_DIR"
+          dry=""
+          if [ "$DRY_RUN" = "true" ]; then dry="--dry-run"; fi
+          lftp -u "$MB_USER," "sftp://$MB_HOST" <<EOF
+          set sftp:connect-program "ssh -a -x -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$HOME/.ssh/known_hosts"
+          set cmd:fail-exit yes
+          set net:max-retries 2
+          mirror --reverse --delete --verbose --parallel=4 $dry dist/ "$MB_WEB_DIR"
+          bye
+          EOF
           rm -f ~/.ssh/deploy_key
