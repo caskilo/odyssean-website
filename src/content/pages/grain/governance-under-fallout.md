@@ -13,5 +13,5 @@ sources:
     ref: 'https://www.odysseaninstitute.org/publications'
     note: 'the only live content is the publication entry (summary + PDF), rendered from the publications collection'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

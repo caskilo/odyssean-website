@@ -13,5 +13,5 @@ sources:
     ref: 'https://www.odysseaninstitute.org/publications'
     note: 'lists every publication tagged grain'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

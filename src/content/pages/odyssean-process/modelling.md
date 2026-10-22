@@ -2,8 +2,8 @@
 template: modelling
 strand: process
 title: 'Modelling'
-description: 'How exploratory modelling and decision-making under deep uncertainty map many possible futures, so policies hold up across them.'
-eyebrow: 'Decision-making under deep uncertainty'
+description: 'How exploratory modelling and decision-making under deep uncertainty map many possible futures, to better inform policy-making.'
+eyebrow: 'Port II · Decision-making under deep uncertainty'
 headline:
   text: 'The further we look,'
   accent: 'the wider the fan.'
@@ -26,7 +26,7 @@ sources:
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 15, Exploratory Modelling & Robust Decision Making row) and §04.3 (pp. 17–18, DMDU paragraphs); footnote markers and "(see below)" cross-references omitted'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description under review'
 ---
 
 ## Exploratory Modelling & Robust Decision Making

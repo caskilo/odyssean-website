@@ -12,7 +12,7 @@ sources:
     ref: 'https://www.odysseaninstitute.org/donation-thank-you-page'
     note: 'path kept in case the PayPal return URL points here'
   - kind: decision
-    ref: 'thank-you text drafted by Devin; pending review by Will'
+    ref: 'lede approved by Will'
 ---
 
 If you have any questions about your donation, please [get in touch](/contact).

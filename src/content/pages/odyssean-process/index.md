@@ -26,5 +26,5 @@ sources:
   - kind: concept
     ref: '04'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

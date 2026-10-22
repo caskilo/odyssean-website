@@ -13,8 +13,6 @@ verification:
   status: corrected
   note: "Live title linked to the GRAIN Overview Report. The PDF is now the 2026 journal edition (Environ. Res.: Energy 3 035002)."
 sources:
-  - kind: decision
-    ref: "date supplied by Will (2026-10-19); the PDF is the 2026 journal edition (Environ. Res.: Energy 3 035002), supplied by Will"
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"
   - kind: pdf

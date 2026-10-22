@@ -16,7 +16,7 @@ sources:
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 15, EEJ row) and §04.3 (p. 17, EEJ paragraphs); footnote markers and "(see below)" cross-references omitted'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---
 
 ## What problem is addressed?

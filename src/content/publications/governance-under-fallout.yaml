@@ -13,8 +13,6 @@ verification:
   status: corrected
   note: "Live \"Read All\" button points to e5ae06_1802… (Bridging local and technocratic epistemologies). Title and thumbnail point to the correct PDF."
 sources:
-  - kind: decision
-    ref: "date supplied by Will (2026-10-19)"
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"
   - kind: pdf

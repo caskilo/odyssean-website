@@ -19,5 +19,5 @@ sources:
     ref: 'open-questions C1–C2 (resolved)'
     note: 'Horizon Scans is its own microsite; plural name'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

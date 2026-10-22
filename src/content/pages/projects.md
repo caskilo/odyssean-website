@@ -2,7 +2,7 @@
 template: projects
 strand: info
 title: 'Projects'
-description: 'The Odyssean Institute''s three projects: GRAIN, the Horizon Scan on Global Catastrophic Risks, and the Odyssean Process on AI.'
+description: 'The Odyssean Institute has three projects: GRAIN, Horizon Scans on Global Catastrophic Risks, and the Odyssean Process on AI.'
 heading: 'Projects'
 panels:
   - number: '1'
@@ -34,5 +34,5 @@ sources:
     ref: '05'
     note: '"Room 1 — Current work · 3 panels · Archive →" are design notes and are not used'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'description approved by Will'
 ---

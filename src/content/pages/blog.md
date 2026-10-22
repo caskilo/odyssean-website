@@ -9,5 +9,5 @@ sources:
     ref: 'https://www.odysseaninstitute.org/blog'
     note: 'posts are the posts collection'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'description approved by Will'
 ---

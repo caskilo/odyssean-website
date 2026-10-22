@@ -13,5 +13,5 @@ sources:
     ref: 'build-plan task 1.6'
     note: 'reuses the /contact body and form rather than duplicating it'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

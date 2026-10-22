@@ -10,5 +10,5 @@ sources:
     ref: 'build-plan B.3'
     note: 'default sub-page; lists every publication tagged scans'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---

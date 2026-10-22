@@ -2,12 +2,12 @@
 
 A static rebuild of [odysseaninstitute.org](https://www.odysseaninstitute.org), built with [Astro](https://astro.build). Content lives in Markdown and YAML files, the site builds to plain HTML, and it is served from Apache on Mythic Beasts.
 
-|                  |                                                                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| **Plan**         | `design-docs/build-plan.md` (local only): scope, page register, phases and gates                                          |
-| **Editing**      | [`CONTENT.md`](CONTENT.md): how to change words, add posts and publications (also written for an LLM assistant)           |
-| **How it works** | [`ARCHITECTURE.md`](ARCHITECTURE.md)                                                                                      |
-| **Open items**   | [`docs/open-questions.md`](docs/open-questions.md): what we are waiting on from the institute                             |
+|                  |                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Plan**         | `design-docs/build-plan.md` (local only): scope, page register, phases and gates                                |
+| **Editing**      | [`CONTENT.md`](CONTENT.md): how to change words, add posts and publications (also written for an LLM assistant) |
+| **How it works** | [`ARCHITECTURE.md`](ARCHITECTURE.md)                                                                            |
+| **Open items**   | [`docs/open-questions.md`](docs/open-questions.md): what we are waiting on from the institute                   |
 
 ## Quick start
 
@@ -74,4 +74,21 @@ The browser checks find Chrome or Edge automatically. Set `CHROME_PATH` if yours
 
 ## Deployment
 
-Not live yet. The plan is GitHub Actions building the site and copying `dist/` to Mythic Beasts with `rsync` (build-plan P9). Until then, CI only builds and checks. `dist/.htaccess` is generated from [`tools/redirects/legacy.json`](tools/redirects/legacy.json), so old Wix links keep working.
+Not live yet. The plan is GitHub Actions building the site and copying `dist/` to Mythic Beasts over SFTP (build-plan P9). Until then, CI only builds and checks. `dist/.htaccess` is generated from [`tools/redirects/legacy.json`](tools/redirects/legacy.json), so old Wix links keep working.
+
+### Hosting
+
+The site is static, so the target is a Mythic Beasts Web 25 hosting account (5GB disk, 100GB monthly bandwidth; its 1 database is unused). Upload uses SFTP, which Mythic Beasts documents for hosting accounts and which supports key-based login. `rsync` needs the paid shell-access add-on and isn't documented for hosting accounts, so the pipeline doesn't rely on it.
+
+To confirm before building the deploy job (Mythic Beasts docs don't say it outright for Web 25 without shell access):
+
+- SFTP works on the account without the shell option.
+- SFTP accepts key-based login, so CI needs no password.
+
+### Deploy job (planned)
+
+- Runs only on pushes to `main`, after every CI check passes, as a separate job. Pull requests, and forks in particular, never deploy.
+- Uses a dedicated SSH key pair used for nothing else. The public key goes on the hosting account, the private key is a GitHub Actions secret on a protected `production` environment, and the job's `permissions` stay `contents: read`.
+- Pins the server's host key in the workflow (or a repository variable) instead of trusting it on first connect. Host key checking is never switched off.
+- Uploads `dist/` to the site's web root only, and mirrors deletions so removed pages disappear. Never commit keys, passwords or `.env` files, and never echo them in logs.
+- Keep the hosting account password out of CI. It is for the control panel and manual use only.

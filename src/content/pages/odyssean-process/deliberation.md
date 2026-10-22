@@ -16,7 +16,7 @@ sources:
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 16, Deliberation row) and §04.3 (p. 18, deliberation paragraphs); footnote markers omitted; bullet order restored from the PDF layout'
   - kind: decision
-    ref: 'meta description drafted by Devin; pending review by Will'
+    ref: 'meta description approved by Will'
 ---
 
 ## What problem is addressed?

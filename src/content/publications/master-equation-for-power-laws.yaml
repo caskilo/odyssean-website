@@ -13,7 +13,5 @@ verification:
   status: unverified
   note: "External journal link (Royal Society Open Science); not checked offline. Authors and date confirmed against the paper."
 sources:
-  - kind: decision
-    ref: "authors and date supplied by Will (2026-10-19) and matching the paper (Roman S, Bertolotti F, 2022)"
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"

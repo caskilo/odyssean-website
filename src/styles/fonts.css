@@ -12,20 +12,6 @@
   font-style: italic;
   font-display: swap;
 }
-@font-face {
-  font-family: 'Arrus BT';
-  src: url('../assets/fonts/ArrusBT-700.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Arrus BT';
-  src: url('../assets/fonts/ArrusBT-700i.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
 /* The concept embeds only the 600 cut; it renders every Instrument Sans weight, so the build does too. */
 @font-face {
   font-family: 'Instrument Sans';
