@@ -36,9 +36,11 @@ jobs:
           find dist -type f \( -name '*.html' -o -name '*.css' -o -name '*.xml' -o -name '*.txt' \) -print0 |
             xargs -0 sed -i -E \
               -e "s#((href|src|action|poster|data-[a-z-]+)=[\"'])/([^/])#\1${BASE}/\3#g" \
-              -e "s#(srcset=[\"'])/([^/])#\1${BASE}/\2#g" \
               -e "s#(url\([\"']?)/([^/])#\1${BASE}/\2#g" \
               -e "s#(content=[\"'])/([^/])#\1${BASE}/\2#g"
+          # srcset holds several comma-separated URLs, so every candidate needs the prefix
+          find dist -type f -name '*.html' -print0 |
+            xargs -0 perl -pi -e 's{(srcset="[^"]*")}{(my $s = $1) =~ s{(srcset="|, )/(?!/)}{$1$ENV{BASE}/}g; $s}ge'
           find dist -type f -name '*.html' -print0 |
             xargs -0 sed -i 's#<head>#<head><meta name="robots" content="noindex">#'
           touch dist/.nojekyll
