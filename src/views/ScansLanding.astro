@@ -23,7 +23,7 @@ const Tracks = getArt('signal-tracks').Component;
         <Eyebrow>
           <CopyText value={data.eyebrow} />
         </Eyebrow>
-        <Headline text={data.headline.text} accent={data.headline.accent} size="landing" />
+        <Headline text={data.headline.text} accent={data.headline.accent} roman size="landing" />
       </div>
       <p class="intro__aside">
         <CopyText value={data.aside} />
@@ -185,7 +185,6 @@ const Tracks = getArt('signal-tracks').Component;
   }
   .card a {
     color: var(--blue);
-    font-weight: 600;
     font-size: var(--step-small);
   }
 </style>

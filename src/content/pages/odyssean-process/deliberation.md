@@ -29,7 +29,7 @@ sources:
 
 ## What is the process?
 
-Conducting citizen assemblies, citizen juries, foresight exercises and scenario planning.
+Conducting citizen assemblies, citizen juries, foresight exercises, and scenario planning.
 
 Deliberative Democratic assemblies bring together a representative sample of the population to discuss and decide on policy (whether as a recommendation or binding resolution).
 

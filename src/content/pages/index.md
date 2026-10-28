@@ -7,8 +7,11 @@ hero:
   headline:
     text: 'Look further.'
     accent: 'Decide together.'
-  lede: 'We chart a democratic course to resilience and flourishing, blending foresight, expert insight and citizen deliberation.'
-  art: hero-horizon
+  lede: 'We chart a democratic course to resilience and flourishing, blending foresight, expert insight, and citizen deliberation.'
+  image:
+    src: "../../assets/media/home/earth-limb-iss064e005209.jpg"
+    alt: "The curve of the Earth seen from orbit: clouds below a thin blue band of atmosphere and black space."
+    credit: 'NASA Johnson Space Center, ISS064-E-005209 (public domain)'
 focus:
   heading: 'What we focus on'
   more: { label: 'All focus areas →', href: '/focus' }
@@ -37,4 +40,7 @@ sources:
   - kind: decision
     ref: 'build-plan B.2'
     note: 'hero slides 2–3 (mountains, sea) reuse slide 1 text; art is placeholder'
+  - kind: decision
+    ref: 'site review 2026-10 (Home: hero background, focus cards)'
+    note: 'hero is an Earth-from-space photograph (Earth''s limb over Western Australia, ISS Expedition 64, 20 Nov 2020; https://commons.wikimedia.org/wiki/File:ISS-64_Earth%27s_limb,_Western_Australia.jpg), cropped; interim choice by Devin pending review. Focus cards reveal each area''s body from /focus on hover'
 ---

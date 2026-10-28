@@ -33,7 +33,7 @@ The rule is that we never write the institute's words, so we have only written t
 <tr><td>Thank-you page (after a donation)</td><td><strong>Thank you for your support.</strong> Your generosity helps the Odyssean Institute continue its work towards a more resilient future. We are very grateful. If you have any questions about your donation, please get in touch. (Button: "Back to the homepage".)<br>The current page uses placeholders that the new website cannot fill in ("Thank you, Donor Name … £0 …"), so it shows this message for every donor.</td></tr>
 <tr><td>"Page not found" page</td><td><strong>Page not found.</strong> We could not find the page you were looking for. It may have moved, or the link may be out of date. (Button: "Back to the homepage".)</td></tr>
 <tr><td>Search-result descriptions (the short text Google shows under the page title)</td><td>
-<strong>Projects:</strong> The Odyssean Institute's three projects: GRAIN, the Horizon Scan on Global Catastrophic Risks, and the Odyssean Process on AI.<br>
+<strong>Projects:</strong> The Odyssean Institute's three projects: GRAIN, the Horizon Scan on Global Catastrophic Risks, and the Odyssean Process.<br>
 <strong>Blog:</strong> Updates, reviews and commentary from the Odyssean Institute and its collaborators.<br>
 <strong>GRAIN, Reports:</strong> Reports and papers from the GRAIN initiative on resilience, trade and governance in a global catastrophe.<br>
 <strong>GRAIN, Methodology:</strong> The modelling approach and open knowledge gaps behind GRAIN's work on resilient supply chains after a nuclear war.<br>

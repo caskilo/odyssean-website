@@ -16,7 +16,19 @@ mainNav:
   - { label: 'Projects', href: '/projects' }
   - { label: 'Publications', href: '/publications' }
   - { label: 'About', href: '/about' }
-donate: { label: 'Donate', href: '/donate' }
+projects:
+  label: 'Projects'
+  href: '/projects'
+  items:
+    - { label: 'GRAIN', href: '/grain' }
+    - { label: 'Horizon Scans', href: '/horizon-scans' }
+    - { label: 'The Odyssean Process', href: '/odyssean-process' }
+more:
+  label: 'More'
+  items:
+    - { label: 'FAQ', href: '/faq' }
+    - { label: 'Contact', href: '/contact' }
+    - { label: 'Donate', href: '/donate' }
 footer:
   - links:
       - { label: 'Projects', href: '/projects' }
@@ -40,15 +52,11 @@ microsites:
       - { label: 'About GRAIN', href: '/grain' }
       - { label: 'Methodology', href: '/grain/methodology' }
       - { label: 'Reports', href: '/grain/reports' }
-      - { label: 'Governance Under Fallout', href: '/grain/governance-under-fallout' }
-      - { label: 'Contact', href: '/grain/contact' }
-    cta: { label: 'Collaborate', href: '/grain/contact' }
   scans:
     name: 'Horizon Scans'
     subnav:
       - { label: 'Overview', href: '/horizon-scans' }
       - { label: 'Reports', href: '/horizon-scans/reports' }
-      - { label: 'Contact', href: '/contact' }
   process:
     name: 'The Odyssean Process'
     subnav:
@@ -69,3 +77,6 @@ sources:
   - kind: decision
     ref: 'build-plan B.3'
     note: 'ui labels are accessibility text, not page copy; copyright line follows the live footer "©2026 by Odyssean Institute". Main nav (Projects · Publications · About · Donate); Horizon Scans and Odyssean Process sub-navs are agreed defaults'
+  - kind: decision
+    ref: 'site review 2026-10 (sitewide navbar, GRAIN header)'
+    note: 'one header everywhere: the section links, a Projects menu (the three projects) and a More menu (FAQ · Contact · Donate), both opened on hover or focus. GRAIN "Collaborate" and "Governance Under Fallout" removed from the GRAIN sub-nav; Contact removed from the GRAIN and Horizon Scans sub-navs because More has it'

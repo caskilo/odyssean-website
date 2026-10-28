@@ -25,6 +25,15 @@ const source = z.object({
 const sources = z.array(source).min(1);
 
 const strand = z.enum(['info', 'grain', 'scans', 'process']);
+/** the three projects (the microsite strands) */
+const programme = z.enum(['grain', 'scans', 'process']);
+const focusArea = z.enum(['institutions', 'wellbeing', 'resilience']);
+const publicationType = z.enum([
+  'academic-article',
+  'policy-brief',
+  'white-paper',
+  'research-report',
+]);
 const artKey = z.string().regex(/^[a-z0-9-]+$/);
 const href = z
   .string()
@@ -62,18 +71,22 @@ const pageSchema = ({ image }: SchemaContext) =>
     z.object({
       ...base,
       template: z.literal('home'),
-      hero: z.object({
-        headline,
-        lede: copy,
-        art: artKey,
-      }),
+      hero: z
+        .object({
+          headline,
+          lede: copy,
+          /** the background: an art key or a photograph */
+          art: artKey.optional(),
+          image: img(image).optional(),
+        })
+        .refine((h) => !h.art !== !h.image, 'the hero needs exactly one of art or image'),
       focus: z.object({
         heading: copy,
         more: link,
         cards: z
           .array(
             z.object({
-              area: z.enum(['institutions', 'wellbeing', 'resilience']),
+              area: focusArea,
               label: copy,
               title: copy,
               note: copy,
@@ -92,7 +105,7 @@ const pageSchema = ({ image }: SchemaContext) =>
           z.object({
             number: z.string(),
             art: artKey,
-            theme: z.enum(['grain', 'scans', 'process']),
+            theme: programme,
             label: copy,
             status: copy,
             heading: copy,
@@ -111,11 +124,11 @@ const pageSchema = ({ image }: SchemaContext) =>
       filters: z.array(
         z.object({
           label: copy,
-          type: z.enum(['all', 'policy-brief', 'white-paper', 'research-report']).optional(),
+          type: z.union([z.literal('all'), publicationType]).optional(),
           href: href.optional(),
         }),
       ),
-      typeLabels: z.object({ 'policy-brief': copy, 'white-paper': copy, 'research-report': copy }),
+      typeLabels: z.record(publicationType, copy),
       // the featured block carries its own (concept) wording; the publication record keeps the document's title
       featured: z.object({
         publication: z.string(),
@@ -154,14 +167,18 @@ const pageSchema = ({ image }: SchemaContext) =>
         .array(
           z.object({
             anchor: z.string(), // preserves live-site fragment ids
+            area: focusArea, // the home page's focus cards show this area's body
             name: copy,
             body: copy,
             quote: copy,
             attribution: copy,
             detailHeading: copy.optional(),
+            /** projects working in this area: their names and links come from the Projects page */
+            projects: z.array(programme).default([]),
           }),
         )
         .length(3),
+      projectsLabel: copy,
     }),
     z.object({
       ...base,
@@ -237,7 +254,7 @@ const pageSchema = ({ image }: SchemaContext) =>
       hero: img(image).optional(),
       /** list these publications (by id), or every publication tagged with this programme */
       publications: z.array(z.string()).optional(),
-      publicationsFor: z.enum(['grain', 'scans', 'process']).optional(),
+      publicationsFor: programme.optional(),
       /** render another page's body and form here (e.g. a microsite Contact page reusing /contact) */
       contentFrom: z.string().optional(),
       form: z
@@ -290,7 +307,7 @@ const publications = defineCollection({
       .object({
         order: z.number(),
         title: z.string(),
-        type: z.enum(['policy-brief', 'white-paper', 'research-report']),
+        type: publicationType,
         summary: z.string(), // Markdown
         authors: copy.optional(),
         date: copy.optional(),
@@ -300,7 +317,7 @@ const publications = defineCollection({
           .optional(),
         url: z.url().optional(),
         thumbnail: img(image).optional(),
-        programmes: z.array(z.enum(['grain', 'scans', 'process'])).default([]),
+        programmes: z.array(programme).default([]),
         verification: z.object({
           status: z.enum(['verified', 'corrected', 'unverified']),
           note: z.string(),
@@ -368,13 +385,14 @@ const settings = defineCollection({
       footerNav: copy,
       requested: copy,
     }),
+    /** header, first group: the info strand's sections (a microsite shows its own sub-nav instead) */
     mainNav: z.array(navItem),
-    donate: navItem,
+    /** header, on every page: a menu of the projects (opened from a link to the overview) ... */
+    projects: z.object({ label: copy, href, items: z.array(navItem).min(1) }),
+    /** ... and a menu of the remaining links (FAQ, Contact, Donate) */
+    more: z.object({ label: copy, items: z.array(navItem).min(1) }),
     footer: z.array(z.object({ heading: copy.optional(), links: z.array(navItem) })),
-    microsites: z.record(
-      z.enum(['grain', 'scans', 'process']),
-      z.object({ name: copy, subnav: z.array(navItem).min(1), cta: navItem.optional() }),
-    ),
+    microsites: z.record(programme, z.object({ name: copy, subnav: z.array(navItem).min(1) })),
     flags: z.object({
       teamSection: z.enum(['team', 'experts-citizens']),
       contactForm: z.boolean(),

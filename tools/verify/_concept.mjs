@@ -11,6 +11,7 @@ export const norm = (s) =>
     .replace(/\\(["'\\])/g, '$1')
     .replace(/''/g, "'")
     .replace(/[*_`]/g, '')
+    .replace(/,\s+(and|or)\b/g, ' $1') // the Oxford comma is house style; the concept predates it
     .replace(/[\u2018\u2019]/g, "'")
     .replace(/\s+/g, ' ')
     .toLowerCase()
@@ -36,6 +37,13 @@ export const DESIGN_NOTES = [
 export const DESIGN_NOTE_PHRASES = DESIGN_NOTES.filter((n) => n.length > 12);
 /** Superseded by agreed decisions (not design notes, but intentionally not used). */
 const SUPERSEDED = {
+  'Horizon Scan on Global Catastrophic Risks':
+    'projects panel 2 renamed Foresight Exercises (site review 2026-10)',
+  'Experts scored the catastrophic risks we are least prepared for, from cascading food-system failures to AI in nuclear weapons systems.':
+    'projects panel 2 summary redrafted for Foresight Exercises (site review 2026-10)',
+  Collaborate: 'GRAIN header: removed, Contact is the one link (site review 2026-10)',
+  'Governance Under Fallout':
+    'GRAIN: a report, not a page; removed from the sub-nav (site review 2026-10)',
   'Our work': 'main nav: dropped (OQ C4)',
   'Horizon Scan': 'main nav: replaced by Projects',
   Team: 'main nav: About (H1)',
@@ -51,7 +59,6 @@ const SVG_LABELS = [
   'origin',
   'destination',
   'Today',
-  'Chart of the Odyssean Process · Sheet 1',
   'Better',
   'Worse',
   'Natural sciences',

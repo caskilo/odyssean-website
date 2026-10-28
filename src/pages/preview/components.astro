@@ -15,10 +15,16 @@ import { art } from '../../lib/art';
 import { getSettings } from '../../lib/site';
 
 const s = await getSettings();
-const ui = { home: String(s.ui.home), menu: String(s.ui.menu), nav: String(s.ui.mainNav) };
+const ui = {
+  home: String(s.ui.home),
+  menu: String(s.ui.menu),
+  nav: String(s.ui.mainNav),
+};
+const shared = { projects: s.projects, more: s.more };
 const swatches = [
   ['--navy', '#011130'],
   ['--blue', '#1d4387'],
+  ['--green', '#0b3a29'],
   ['--gold', '#e2b540'],
   ['--sand', '#ebd3a2'],
   ['--paper', '#ebe5d9'],
@@ -89,6 +95,7 @@ const themes = [
       <Eyebrow>Caps eyebrow</Eyebrow>
       <Eyebrow variant="register">Register eyebrow</Eyebrow>
       <Headline text="Headline with" accent="an italic accent." size="l" tag="h3" />
+      <Headline text="Headline with" accent="a roman accent." size="l" tag="h3" roman />
       <div class="row">
         <Button href="#">Primary</Button>
         <Button href="#" style="secondary">
@@ -197,8 +204,8 @@ const themes = [
         <Header
           variant="overlay"
           current="/"
-          links={s.mainNav}
-          donate={s.donate}
+          section={{ links: s.mainNav }}
+          {...shared}
           logoTone="gold"
           {ui}
         />
@@ -207,8 +214,8 @@ const themes = [
         <Header
           variant="plain"
           current="/grain"
-          links={s.microsites.grain.subnav}
-          cta={s.microsites.grain.cta}
+          section={{ name: s.microsites.grain.name, links: s.microsites.grain.subnav }}
+          {...shared}
           logoTone="blue"
           ui={{ ...ui, nav: String(s.ui.subNav) }}
         />
@@ -217,7 +224,8 @@ const themes = [
         <Header
           variant="plain"
           current="/horizon-scans"
-          links={s.microsites.scans.subnav}
+          section={{ name: s.microsites.scans.name, links: s.microsites.scans.subnav }}
+          {...shared}
           logoTone="paper"
           ui={{ ...ui, nav: String(s.ui.subNav) }}
         />

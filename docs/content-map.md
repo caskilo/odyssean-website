@@ -9,51 +9,49 @@
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/` | home | 🎨 slide 02<br>🌐 /<br>⚖️ build-plan B.2 | — | — |
-| `/404` | prose | ⚖️ not-found text drafted by Devin; pending review by Will (build-plan 8.5: Apache ErrorDocument) | — | — |
+| `/` | home | 🎨 slide 02<br>🌐 /<br>⚖️ build-plan B.2<br>⚖️ site review 2026-10 (Home: hero background, focus cards) | — | — |
+| `/404` | prose | ⚖️ lede approved by Will | — | — |
 | `/about` | about | 🎨 slide 10<br>🎨 slide 08<br>🌐 /team<br>⚖️ splash text supplied by Will (2026-10-19) | — | — |
-| `/blog` | blog | 🌐 /blog<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/blog` | blog | 🌐 /blog<br>⚖️ description approved by Will | — | — |
 | `/contact` | prose | 🌐 /contact<br>🌐 /<br>⚖️ build-plan AD10 | 34 words | — |
 | `/curriculum` | prose | 🌐 /curriculum | 1253 words | — |
 | `/donate` | prose | 🌐 /donate | 77 words | — |
-| `/donation-thank-you-page` | prose | 🌐 /donation-thank-you-page<br>⚖️ thank-you text drafted by Devin; pending review by Will | 12 words | — |
+| `/donation-thank-you-page` | prose | 🌐 /donation-thank-you-page<br>⚖️ lede approved by Will | 12 words | — |
 | `/faq` | faq | 🌐 /faq | 1505 words | — |
-| `/focus` | focus | 🎨 slide 07<br>🌐 /focus | 764 words | — |
-| `/projects` | projects | 🎨 slide 05<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
-| `/publications` | publications | 🎨 slide 06<br>🌐 /publications<br>⚖️ open-questions C2 (resolved) | — | — |
+| `/focus` | focus | 🎨 slide 07<br>🌐 /focus<br>⚖️ site review 2026-10 (Focus: connect each area to projects) | 764 words | — |
+| `/projects` | projects | 🎨 slide 05<br>⚖️ description approved by Will<br>⚖️ site review 2026-10 (Projects, panel 2) | — | — |
+| `/publications` | publications | 🎨 slide 06<br>🌐 /publications<br>⚖️ open-questions C2 (resolved)<br>⚖️ site review 2026-10 (Publications: types) | — | — |
 
 ### GRAIN microsite
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
 | `/grain` | grain-landing | 🎨 slide 01<br>🌐 /grain | 1047 words | — |
-| `/grain/contact` | prose | 🎨 slide 01<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
-| `/grain/governance-under-fallout` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
-| `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6<br>⚖️ meta description drafted by Devin; pending review by Will | 613 words | — |
-| `/grain/reports` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/grain/methodology` | prose | 🌐 /resilient-supply-chains<br>⚖️ build-plan task 1.6<br>⚖️ meta description approved by Will | 613 words | — |
+| `/grain/reports` | prose | 🎨 slide 01<br>🌐 /publications<br>⚖️ meta description approved by Will | — | — |
 
 ### Horizon Scans microsite
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/horizon-scans` | scans-landing | 🎨 slide 03<br>⚖️ open-questions C1–C2 (resolved)<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
-| `/horizon-scans/reports` | prose | ⚖️ build-plan B.3<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
+| `/horizon-scans` | scans-landing | 🎨 slide 03<br>⚖️ open-questions C1–C2 (resolved)<br>⚖️ meta description approved by Will | — | — |
+| `/horizon-scans/reports` | prose | ⚖️ build-plan B.3<br>⚖️ meta description approved by Will<br>⚖️ site review 2026-10 (Horizon Scans: Reports) | — | — |
 
 ### Odyssean Process microsite
 
 | Route | Template | Sources | Body | Open requests |
 |---|---|---|---|---|
-| `/odyssean-process` | process-landing | 🎨 slide 04<br>⚖️ meta description drafted by Devin; pending review by Will | — | — |
-| `/odyssean-process/deliberation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 455 words | — |
-| `/odyssean-process/expert-elicitation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 505 words | — |
-| `/odyssean-process/modelling` | modelling | 🎨 slide 09<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description drafted by Devin; pending review by Will | 354 words | — |
+| `/odyssean-process` | process-landing | 🎨 slide 04<br>⚖️ meta description approved by Will | — | — |
+| `/odyssean-process/deliberation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description approved by Will | 455 words | — |
+| `/odyssean-process/expert-elicitation` | prose | 🎨 slide 04<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description approved by Will | 505 words | — |
+| `/odyssean-process/modelling` | modelling | 🎨 slide 09<br>📄 e56281_f0a77ff859354023bf743d07b9cea519<br>⚖️ meta description under review | 354 words | — |
 
 ## Collections
 
 | Collection | Entries | Sources | Open requests |
 |---|---:|---|---|
 | posts | 9 | live | — |
-| publications | 10 | decision, live, pdf | — |
+| publications | 10 | live, pdf | — |
 | quotes | 4 | concept | CR-009 |
 | settings | 1 | live, concept, decision | — |
 | signals | 5 | pdf, decision | — |

@@ -139,6 +139,33 @@ try {
     await close();
   }
   {
+    const { page, close } = await open('/grain/reports');
+    const panel = (i) => page.locator('.site-header .drop').nth(i).locator('.drop__panel');
+    check('menus: closed until hovered', !(await panel(0).isVisible()));
+    await page.hover('.site-header .drop >> nth=0');
+    check(
+      'menus: Projects opens on hover with the three projects',
+      (await panel(0).isVisible()) && (await panel(0).locator('a').count()) === 3,
+    );
+    await page.keyboard.press('Escape');
+    check('menus: Escape closes it', !(await panel(0).isVisible()));
+    await page.mouse.move(5, 700);
+    await page.hover('.site-header .drop >> nth=1');
+    const more = await panel(1).locator('a').allTextContents();
+    check(
+      'menus: More lists FAQ, Contact, Donate',
+      more.map((t) => t.trim()).join() === 'FAQ,Contact,Donate',
+      more.join(),
+    );
+    const box = await panel(1).boundingBox();
+    check(
+      'menus: the last menu stays inside the page',
+      box !== null && box.x + box.width <= 1440,
+      JSON.stringify(box),
+    );
+    await close();
+  }
+  {
     const { page, close } = await open('/about');
     check(
       'nav: current page is marked in the built site',

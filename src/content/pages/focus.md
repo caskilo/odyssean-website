@@ -6,23 +6,30 @@ description: 'The focus of our current efforts is the development of the most pr
 heading: 'Focus'
 areas:
   - anchor: iidm
+    area: institutions
     name: 'Institutions'
     body: 'Empowering people and institutions to navigate complex problems in times of crisis, blending computational foresight and expert knowledge with participatory decision-making.'
     quote: 'We have Palaeolithic emotions, mediaeval institutions and godlike technology.'
     attribution: 'E.O. Wilson'
     detailHeading: 'Developing Wise Institutions'
+    projects: [process, scans]
   - anchor: anticipatingglobalresilience
+    area: resilience
     name: 'Resilience'
     body: 'Deferring resilience until every mitigation is exhausted is not viable. We identify and reinforce the areas where greater resilience is needed most.'
     quote: 'Where is the wisdom we have lost in knowledge? Where is the knowledge we have lost in information?'
     attribution: 'T.S. Eliot'
     detailHeading: 'Anticipating Global Resilience'
+    projects: [grain, scans]
   - anchor: civilisationalrisk
+    area: wellbeing
     name: 'Wellbeing'
     body: 'Fostering human flourishing, beyond mere survival, by rethinking traditional approaches to economics and long-term planning.'
     quote: 'Those who plant trees, knowing that only others will enjoy the shade, are public benefactors.'
     attribution: 'Marcus Tullius Cicero'
     detailHeading: 'Nurturing Flourishing & Wellbeing'
+    projects: [process]
+projectsLabel: 'Related projects'
 sources:
   - kind: concept
     ref: '07'
@@ -30,6 +37,9 @@ sources:
   - kind: live
     ref: 'https://www.odysseaninstitute.org/focus'
     note: 'anchors, detail headings and the long-form sections in the body below; meta description (first sentence)'
+  - kind: decision
+    ref: 'site review 2026-10 (Focus: connect each area to projects)'
+    note: 'area-to-project mapping and the "Related projects" label drafted by Devin; pending review by Will'
 ---
 
 Humanity is living through an unprecedented confluence of emerging, accelerating, and compounding crises - threatening perhaps even extinction. Yet we are also equipped with bold and proven means to confront them.

@@ -13,7 +13,7 @@ sources:
     ref: 'https://www.odysseaninstitute.org/donate'
 ---
 
-Please [contact us](/contact) if you are interested in (i) funding specific projects, campaigns or areas of our work, (ii) collaborating with the Odyssean Institute through joint grant applications, or (iii) supporting us by volunteering your time.
+Please [contact us](/contact) if you are interested in (i) funding specific projects, campaigns, or areas of our work, (ii) collaborating with the Odyssean Institute through joint grant applications, or (iii) supporting us by volunteering your time.
 
 ![Participants seated in a high-ceilinged room with bookshelves and a grand piano, listening to a discussion while one person joins on a large video screen.](../../assets/media/pages/donate/image-6f456a.jpg)
 

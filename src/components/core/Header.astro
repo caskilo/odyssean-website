@@ -1,9 +1,10 @@
 ---
 import type { Copy } from '../../lib/copy';
-import { currentHref } from '../../lib/site';
+import { markCurrent } from '../../lib/site';
 import CopyText from './Copy.astro';
 import Logo from './Logo.astro';
 import Menu from './Menu.astro';
+import NavDrop from './NavDrop.astro';
 
 interface Link {
   label: Copy;
@@ -12,18 +13,22 @@ interface Link {
 interface Props {
   variant: 'overlay' | 'bar' | 'plain';
   current: string;
-  links: Link[];
-  /** donate-style outlined button (info strand) */
-  donate?: Link;
-  /** filled call to action (microsites) */
-  cta?: Link;
+  /** the info sections, or the current project's sub-nav (named) */
+  section: { name?: Copy; links: Link[] };
+  /** on every page: a menu of the projects, opened from a link to their overview */
+  projects: { label: Copy; href: string; items: Link[] };
+  /** on every page: a menu of the remaining links */
+  more: { label: Copy; items: Link[] };
   logoTone: 'blue' | 'paper' | 'gold';
   narrow?: boolean;
   ui: { home: string; menu: string; nav: string };
 }
-const { variant, current, links, donate, cta, logoTone, narrow = false, ui } = Astro.props;
-const menuLinks = [...links, ...(donate ? [donate] : []), ...(cta ? [cta] : [])];
-const active = currentHref(links, current);
+const { variant, current, section, projects, more, logoTone, narrow = false, ui } = Astro.props;
+// the Projects menu takes the place of a section link to the overview (the info strand), or follows the section's links (a project)
+const sectionLinks = markCurrent(section.links, current);
+const slot = sectionLinks.findIndex((l) => l.href === projects.href);
+const items = sectionLinks.map((l, i) => (i === slot ? ('projects' as const) : l));
+if (slot < 0) items.push('projects');
 ---
 
 <header class={`site-header site-header--${variant}`}>
@@ -33,31 +38,40 @@ const active = currentHref(links, current);
         <Logo tone={logoTone} height={variant === 'bar' ? 46 : 52} />
       </a>
       <nav class="site-header__nav" aria-label={ui.nav}>
-        {links.map((l) => (
-          <a href={l.href} aria-current={l.href === active ? 'page' : undefined}>
-            <CopyText value={l.label} />
-          </a>
-        ))}
-        {donate && (
-          <a class="site-header__donate" href={donate.href}>
-            <CopyText value={donate.label} />
-          </a>
+        {items.map((l) =>
+          l === 'projects' ? (
+            <NavDrop {...projects} {current} />
+          ) : (
+            <a href={l.href} aria-current={l.current}>
+              <CopyText value={l.label} />
+            </a>
+          ),
         )}
-        {cta && (
-          <a class="site-header__cta" href={cta.href}>
-            <CopyText value={cta.label} />
-          </a>
-        )}
+        <NavDrop {...more} {current} />
       </nav>
-      <Menu label={ui.menu} navLabel={ui.nav} links={menuLinks} {current} />
+      <Menu
+        label={ui.menu}
+        navLabel={ui.nav}
+        {current}
+        groups={[
+          { name: section.name, links: section.links },
+          { name: projects.label, links: projects.items },
+          { links: more.items },
+        ]}
+      />
     </div>
   </div>
 </header>
+
+<script>
+  import '../../scripts/nav';
+</script>
 
 <style>
   .site-header {
     --h-bg: var(--bg);
     --h-fg: var(--fg);
+    --h-current: var(--gold);
     color: var(--h-fg);
   }
   .site-header--overlay,
@@ -77,6 +91,7 @@ const active = currentHref(links, current);
   }
   .site-header--plain {
     --nav-link: var(--fg);
+    --h-current: var(--accent);
   }
   .site-header--bar {
     --nav-link: var(--paper);
@@ -104,57 +119,31 @@ const active = currentHref(links, current);
     align-items: center;
     gap: 0.75rem 1.75rem;
     font-size: var(--step-small);
-    font-weight: 600;
   }
   .site-header--bar .site-header__nav {
     font-size: 0.875rem;
     gap: 0.75rem 1.625rem;
   }
-  .site-header__nav a {
+  .site-header__nav > a {
+    padding-bottom: 3px;
+    border-bottom: 2px solid transparent;
     color: var(--nav-link);
     text-decoration: none;
   }
-  .site-header__nav a:not(.site-header__donate, .site-header__cta) {
-    padding-bottom: 3px;
-    border-bottom: 2px solid transparent;
+  .site-header__nav > a:hover,
+  .site-header__nav :global(.drop__trigger:hover),
+  .site-header__nav :global(.drop:focus-within .drop__trigger) {
+    color: var(--h-current);
   }
-  .site-header__nav a:hover {
-    color: var(--gold);
+  .site-header__nav > a[aria-current],
+  .site-header__nav :global(.drop__trigger[aria-current]) {
+    color: var(--h-current);
+    border-bottom-color: var(--h-current);
   }
-  .site-header--plain .site-header__nav a:hover {
-    color: var(--accent);
-  }
-  .site-header__nav a[aria-current='page'] {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
-  }
-  .site-header--plain .site-header__nav a[aria-current='page'] {
-    color: var(--accent);
-    border-bottom-color: var(--accent);
-  }
-  .site-header .site-header__donate {
-    padding: 0.6875rem 1.25rem;
-    border: 1.5px solid var(--gold);
-    border-radius: var(--radius);
-    color: var(--gold);
-  }
-  .site-header--plain .site-header__donate {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-  .site-header .site-header__donate:hover {
-    background: var(--gold);
-    color: var(--navy);
-  }
-  .site-header .site-header__cta {
-    padding: 0.75rem 1.25rem;
-    border-radius: var(--radius);
-    background: var(--gold);
-    color: var(--navy);
-  }
-  .site-header .site-header__cta:hover {
-    color: var(--navy);
-    filter: brightness(1.08);
+  /* the last menu opens leftwards so it stays inside the page */
+  .site-header__nav > :global(.drop:last-child .drop__panel) {
+    right: -1rem;
+    left: auto;
   }
   @media (max-width: 48rem) {
     .site-header__nav {

@@ -1,6 +1,8 @@
 :root {
   --navy: #011130;
   --blue: #1d4387;
+  /* GRAIN green, from the GRAIN Overview Report cover (site review 2026-10) */
+  --green: #0b3a29;
   --gold: #e2b540;
   --sand: #ebd3a2;
   --paper: #ebe5d9;

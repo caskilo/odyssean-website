@@ -31,6 +31,7 @@ src/content/**  ──schema (content.config.ts)──▶  getCollection / getEn
 - **Templates.** A page's front matter says which template it uses (`home`, `projects`, `publications`, `about`, `focus`, `faq`, `blog`, `grain-landing`, `scans-landing`, `process-landing`, `modelling`, or the general-purpose `prose`). Each template has its own schema in `content.config.ts`, so the fields a page may use are checked.
 - **Shared lists** (team, publications, signals, quotes) are collections, queried through helpers in `lib/content.ts`.
 - **Site-wide settings** (name, navigation, footer, microsite sub-navs, feature flags) are in `content/settings/site.yaml`.
+- **One header everywhere.** A strip above the logo lists the three projects (left) and FAQ and Contact (right); the main row shows the section's links (the info sections, or the current project's sub-nav) and Donate. On phones, one menu holds the same groups in the same order. `lib/site.ts` marks the current page and its section in each group.
 
 ## Layers
 

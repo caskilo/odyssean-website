@@ -8,11 +8,13 @@ interface Props {
   label: Copy;
   title: Copy;
   note?: Copy;
+  /** shown on hover or keyboard focus; always shown where there is no hover (touch) */
+  reveal?: Copy;
 }
-const { href, rule = 'blue', label, title, note } = Astro.props;
+const { href, rule = 'blue', label, title, note, reveal } = Astro.props;
 ---
 
-<a class={`card card--${rule}`} {href}>
+<a class:list={['card', `card--${rule}`, { 'card--reveal': reveal }]} {href}>
   <span class="card__label">
     <CopyText value={label} />
   </span>
@@ -22,6 +24,13 @@ const { href, rule = 'blue', label, title, note } = Astro.props;
   {note && (
     <span class="card__note">
       <CopyText value={note} />
+    </span>
+  )}
+  {reveal && (
+    <span class="card__reveal">
+      <span class="card__reveal-inner">
+        <CopyText value={reveal} />
+      </span>
     </span>
   )}
 </a>
@@ -63,5 +72,40 @@ const { href, rule = 'blue', label, title, note } = Astro.props;
     line-height: normal;
     font-size: 0.875rem;
     color: var(--blue);
+  }
+  .card__reveal {
+    display: grid;
+    grid-template-rows: 1fr;
+    font-size: var(--step-small);
+    line-height: 1.55;
+  }
+  .card__reveal-inner {
+    min-height: 0;
+    overflow: hidden;
+    padding-top: 0.875rem;
+    border-top: 1px solid var(--sand);
+  }
+  @media (hover: hover) {
+    .card--reveal .card__reveal {
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 0.25s ease,
+        opacity 0.25s ease;
+    }
+    .card--reveal .card__reveal-inner {
+      padding-top: 0;
+      border-top-color: transparent;
+    }
+    .card--reveal:hover .card__reveal,
+    .card--reveal:focus-visible .card__reveal {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+    .card--reveal:hover .card__reveal-inner,
+    .card--reveal:focus-visible .card__reveal-inner {
+      padding-top: 0.875rem;
+      border-top-color: var(--sand);
+    }
   }
 </style>

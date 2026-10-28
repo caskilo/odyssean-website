@@ -1,0 +1,111 @@
+---
+import type { Copy } from '../../lib/copy';
+import { markCurrent } from '../../lib/site';
+import CopyText from './Copy.astro';
+
+interface Props {
+  label: Copy;
+  /** where the label itself goes; without it the label is a button that only opens the menu */
+  href?: string;
+  items: { label: Copy; href: string }[];
+  current: string;
+}
+const { label, href, items, current } = Astro.props;
+const links = markCurrent(items, current);
+const hrefs = [...(href ? [href] : []), ...items.map((i) => i.href)];
+const within = hrefs.some((h) => current === h || current.startsWith(h + '/'));
+const state = href && current === href ? 'page' : within ? 'true' : undefined;
+const Trigger = href ? 'a' : 'button';
+---
+
+<div class="drop" data-drop>
+  <Trigger
+    class="drop__trigger"
+    {...(href ? { href } : { type: 'button' })}
+    aria-haspopup="true"
+    aria-current={state}
+  >
+    <CopyText value={label} />
+    <svg class="drop__chevron" viewBox="0 0 10 6" aria-hidden="true">
+      <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+    </svg>
+  </Trigger>
+  <ul class="drop__panel">
+    {links.map((l) => (
+      <li>
+        <a href={l.href} aria-current={l.current}>
+          <CopyText value={l.label} />
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .drop {
+    position: relative;
+  }
+  .drop__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4375rem;
+    padding: 0 0 3px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: var(--nav-link);
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .drop__chevron {
+    width: 0.625rem;
+    height: 0.375rem;
+    transition: transform 0.2s ease;
+  }
+  .drop:hover .drop__chevron,
+  .drop:focus-within .drop__chevron {
+    transform: rotate(180deg);
+  }
+  /* the panel starts at the bottom edge of the trigger, with its own top padding, so the pointer never leaves the menu on the way down */
+  .drop__panel {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: -1rem;
+    z-index: 30;
+    min-width: 13.5rem;
+    margin: 0;
+    padding: 0.875rem 0 0;
+    list-style: none;
+  }
+  .drop:hover .drop__panel,
+  .drop:focus-within .drop__panel {
+    display: block;
+  }
+  .drop[data-dismissed] .drop__panel {
+    display: none;
+  }
+  .drop__panel::before {
+    position: absolute;
+    inset: 0.875rem 0 0;
+    z-index: -1;
+    background: var(--h-bg);
+    box-shadow: 0 1.25rem 2rem -1rem rgb(1 17 48 / 0.45);
+    content: '';
+  }
+  .drop__panel li + li {
+    border-top: 1px solid color-mix(in srgb, var(--h-fg) 18%, transparent);
+  }
+  .drop__panel a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--h-fg);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .drop__panel a:hover,
+  .drop__panel a[aria-current] {
+    color: var(--h-current);
+  }
+</style>

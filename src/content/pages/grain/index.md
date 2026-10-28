@@ -7,7 +7,7 @@ eyebrow: 'GRAIN · Global Resilient Anticipatory Infrastructure Network'
 headline:
   text: 'Trade that holds when'
   accent: 'a link breaks.'
-lede: 'If one chokepoint fails, through error, conflict or capture, the whole global economy feels it. GRAIN maps the nodes that keep critical goods flowing under extreme stress, and finds where resilience and economic incentives already point the same way.'
+lede: 'If one chokepoint fails, through error, conflict, or capture, the whole global economy feels it. GRAIN maps the nodes that keep critical goods flowing under extreme stress, and finds where resilience and economic incentives already point the same way.'
 actions:
   - { label: 'Read the 2025 GRAIN report', href: '/files/grain-overview-report.pdf', style: primary }
   - label: 'Policy brief, Feb 2024'
@@ -27,7 +27,7 @@ pillars:
     body: 'Tracking critical material vulnerabilities, from fuel and fertiliser to helium, before they cascade.'
   - kicker: '02 — Secure'
     title: 'Protecting core commodities'
-    body: 'Using Revealed Comparative Advantage to find trusted, distributed sources of food, energy and medicine.'
+    body: 'Using Revealed Comparative Advantage to find trusted, distributed sources of food, energy, and medicine.'
   - kicker: '03 — Build'
     title: 'Strengthening institutions'
     body: 'Adaptive governance playbooks that keep nations operating through global catastrophic events.'

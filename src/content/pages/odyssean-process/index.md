@@ -2,7 +2,7 @@
 template: process-landing
 strand: process
 title: 'The Odyssean Process'
-description: 'How the Odyssean Process takes us from expert knowledge to democratic decisions in three ports of call: sample, map and empower.'
+description: 'How the Odyssean Process takes us from expert knowledge to democratic decisions in three ports of call: sample, map, and empower.'
 eyebrow: 'Our method · The Odyssean Process'
 headline:
   text: 'How the voyage'

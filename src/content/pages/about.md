@@ -2,7 +2,7 @@
 template: about
 strand: info
 title: 'About'
-description: 'We have a diverse team with academic and industry experiences from Oxford, Cambridge, King’s College London, University of Edinburgh and JMU Würzburg, in disciplines as diverse as history, political theory and science, earth science, economics, complex systems modelling, and sociology.'
+description: 'We have a diverse team with academic and industry experiences from Oxford, Cambridge, King’s College London, University of Edinburgh, and JMU Würzburg, in disciplines as diverse as history, political theory and science, earth science, economics, complex systems modelling, and sociology.'
 splash:
   body: 'The Odyssean refers both to the natural and social sciences unified in efforts to take a ‘look at the whole’ to handle complexity, and the arduous journey we face collectively today'
 origin:
@@ -16,7 +16,7 @@ origin:
       body: 'Nobel laureate Murray Gell-Mann, a founder of the Santa Fe Institute, called for an Odyssean education: one that joins the natural and social sciences, so people can think competently about complex systems.'
     - numeral: 'II'
       title: 'The leap'
-      body: "What that education does for one mind, the Odyssean Process does for a whole society. Expert elicitation, exploratory modelling and citizens' assemblies bring scientific rigour and lived experience to the same decision."
+      body: "What that education does for one mind, the Odyssean Process does for a whole society. Expert elicitation, exploratory modelling, and citizens' assemblies bring scientific rigour and lived experience to the same decision."
     - numeral: 'III'
       title: 'The practice'
       body: "Today that means a citizens' assembly on AI governance in Manchester, resilient trade mapping through GRAIN, and foresight on the second-order impacts of nuclear risk. One complexity-competent approach, applied to the grand challenges."

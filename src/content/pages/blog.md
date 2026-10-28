@@ -2,7 +2,7 @@
 template: blog
 strand: info
 title: 'Blog'
-description: 'Updates, reviews and commentary from the Odyssean Institute and its collaborators.'
+description: 'Updates, reviews, and commentary from the Odyssean Institute and its collaborators.'
 heading: 'Blog'
 sources:
   - kind: live

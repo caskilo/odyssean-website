@@ -1,23 +1,39 @@
 ---
+import { Image } from 'astro:assets';
 import InfoLanding from '../layouts/InfoLanding.astro';
 import Headline from '../components/core/Headline.astro';
 import Card from '../components/core/Card.astro';
 import CopyText from '../components/core/Copy.astro';
 import { getArt } from '../lib/art';
-import type { PageOf } from '../lib/content';
+import { getPage, type PageOf } from '../lib/content';
+import { text } from '../lib/copy';
 
 interface Props {
   entry: PageOf<'home'>;
 }
 const { data } = Astro.props.entry;
-const { Component: Horizon } = getArt(data.hero.art);
+const { art, image } = data.hero;
+const Horizon = art ? getArt(art).Component : undefined;
 const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as const;
+// each card reveals its area's summary from the Focus page
+const areas = (await getPage('focus', 'focus')).data.areas;
+const summary = (area: string) => areas.find((a) => a.area === area)?.body;
 ---
 
 <InfoLanding title={data.title} fullTitle description={data.description} headerVariant="overlay">
   <section class="hero">
     <div class="hero__art" aria-hidden="true">
-      <Horizon />
+      {Horizon && <Horizon />}
+      {image && (
+        <Image
+          class="hero__photo"
+          src={image.src}
+          alt={text(image.alt) ?? ''}
+          widths={[1280, 1920, 2880]}
+          sizes="100vw"
+          loading="eager"
+        />
+      )}
     </div>
     <div class="container hero__inner">
       <Headline
@@ -49,7 +65,14 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
     </div>
     <div class="focus__cards">
       {data.focus.cards.map((c) => (
-        <Card href={c.href} rule={rules[c.area]} label={c.label} title={c.title} note={c.note} />
+        <Card
+          href={c.href}
+          rule={rules[c.area]}
+          label={c.label}
+          title={c.title}
+          note={c.note}
+          reveal={summary(c.area)}
+        />
       ))}
     </div>
   </section>
@@ -69,6 +92,24 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
     position: absolute;
     inset: 0;
   }
+  .hero__art :global(.hero__photo) {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: 50% 30%;
+  }
+  .hero__art:has(.hero__photo)::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgb(1 17 48 / 0.55),
+      rgb(1 17 48 / 0.25) 45%,
+      rgb(1 17 48 / 0.7)
+    );
+    content: '';
+  }
   .hero__inner {
     position: relative;
     display: flex;
@@ -80,6 +121,13 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
     text-align: center;
   }
 
+  /* a dark outline keeps the headline legible over the clouds */
+  .hero__inner :global(.headline) {
+    -webkit-text-stroke: 0.07em var(--navy);
+    paint-order: stroke fill;
+    stroke-linejoin: round;
+    text-shadow: 0 0 1.5rem rgb(1 17 48 / 0.5);
+  }
   .hero__lede {
     max-width: 37.5rem;
     margin: 0;
@@ -120,7 +168,6 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
   }
   .focus__head a {
     font-size: var(--step-small);
-    font-weight: 600;
   }
   .focus__cards {
     display: flex;

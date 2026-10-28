@@ -12,11 +12,19 @@
   font-style: italic;
   font-display: swap;
 }
-/* The concept embeds only the 600 cut; it renders every Instrument Sans weight, so the build does too. */
+/* Instrument Sans: Medium for all text (site review 2026-10). SemiBold only where CSS asks for 600+
+   (the Projects title and numerals) and for bold (<strong>). Both are the same Latin subset. */
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('../assets/fonts/InstrumentSans-500.woff2') format('woff2');
+  font-weight: 400 599;
+  font-style: normal;
+  font-display: swap;
+}
 @font-face {
   font-family: 'Instrument Sans';
   src: url('../assets/fonts/InstrumentSans-600.woff2') format('woff2');
-  font-weight: 400 700;
+  font-weight: 600 700;
   font-style: normal;
   font-display: swap;
 }

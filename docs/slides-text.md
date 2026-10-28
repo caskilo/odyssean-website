@@ -136,7 +136,7 @@ Experts scored the catastrophic risks we are least prepared for, from cascading 
 3
 Deliberation
 Live · Assembly Nov 2026
-The Odyssean Process on AI
+The Odyssean Process
 The first full run of our Process: 29 experts scored 60+ AI risks and solutions, feeding scenario modelling and a UK citizens' assembly in Manchester.
 Odyssean Institute · Registered charity 1204794
 ```

@@ -8,7 +8,7 @@ file: /files/odyssean-process-white-paper-2024.pdf
 thumbnail:
   src: "../../assets/media/publications/odyssean-process-white-paper-343d6a.jpg"
   alt: "The Odyssean Process"
-programmes: [process]
+programmes: [process, scans]
 verification:
   status: corrected
   note: "Live title links to the 2024 edition (e56281_f0a7…); thumbnail and Read All link to an older, different 2023 edition (cad45f_63b8…). The 2024 edition is used; the 2023 file stays available at its old URL. Year \"2024\" as cited on the live Curriculum page."

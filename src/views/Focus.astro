@@ -4,13 +4,16 @@ import Headline from '../components/core/Headline.astro';
 import Pill from '../components/core/Pill.astro';
 import CopyText from '../components/core/Copy.astro';
 import { md, sections } from '../lib/markdown';
-import type { PageOf } from '../lib/content';
+import { getPage, type PageOf } from '../lib/content';
 
 interface Props {
   entry: PageOf<'focus'>;
 }
 const { entry } = Astro.props;
 const { data } = entry;
+// project names and links come from the Projects page
+const panels = (await getPage('projects', 'projects')).data.panels;
+const project = (theme: string) => panels.find((p) => p.theme === theme);
 const parts = sections(entry.body ?? '');
 const intro = await md(parts.intro);
 const details = Object.fromEntries(
@@ -51,6 +54,23 @@ const details = Object.fromEntries(
           </h3>
           <div class="prose-block" set:html={details[String(a.detailHeading)]} />
         </div>
+      )}
+      {a.projects.length > 0 && (
+        <nav class="area__projects" aria-label={String(data.projectsLabel)}>
+          <span class="area__projects-label">
+            <CopyText value={data.projectsLabel} />
+          </span>
+          {a.projects.map((t) => {
+            const p = project(t);
+            return (
+              p && (
+                <Pill href={p.href}>
+                  <CopyText value={p.heading} />
+                </Pill>
+              )
+            );
+          })}
+        </nav>
       )}
     </section>
   ))}
@@ -107,5 +127,18 @@ const details = Object.fromEntries(
   .area__detail {
     max-width: 46rem;
     margin-top: 2.5rem;
+  }
+  .area__projects {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.625rem;
+    margin-top: 2rem;
+  }
+  .area__projects-label {
+    margin-right: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: var(--step-mono);
+    color: var(--blue);
   }
 </style>

@@ -12,10 +12,10 @@ const {
 <svg viewBox="0 0 500 600" class="art" role="img" aria-label={description}>
   <defs>
     <clipPath id="oeLeft">
-      <circle cx="185" cy="290" r="150" />
+      <circle cx="166" cy="290" r="150" />
     </clipPath>
     <clipPath id="oeLens">
-      <circle cx="315" cy="290" r="150" />
+      <circle cx="334" cy="290" r="150" />
     </clipPath>
     <pattern
       id="oeHatch"
@@ -29,35 +29,39 @@ const {
   </defs>
 
   <g clip-path="url(#oeLeft)">
-    <circle cx="315" cy="290" r="150" fill="url(#oeHatch)" clip-path="url(#oeLens)" />
+    <circle cx="334" cy="290" r="150" fill="url(#oeHatch)" clip-path="url(#oeLens)" />
   </g>
 
-  <circle cx="185" cy="290" r="150" fill="none" stroke="#EBE5D9" stroke-width="2.5" />
-  <circle cx="185" cy="290" r="142" fill="none" stroke="#EBD3A2" stroke-width="0.8" opacity="0.6" />
-  <circle cx="315" cy="290" r="150" fill="none" stroke="#EBE5D9" stroke-width="2.5" />
-  <circle cx="315" cy="290" r="142" fill="none" stroke="#EBD3A2" stroke-width="0.8" opacity="0.6" />
+  <circle cx="166" cy="290" r="150" fill="none" stroke="#EBE5D9" stroke-width="2.5" />
+  <circle cx="166" cy="290" r="142" fill="none" stroke="#EBD3A2" stroke-width="0.8" opacity="0.6" />
+  <circle cx="334" cy="290" r="150" fill="none" stroke="#EBE5D9" stroke-width="2.5" />
+  <circle cx="334" cy="290" r="142" fill="none" stroke="#EBD3A2" stroke-width="0.8" opacity="0.6" />
 
-  <g fill="none" stroke="#EBD3A2" stroke-width="1.4">
-    <ellipse cx="128" cy="290" rx="62" ry="22" />
-    <ellipse cx="128" cy="290" rx="62" ry="22" transform="rotate(60 128 290)" />
-    <ellipse cx="128" cy="290" rx="62" ry="22" transform="rotate(-60 128 290)" />
+  <g transform="translate(-28 0)">
+    <g fill="none" stroke="#EBD3A2" stroke-width="1.4">
+      <ellipse cx="128" cy="290" rx="62" ry="22" />
+      <ellipse cx="128" cy="290" rx="62" ry="22" transform="rotate(60 128 290)" />
+      <ellipse cx="128" cy="290" rx="62" ry="22" transform="rotate(-60 128 290)" />
+    </g>
+    <circle cx="128" cy="290" r="7" fill="#E2B540" />
+    <circle cx="190" cy="290" r="3.5" fill="#EBE5D9" />
+    <circle cx="97" cy="236" r="3.5" fill="#EBE5D9" />
+    <circle cx="97" cy="344" r="3.5" fill="#EBE5D9" />
   </g>
-  <circle cx="128" cy="290" r="7" fill="#E2B540" />
-  <circle cx="190" cy="290" r="3.5" fill="#EBE5D9" />
-  <circle cx="97" cy="236" r="3.5" fill="#EBE5D9" />
-  <circle cx="97" cy="344" r="3.5" fill="#EBE5D9" />
 
-  <g stroke="#1D4387" stroke-width="1.6">
-    <path d="M372 218 L410 262 L372 300 L340 252 Z M410 262 L420 330 L372 300 M372 300 L350 366 L420 330 M350 366 L398 396 L420 330 M340 252 L372 218" />
-  </g>
-  <g fill="#EBD3A2">
-    <circle cx="372" cy="218" r="5" />
-    <circle cx="410" cy="262" r="5" />
-    <circle cx="340" cy="252" r="5" />
-    <circle cx="372" cy="300" r="5" />
-    <circle cx="420" cy="330" r="5" />
-    <circle cx="350" cy="366" r="5" />
-    <circle cx="398" cy="396" r="5" />
+  <g transform="translate(400 290) scale(0.9) translate(-380 -307)">
+    <g stroke="#1D4387" stroke-width="1.6">
+      <path d="M372 218 L410 262 L372 300 L340 252 Z M410 262 L420 330 L372 300 M372 300 L350 366 L420 330 M350 366 L398 396 L420 330 M340 252 L372 218" />
+    </g>
+    <g fill="#EBD3A2">
+      <circle cx="372" cy="218" r="5" />
+      <circle cx="410" cy="262" r="5" />
+      <circle cx="340" cy="252" r="5" />
+      <circle cx="372" cy="300" r="5" />
+      <circle cx="420" cy="330" r="5" />
+      <circle cx="350" cy="366" r="5" />
+      <circle cx="398" cy="396" r="5" />
+    </g>
   </g>
 
   <path d="M250 214 V366" stroke="#E2B540" stroke-width="1" opacity="0.7" />
@@ -81,14 +85,14 @@ const {
     letter-spacing="1.5"
     fill="#EBD3A2"
   >
-    <text x="120" y="112" text-anchor="middle">
+    <text x="101" y="112" text-anchor="middle">
       {left}
     </text>
-    <text x="380" y="112" text-anchor="middle">
+    <text x="399" y="112" text-anchor="middle">
       {right}
     </text>
   </g>
-  <path d="M120 122 L135 146 M380 122 L365 146" stroke="#EBD3A2" stroke-width="1" />
+  <path d="M101 122 L116 146 M399 122 L384 146" stroke="#EBD3A2" stroke-width="1" />
 
   <g fill="none" stroke="#1D4387" stroke-width="1.6">
     <path d="M0 500 Q25 488 50 500 T100 500 T150 500 T200 500 T250 500 T300 500 T350 500 T400 500 T450 500 T500 500" />

@@ -39,6 +39,8 @@ jobs:
               -e "s#(srcset=[\"'])/([^/])#\1${BASE}/\2#g" \
               -e "s#(url\([\"']?)/([^/])#\1${BASE}/\2#g" \
               -e "s#(content=[\"'])/([^/])#\1${BASE}/\2#g"
+          find dist -type f -name '*.html' -print0 |
+            xargs -0 sed -i 's#<head>#<head><meta name="robots" content="noindex">#'
           touch dist/.nojekyll
           rm -f dist/.htaccess
 

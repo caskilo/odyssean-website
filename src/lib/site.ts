@@ -21,3 +21,13 @@ export const currentHref = (links: { href: string }[], current: string) =>
     .map((l) => l.href)
     .filter((h) => (h === '/' ? current === '/' : current === h || current.startsWith(h + '/')))
     .sort((a, b) => b.length - a.length)[0];
+
+/** aria-current for each link in a nav group: "page" on the page itself, "true" on its section. */
+export const markCurrent = <L extends { href: string }>(links: L[], current: string) => {
+  const active = currentHref(links, current);
+  return links.map((l) => ({
+    ...l,
+    current:
+      l.href === current ? ('page' as const) : l.href === active ? ('true' as const) : undefined,
+  }));
+};

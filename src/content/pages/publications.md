@@ -11,12 +11,14 @@ filters:
   - { label: 'Policy briefs', type: policy-brief }
   - { label: 'White papers', type: white-paper }
   - { label: 'Research reports', type: research-report }
+  - { label: 'Academic articles', type: academic-article }
   - { label: 'Blog', href: '/blog' }
   - { label: 'Curriculum', href: '/curriculum' }
 typeLabels:
   policy-brief: 'Policy brief'
   white-paper: 'White paper'
   research-report: 'Research report'
+  academic-article: 'Academic article'
 featured:
   publication: odyssean-process-white-paper
   label: 'Featured · White paper'
@@ -34,4 +36,7 @@ sources:
   - kind: decision
     ref: 'open-questions C2 (resolved)'
     note: 'filter "Blog & commentary" renamed "Blog"; Blog and Curriculum link out to their own pages'
+  - kind: decision
+    ref: 'site review 2026-10 (Publications: types)'
+    note: 'new type "Academic article" for journal articles and journal-format preprints; the five reclassified entries are a first reading by Devin, pending review by Will'
 ---

@@ -2,7 +2,7 @@
 template: prose
 strand: grain
 title: 'Reports'
-description: 'Reports and papers from the GRAIN initiative on resilience, trade and governance in a global catastrophe.'
+description: 'Reports and papers from the GRAIN initiative on resilience, trade, and governance in a global catastrophe.'
 heading: 'Reports'
 publicationsFor: grain
 sources:

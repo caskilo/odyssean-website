@@ -68,7 +68,7 @@ The Odyssean Institute addresses civilisational risk through the Odyssean Proces
 
 The Odyssean Process begins with our team drawing upon existing research on civilisation risks as well as conducting its own.
 
-Our Horizon Scan elicits and weighs experts’ assessments of the most critical, tractable and neglected threats to humanity.
+Our Horizon Scan elicits and weighs experts’ assessments of the most critical, tractable, and neglected threats to humanity.
 
 ### Decision-Making Under Deep Uncertainty (DMDU)
 
@@ -120,7 +120,7 @@ DMDU has been implemented by the Delta Commissioner’s ‘Room for the River In
 
 It has also been used by the New Zealand government’s national Guidance on Coastal Hazards and Climate Change to address similar coastal hazards related to sea-level rising.
 
-The Odyssean Institute is advocating and building its capacity for the use of DMDU to address myriad existential risks, climate change and pandemics, to post-nuclear war recovery.
+The Odyssean Institute is advocating and building its capacity for the use of DMDU to address myriad existential risks, climate change, and pandemics, to post-nuclear war recovery.
 
 ### Citizens’ Assemblies (CA)
 

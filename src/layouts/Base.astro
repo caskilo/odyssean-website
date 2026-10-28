@@ -1,7 +1,7 @@
 ---
 import arrus from '../assets/fonts/ArrusBT-400.otf?url';
 import arrusItalic from '../assets/fonts/ArrusBT-400i.otf?url';
-import instrument from '../assets/fonts/InstrumentSans-600.woff2?url';
+import instrument from '../assets/fonts/InstrumentSans-500.woff2?url';
 import mono from '../assets/fonts/DMMono-400.woff2?url';
 import '../styles/fonts.css';
 import '../styles/tokens.css';
@@ -49,7 +49,7 @@ const s = await getSettings();
 // built pages are files (about.html), so strip the extension to get the public path
 const current = Astro.url.pathname.replace(/\.html$/, '').replace(/[/](index)?$/, '') || '/';
 const micro = isMicrosite(strand) ? s.microsites[strand] : undefined;
-const links = micro ? micro.subnav : s.mainNav;
+const section = micro ? { name: micro.name, links: micro.subnav } : { links: s.mainNav };
 const pageTitle = text(title) ?? s.name;
 const documentTitle = fullTitle ? pageTitle : `${pageTitle} | ${s.name}`;
 const desc = text(description);
@@ -112,9 +112,9 @@ const canonical = new URL(current, Astro.site);
     <Header
       variant={headerVariant}
       {current}
-      {links}
-      donate={micro ? undefined : s.donate}
-      cta={micro?.cta}
+      {section}
+      projects={s.projects}
+      more={s.more}
       logoTone={tone}
       {narrow}
       {ui}

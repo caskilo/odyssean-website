@@ -8,14 +8,23 @@ interface Props {
   tag?: 'h1' | 'h2' | 'h3';
   size?: 'hero' | 'xl' | 'l' | 'landing' | 'm';
   breakBefore?: boolean;
+  /** set the accent in roman: it only changes colour (the project landing pages, site review 2026-10) */
+  roman?: boolean;
 }
-const { text, accent, tag: Tag = 'h1', size = 'l', breakBefore = false } = Astro.props;
+const {
+  text,
+  accent,
+  tag: Tag = 'h1',
+  size = 'l',
+  breakBefore = false,
+  roman = false,
+} = Astro.props;
 ---
 
 <Tag class={`headline headline--${size}`}>
   <CopyText value={text} /> {accent && (breakBefore ? <br /> : null)}
   {accent && (
-    <em>
+    <em class:list={{ roman }}>
       <CopyText value={accent} />
     </em>
   )}
@@ -24,6 +33,9 @@ const { text, accent, tag: Tag = 'h1', size = 'l', breakBefore = false } = Astro
 <style>
   .headline {
     margin: 0;
+  }
+  .roman {
+    font-style: normal;
   }
   .headline--hero {
     font-size: var(--step-hero);
