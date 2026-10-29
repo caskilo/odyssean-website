@@ -10,9 +10,6 @@ headline:
 lede: 'If one chokepoint fails, through error, conflict, or capture, the whole global economy feels it. GRAIN maps the nodes that keep critical goods flowing under extreme stress, and finds where resilience and economic incentives already point the same way.'
 actions:
   - { label: 'Read the 2025 GRAIN report', href: '/files/grain-overview-report.pdf', style: primary }
-  - label: 'Policy brief, Feb 2024'
-    href: '/files/odyssean-process-policy-brief-2024.pdf'
-    style: secondary
 figure:
   art: grain-network
   caption: 'Fig. 1 — A resilient trade network. Sever one chokepoint and the flow reroutes through nodes of persisting recovery. GRAIN identifies where those nodes are.'
@@ -34,6 +31,9 @@ pillars:
 sources:
   - kind: concept
     ref: '01'
+  - kind: decision
+    ref: 'site review 2026-10, round 2 (GRAIN)'
+    note: 'the Policy brief button is removed from the top section'
   - kind: live
     ref: 'https://www.odysseaninstitute.org/grain'
     note: 'meta description; the body below is the full live GRAIN page (heading and logo image replaced by the concept)'

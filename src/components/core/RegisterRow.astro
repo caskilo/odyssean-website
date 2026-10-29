@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import type { Copy } from '../../lib/copy';
 import CopyText from './Copy.astro';
 
@@ -9,8 +11,10 @@ interface Props {
   meta?: Copy[];
   /** heading level of the title: h3 under a section heading, h2 directly under the page h1 */
   tag?: 'h2' | 'h3';
+  /** a small preview picture at the end of the row (decorative: the title says what it is) */
+  thumb?: ImageMetadata;
 }
-const { type, title, href, meta = [], tag: Tag = 'h3' } = Astro.props;
+const { type, title, href, meta = [], tag: Tag = 'h3', thumb } = Astro.props;
 const external = /^https?:\/\//.test(href);
 ---
 
@@ -35,6 +39,9 @@ const external = /^https?:\/\//.test(href);
       </p>
     )}
   </div>
+  {thumb && (
+    <Image class="row__thumb" src={thumb} alt="" width={176} height={132} densities={[1, 2]} />
+  )}
 </article>
 
 <style>
@@ -43,7 +50,7 @@ const external = /^https?:\/\//.test(href);
     flex-wrap: wrap;
     gap: 1.5rem;
     padding: 1.5rem 0;
-    border-bottom: 1px solid var(--rule-soft);
+    border-bottom: var(--row-rule-width, 1px) solid var(--rule-soft);
   }
   .row__type {
     flex: 0 0 8.75rem;
@@ -69,6 +76,14 @@ const external = /^https?:\/\//.test(href);
     text-decoration: underline;
     text-decoration-color: var(--gold);
     text-underline-offset: 0.2em;
+  }
+  .row :global(.row__thumb) {
+    flex: 0 0 5.5rem;
+    width: 5.5rem;
+    height: 4.125rem;
+    align-self: flex-start;
+    object-fit: cover;
+    background: var(--sand);
   }
   .row__body :global(p) {
     margin: 0.75rem 0 0;

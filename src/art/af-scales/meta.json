@@ -1,0 +1,10 @@
+{
+  "status": "final",
+  "source": "Aeonic Flourishing page concept",
+  "mobile": "scales",
+  "notes": "Micro, meso and macro as three overlapping circles; their overlap is the Euhedron. Labels and description come from content (aeonic-flourishing scales.figure).",
+  "demo": {
+    "labels": { "macro": "Macro", "micro": "Micro", "meso": "Meso", "centre": "Euhedron" },
+    "description": "Demo"
+  }
+}

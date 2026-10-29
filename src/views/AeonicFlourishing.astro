@@ -1,0 +1,539 @@
+---
+import { Image } from 'astro:assets';
+import Af from '../layouts/Af.astro';
+import Eyebrow from '../components/core/Eyebrow.astro';
+import Headline from '../components/core/Headline.astro';
+import RomanSection from '../components/core/RomanSection.astro';
+import Button from '../components/core/Button.astro';
+import CopyText from '../components/core/Copy.astro';
+import { getArt } from '../lib/art';
+import { text } from '../lib/copy';
+import type { PageOf } from '../lib/content';
+
+interface Props {
+  entry: PageOf<'aeonic-flourishing'>;
+}
+const { data } = Astro.props.entry;
+const art = (key: string) => getArt(key).Component;
+const Hero = art(data.art);
+const Scales = art(data.scales.figure.art);
+const Euhedron = art(data.euhedron.figure.art);
+const Mark = art(data.closing.art);
+const labels = Object.fromEntries(
+  Object.entries(data.scales.figure.labels).map(([k, v]) => [k, text(v) ?? '']),
+) as Record<'macro' | 'micro' | 'meso' | 'centre', string>;
+---
+
+<Af title={data.title} description={data.description}>
+  <section class="hero">
+    <div class="container container--narrow hero__inner">
+      <div class="hero__text">
+        <Eyebrow variant="register">
+          <CopyText value={data.eyebrow} />
+        </Eyebrow>
+        <Headline text={data.heading} size="xl" />
+        <p class="hero__lede">
+          <CopyText value={data.lede} />
+        </p>
+        <dl class="glosses">
+          {data.glosses.map((g) => (
+            <div>
+              <dt>
+                <CopyText value={g.term} />
+              </dt>
+              <dd>
+                <CopyText value={g.meaning} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div class="hero__art" aria-hidden="true">
+        <Hero />
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.premise.numeral}
+        eyebrow={data.premise.eyebrow}
+        title={data.premise.heading}
+        body={data.premise.paragraphs}
+      />
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.scales.numeral}
+        eyebrow={data.scales.eyebrow}
+        title={data.scales.heading}
+        body={data.scales.intro}
+      />
+      <div class="split">
+        <Scales {labels} description={text(data.scales.figure.description) ?? ''} />
+        <ul class="listing">
+          {data.scales.items.map((i) => (
+            <li>
+              <Eyebrow>
+                <CopyText value={i.eyebrow} />
+              </Eyebrow>
+              <h3>
+                <CopyText value={i.title} />
+              </h3>
+              <p>
+                <CopyText value={i.body} />
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.euhedron.numeral}
+        eyebrow={data.euhedron.eyebrow}
+        title={data.euhedron.heading}
+        body={data.euhedron.intro}
+      />
+      <div class="split">
+        <figure class="euhedron">
+          <Euhedron description={text(data.euhedron.figure.description) ?? ''} />
+          <figcaption>
+            <CopyText value={data.euhedron.pull} />
+          </figcaption>
+        </figure>
+        <div class="legend">
+          {data.euhedron.legend.map((l) => (
+            <div>
+              <Eyebrow>
+                <CopyText value={l.eyebrow} />
+              </Eyebrow>
+              <p>
+                <CopyText value={l.body} />
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.floors.numeral}
+        eyebrow={data.floors.eyebrow}
+        title={data.floors.heading}
+        body={data.floors.intro}
+      />
+      <div class="floors">
+        {data.floors.items.map((f) => (
+          <div class="floor">
+            <Eyebrow>
+              <CopyText value={f.eyebrow} />
+            </Eyebrow>
+            <h3>
+              <CopyText value={f.title} />
+            </h3>
+            <p>
+              <CopyText value={f.body} />
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.curses.numeral}
+        eyebrow={data.curses.eyebrow}
+        title={data.curses.heading}
+        body={data.curses.intro}
+      />
+      <div class="curses">
+        {data.curses.items.map((c) => (
+          <div class="curse">
+            <h3>
+              <CopyText value={c.title} />
+            </h3>
+            <p>
+              <CopyText value={c.body} />
+            </p>
+            <div class="curse__antidote">
+              <Eyebrow>
+                <CopyText value={data.curses.antidoteLabel} />
+              </Eyebrow>
+              <p>
+                <CopyText value={c.antidote} />
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.measure.numeral}
+        eyebrow={data.measure.eyebrow}
+        title={data.measure.heading}
+        body={data.measure.intro}
+      />
+      <div class="split split--measure">
+        <Image
+          class="measure__figure"
+          src={data.measure.figure.src}
+          alt={text(data.measure.figure.alt) ?? ''}
+          width={900}
+        />
+        <ol class="listing listing--ordered">
+          {data.measure.items.map((i) => (
+            <li>
+              <Eyebrow>
+                <CopyText value={i.eyebrow} />
+              </Eyebrow>
+              <h3>
+                <CopyText value={i.title} />
+              </h3>
+              <p>
+                <CopyText value={i.body} />
+              </p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <div class="container container--narrow">
+      <RomanSection
+        numeral={data.loop.numeral}
+        eyebrow={data.loop.eyebrow}
+        title={data.loop.heading}
+        body={data.loop.intro}
+      />
+      <ol class="loop">
+        {data.loop.steps.map((s) => (
+          <li>
+            <Eyebrow>{s.number}</Eyebrow>
+            <h3>
+              <CopyText value={s.title} />
+            </h3>
+            <p>
+              <CopyText value={s.body} />
+            </p>
+          </li>
+        ))}
+      </ol>
+      <p class="loop__back">
+        <CopyText value={data.loop.loopback} />
+      </p>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="container container--narrow">
+      <div class="close__mark" aria-hidden="true">
+        <Mark />
+      </div>
+      <blockquote class="close__quote">
+        <CopyText value={data.closing.quote} />
+      </blockquote>
+      <p class="close__body">
+        <CopyText value={data.closing.body} />
+      </p>
+      <div class="close__actions">
+        {data.closing.actions.map((a) => (
+          <Button href={a.href} style={a.style}>
+            <CopyText value={a.label} />
+          </Button>
+        ))}
+      </div>
+    </div>
+  </section>
+</Af>
+
+<style>
+  .hero {
+    display: grid;
+    align-items: center;
+    min-height: min(100svh, 52rem);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+    padding-block: 4rem 6rem;
+  }
+  .hero__text {
+    --eyebrow-gap: 2rem;
+    --heading-wrap: wrap;
+  }
+  .hero__lede {
+    max-width: 34ch;
+    margin: 2rem 0 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    line-height: 1.3;
+  }
+  .glosses {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 2.5rem;
+    margin: 2.5rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: var(--eyebrow);
+  }
+  .glosses dt {
+    color: var(--fg);
+  }
+  .glosses dd {
+    margin: 0;
+  }
+
+  .chapter {
+    padding-block: clamp(4rem, 9vw, 8rem);
+    border-bottom: 1px solid var(--rule);
+    --roman-title-size: var(--step-m);
+    --roman-numeral-color: var(--gold);
+    --roman-numeral-width: 4.5rem;
+    --roman-measure: 62ch;
+    --eyebrow-gap: 0.5rem;
+  }
+  .split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .split--measure {
+    grid-template-columns: 1.2fr 1fr;
+    align-items: stretch;
+  }
+  .listing {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .listing li {
+    padding: 1.4rem 0;
+    border-top: 1px solid var(--rule);
+  }
+  .listing li:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+  .listing h3 {
+    margin: 0.5rem 0 0.4rem;
+    font-size: var(--step-s);
+  }
+  .listing p,
+  .legend p,
+  .floor p,
+  .curse p,
+  .loop p {
+    margin: 0;
+    font-size: 0.95em;
+    color: var(--eyebrow);
+  }
+  .euhedron {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0;
+    justify-self: center;
+  }
+  .euhedron figcaption {
+    width: 80%;
+    margin: 1.5rem auto 0;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+  .legend {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .legend p {
+    margin-top: 0.35rem;
+  }
+
+  .floors {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 3rem;
+    border: 1px solid var(--rule);
+  }
+  .floor {
+    padding: 1.75rem;
+    border-right: 1px solid var(--rule);
+  }
+  .floor:last-child {
+    border-right: 0;
+  }
+  .floor:nth-child(1) {
+    background: var(--surface);
+  }
+  .floor:nth-child(2) {
+    background: color-mix(in srgb, var(--fg) 3.5%, transparent);
+  }
+  .floor h3 {
+    margin: 0.8rem 0 0.6rem;
+    font-size: var(--step-s);
+  }
+
+  .curses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid var(--rule);
+    background: var(--rule);
+  }
+  .curse {
+    padding: 2rem;
+    background: var(--bg);
+  }
+  .curse h3 {
+    margin: 0 0 0.8rem;
+    font-size: var(--step-s);
+  }
+  .curse__antidote {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px dotted var(--rule);
+    --eyebrow: var(--gold);
+    --eyebrow-gap: 0.4rem;
+  }
+  .curse__antidote p {
+    color: var(--fg);
+    font-size: 1em;
+  }
+
+  .measure__figure {
+    width: 100%;
+    height: 100%;
+    min-height: 20rem;
+    object-fit: contain;
+    background: var(--black);
+    border: 1px solid var(--rule);
+  }
+
+  .loop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 3rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .loop li {
+    position: relative;
+    padding: 1.5rem 1.25rem 0 0;
+    border-top: 1px solid var(--fg);
+  }
+  .loop li::before {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    content: '';
+  }
+  .loop h3 {
+    margin: 0.6rem 0 0.4rem;
+    font-size: 1.25rem;
+  }
+  .loop__back {
+    margin: 1.25rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--eyebrow);
+  }
+
+  .close {
+    padding-block: clamp(5rem, 12vw, 10rem);
+    text-align: center;
+  }
+  .close__mark {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .close__mark :global(svg) {
+    width: 5rem;
+    height: 5rem;
+  }
+  .close__quote {
+    max-width: 22ch;
+    margin: 0 auto;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4.4vw, 3.4rem);
+    line-height: 1.15;
+  }
+  .close__body {
+    max-width: 62ch;
+    margin: 2rem auto 0;
+    color: var(--eyebrow);
+  }
+  .close__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 48rem) {
+    .hero__inner,
+    .split,
+    .split--measure {
+      grid-template-columns: 1fr;
+    }
+    .hero__art {
+      order: -1;
+      max-width: 18rem;
+      margin-inline: auto;
+    }
+    .floors,
+    .curses {
+      grid-template-columns: 1fr;
+    }
+    .floor {
+      border-right: 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .floor:last-child {
+      border-bottom: 0;
+    }
+    .loop {
+      grid-template-columns: 1fr 1fr;
+      row-gap: 2rem;
+    }
+    .chapter {
+      --roman-numeral-width: 3rem;
+    }
+  }
+</style>

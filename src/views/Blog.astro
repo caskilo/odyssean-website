@@ -21,6 +21,7 @@ const posts = await getPosts();
         title={p.data.title}
         href={`/post/${p.id}`}
         meta={[p.data.author, ...(p.data.readTime ? [p.data.readTime] : [])]}
+        thumb={(p.data.cover ?? p.data.preview)?.src}
       >
         {p.data.description && <p>{p.data.description}</p>}
       </RegisterRow>

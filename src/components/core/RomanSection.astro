@@ -1,13 +1,16 @@
 ---
 import type { Copy } from '../../lib/copy';
 import CopyText from './Copy.astro';
+import Eyebrow from './Eyebrow.astro';
 
 interface Props {
   numeral: string;
+  eyebrow?: Copy;
   title: Copy;
-  body: Copy;
+  body: Copy | Copy[];
 }
-const { numeral, title, body } = Astro.props;
+const { numeral, eyebrow, title, body } = Astro.props;
+const paragraphs = Array.isArray(body) ? body : [body];
 ---
 
 <section class="roman">
@@ -15,12 +18,19 @@ const { numeral, title, body } = Astro.props;
     {numeral}
   </span>
   <div class="roman__text">
+    {eyebrow && (
+      <Eyebrow>
+        <CopyText value={eyebrow} />
+      </Eyebrow>
+    )}
     <h2 class="roman__title">
       <CopyText value={title} />
     </h2>
-    <p class="roman__body">
-      <CopyText value={body} />
-    </p>
+    {paragraphs.map((p) => (
+      <p class="roman__body">
+        <CopyText value={p} />
+      </p>
+    ))}
   </div>
 </section>
 
@@ -30,11 +40,11 @@ const { numeral, title, body } = Astro.props;
     gap: 1.375rem;
   }
   .roman__numeral {
-    min-width: 2.5rem;
+    min-width: var(--roman-numeral-width, 2.5rem);
     font-family: var(--font-display);
     font-size: 2.125rem;
     line-height: 1.1;
-    color: var(--accent);
+    color: var(--roman-numeral-color, var(--accent));
   }
   .roman__text {
     display: flex;
@@ -43,11 +53,15 @@ const { numeral, title, body } = Astro.props;
   }
   .roman__title {
     margin: 0;
-    font-size: var(--step-s);
+    font-size: var(--roman-title-size, var(--step-s));
   }
   .roman__body {
+    max-width: var(--roman-measure, none);
     margin: 0;
     font-size: 1.0625rem;
     line-height: 1.65;
+  }
+  .roman__body + .roman__body {
+    margin-top: 0.5rem;
   }
 </style>

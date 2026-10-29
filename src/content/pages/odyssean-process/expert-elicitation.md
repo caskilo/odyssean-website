@@ -8,10 +8,14 @@ heading: 'Expert Elicitation of Judgement (EEJ)'
 lede: 'We survey scientists and specialists to surface the emerging trends that matter most.'
 actions:
   - { label: 'The White Paper', href: '/files/odyssean-process-white-paper-2024.pdf', style: primary }
+  - { label: 'Horizon Scanning', href: '/horizon-scans', style: secondary }
 sources:
   - kind: concept
     ref: '04'
     note: 'eyebrow (Port I · Sample) and lede'
+  - kind: decision
+    ref: 'site review 2026-10, round 2 (Horizon Scans)'
+    note: 'boxed Horizon Scanning link beside The White Paper, since Horizon Scans left the list of projects'
   - kind: pdf
     ref: 'e56281_f0a77ff859354023bf743d07b9cea519'
     note: 'White Paper §04.2 (p. 15, EEJ row) and §04.3 (p. 17, EEJ paragraphs); footnote markers and "(see below)" cross-references omitted'

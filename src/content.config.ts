@@ -24,9 +24,9 @@ const source = z.object({
 });
 const sources = z.array(source).min(1);
 
-const strand = z.enum(['info', 'grain', 'scans', 'process']);
-/** the three projects (the microsite strands) */
-const programme = z.enum(['grain', 'scans', 'process']);
+const strand = z.enum(['info', 'grain', 'scans', 'process', 'af']);
+/** the microsite strands: the projects, and the Horizon Scans pages that belong with the Odyssean Process */
+const programme = z.enum(['grain', 'scans', 'process', 'af']);
 const focusArea = z.enum(['institutions', 'wellbeing', 'resilience']);
 const publicationType = z.enum([
   'academic-article',
@@ -49,6 +49,9 @@ const action = z.object({
 /** Display headline: roman text followed by an italic accent phrase in the theme accent colour. */
 const headline = z.object({ text: copy, accent: copy.optional() });
 const numbered = z.object({ numeral: z.string(), title: copy, body: copy });
+/** a Roman-numeral section: the numeral, an eyebrow and a heading, plus the section's own fields */
+const romanSection = <T extends z.ZodRawShape>(shape: T) =>
+  z.object({ numeral: z.string(), eyebrow: copy, heading: copy, ...shape });
 
 const img = (image: SchemaContext['image']) =>
   z.object({
@@ -95,6 +98,12 @@ const pageSchema = ({ image }: SchemaContext) =>
           )
           .length(3),
       }),
+      /** one post and one publication, changing each month: the pick is (months since `start`) mod the number of ids */
+      spotlight: z.object({
+        start: z.string().regex(/^\d{4}-\d{2}$/, 'a month, like 2026-11'),
+        posts: z.object({ label: copy, cta: copy, ids: z.array(z.string()).min(1) }),
+        publications: z.object({ label: copy, cta: copy, ids: z.array(z.string()).min(1) }),
+      }),
     }),
     z.object({
       ...base,
@@ -137,7 +146,6 @@ const pageSchema = ({ image }: SchemaContext) =>
         summary: copy,
         cta: copy,
         fileLabel: copy,
-        cover: z.object({ kicker: copy, title: copy }),
       }),
     }),
     z.object({
@@ -145,7 +153,7 @@ const pageSchema = ({ image }: SchemaContext) =>
       template: z.literal('about'),
       splash: z.object({ heading: copy.optional(), body: copy }),
       origin: z.object({
-        eyebrow: copy,
+        eyebrow: copy.optional(),
         headline,
         items: z.array(numbered).length(3),
         figure: z.object({
@@ -244,6 +252,57 @@ const pageSchema = ({ image }: SchemaContext) =>
     }),
     z.object({
       ...base,
+      template: z.literal('aeonic-flourishing'),
+      eyebrow: copy,
+      heading: copy,
+      lede: copy,
+      /** the two halves of the name, each with its gloss */
+      glosses: z.array(z.object({ term: copy, meaning: copy })).length(2),
+      art: artKey,
+      premise: romanSection({ paragraphs: z.array(copy).min(1) }),
+      scales: romanSection({
+        intro: copy,
+        figure: z.object({
+          art: artKey,
+          description: copy,
+          labels: z.object({ macro: copy, micro: copy, meso: copy, centre: copy }),
+        }),
+        items: z.array(z.object({ eyebrow: copy, title: copy, body: copy })).length(3),
+      }),
+      euhedron: romanSection({
+        intro: copy,
+        figure: z.object({ art: artKey, description: copy }),
+        pull: copy,
+        legend: z.array(z.object({ eyebrow: copy, body: copy })).length(3),
+      }),
+      floors: romanSection({
+        intro: copy,
+        items: z.array(z.object({ eyebrow: copy, title: copy, body: copy })).length(3),
+      }),
+      curses: romanSection({
+        intro: copy,
+        antidoteLabel: copy,
+        items: z.array(z.object({ title: copy, body: copy, antidote: copy })).length(4),
+      }),
+      measure: romanSection({
+        intro: copy,
+        figure: img(image),
+        items: z.array(z.object({ eyebrow: copy, title: copy, body: copy })).length(3),
+      }),
+      loop: romanSection({
+        intro: copy,
+        steps: z.array(z.object({ number: z.string(), title: copy, body: copy })).length(4),
+        loopback: copy,
+      }),
+      closing: z.object({
+        art: artKey,
+        quote: copy,
+        body: copy,
+        actions: z.array(action).max(2),
+      }),
+    }),
+    z.object({
+      ...base,
       template: z.literal('prose'), // contact, donate, curriculum, microsite sub-pages, reports…
       family: z.enum(['institutional', 'reading']).default('institutional'),
       noindex: z.boolean().default(false),
@@ -296,6 +355,8 @@ const posts = defineCollection({
       updated: z.coerce.date().optional(),
       readTime: z.string().optional(),
       cover: img(image).optional(),
+      /** image for the blog tile when the post has no cover (its first picture sits inside the text) */
+      preview: img(image).optional(),
       sources,
     }),
 });
@@ -388,11 +449,19 @@ const settings = defineCollection({
     /** header, first group: the info strand's sections (a microsite shows its own sub-nav instead) */
     mainNav: z.array(navItem),
     /** header, on every page: a menu of the projects (opened from a link to the overview) ... */
-    projects: z.object({ label: copy, href, items: z.array(navItem).min(1) }),
+    projects: z.object({
+      label: copy,
+      href,
+      groups: z.array(z.object({ label: copy, items: z.array(navItem).min(1) })).min(1),
+    }),
     /** ... and a menu of the remaining links (FAQ, Contact, Donate) */
     more: z.object({ label: copy, items: z.array(navItem).min(1) }),
     footer: z.array(z.object({ heading: copy.optional(), links: z.array(navItem) })),
-    microsites: z.record(programme, z.object({ name: copy, subnav: z.array(navItem).min(1) })),
+    /** a microsite without a sub-nav (one page) shows the main links in its header */
+    microsites: z.record(
+      programme,
+      z.object({ name: copy, subnav: z.array(navItem).min(1).optional() }),
+    ),
     flags: z.object({
       teamSection: z.enum(['team', 'experts-citizens']),
       contactForm: z.boolean(),

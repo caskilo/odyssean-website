@@ -1,0 +1,18 @@
+/* Aeonic Flourishing: black ground, light ink, no accent colour */
+[data-theme='af'] {
+  --bg: var(--black);
+  --fg: var(--ink);
+  --accent: var(--ink);
+  --eyebrow: var(--ash);
+  --surface: color-mix(in srgb, var(--ink) 7%, transparent);
+  --surface-fg: var(--ink);
+  --rule: color-mix(in srgb, var(--ink) 22%, transparent);
+  --rule-soft: color-mix(in srgb, var(--ink) 22%, transparent);
+  --link: var(--ink);
+  --link-hover: var(--ash);
+  --btn-bg: var(--ink);
+  --btn-fg: var(--black);
+  --focus: var(--ink);
+  /* the one touch of colour: gold, sparingly (current page, numerals, the centre of each figure) */
+  --current: var(--gold);
+}

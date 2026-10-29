@@ -9,6 +9,7 @@ import '../styles/themes/info.css';
 import '../styles/themes/grain.css';
 import '../styles/themes/scans.css';
 import '../styles/themes/process.css';
+import '../styles/themes/af.css';
 import '../styles/base.css';
 import Header from '../components/core/Header.astro';
 import Footer from '../components/core/Footer.astro';
@@ -49,7 +50,8 @@ const s = await getSettings();
 // built pages are files (about.html), so strip the extension to get the public path
 const current = Astro.url.pathname.replace(/\.html$/, '').replace(/[/](index)?$/, '') || '/';
 const micro = isMicrosite(strand) ? s.microsites[strand] : undefined;
-const section = micro ? { name: micro.name, links: micro.subnav } : { links: s.mainNav };
+// a microsite with no sub-nav (a single page) shows the main links
+const section = micro?.subnav ? { name: micro.name, links: micro.subnav } : { links: s.mainNav };
 const pageTitle = text(title) ?? s.name;
 const documentTitle = fullTitle ? pageTitle : `${pageTitle} | ${s.name}`;
 const desc = text(description);
@@ -62,7 +64,7 @@ const tone =
 const ui = {
   home: String(s.ui.home),
   menu: String(s.ui.menu),
-  nav: String(micro ? s.ui.subNav : s.ui.mainNav),
+  nav: String(micro?.subnav ? s.ui.subNav : s.ui.mainNav),
 };
 const canonical = new URL(current, Astro.site);
 ---

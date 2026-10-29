@@ -1,5 +1,5 @@
 order: 7
-title: "Resilience Reconsidered"
+title: "Resilience Reconsidered: The need for modelling resilience in food distribution and trade relations in post nuclear war recovery"
 type: academic-article
 summary: "Our paper on modelling trade chokepoints for resilience to GCRs, especially nuclear, with applicability for asteroid, and volcanic reduced sunlight conditions.\n\nThe work was published in the International Journal of Disaster Risk Science on the 5th of August, 2025."
 authors: "Christopher Yan-Chak Chan, Giuseppe Dal Prá et al."
@@ -7,7 +7,7 @@ date: "August 2025"
 url: https://link.springer.com/article/10.1007/s13753-025-00657-y
 thumbnail:
   src: "../../assets/media/publications/resilience-reconsidered-c3380c.jpg"
-  alt: "Resilience Reconsidered"
+  alt: "Resilience Reconsidered: The need for modelling resilience in food distribution and trade relations in post nuclear war recovery"
 programmes: [grain]
 verification:
   status: corrected

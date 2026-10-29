@@ -8,7 +8,7 @@ file: /files/odyssean-process-policy-brief-2024.pdf
 thumbnail:
   src: "../../assets/media/publications/odyssean-process-policy-brief-cb1797.jpg"
   alt: "Odyssean Process Policy Brief"
-programmes: [process, scans]
+programmes: [process]
 verification:
   status: verified
   note: "All links point to the same PDF; matches its first page (\"POLICY BRIEF February 2024\")."

@@ -3,10 +3,23 @@ import { Image } from 'astro:assets';
 import InfoLanding from '../layouts/InfoLanding.astro';
 import Headline from '../components/core/Headline.astro';
 import Card from '../components/core/Card.astro';
+import Button from '../components/core/Button.astro';
+import Feature from '../components/core/Feature.astro';
 import CopyText from '../components/core/Copy.astro';
 import { getArt } from '../lib/art';
-import { getPage, type PageOf } from '../lib/content';
+import {
+  excerpt,
+  getPage,
+  getPosts,
+  getPublications,
+  monthYear,
+  publicationHref,
+  publicationMeta,
+  type PageOf,
+} from '../lib/content';
 import { text } from '../lib/copy';
+import { md } from '../lib/markdown';
+import { rotationIndex } from '../lib/rotation';
 
 interface Props {
   entry: PageOf<'home'>;
@@ -18,11 +31,26 @@ const rules = { institutions: 'blue', wellbeing: 'gold', resilience: 'navy' } as
 // each card reveals its area's summary from the Focus page
 const areas = (await getPage('focus', 'focus')).data.areas;
 const summary = (area: string) => areas.find((a) => a.area === area)?.body;
+
+// the spotlight: one post and one publication, rotating monthly (scripts/spotlight.ts keeps it current)
+const { spotlight } = data;
+const [posts, publications] = [await getPosts(), await getPublications()];
+const pick = <T extends { id: string }>(all: T[], ids: string[]) =>
+  ids.map((id) => {
+    const found = all.find((e) => e.id === id);
+    if (!found) throw new Error(`home spotlight: "${id}" not found`);
+    return found;
+  });
+const spotPosts = pick(posts, spotlight.posts.ids);
+const spotPubs = pick(publications, spotlight.publications.ids);
+const postShown = rotationIndex(spotlight.start, spotPosts.length);
+const pubShown = rotationIndex(spotlight.start, spotPubs.length);
+const pubSummaries = await Promise.all(spotPubs.map((p) => md(p.data.summary.split(/\n{2,}/)[0])));
 ---
 
 <InfoLanding title={data.title} fullTitle description={data.description} headerVariant="overlay">
   <section class="hero">
-    <div class="hero__art" aria-hidden="true">
+    <div class:list={['hero__art', { 'hero__art--photo': image }]} aria-hidden="true">
       {Horizon && <Horizon />}
       {image && (
         <Image
@@ -41,6 +69,7 @@ const summary = (area: string) => areas.find((a) => a.area === area)?.body;
         accent={data.hero.headline.accent}
         size="hero"
         breakBefore
+        roman
       />
       <p class="hero__lede">
         <CopyText value={data.hero.lede} />
@@ -59,9 +88,9 @@ const summary = (area: string) => areas.find((a) => a.area === area)?.body;
       <h2>
         <CopyText value={data.focus.heading} />
       </h2>
-      <a class="tap" href={data.focus.more.href}>
+      <Button href={data.focus.more.href} style="secondary">
         <CopyText value={data.focus.more.label} />
-      </a>
+      </Button>
     </div>
     <div class="focus__cards">
       {data.focus.cards.map((c) => (
@@ -76,38 +105,78 @@ const summary = (area: string) => areas.find((a) => a.area === area)?.body;
       ))}
     </div>
   </section>
+
+  <section class="container spotlight">
+    <div class="spotlight__col" data-rotate={spotlight.start}>
+      {spotPosts.map((p, i) => (
+        <Feature
+          data-rotate-item
+          hidden={i !== postShown}
+          label={spotlight.posts.label}
+          title={p.data.title}
+          href={`/post/${p.id}`}
+          cta={spotlight.posts.cta}
+          meta={[monthYear(p.data.published), p.data.author]}
+          image={(p.data.cover ?? p.data.preview)?.src}
+        >
+          <p>{p.data.description ?? excerpt(p.body)}</p>
+        </Feature>
+      ))}
+    </div>
+    <div class="spotlight__col" data-rotate={spotlight.start}>
+      {spotPubs.map((p, i) => (
+        <Feature
+          data-rotate-item
+          hidden={i !== pubShown}
+          rule="gold"
+          label={spotlight.publications.label}
+          title={p.data.title}
+          href={publicationHref(p)}
+          cta={spotlight.publications.cta}
+          meta={publicationMeta(p)}
+          image={p.data.thumbnail?.src}
+        >
+          <Fragment set:html={pubSummaries[i]} />
+        </Feature>
+      ))}
+    </div>
+  </section>
 </InfoLanding>
+
+<script>
+  import '../scripts/spotlight';
+</script>
 
 <style>
   .hero {
     position: relative;
     overflow: hidden;
     --accent: var(--sand);
-    min-height: 40rem;
+    min-height: 59.5rem;
     padding-top: 13.375rem;
-    background: var(--navy);
+    background: var(--black);
     color: var(--paper);
   }
   .hero__art {
     position: absolute;
     inset: 0;
   }
+  /* the photograph sits at the foot of the hero; above its horizon is black space, so the headline reads against it */
+  .hero__art--photo {
+    top: auto;
+    height: 40rem;
+  }
   .hero__art :global(.hero__photo) {
     width: 100%;
     height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: 50% 30%;
+    object-position: 50% 0;
   }
-  .hero__art:has(.hero__photo)::after {
+  .hero__art--photo::after {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to bottom,
-      rgb(1 17 48 / 0.55),
-      rgb(1 17 48 / 0.25) 45%,
-      rgb(1 17 48 / 0.7)
-    );
+    background: linear-gradient(to bottom, transparent, transparent 45%, rgb(1 17 48 / 0.6));
     content: '';
   }
   .hero__inner {
@@ -121,13 +190,6 @@ const summary = (area: string) => areas.find((a) => a.area === area)?.body;
     text-align: center;
   }
 
-  /* a dark outline keeps the headline legible over the clouds */
-  .hero__inner :global(.headline) {
-    -webkit-text-stroke: 0.07em var(--navy);
-    paint-order: stroke fill;
-    stroke-linejoin: round;
-    text-shadow: 0 0 1.5rem rgb(1 17 48 / 0.5);
-  }
   .hero__lede {
     max-width: 37.5rem;
     margin: 0;
@@ -166,12 +228,15 @@ const summary = (area: string) => areas.find((a) => a.area === area)?.body;
     line-height: normal;
     font-size: var(--step-m);
   }
-  .focus__head a {
-    font-size: var(--step-small);
-  }
   .focus__cards {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
+  }
+  .spotlight {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+    gap: 1.5rem;
+    padding-bottom: 4.5rem;
   }
 </style>

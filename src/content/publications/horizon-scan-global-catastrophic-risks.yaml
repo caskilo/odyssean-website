@@ -8,7 +8,7 @@ file: /files/horizon-scan-global-catastrophic-risks-preprint.pdf
 thumbnail:
   src: "../../assets/media/publications/horizon-scan-global-catastrophic-risks-324cc9.jpg"
   alt: "A Horizon Scan of Global Catastrophic Risks"
-programmes: [scans]
+programmes: [process]
 verification:
   status: corrected
   note: "Title, thumbnail and Read All are correct. Links inside the live summary text point to the White Paper (e56281_eec…); removed. Date \"2024\" from concept slide 5 (\"Published 2024\")."

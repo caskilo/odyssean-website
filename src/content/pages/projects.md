@@ -2,7 +2,7 @@
 template: projects
 strand: info
 title: 'Projects'
-description: 'The Odyssean Institute has three projects: GRAIN, Foresight Exercises, and the Odyssean Process.'
+description: 'The Odyssean Institute has three projects: GRAIN, Aeonic Flourishing, and the Odyssean Process.'
 heading: 'Projects'
 panels:
   - number: '1'
@@ -14,13 +14,13 @@ panels:
     summary: 'Mapping the countries and industries that keep fertiliser, energy, and staple foods flowing in a crisis, so trade holds when a chokepoint breaks.'
     href: '/grain'
   - number: '2'
-    art: mark-scans
-    theme: scans
-    label: 'Foresight'
-    status: 'Published 2024'
-    heading: 'Foresight Exercises'
-    summary: 'Structured exercises that draw on expert insight to anticipate the catastrophic risks we are least prepared for, from cascading food-system failures to nuclear fallout.'
-    href: '/horizon-scans'
+    art: mark-af
+    theme: af
+    label: 'Wellbeing'
+    status: 'Research strand'
+    heading: 'Aeonic Flourishing'
+    summary: 'A truly long-term, integrative view of human flourishing, for an age of accelerating crisis and encroaching planetary boundaries.'
+    href: '/aeonic-flourishing'
   - number: '3'
     art: mark-process
     theme: process
@@ -37,5 +37,8 @@ sources:
     ref: 'description approved by Will'
   - kind: decision
     ref: 'site review 2026-10 (Projects, panel 2)'
-    note: 'heading is "Foresight Exercises" (Horizon Scans are one component of the Odyssean Process, not a project). The summary is a draft by Devin, pending review by Will'
+    note: 'panel 2 was briefly "Foresight Exercises" (Horizon Scans are one component of the Odyssean Process, not a project)'
+  - kind: decision
+    ref: 'site review 2026-10, round 2 (Projects, panel 2)'
+    note: 'panel 2 is Aeonic Flourishing. Its summary is the page lede and its label and status are proposed by Devin, pending review by Will'
 ---

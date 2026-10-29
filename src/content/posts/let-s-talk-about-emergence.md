@@ -72,7 +72,7 @@ The second piece that we shouldn’t throw out with the bathwater is that we *we
 
 ## Acknowledgements
 
-I would like to thank [Igor Krawczuk](https://krawczuk.eu) for review, and critique of this post, as well as discussion on the topic. I also greatly appreciate Giuseppe Dal Pra, Isabel Johnson, Chris Chan, and Bilal Ashghar for their assistance.
+I would like to thank [Igor Krawczuk](https://krawczuk.eu) for review, and critique of this post, as well as discussion on the topic. I also greatly appreciate Giuseppe Dal Prá, Isabel Johnson, Chris Chan, and Bilal Ashghar for their assistance.
 
 ## References
 

@@ -3,15 +3,15 @@ title: "The Odyssean Process"
 type: white-paper
 summary: "Our White Paper outlines an innovative approach that combines horizon scanning, Decision Making under Deep Uncertainty (DMDU), and deliberative democracy to address civilisational risks. We call this the Odyssean Process."
 authors: "Giuseppe Dal Prá, Bilal-Imran Asghar, Christopher Chan"
-date: "2024"
+date: "2023"
 file: /files/odyssean-process-white-paper-2024.pdf
 thumbnail:
   src: "../../assets/media/publications/odyssean-process-white-paper-343d6a.jpg"
   alt: "The Odyssean Process"
-programmes: [process, scans]
+programmes: [process]
 verification:
   status: corrected
-  note: "Live title links to the 2024 edition (e56281_f0a7…); thumbnail and Read All link to an older, different 2023 edition (cad45f_63b8…). The 2024 edition is used; the 2023 file stays available at its old URL. Year \"2024\" as cited on the live Curriculum page."
+  note: "Live title links to the 2024 edition (e56281_f0a7…); thumbnail and Read All link to an older, different 2023 edition (cad45f_63b8…). The 2024 file is used (word for word the same text as the 2023 file); the 2023 file stays available at its old URL. Dated 2023, the year the White Paper was published (site review 2026-10, round 2); the cover is the thumbnail from the live site."
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/publications"

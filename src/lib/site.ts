@@ -1,6 +1,6 @@
 import { getEntry } from 'astro:content';
 
-export type Strand = 'info' | 'grain' | 'scans' | 'process';
+export type Strand = 'info' | 'grain' | 'scans' | 'process' | 'af';
 export type Microsite = Exclude<Strand, 'info'>;
 
 export async function getSettings() {
@@ -13,7 +13,7 @@ export const isMicrosite = (s: Strand): s is Microsite => s !== 'info';
 
 /** Logo colourway that reads on each strand's ground. */
 export const logoTone = (strand: Strand, dark = false) =>
-  strand === 'scans' || dark ? ('paper' as const) : ('blue' as const);
+  strand === 'scans' || strand === 'af' || dark ? ('paper' as const) : ('blue' as const);
 
 /** The nav link for the current page: the longest href that is the page or one of its parents. */
 export const currentHref = (links: { href: string }[], current: string) =>

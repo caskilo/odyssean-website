@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import Reading from '../layouts/Reading.astro';
 import PageTitle from '../components/core/PageTitle.astro';
 import RegisterRow from '../components/core/RegisterRow.astro';
@@ -15,6 +16,9 @@ const { data } = Astro.props.entry;
 const all = await getPublications();
 const featured = all.find((p) => p.id === data.featured.publication);
 if (!featured) throw new Error(`featured publication "${data.featured.publication}" not found`);
+if (!featured.data.thumbnail)
+  throw new Error(`featured publication "${featured.id}" needs a thumbnail for its cover`);
+const cover = featured.data.thumbnail;
 const rows = all.filter((p) => p !== featured);
 const featuredDate = text(featured.data.date);
 ---
@@ -39,15 +43,7 @@ const featuredDate = text(featured.data.date);
     </aside>
     <div class="register__list">
       <article class="featured" data-type={featured.data.type}>
-        <div class="featured__cover" aria-hidden="true">
-          <span class="featured__kicker">
-            <CopyText value={data.featured.cover.kicker} />
-          </span>
-          <span class="featured__cover-title">
-            <CopyText value={data.featured.cover.title} />
-          </span>
-          <span class="featured__rule"></span>
-        </div>
+        <Image class="featured__cover" src={cover.src} alt="" width={360} densities={[1, 2]} />
         <div class="featured__main">
           <div class="featured__label">
             <CopyText value={data.featured.label} />
@@ -146,33 +142,13 @@ const featuredDate = text(featured.data.date);
     padding-bottom: 2.25rem;
     border-bottom: 1.5px solid var(--navy);
   }
-  .featured__cover {
+  .featured :global(.featured__cover) {
     flex: 0 0 11.25rem;
-    height: 15rem;
-    padding: 1.125rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: var(--blue);
-    color: var(--paper);
-  }
-  .featured__kicker {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    line-height: normal;
-    text-transform: uppercase;
-    color: var(--sand);
-  }
-  .featured__cover-title {
-    font-family: var(--font-display);
-    font-size: 1.375rem;
-    line-height: 1.15;
-  }
-  .featured__rule {
-    display: block;
-    width: 2.5rem;
-    height: 3px;
-    background: var(--gold);
+    width: 11.25rem;
+    height: auto;
+    align-self: flex-start;
+    border: 1px solid var(--rule-soft);
+    background: var(--sand);
   }
   .featured__main {
     flex: 1 1 20rem;

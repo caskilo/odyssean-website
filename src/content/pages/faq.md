@@ -12,7 +12,7 @@ sources:
 
 ## What is the Odyssean Institute?
 
-Founded in 2022 by Giuseppe Dal Pra, the Odyssean Institute is dedicated to reducing our exposure to civilisational risks. It was developed from two treatises authored in 2017 and 2019, aiming to better address complex risks to civilisation, democratically.
+Founded in 2022 by Giuseppe Dal Prá, the Odyssean Institute is dedicated to reducing our exposure to civilisational risks. It was developed from two treatises authored in 2017 and 2019, aiming to better address complex risks to civilisation, democratically.
 
 In the face of existential stakes, we believe the only solutions that are both viable and desirable are those that are empirically based and democratically generated.
 

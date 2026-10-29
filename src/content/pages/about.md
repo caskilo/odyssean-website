@@ -6,19 +6,18 @@ description: 'We have a diverse team with academic and industry experiences from
 splash:
   body: 'The Odyssean refers both to the natural and social sciences unified in efforts to take a ‘look at the whole’ to handle complexity, and the arduous journey we face collectively today'
 origin:
-  eyebrow: 'The origin of our name'
   headline:
     text: 'Why we are'
     accent: 'Odyssean.'
   items:
     - numeral: 'I'
-      title: 'The education'
+      title: 'An education for the whole'
       body: 'Nobel laureate Murray Gell-Mann, a founder of the Santa Fe Institute, called for an Odyssean education: one that joins the natural and social sciences, so people can think competently about complex systems.'
     - numeral: 'II'
-      title: 'The leap'
+      title: 'A voyage into the future'
       body: "What that education does for one mind, the Odyssean Process does for a whole society. Expert elicitation, exploratory modelling, and citizens' assemblies bring scientific rigour and lived experience to the same decision."
     - numeral: 'III'
-      title: 'The practice'
+      title: 'Navigating complexity together'
       body: "Today that means a citizens' assembly on AI governance in Manchester, resilient trade mapping through GRAIN, and foresight on the second-order impacts of nuclear risk. One complexity-competent approach, applied to the grand challenges."
   figure:
     art: origin-venn

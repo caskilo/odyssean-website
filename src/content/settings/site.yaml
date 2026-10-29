@@ -14,15 +14,22 @@ ui:
   requested: 'Content requested'
 mainNav:
   - { label: 'Projects', href: '/projects' }
+  - { label: 'Blog', href: '/blog' }
   - { label: 'Publications', href: '/publications' }
   - { label: 'About', href: '/about' }
 projects:
   label: 'Projects'
   href: '/projects'
-  items:
-    - { label: 'GRAIN', href: '/grain' }
-    - { label: 'Horizon Scans', href: '/horizon-scans' }
-    - { label: 'The Odyssean Process', href: '/odyssean-process' }
+  groups:
+    - label: 'Institutions'
+      items:
+        - { label: 'The Odyssean Process', href: '/odyssean-process' }
+    - label: 'Resilience'
+      items:
+        - { label: 'GRAIN', href: '/grain' }
+    - label: 'Wellbeing'
+      items:
+        - { label: 'Aeonic Flourishing', href: '/aeonic-flourishing' }
 more:
   label: 'More'
   items:
@@ -38,7 +45,7 @@ footer:
       - { label: 'Focus', href: '/focus' }
   - links:
       - { label: 'GRAIN', href: '/grain' }
-      - { label: 'Horizon Scans', href: '/horizon-scans' }
+      - { label: 'Aeonic Flourishing', href: '/aeonic-flourishing' }
       - { label: 'The Odyssean Process', href: '/odyssean-process' }
   - links:
       - { label: 'About', href: '/about' }
@@ -56,7 +63,7 @@ microsites:
     name: 'Horizon Scans'
     subnav:
       - { label: 'Overview', href: '/horizon-scans' }
-      - { label: 'Reports', href: '/horizon-scans/reports' }
+      - { label: 'Reports', href: '/odyssean-process/reports' }
   process:
     name: 'The Odyssean Process'
     subnav:
@@ -64,6 +71,9 @@ microsites:
       - { label: 'Expert Elicitation', href: '/odyssean-process/expert-elicitation' }
       - { label: 'Modelling', href: '/odyssean-process/modelling' }
       - { label: 'Deliberation', href: '/odyssean-process/deliberation' }
+      - { label: 'Reports', href: '/odyssean-process/reports' }
+  af:
+    name: 'Aeonic Flourishing'
 flags:
   contactForm: false # switch on when the mail handler exists on the host (build-plan 9.3)
   teamSection: team # switch to experts-citizens when the Assembly content exists (~2027)
@@ -80,3 +90,6 @@ sources:
   - kind: decision
     ref: 'site review 2026-10 (sitewide navbar, GRAIN header)'
     note: 'one header everywhere: the section links, a Projects menu (the three projects) and a More menu (FAQ · Contact · Donate), both opened on hover or focus. GRAIN "Collaborate" and "Governance Under Fallout" removed from the GRAIN sub-nav; Contact removed from the GRAIN and Horizon Scans sub-navs because More has it'
+  - kind: decision
+    ref: 'site review 2026-10, round 2 (header Projects menu, Blog, Aeonic Flourishing)'
+    note: 'Blog added before Publications. The Projects menu groups the projects under the Focus areas (Institutions, Resilience, Wellbeing); the headings are not links. Aeonic Flourishing replaces Foresight Exercises as the second project; Horizon Scans leaves the project list and is reached from Expert Elicitation, and its Reports move to /odyssean-process/reports. Aeonic Flourishing has no sub-nav, so its header shows the main links'

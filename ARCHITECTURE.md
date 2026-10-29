@@ -4,7 +4,7 @@ How the site is put together, and why. For the plan and page list see `design-do
 
 ## In one paragraph
 
-A static [Astro](https://astro.build) site. Every word lives in `src/content/` (Markdown and YAML) and is validated by schemas, so a bad edit fails the build instead of shipping. Views turn content into pages, components and CSS tokens give each of the four strands (Info, GRAIN, Horizon Scans, Odyssean Process) its own look, and a few small scripts enhance pages that already work without JavaScript. The build produces plain files plus an Apache `.htaccess`.
+A static [Astro](https://astro.build) site. Every word lives in `src/content/` (Markdown and YAML) and is validated by schemas, so a bad edit fails the build instead of shipping. Views turn content into pages, components and CSS tokens give each of the five strands (Info, GRAIN, Horizon Scans, Odyssean Process, Aeonic Flourishing) its own look, and a few small scripts enhance pages that already work without JavaScript. The build produces plain files plus an Apache `.htaccess`.
 
 ## Principles
 
@@ -31,7 +31,7 @@ src/content/**  ──schema (content.config.ts)──▶  getCollection / getEn
 - **Templates.** A page's front matter says which template it uses (`home`, `projects`, `publications`, `about`, `focus`, `faq`, `blog`, `grain-landing`, `scans-landing`, `process-landing`, `modelling`, or the general-purpose `prose`). Each template has its own schema in `content.config.ts`, so the fields a page may use are checked.
 - **Shared lists** (team, publications, signals, quotes) are collections, queried through helpers in `lib/content.ts`.
 - **Site-wide settings** (name, navigation, footer, microsite sub-navs, feature flags) are in `content/settings/site.yaml`.
-- **One header everywhere.** A strip above the logo lists the three projects (left) and FAQ and Contact (right); the main row shows the section's links (the info sections, or the current project's sub-nav) and Donate. On phones, one menu holds the same groups in the same order. `lib/site.ts` marks the current page and its section in each group.
+- **One header everywhere.** One row: the logo, then the section's links (the info sections, or the current project's sub-nav; a project with a single page shows the info links), a **Projects** menu (the projects, grouped under the Focus areas) and a **More** menu (FAQ, Contact, Donate). Menus open on hover or focus, with no JavaScript; `scripts/nav.ts` adds Escape. On phones, one menu holds the same groups in the same order. `lib/site.ts` marks the current page and its section in each group.
 
 ## Layers
 

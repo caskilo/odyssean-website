@@ -60,11 +60,12 @@ sources:
 | `faq`                                                               | `/faq`                                    | Body: one `## Question` per item                                                                |
 | `blog`                                                              | `/blog`                                   | Index of `posts`                                                                                |
 | `grain-landing` · `scans-landing` · `process-landing` · `modelling` | Microsite landings and the Modelling page | Fields mirror the concept slides                                                                |
+| `aeonic-flourishing`                                                | `/aeonic-flourishing`                     | Hero, seven Roman-numeral sections and a closing call; every string is a field                  |
 | `prose`                                                             | Everything else                           | Optional eyebrow, heading, lede, actions, form, `publications`/`publicationsFor`, `contentFrom` |
 
 ## Common tasks
 
-**Add a blog post:** create `posts/<slug>.md` with `title`, `author`, `published` (ISO date), optional `description` (the search-result text; without one, the first paragraph of the post is used), optional `cover` (`src` + `alt`) and `sources`. Then write the body in Markdown.
+**Add a blog post:** create `posts/<slug>.md` with `title`, `author`, `published` (ISO date), optional `description` (the search-result text; without one, the first paragraph of the post is used), optional `cover` (`src` + `alt`, shown above the text and on the blog tile), optional `preview` (the tile picture when the first image sits inside the text) and `sources`. Then write the body in Markdown.
 
 **Add a publication:** create `publications/<slug>.yaml`. Give it `order`, `title`, `type` (`policy-brief` / `white-paper` / `research-report` / `academic-article`), `summary`, a `file` (`/files/…pdf`) or a `url`, `programmes` (which microsite reports pages list it), `verification` and `sources`.
 

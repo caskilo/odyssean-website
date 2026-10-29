@@ -121,7 +121,7 @@ We understand how complex and fraught with risk both regulating transformative t
 
 ## Acknowledgements
 
-While I was the primary author of this blogpost, I would not have been able to write it without the significant assistance from Kendal Peirce and Giuseppe Dal Pra, as well as feedback from Max Ramsahoye.
+While I was the primary author of this blogpost, I would not have been able to write it without the significant assistance from Kendal Peirce and Giuseppe Dal Prá, as well as feedback from Max Ramsahoye.
 
 ## References
 

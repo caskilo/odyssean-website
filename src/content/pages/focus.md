@@ -12,7 +12,7 @@ areas:
     quote: 'We have Palaeolithic emotions, mediaeval institutions and godlike technology.'
     attribution: 'E.O. Wilson'
     detailHeading: 'Developing Wise Institutions'
-    projects: [process, scans]
+    projects: [process]
   - anchor: anticipatingglobalresilience
     area: resilience
     name: 'Resilience'
@@ -20,7 +20,7 @@ areas:
     quote: 'Where is the wisdom we have lost in knowledge? Where is the knowledge we have lost in information?'
     attribution: 'T.S. Eliot'
     detailHeading: 'Anticipating Global Resilience'
-    projects: [grain, scans]
+    projects: [grain]
   - anchor: civilisationalrisk
     area: wellbeing
     name: 'Wellbeing'
@@ -28,7 +28,7 @@ areas:
     quote: 'Those who plant trees, knowing that only others will enjoy the shade, are public benefactors.'
     attribution: 'Marcus Tullius Cicero'
     detailHeading: 'Nurturing Flourishing & Wellbeing'
-    projects: [process]
+    projects: [af]
 projectsLabel: 'Related projects'
 sources:
   - kind: concept
@@ -40,6 +40,9 @@ sources:
   - kind: decision
     ref: 'site review 2026-10 (Focus: connect each area to projects)'
     note: 'area-to-project mapping and the "Related projects" label drafted by Devin; pending review by Will'
+  - kind: decision
+    ref: 'site review 2026-10, round 2 (Focus, Wellbeing)'
+    note: 'Wellbeing links to Aeonic Flourishing instead of the Odyssean Process; Institutions to the Odyssean Process and Resilience to GRAIN, as in the header Projects menu'
 ---
 
 Humanity is living through an unprecedented confluence of emerging, accelerating, and compounding crises - threatening perhaps even extinction. Yet we are also equipped with bold and proven means to confront them.

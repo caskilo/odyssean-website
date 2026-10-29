@@ -1,5 +1,5 @@
 ---
-import type { Copy } from '../../lib/copy';
+import { text, type Copy } from '../../lib/copy';
 import { markCurrent } from '../../lib/site';
 import CopyText from './Copy.astro';
 
@@ -7,12 +7,13 @@ interface Props {
   label: Copy;
   /** where the label itself goes; without it the label is a button that only opens the menu */
   href?: string;
-  items: { label: Copy; href: string }[];
+  /** each group may carry a heading, which is not a link */
+  groups: { label?: Copy; items: { label: Copy; href: string }[] }[];
   current: string;
 }
-const { label, href, items, current } = Astro.props;
-const links = markCurrent(items, current);
-const hrefs = [...(href ? [href] : []), ...items.map((i) => i.href)];
+const { label, href, groups, current } = Astro.props;
+const shown = groups.map((g) => ({ ...g, links: markCurrent(g.items, current) }));
+const hrefs = [...(href ? [href] : []), ...groups.flatMap((g) => g.items.map((i) => i.href))];
 const within = hrefs.some((h) => current === h || current.startsWith(h + '/'));
 const state = href && current === href ? 'page' : within ? 'true' : undefined;
 const Trigger = href ? 'a' : 'button';
@@ -30,15 +31,26 @@ const Trigger = href ? 'a' : 'button';
       <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"></path>
     </svg>
   </Trigger>
-  <ul class="drop__panel">
-    {links.map((l) => (
-      <li>
-        <a href={l.href} aria-current={l.current}>
-          <CopyText value={l.label} />
-        </a>
-      </li>
+  <div class="drop__panel">
+    {shown.map((g) => (
+      <div class="drop__group" role={g.label ? 'group' : undefined} aria-label={text(g.label)}>
+        {g.label && (
+          <p class="drop__label" aria-hidden="true">
+            <CopyText value={g.label} />
+          </p>
+        )}
+        <ul>
+          {g.links.map((l) => (
+            <li>
+              <a href={l.href} aria-current={l.current}>
+                <CopyText value={l.label} />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     ))}
-  </ul>
+  </div>
 </div>
 
 <style>
@@ -91,11 +103,28 @@ const Trigger = href ? 'a' : 'button';
     inset: 0.875rem 0 0;
     z-index: -1;
     background: var(--h-bg);
-    box-shadow: 0 1.25rem 2rem -1rem rgb(1 17 48 / 0.45);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--h-fg) 14%, transparent),
+      0 1.25rem 2rem -1rem rgb(1 17 48 / 0.45);
     content: '';
   }
-  .drop__panel li + li {
+  .drop__panel ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .drop__group + .drop__group {
     border-top: 1px solid color-mix(in srgb, var(--h-fg) 18%, transparent);
+  }
+  .drop__label {
+    margin: 0;
+    padding: 0.75rem 1rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    line-height: normal;
+    text-transform: uppercase;
+    opacity: 0.65;
   }
   .drop__panel a {
     display: block;

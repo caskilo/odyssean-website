@@ -16,7 +16,7 @@ interface Props {
   /** the info sections, or the current project's sub-nav (named) */
   section: { name?: Copy; links: Link[] };
   /** on every page: a menu of the projects, opened from a link to their overview */
-  projects: { label: Copy; href: string; items: Link[] };
+  projects: { label: Copy; href: string; groups: { label: Copy; items: Link[] }[] };
   /** on every page: a menu of the remaining links */
   more: { label: Copy; items: Link[] };
   logoTone: 'blue' | 'paper' | 'gold';
@@ -40,14 +40,19 @@ if (slot < 0) items.push('projects');
       <nav class="site-header__nav" aria-label={ui.nav}>
         {items.map((l) =>
           l === 'projects' ? (
-            <NavDrop {...projects} {current} />
+            <NavDrop
+              label={projects.label}
+              href={projects.href}
+              groups={projects.groups}
+              {current}
+            />
           ) : (
             <a href={l.href} aria-current={l.current}>
               <CopyText value={l.label} />
             </a>
           ),
         )}
-        <NavDrop {...more} {current} />
+        <NavDrop label={more.label} groups={[{ items: more.items }]} {current} />
       </nav>
       <Menu
         label={ui.menu}
@@ -55,7 +60,7 @@ if (slot < 0) items.push('projects');
         {current}
         groups={[
           { name: section.name, links: section.links },
-          { name: projects.label, links: projects.items },
+          { name: projects.label, links: projects.groups.flatMap((g) => g.items) },
           { links: more.items },
         ]}
       />
@@ -91,7 +96,7 @@ if (slot < 0) items.push('projects');
   }
   .site-header--plain {
     --nav-link: var(--fg);
-    --h-current: var(--accent);
+    --h-current: var(--current, var(--accent));
   }
   .site-header--bar {
     --nav-link: var(--paper);

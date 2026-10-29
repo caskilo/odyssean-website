@@ -6,8 +6,9 @@
   --eyebrow: var(--navy);
   --surface: var(--green);
   --surface-fg: var(--paper);
-  --rule: var(--navy);
-  --rule-soft: var(--sand);
+  --rule: var(--green);
+  --rule-soft: var(--green);
+  --row-rule-width: 1.5px;
   --link: var(--green);
   --link-hover: var(--navy);
   --btn-bg: var(--navy);
@@ -15,6 +16,7 @@
   --focus: var(--green);
 }
 
+/* a re-entrant (auxetic) honeycomb, faded back so it never competes with the text */
 body[data-theme='grain'] {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='42'%3E%3Cg fill='none' stroke='%230B3A29' stroke-opacity='.055' stroke-width='1.2'%3E%3Cpath d='M0 0H48M0 0L24 42 48 0M0 42H48'/%3E%3C/g%3E%3Cg fill='%230B3A29' fill-opacity='.07'%3E%3Ccircle r='1.8'/%3E%3Ccircle cx='24' cy='42' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='54'%3E%3Cpath d='M-18 18L0 0M18 -27L18 18M0 0L18 18M18 18L36 0M36 0L54 18M-18 27L0 45M-18 72L0 54M0 0L0 45M18 27L18 72M0 45L18 27M0 54L18 72M18 27L36 45M18 72L36 54M36 0L36 45M36 45L54 27M36 54L54 72M0 54L0 99M36 54L36 99' fill='none' stroke='%230B3A29' stroke-opacity='.035' stroke-width='1.2'/%3E%3Cg fill='%230B3A29' fill-opacity='.045'%3E%3Ccircle cx='0' cy='0' r='1.8'/%3E%3Ccircle cx='18' cy='18' r='1.8'/%3E%3Ccircle cx='36' cy='0' r='1.8'/%3E%3Ccircle cx='0' cy='45' r='1.8'/%3E%3Ccircle cx='0' cy='54' r='1.8'/%3E%3Ccircle cx='18' cy='27' r='1.8'/%3E%3Ccircle cx='36' cy='45' r='1.8'/%3E%3Ccircle cx='36' cy='54' r='1.8'/%3E%3C/g%3E%3C/svg%3E");
 }

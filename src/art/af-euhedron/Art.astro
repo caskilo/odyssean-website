@@ -1,0 +1,59 @@
+---
+interface Props {
+  description: string;
+}
+const { description } = Astro.props;
+---
+
+<svg viewBox="0 0 400 400" class="art" role="img" aria-label={description}>
+  <circle
+    cx="200"
+    cy="205"
+    r="175"
+    fill="none"
+    stroke="#F4F4F2"
+    stroke-width="0.8"
+    stroke-dasharray="2 5"
+    opacity="0.6"
+  />
+  <polygon points="200,30 351,292 49,292" fill="none" stroke="#F4F4F2" stroke-width="1.4" />
+  <polygon
+    points="275,161 200,292 125,161"
+    fill="#F4F4F2"
+    fill-opacity="0.06"
+    stroke="#F4F4F2"
+    stroke-width="0.9"
+  />
+  <g stroke="#F4F4F2" stroke-width="0.6" opacity="0.6">
+    <line x1="200" y1="205" x2="200" y2="30" />
+    <line x1="200" y1="205" x2="351" y2="292" />
+    <line x1="200" y1="205" x2="49" y2="292" />
+    <line x1="200" y1="205" x2="275" y2="161" />
+    <line x1="200" y1="205" x2="200" y2="292" />
+    <line x1="200" y1="205" x2="125" y2="161" />
+    <line x1="200" y1="30" x2="275" y2="161" />
+    <line x1="200" y1="30" x2="125" y2="161" />
+    <line x1="351" y1="292" x2="275" y2="161" />
+    <line x1="351" y1="292" x2="200" y2="292" />
+    <line x1="49" y1="292" x2="125" y2="161" />
+    <line x1="49" y1="292" x2="200" y2="292" />
+  </g>
+  <g fill="#000" stroke="#F4F4F2" stroke-width="1.4">
+    <circle cx="200" cy="205" r="6" stroke="#E2B540" />
+    <circle cx="275" cy="161" r="5" />
+    <circle cx="200" cy="292" r="5" />
+    <circle cx="125" cy="161" r="5" />
+    <circle cx="200" cy="30" r="5" />
+    <circle cx="351" cy="292" r="5" />
+    <circle cx="49" cy="292" r="5" />
+  </g>
+</svg>
+
+<style>
+  .art {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+</style>

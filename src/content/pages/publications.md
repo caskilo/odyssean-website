@@ -7,11 +7,11 @@ eyebrow: 'Research & analysis'
 heading: 'Publications'
 filterLabel: 'Filter by type'
 filters:
-  - { label: 'All publications', type: all }
-  - { label: 'Policy briefs', type: policy-brief }
-  - { label: 'White papers', type: white-paper }
-  - { label: 'Research reports', type: research-report }
-  - { label: 'Academic articles', type: academic-article }
+  - { label: 'All Publications', type: all }
+  - { label: 'Policy Briefs', type: policy-brief }
+  - { label: 'White Papers', type: white-paper }
+  - { label: 'Research Reports', type: research-report }
+  - { label: 'Academic Articles', type: academic-article }
   - { label: 'Blog', href: '/blog' }
   - { label: 'Curriculum', href: '/curriculum' }
 typeLabels:
@@ -26,7 +26,6 @@ featured:
   summary: 'How effective democratic deliberation, enriched by science and expert insight, can improve institutional decision-making on the grand challenges we face.'
   cta: 'Read the White Paper'
   fileLabel: 'PDF'
-  cover: { kicker: 'Odyssean Institute', title: 'White Paper' }
 sources:
   - kind: concept
     ref: '06'

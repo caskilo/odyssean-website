@@ -4,6 +4,9 @@ author: "Giuseppe Dal Prá"
 published: 2026-09-03T18:00:07.000Z
 updated: 2026-09-22T14:33:10.511Z
 readTime: "7 min read"
+cover:
+  src: "../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-1-511397.jpg"
+  alt: "A murmuration of starlings forming a dense dark cloud against a pale pink sky above reed beds."
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/an-odyssey-launched-update-on-the-first-odyssean-process"
@@ -49,6 +52,7 @@ These materials enable 8 online sessions of deliberation and learning, starting 
 
 All online deliberations serve to prepare the 100 demographically representative British citizens to deploy collective intelligence and their skin in the game on these enormous challenges in an in-person 3 day deliberation at the [People’s History Museum](https://phm.org.uk/) in Manchester on 27-29th November 2026.
 
+![The People's History Museum in Manchester: a modern building clad in rust-red metal panels.](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-2-41f208.jpg)
 
 This concludes the Odyssean Process, with the essential final deliberations developing principles and policy recommendations for strategic resilience to emerging AI risks by the public, for the public.
 
@@ -92,6 +96,7 @@ This ensures that any funding, sharing, and coalitional support lent to the OI w
 
 Our donation page is [here](/donate), and if you would like to reach out regarding working with us on projects of this calibre and uniqueness, please reach out to [contact@odysseaninstitute.org](mailto:contact@odysseaninstitute.org)
 
+![King's College, Cambridge, with the low sun glinting between the college buildings.](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-3-a63a36.jpg)
 
 ## Grateful Reflections
 
@@ -106,3 +111,6 @@ Incidentally, if the ASMR of birdsong and punting poles from King’s College Ca
 The simultaneity of academic and operational work, however, also made this a Herculean effort. It meant my leadership of this project had to be balanced with intense workloads. This was only possible thanks to the patience and poise of all involved, from incredible contributions by the OI’s amazing, international team spread across many continents and time zones. I give the greatest and most heartfelt thanks and appreciation to the urgent, thorough, and efficient work of our team and all of our partners in this grand undertaking.
 
 I also wish to extend our deepest thanks to Kristian Rönn, Greg Colbourn, the Survival and Flourishing Fund, and King’s College, Cambridge for their donations making this possible.
+
+
+![King's College Chapel, Cambridge, silhouetted against the sun and reflected in the river.](../../assets/media/posts/an-odyssey-launched-update-on-the-first-odyssean-process/image-4-962499.jpg)

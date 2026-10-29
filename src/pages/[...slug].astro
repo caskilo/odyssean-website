@@ -12,6 +12,7 @@ import GrainLanding from '../views/GrainLanding.astro';
 import ScansLanding from '../views/ScansLanding.astro';
 import ProcessLanding from '../views/ProcessLanding.astro';
 import Modelling from '../views/Modelling.astro';
+import AeonicFlourishing from '../views/AeonicFlourishing.astro';
 
 export async function getStaticPaths() {
   const pages = await getCollection('pages');
@@ -35,6 +36,7 @@ const views = {
   'scans-landing': ScansLanding,
   'process-landing': ProcessLanding,
   modelling: Modelling,
+  'aeonic-flourishing': AeonicFlourishing,
 };
 const View = views[entry.data.template];
 ---

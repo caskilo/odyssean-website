@@ -59,9 +59,11 @@ const labels = data.origin.figure.labels.map((l) => text(l) ?? '') as [string, s
     </figure>
     <div class="origin__text">
       <div class="origin__head">
-        <Eyebrow>
-          <CopyText value={data.origin.eyebrow} />
-        </Eyebrow>
+        {data.origin.eyebrow && (
+          <Eyebrow>
+            <CopyText value={data.origin.eyebrow} />
+          </Eyebrow>
+        )}
         <Headline
           text={data.origin.headline.text}
           accent={data.origin.headline.accent}

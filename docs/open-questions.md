@@ -67,16 +67,29 @@ These do not affect the content, but launch cannot happen without them.
 </tbody>
 </table>
 
+### Aeonic Flourishing page
+
+<table>
+<thead>
+<tr><th width="11%">Ref</th><th width="17%">Topic</th><th width="40%">What we need</th><th width="32%">Why</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Q-08</strong></td><td>Credit line</td><td><strong>Whether to credit the 101 Explainer</strong> (R.T. van Vroonhoven, with Giuseppe Dal Prá) on the page, and in what words.</td><td>The page is drawn from the Explainer and the précis. No credit is shown until the wording is agreed.</td></tr>
+<tr><td><strong>Q-09</strong></td><td>PDF download</td><td><strong>Whether to offer the Explainer as a download</strong> from the page.</td><td>The two closing buttons currently go to the précis post and the contact page.</td></tr>
+<tr><td><strong>Q-10</strong></td><td>Terminology</td><td><strong>Whether "curses" and "antidotes" should be softened</strong> for a general audience.</td><td>The wording is the concept's; it is a one-line change in `aeonic-flourishing.md`.</td></tr>
+</tbody>
+</table>
+
 ## For information (no action needed)
 
 - **The current Publications page links some entries to the wrong PDF.** On 5 of the 10 entries, the title, picture, "Read All" button or links in the summary point to a different document. The new site uses the correct file for each entry; details are in [content-map.md, Publications](../content-map.md). Worth fixing on Wix only if the old site stays up for a while.
-- **There are two editions of the White Paper** (2023 and 2024). The new site features the 2024 edition. The old 2023 web address still shows the 2023 file.
+- **There are two files for the White Paper** (2023 and 2024). Their text is identical. The new site features it as a 2023 publication, with the 2024 file and the cover from the live site. The old 2023 web address still shows the 2023 file.
 - **The phone number is no longer on the website.** Only the email address (contact@odysseaninstitute.org) is shown.
-- **The gold "Collaborate" button on the GRAIN pages now opens the GRAIN contact page.** There is no separate Collaborate page.
+- **The GRAIN pages have no "Collaborate" button or separate contact page.** Contact is in the "More" menu on every page.
 - **The Horizon Scans page no longer shows a timeframe for each issue**, as agreed.
 - **The Policy Robustness and Uncertainty paper now links to the 2026 journal edition.** Authors, dates and the other missing details on the Publications page have been filled in.
-- **The home page now shows a single still picture (the horizon), as in the first design.** The rotating picture idea was dropped, so no extra pictures or taglines are needed.
-- **The GRAIN policy brief button now reads "Policy brief, Feb 2024"**, matching the document it opens.
+- **The home page shows a single still photograph (the Earth's limb from the International Space Station, NASA, public domain).** The rotating picture idea was dropped. Below the focus areas, one blog post and one publication are featured and change each month; the candidate lists are in `src/content/pages/index.md`.
+- **The GRAIN page no longer has a policy brief button.** The policy brief is still listed under Publications.
 - **Ten outside links that no longer worked now point to archived copies on the Wayback Machine** (seven were gone, three did not respond). The archived pages open in place of the originals. If the originals ever come back, the links can be switched back.
 - **Old web addresses keep working.** Every old page and PDF address from the current website forwards to its new home, and all nine blog post addresses are unchanged, so existing links and search results are not lost.
 - **About 60 outside links** (publishers, journals and news sites) refuse automated checks, so we could not test them. They almost certainly work in a browser. See "Blocks automated checks" in [link-report.md](../link-report.md).

@@ -37,6 +37,12 @@ export const DESIGN_NOTES = [
 export const DESIGN_NOTE_PHRASES = DESIGN_NOTES.filter((n) => n.length > 12);
 /** Superseded by agreed decisions (not design notes, but intentionally not used). */
 const SUPERSEDED = {
+  'Published 2024': 'projects panel 2 is Aeonic Flourishing (site review 2026-10, round 2)',
+  Foresight: 'projects panel 2 is Aeonic Flourishing (site review 2026-10, round 2)',
+  'The origin of our name': 'About: eyebrow removed (site review 2026-10, round 2)',
+  'The education': 'About: origin titles rewritten (site review 2026-10, round 2)',
+  'The leap': 'About: origin titles rewritten (site review 2026-10, round 2)',
+  'The practice': 'About: origin titles rewritten (site review 2026-10, round 2)',
   'Horizon Scan on Global Catastrophic Risks':
     'projects panel 2 renamed Foresight Exercises (site review 2026-10)',
   'Experts scored the catastrophic risks we are least prepared for, from cascading food-system failures to AI in nuclear weapons systems.':

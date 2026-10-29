@@ -41,7 +41,7 @@ sources:
 
 ### What is the process?
 
-Utilising Decision Making under Deep Uncertainty (DMDU), which is a formal method of identifying optimalities in the range of possible solutions by simulating robust strategies from stakeholder preferences.
+Utilising [Decision Making under Deep Uncertainty (DMDU)](/curriculum#decision-making-under-deep-uncertainty), which is a formal method of identifying optimalities in the range of possible solutions by simulating robust strategies from stakeholder preferences.
 
 The simulation of these solutions allows stakeholders to input their strategic needs, and to explore the map of possible solutions more rigorously.
 
@@ -55,6 +55,6 @@ For complex adaptations, it is arguably necessary as reductive approaches cannot
 
 ## Methodologies Explained
 
-DMDU is the umbrella term for three components: Robust Decision Making (RDM), adaptive planning, and constructive decision aiding. RDM aims to simulate numerous scenarios and stress test strategies across them, identifying robust pareto-optimal solutions within the wider space of options. This is accomplished through Multi-Objective Evolutionary Algorithms (MOEAs). Value and policy lock in and path dependencies can then be avoided for decision makers, enabling proactive, anticipatory, and transformational policies rather than reactive ones. This is particularly true if used in concert with Dynamic Adaptive Policy Pathways (DAPP).
+DMDU is the umbrella term for three components: [Robust Decision Making (RDM)](/curriculum#decision-making-under-deep-uncertainty), adaptive planning, and constructive decision aiding. RDM aims to simulate numerous scenarios and stress test strategies across them, identifying robust pareto-optimal solutions within the wider space of options. This is accomplished through Multi-Objective Evolutionary Algorithms (MOEAs). Value and policy lock in and path dependencies can then be avoided for decision makers, enabling proactive, anticipatory, and transformational policies rather than reactive ones. This is particularly true if used in concert with Dynamic Adaptive Policy Pathways (DAPP).
 
-Complex, latent, or systemic risks, can be better modelled by simulating multiple different possible world-states, revealing strategies that are robust to a wide variety of possible futures. As crises become more complex, interconnected, and commonplace, they become more expensive and intractable to address with simplistic predict-and-act approaches. New modelling ontologies and clear, iterated adaptive pathways can give strategic confidence that this is not irreversible.
+Complex, latent, or [systemic risks](/curriculum#global-systemic-risk-cascading-disasters-and-polycrisis), can be better modelled by simulating multiple different possible world-states, revealing strategies that are robust to a wide variety of possible futures. As crises become more complex, interconnected, and commonplace, they become more expensive and intractable to address with simplistic predict-and-act approaches. New modelling ontologies and clear, iterated adaptive pathways can give strategic confidence that this is not irreversible.

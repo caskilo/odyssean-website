@@ -214,7 +214,7 @@ const themes = [
         <Header
           variant="plain"
           current="/grain"
-          section={{ name: s.microsites.grain.name, links: s.microsites.grain.subnav }}
+          section={{ name: s.microsites.grain.name, links: s.microsites.grain.subnav ?? [] }}
           {...shared}
           logoTone="blue"
           ui={{ ...ui, nav: String(s.ui.subNav) }}
@@ -224,7 +224,7 @@ const themes = [
         <Header
           variant="plain"
           current="/horizon-scans"
-          section={{ name: s.microsites.scans.name, links: s.microsites.scans.subnav }}
+          section={{ name: s.microsites.scans.name, links: s.microsites.scans.subnav ?? [] }}
           {...shared}
           logoTone="paper"
           ui={{ ...ui, nav: String(s.ui.subNav) }}

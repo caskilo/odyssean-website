@@ -4,6 +4,9 @@ author: "Giuseppe Dal Prá"
 published: 2024-12-31T18:00:05.358Z
 updated: 2025-05-07T00:01:00.021Z
 readTime: "10 min read"
+preview:
+  src: "../../assets/media/posts/our-2024-in-review/image-1-e3b3b5.jpg"
+  alt: "A speaker beside a projected slide titled 'Complex & Systemic Risks'."
 sources:
   - kind: live
     ref: "https://www.odysseaninstitute.org/post/our-2024-in-review"
@@ -39,11 +42,19 @@ We saw this exercise as highly impactful for researchers and policymakers to bui
 
 Not only was this project conceptually daunting, it was also operationally so. As a young organisation with a remit that extends beyond the usual in existential risk studies (aiming, as we do, for start to finish enhancements of the policymaking pipeline) our resourcing was limited. Thankfully, the autumn of 2023 had seen my attendance of the Epistea Residency in Prague, allowing me to work diligently on our White Paper and [give a talk on it](https://youtu.be/D2RzNv_Ec0U?si=nq2e-bssWPePRTu6). One of the conveners of Epistea, Jan Kulveit, provided critical funding from the [Alignment of Complex Systems Research Group](https://acsresearch.org/); this was then matched with logistical support from Wytham Abbey, where we hosted our concluding workshop as one of their very last events before they closed.
 
+![A speaker beside a projected slide titled 'Complex & Systemic Risks'.](../../assets/media/posts/our-2024-in-review/image-1-e3b3b5.jpg)
 
 With the Abbey’s forthcoming closure limiting our concluding workshop to March 2024, we were left with a record breaking feat to pull off. Several academic advisors experienced with horizon scanning informed us that an ideal timeline for horizon scans is 4-6 months from first invitation to final workshop. In our case, we had at best 3. Moreover, as attested at the time, but which we had not yet realised, this was to be the world’s first global catastrophic risk horizon scan, compounded in complexity by an especially challenging transdisciplinary problem. We would have to do groundbreaking work under budget, and faster than normal. Nothing beats a new challenge to spur action; the urgency reminded us that when the going gets tough, the tough get going!
 
 In January we onboarded 32 experts across several fields relevant to global catastrophic risks to answer with emerging issues ‘what are some new or neglected tipping points with a potential to cascade globally, related to civilisational risks’. These experts then anonymously submitted 2-5 issues each, which were scored anonymously by the group in rounds of voting and further research, starting with 96, reducing them to 37, and then deliberating in the workshop until we had a final set of 15 issues.
 
+![Workshop participants seated in a large room with tall windows, with a remote participant on a video screen.](../../assets/media/posts/our-2024-in-review/image-2-208a92.jpg)
+
+![Wytham Abbey at dusk, with two people walking across the lawn.](../../assets/media/posts/our-2024-in-review/image-3-ffbb46.jpg)
+
+![People talking over drinks in a bright room with an open kitchen and tall stained-glass windows.](../../assets/media/posts/our-2024-in-review/image-4-cb8f58.jpg)
+
+![Participants seated in a high-ceilinged room with bookshelves and a grand piano, listening to a discussion while one person joins on a large video screen.](../../assets/media/posts/our-2024-in-review/image-5-6f456a.jpg)
 
 Our persistence and pace allowed us to develop novel innovations for scoring and ranking the issues, ensuring that we went beyond existing horizon scan practice to capture data that was as multidimensional as possible. Rather than scoring solely for relevance to the question and whether participants had heard of the issues before, we added a neglectedness score to see whether they believed, regardless of novelty to them personally, whether wider society was still acting with insufficient resolve or concentration to mitigate the issues.
 

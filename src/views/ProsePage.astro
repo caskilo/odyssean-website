@@ -6,6 +6,7 @@ import Reading from '../layouts/Reading.astro';
 import Grain from '../layouts/Grain.astro';
 import Scans from '../layouts/Scans.astro';
 import Process from '../layouts/Process.astro';
+import Af from '../layouts/Af.astro';
 import Eyebrow from '../components/core/Eyebrow.astro';
 import Headline from '../components/core/Headline.astro';
 import Button from '../components/core/Button.astro';
@@ -34,6 +35,7 @@ const Layout = {
   grain: Grain,
   scans: Scans,
   process: Process,
+  af: Af,
 }[data.strand];
 
 // a page may borrow another page's body and form (e.g. a microsite Contact page)
